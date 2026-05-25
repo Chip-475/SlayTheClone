@@ -17,6 +17,7 @@ public class HandManager : MonoBehaviour
     [Space]
     public List<SkillCard> skillsInHand = new();
     public SkillCard selectedCard;
+    public Enemy selectedTarget;
 
     public void AddCard(SkillCard skill)
     {
@@ -44,5 +45,10 @@ public class HandManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(duration);
+    }
+
+    public void UseSkill(Enemy enemy)
+    {
+
     }
 }

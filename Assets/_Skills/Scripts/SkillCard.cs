@@ -44,6 +44,6 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if(!isHoveredOn) return;
 
-        print("clicked");
+        HandManager.instance.selectedCard = this;
     }
 }
