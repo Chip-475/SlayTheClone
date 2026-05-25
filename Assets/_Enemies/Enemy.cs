@@ -31,6 +31,6 @@ public abstract class Enemy : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        HandManager.instance.selectedTarget = this;
+        
     }
 }

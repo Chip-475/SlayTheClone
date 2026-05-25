@@ -16,8 +16,6 @@ public class HandManager : MonoBehaviour
     public SplineContainer splineContainer;
     [Space]
     public List<SkillCard> skillsInHand = new();
-    public SkillCard selectedCard;
-    public Enemy selectedTarget;
 
     public void AddCard(SkillCard skill)
     {
@@ -45,10 +43,5 @@ public class HandManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(duration);
-    }
-
-    public void UseSkill(Enemy enemy)
-    {
-
     }
 }
