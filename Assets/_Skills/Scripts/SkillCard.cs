@@ -43,5 +43,8 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerDown(PointerEventData eventData)
     {
         if(!isHoveredOn) return;
+
+        if(GameManager.State != GameManager.GameState.Selecting) GameManager.State = GameManager.GameState.Selecting;
+        BattleManager.instance.currentSelected = this;
     }
 }

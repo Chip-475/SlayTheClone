@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public abstract class Enemy : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     public EnemyStats stats;
-    public List<Skill> skillList = new List<Skill>();
+    public List<Skill> skillList = new();
 
     protected SpriteRenderer spriteRenderer;
     protected Color baseColor;
@@ -31,6 +31,10 @@ public abstract class Enemy : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        
+        if(GameManager.State != GameManager.GameState.Selecting) return;
+
+        print("gay");
+        if (!BattleManager.instance.currentTargets.Contains(this)) BattleManager.instance.currentTargets.Add(this);
+        if(BattleManager.instance.currentTargets.Count == BattleManager.instance.currentSelected.skill.numberOfTargets) BattleManager.instance.BuildAction();
     }
 }

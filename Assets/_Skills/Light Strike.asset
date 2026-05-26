@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Light Strike
   m_EditorClassIdentifier: Assembly-CSharp::LightStrike
   cost: 1
+  numberOfTargets: 1
   atkMin: 3
   atkMax: 5
   healMin: 0
