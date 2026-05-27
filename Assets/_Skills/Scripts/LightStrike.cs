@@ -4,7 +4,7 @@ using System.Collections;
 
 // Light attack, possibly starter skill
 [CreateAssetMenu(fileName = "LightStrike", menuName = "Scriptable Objects/Skills/LightStrike")]
-public class LightStrike : Skill
+public class LightStrike : _Skill
 {
     public override IEnumerator OnUse(List<Enemy> targets)
     {

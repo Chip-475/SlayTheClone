@@ -9,7 +9,7 @@ using DG.Tweening;
 public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     public GameObject self;
-    public Skill skill;
+    public _Skill skill;
     [Space]
     public SpriteRenderer background;
     public SpriteRenderer image;

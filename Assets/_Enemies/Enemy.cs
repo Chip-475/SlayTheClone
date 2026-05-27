@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public abstract class Enemy : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     public EnemyStats stats;
-    public List<Skill> skillList = new();
+    public List<_Skill> skillList = new();
 
     protected SpriteRenderer spriteRenderer;
     protected Color baseColor;

@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Collections;
 
 // Base class for all skills
-public abstract class Skill : ScriptableObject
+public abstract class _Skill : ScriptableObject
 {
+    public Animation anim;
+
     public int cost;
     public int numberOfTargets;
 
