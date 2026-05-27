@@ -23,6 +23,12 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private bool isHoveredOn = false;
     private Vector3 basePos;
 
+    private void Start()
+    {
+        cost.text = $"{skill.cost}";
+        effect.text = $"{skill.atkMin} - {skill.atkMax}";
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isHoveredOn) return;
@@ -42,7 +48,7 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        if(!isHoveredOn) return;
+        if(!isHoveredOn || BattleManager.instance.actions.Count >= BattleManager.instance.numberOfActions) return;
 
         if(GameManager.State != GameManager.GameState.Selecting) GameManager.State = GameManager.GameState.Selecting;
         BattleManager.instance.currentSelected = this;

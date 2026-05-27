@@ -9,7 +9,7 @@ public class tester : MonoBehaviour
     {
         if(!context.performed || Database.instance.skillPrefabs[0] == null) { return; }
 
-        HandManager.instance.AddCard(Database.instance.skillPrefabs[0]);
+        HandManager.instance.AddCard(Database.instance.skillPrefabs[Random.Range(0, Database.instance.skillPrefabs.Count)]);
     }
 
     public void debug()

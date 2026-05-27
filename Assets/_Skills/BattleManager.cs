@@ -25,10 +25,7 @@ public class BattleManager : MonoBehaviour
     {
         instance = this;
         var enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
-        foreach(var temp in enemies)
-        {
-            enemyList.Add(temp);
-        }
+        enemyList = new List<Enemy>(enemies);
     }
 
     public void BuildAction()
@@ -41,13 +38,8 @@ public class BattleManager : MonoBehaviour
 
         currentSelected = null;
         currentTargets.Clear();
-
-        if(actions.Count == numberOfActions)
-        {
-            StartCoroutine(StartCombat());
-        }
     }
-    public IEnumerator StartCombat()
+    public IEnumerator StartCombatCR()
     {
         for(int i = 0; i < numberOfActions; i++)
         {
@@ -58,5 +50,9 @@ public class BattleManager : MonoBehaviour
         }
         actions.Clear();
         GameManager.State = GameManager.GameState.None;
+    }
+    public void _StartCombat()
+    {
+        StartCoroutine(StartCombatCR());
     }
 }

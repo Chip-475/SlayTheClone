@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: -1971581934463289344}
   - component: {fileID: -5210369698427757007}
   m_Layer: 0
-  m_Name: Card Template
+  m_Name: Swipe Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillCard
   self: {fileID: 6158041851780844447}
-  skill: {fileID: 11400000, guid: dc9907161c51f2e4aa720a253dd4ad31, type: 2}
+  skill: {fileID: 11400000, guid: c8524e5a9ad9fbe479e0c97c8f990097, type: 2}
   background: {fileID: 5382511874675315944}
   image: {fileID: 4633192475733956290}
   cost: {fileID: 5733911250939889331}
