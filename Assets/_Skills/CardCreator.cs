@@ -11,9 +11,9 @@ public class CardCreator : MonoBehaviour
         instance = this;
     }
 
-    public SkillCard CreateCard(SkillCard cardPrefab, Vector2 position, Quaternion rotation)
+    public CardSkill CreateCard(CardSkill cardPrefab, Vector2 position, Quaternion rotation)
     {
-        SkillCard card = Instantiate(cardPrefab, position, rotation);
+        CardSkill card = Instantiate(cardPrefab, position, rotation);
         card.transform.localScale = Vector3.zero;
         card.transform.DOScale(Vector3.one, 0.15f);
         return card;
