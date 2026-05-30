@@ -11,13 +11,13 @@ public class BattleManager : MonoBehaviour
         public int actionId;
 
         public List<Enemy> targetedEnemies;
-        public SkillCard selectedSkill;
+        public CardSkill selectedSkill;
     }
     public List<BattleAction> actions = new();
     public int numberOfActions;
 
     public List<Enemy> enemyList = new();
-    public SkillCard currentSelected;
+    public CardSkill currentSelected;
     public List<Enemy> currentTargets = new();
 
     public static BattleManager instance;

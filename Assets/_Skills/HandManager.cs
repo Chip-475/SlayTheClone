@@ -15,9 +15,9 @@ public class HandManager : MonoBehaviour
 
     public SplineContainer splineContainer;
     [Space]
-    public List<SkillCard> cardsInHand = new();
+    public List<CardSkill> cardsInHand = new();
 
-    public void AddCard(SkillCard skill)
+    public void AddCard(CardSkill skill)
     {
         var temp = CardCreator.instance.CreateCard(skill, splineContainer.transform.position, Quaternion.identity);
         cardsInHand.Add(temp);

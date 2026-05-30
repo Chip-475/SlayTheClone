@@ -9,5 +9,5 @@ public class Database : MonoBehaviour
         instance = this;
     }
 
-    public List<SkillCard> skillPrefabs = new();
+    public List<CardSkill> skillPrefabs = new();
 }
