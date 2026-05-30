@@ -6,17 +6,19 @@ using System;
 public class BattleManager : MonoBehaviour
 {
     [Serializable]
-    public class BattleAction
+    public class PlayerBattleAction
     {
         public int actionId;
 
         public List<Enemy> targetedEnemies;
         public CardSkill selectedSkill;
     }
-    public List<BattleAction> actions = new();
+    public List<PlayerBattleAction> actions = new();
     public int numberOfActions;
 
     public List<Enemy> enemyList = new();
+    public List<Transform> spawnPoints = new();
+
     public CardSkill currentSelected;
     public List<Enemy> currentTargets = new();
 
@@ -24,13 +26,13 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         instance = this;
-        var enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
-        enemyList = new List<Enemy>(enemies);
+
+        _SpawnEnemies();
     }
 
-    public void BuildAction()
+    public void BuildPlayerAction()
     {
-        var action = new BattleAction();
+        var action = new PlayerBattleAction();
         action.actionId = numberOfActions;
         action.selectedSkill = currentSelected;
         action.targetedEnemies = new List<Enemy>(currentTargets);
@@ -39,6 +41,7 @@ public class BattleManager : MonoBehaviour
         currentSelected = null;
         currentTargets.Clear();
     }
+
     public IEnumerator StartCombatCR()
     {
         for(int i = 0; i < numberOfActions; i++)
@@ -54,5 +57,23 @@ public class BattleManager : MonoBehaviour
     public void _StartCombat()
     {
         StartCoroutine(StartCombatCR());
+    }
+
+    public IEnumerator SpawnEnemiesCR()
+    {
+        for(int i = 0; i < spawnPoints.Count; i++)
+        {
+            var index = UnityEngine.Random.Range(0, Database.instance.enemyPrefabs.Count);
+            var enemy = Database.instance.enemyPrefabs[index];
+            enemy.group.sortingOrder = -i;
+            Instantiate(enemy, spawnPoints[i].position, Quaternion.identity);
+            enemyList.Add(enemy);
+        }
+
+        yield return null;
+    }
+    public void _SpawnEnemies()
+    {
+        StartCoroutine(SpawnEnemiesCR());
     }
 }
