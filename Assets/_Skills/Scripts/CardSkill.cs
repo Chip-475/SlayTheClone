@@ -36,8 +36,8 @@ public class CardSkill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         
         basePos = transform.position;
         baseRot = transform.rotation;
-        transform.DOMove(basePos + new Vector3(0, 1, 0), 0.15f);
-        transform.DORotate(new Vector3(0, 0, 0),  15f);
+        transform.DOMove(new Vector3(transform.position.x, -2, 0), 0.15f);
+        transform.DORotate(new Vector3(0, 0, 0), 0.15f);
         group.sortingOrder = 99;
         isHoveredOn = true;
     }

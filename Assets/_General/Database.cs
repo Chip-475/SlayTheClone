@@ -10,4 +10,5 @@ public class Database : MonoBehaviour
     }
 
     public List<CardSkill> skillPrefabs = new();
+    public List<Enemy> enemyPrefabs = new();
 }
