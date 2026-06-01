@@ -8,9 +8,9 @@ public class Node : MonoBehaviour
     {
         Null,
         Entry,
+        Boss, //finalLayer
         Battle, //default case
         EliteBattle, //layer/2
-        Boss, //finalLayer
         Shop,  //max 3, forced before boss,cant spawn on layer with <3 nodes
         Rest, // max 2, not on layer1,forced before boss,cant spawn on layer with <3 nodes
         Event,//max 3,not on layer1, forced before boss
@@ -20,7 +20,9 @@ public class Node : MonoBehaviour
 
     public int layerId;
     public int nodeId;
+    public int row;
     public List<int> toConnect = new();
+    public bool isConnected;
     void Start()
     {
         
