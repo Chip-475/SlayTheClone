@@ -397,6 +397,7 @@ MonoBehaviour:
   Y_Offset: 5
   entryNode: {fileID: 1040362261}
   nodes: []
+  ln: {fileID: 0}
   seed: 0
   numberOfLayers: 0
   numberOfPages: 0
@@ -544,6 +545,7 @@ MonoBehaviour:
   nodeId: 0
   row: 0
   toConnect: 
+  normalizedRow: 0
   isConnected: 0
 --- !u!1 &1102008655
 GameObject:

@@ -22,6 +22,7 @@ public class Node : MonoBehaviour
     public int nodeId;
     public int row;
     public List<int> toConnect = new();
+    public int normalizedRow; //row - (numberOfNodes - 1) / 2
     public bool isConnected;
     void Start()
     {
