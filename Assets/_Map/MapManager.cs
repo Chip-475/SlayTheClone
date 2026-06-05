@@ -117,6 +117,10 @@ public class MapManager : MonoBehaviour
         {
             return false;
         }
+        if((Node.NodeType)type == Node.NodeType.EliteBattle && nEliteBattle >= numberOfLayers / 2)
+        {
+            return false;
+        }
         if ((Node.NodeType)type == Node.NodeType.Shop && numberOfNodes < 3)
         {
             return false;
@@ -125,19 +129,23 @@ public class MapManager : MonoBehaviour
         {
             return false;
         }
-        if ((Node.NodeType)type == Node.NodeType.Shop && nShop >= 4)
+        if ((Node.NodeType)type == Node.NodeType.Shop && nShop >= 3)
         {
             return false;
         }
-        if ((Node.NodeType)type == Node.NodeType.Rest && nRest >= 2)
+        if ((Node.NodeType)type == Node.NodeType.Rest && nRest >= 1)
         {
             return false;
         }
-        if ((Node.NodeType)type == Node.NodeType.Event && nEvent >= 3)
+        if ((Node.NodeType)type == Node.NodeType.Event && nEvent >= 2)
         {
             return false;
         }
         if ((Node.NodeType)type == Node.NodeType.Shortcut && nShortCut >= 2)
+        {
+            return false;
+        }
+        if ((Node.NodeType)type == Node.NodeType.Shortcut && layer==numberOfLayers-1)
         {
             return false;
         }
@@ -309,6 +317,7 @@ public class MapManager : MonoBehaviour
                 lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
                 lineRenderer.startColor = Color.white;
                 lineRenderer.endColor = Color.white;
+                lineRenderer.sortingOrder = -1;
             }
         }
     }
