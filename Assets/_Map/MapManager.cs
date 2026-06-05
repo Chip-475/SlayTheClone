@@ -85,6 +85,7 @@ public class MapManager : MonoBehaviour
                 if (CanSpawn(whatToSpawn, i, numberOfNodes))
                 {
                     SpawnNode(nodes, whatToSpawn, i, nodeID, order);
+                    setNumber(whatToSpawn);
                     order++;
                     nodeID++;
                 }
@@ -263,6 +264,31 @@ public class MapManager : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+    public void setNumber(int spawned)
+    {
+        Node.NodeType type = (Node.NodeType)spawned;
+        switch (type)
+        {
+            case Node.NodeType.Battle:
+                nBattle++;
+                break;
+            case Node.NodeType.EliteBattle:
+                nEliteBattle++;
+                break;
+            case Node.NodeType.Shop:
+                nShop++;
+                break;
+            case Node.NodeType.Rest:
+                nRest++;
+                break;
+            case Node.NodeType.Event:
+                nEvent++;
+                break;
+            case Node.NodeType.Shortcut:
+                nShortCut++;
+                break;
         }
     }
     public void drawConnection()

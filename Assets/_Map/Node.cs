@@ -26,7 +26,36 @@ public class Node : MonoBehaviour
     public bool isConnected;
     void Start()
     {
-        
+        switch (type)
+        {
+            case NodeType.Null:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+                break;
+            case NodeType.Entry:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                break;
+            case NodeType.Boss:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+                break;
+            case NodeType.Battle:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                break;
+            case NodeType.EliteBattle:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.violet;
+                break;
+            case NodeType.Shop:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                break;
+            case NodeType.Rest:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.orange;
+                break;
+            case NodeType.Event:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                break;
+            case NodeType.Shortcut:
+                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                break;
+        }
     }
 
     void Update()
