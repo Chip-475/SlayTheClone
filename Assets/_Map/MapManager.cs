@@ -7,6 +7,7 @@ using System.Xml.Linq;
 public class MapManager : MonoBehaviour
 {
     public GameObject nodePrefab;
+    public Transform map;
     public float X_Offset;
     public float Y_Offset;
 
@@ -156,7 +157,7 @@ public class MapManager : MonoBehaviour
         float x, y;
         x = (layer + 1) * X_Offset;
         Vector2 pos = new Vector2(0, 0);
-        GameObject node = Instantiate(nodePrefab, pos, Quaternion.identity);
+        GameObject node = Instantiate(nodePrefab, pos, Quaternion.identity,map);
         Node component = node.GetComponent<Node>();
         component.nodeId = nodeID;
         component.layerId = layer;
@@ -308,6 +309,7 @@ public class MapManager : MonoBehaviour
                 Node target = nodes.Find(x => x.nodeId == id);
                 if (target == null) { Debug.LogWarning("Node not found: " + id); continue; }
                 GameObject lnObj = new GameObject("Line");
+                lnObj.transform.parent = map;
                 LineRenderer lineRenderer = lnObj.AddComponent<LineRenderer>();
                 lineRenderer.positionCount = 2;
                 lineRenderer.SetPosition(0, node.transform.position);

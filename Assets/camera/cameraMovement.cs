@@ -1,27 +1,33 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CameraScroll : MonoBehaviour
 {
     private Vector3 dragOrigin;
-
-    void Update()
+    public Transform topleft;
+    public Transform bottomright;
+    Mouse mouse = Mouse.current;
+    public void Update()
     {
-        var mouse = Mouse.current;
-        if (mouse == null) return;
-
-        if (mouse.leftButton.wasPressedThisFrame)
-            dragOrigin = Camera.main.ScreenToWorldPoint(mouse.position.ReadValue());
-
         if (mouse.leftButton.isPressed)
         {
+            dragOrigin = Camera.main.ScreenToWorldPoint(mouse.position.ReadValue());
             Vector3 delta = dragOrigin - Camera.main.ScreenToWorldPoint(mouse.position.ReadValue());
+            if (transform.position.x + delta.x < topleft.position.x)
+                delta.x = topleft.position.x - transform.position.x;
+            if (transform.position.x + delta.x > bottomright.position.x)
+                delta.x = bottomright.position.x - transform.position.x;
+            if (transform.position.y + delta.y > topleft.position.y)
+                delta.y = topleft.position.y - transform.position.y;
+            if (transform.position.y + delta.y < bottomright.position.y)
+                delta.y = bottomright.position.y - transform.position.y;
             transform.position += delta;
         }
-        if (mouse.scroll.ReadValue().y != 0)
+        if(mouse.IsActuated())
         {
-            float scrollAmount = mouse.scroll.ReadValue().y * 0.1f;
-            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - scrollAmount, 2f, 20f);
+            float scroll = mouse.scroll.ReadValue().y;
+            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - scroll, 2f, 20f);
         }
     }
 }
