@@ -2,14 +2,13 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 using DG.Tweening;
 
 // Attached to card game object
 public class CardSkill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     public GameObject self;
-    public _Skill skill;
+    public SkillSO skill;
     [Space]
     public SpriteRenderer background;
     public SpriteRenderer image;
@@ -52,9 +51,6 @@ public class CardSkill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        if(!isHoveredOn || BattleManager.instance.actions.Count >= BattleManager.instance.numberOfActions) return;
-
-        if(GameManager.State != GameManager.GameState.Selecting) GameManager.State = GameManager.GameState.Selecting;
-        BattleManager.instance.currentSelected = this;
+        if(!isHoveredOn) return;
     }
 }

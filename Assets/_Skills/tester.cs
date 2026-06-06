@@ -3,16 +3,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Splines;
 
-public class tester : MonoBehaviour
+public class Tester : MonoBehaviour
 {
-    public void generate(InputAction.CallbackContext context)
-    {
-        if(!context.performed || Database.instance.skillPrefabs[0] == null) { return; }
+    [SerializeField] private Database _database;
 
-        HandManager.instance.AddCard(Database.instance.skillPrefabs[Random.Range(0, Database.instance.skillPrefabs.Count)]);
+    public void Generate(InputAction.CallbackContext context)
+    {
+        if(!context.performed || _database.skillPrefabs[0] == null) return;
+
+        HandManager.instance.AddCard(_database.skillPrefabs[Random.Range(0, _database.skillPrefabs.Count)]);
     }
 
-    public void debug()
+    public void Debug()
     {
         print("clicked");
     }
