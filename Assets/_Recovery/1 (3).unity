@@ -395,15 +395,12 @@ MonoBehaviour:
   nodePrefab: {fileID: 4661219911854169726, guid: 6eb29934b8276264c94fdc4facc6a49d, type: 3}
   X_Offset: 10
   Y_Offset: 5
-  entryNode: {fileID: 1040362261}
+  entryNode: {fileID: -3497525624960012089, guid: 6eb29934b8276264c94fdc4facc6a49d, type: 3}
   nodes: []
-  ln: {fileID: 0}
   seed: 0
   numberOfLayers: 0
   numberOfPages: 0
   numberOfNodes: 0
-  tries: 0
-  attempts: 0
 --- !u!1 &1001493396
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +443,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1040362259}
   - component: {fileID: 1040362260}
-  - component: {fileID: 1040362261}
   m_Layer: 0
   m_Name: Entry Node
   m_TagString: Untagged
@@ -528,25 +524,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1040362261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1040362258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3064ec038b63f949973fdf295df4c32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Node
-  type: 1
-  layerId: 0
-  nodeId: 0
-  row: 0
-  toConnect: 
-  normalizedRow: 0
-  isConnected: 0
 --- !u!1 &1102008655
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +800,6 @@ GameObject:
   - component: {fileID: 1837442358}
   - component: {fileID: 1837442357}
   - component: {fileID: 1837442356}
-  - component: {fileID: 1837442360}
   m_Layer: 0
   m_Name: mainCamera
   m_TagString: MainCamera
@@ -965,18 +941,6 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &1837442360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837442354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4382c5dedce70e44886961b34797b2ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::cameraMovement
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
