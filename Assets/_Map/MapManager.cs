@@ -1,8 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.Collections;
-using UnityEngine.Rendering;
-using System.Xml.Linq;
 
 public class MapManager : MonoBehaviour
 {
@@ -12,22 +9,24 @@ public class MapManager : MonoBehaviour
 
     public Node entryNode;
     public List<Node> nodes = new();
-    public LineRenderer ln;
+
     public int seed;
+    public int seedAttempts;
+
     public int numberOfLayers;
     public int numberOfPages;
     public int numberOfNodes;
-    public int tries;
-    public int attempts;
-    int nBattle, nEliteBattle, nShop, nRest, nEvent, nShortCut;
+    public int generationAttempts;
+
+    int nEliteBattle, nShop, nRest, nEvent, nShortCut;
     bool finalShop = false, finalRest = false, finalEvent = false,finalFinal=false;
     void Start()
     {
         seed = Random.Range(0, int.MaxValue);
         Random.InitState(seed);
         nodes = GenerateMap();
-        generateConnection();
-        drawConnection();
+        GenerateConnection();
+        DrawConnection();
     }
     public List<Node> GenerateMap()
     {
@@ -43,7 +42,7 @@ public class MapManager : MonoBehaviour
             for (int j = 0; j < numberOfNodes; j++)
             {
                 int whatToSpawn;
-                if (i == numberOfLayers - 1&&!finalFinal)
+                if (i == numberOfLayers - 1 && !finalFinal)
                 {
                     if (numberOfNodes < 3)
                     {
@@ -85,7 +84,7 @@ public class MapManager : MonoBehaviour
                 if (CanSpawn(whatToSpawn, i, numberOfNodes))
                 {
                     SpawnNode(nodes, whatToSpawn, i, nodeID, order);
-                    setNumber(whatToSpawn);
+                    SetNumber(whatToSpawn);
                     order++;
                     nodeID++;
                 }
@@ -101,12 +100,12 @@ public class MapManager : MonoBehaviour
     }
     public bool CanSpawn(int type, int layer, int numberOfNodes)
     {
-        tries++;
-        Debug.Log("Try to spawn:" + tries);
-        if (tries > 100)
+        generationAttempts++;
+        Debug.Log("Try to spawn:" + generationAttempts);
+        if (generationAttempts > 100)
         {
-            tries = 0;
-            reseed();
+            generationAttempts = 0;
+            Reseed();
             return false;
         }
         if ((Node.NodeType)type == Node.NodeType.Rest && layer == 0)
@@ -155,7 +154,7 @@ public class MapManager : MonoBehaviour
     {
         float x, y;
         x = (layer + 1) * X_Offset;
-        Vector2 pos = new Vector2(0, 0);
+        Vector2 pos = new(0, 0);
         GameObject node = Instantiate(nodePrefab, pos, Quaternion.identity);
         Node component = node.GetComponent<Node>();
         component.nodeId = nodeID;
@@ -176,9 +175,9 @@ public class MapManager : MonoBehaviour
         node.transform.position = pos;
         nodes.Add(component);
     }
-    public void generateConnection()
+    public void GenerateConnection()
     {
-        Debug.Log(attempts + "attempts to generate");
+        Debug.Log(seedAttempts + "attempts to generate");
         for (int i = 0; i <= numberOfLayers; i++)
         {
             foreach (Node current in nodes)
@@ -274,14 +273,11 @@ public class MapManager : MonoBehaviour
             }
         }
     }
-    public void setNumber(int spawned)
+    public void SetNumber(int spawned)
     {
         Node.NodeType type = (Node.NodeType)spawned;
         switch (type)
         {
-            case Node.NodeType.Battle:
-                nBattle++;
-                break;
             case Node.NodeType.EliteBattle:
                 nEliteBattle++;
                 break;
@@ -299,7 +295,7 @@ public class MapManager : MonoBehaviour
                 break;
         }
     }
-    public void drawConnection()
+    public void DrawConnection()
     {
         foreach (Node node in nodes)
         {
@@ -307,7 +303,7 @@ public class MapManager : MonoBehaviour
             {
                 Node target = nodes.Find(x => x.nodeId == id);
                 if (target == null) { Debug.LogWarning("Node not found: " + id); continue; }
-                GameObject lnObj = new GameObject("Line");
+                GameObject lnObj = new("Line");
                 LineRenderer lineRenderer = lnObj.AddComponent<LineRenderer>();
                 lineRenderer.positionCount = 2;
                 lineRenderer.SetPosition(0, node.transform.position);
@@ -321,10 +317,10 @@ public class MapManager : MonoBehaviour
             }
         }
     }
-    public void reseed()
+    public void Reseed()
     {
-        Debug.Log("Reseeding,old seed:" + seed);
-        attempts++;
+        Debug.Log("Reseeding, old seed:" + seed);
+        seedAttempts++;
         seed = Random.Range(0, int.MaxValue);
         Random.InitState(seed);
         foreach (Node node in nodes)
@@ -332,10 +328,10 @@ public class MapManager : MonoBehaviour
             Destroy(node.gameObject);
         }
         nodes.Clear();
-        if (attempts < 10)
+        if (seedAttempts < 10)
         {
             nodes = GenerateMap();
-            generateConnection();
+            GenerateConnection();
         }
         else
         {

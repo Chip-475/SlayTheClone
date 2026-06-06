@@ -57,9 +57,4 @@ public class Node : MonoBehaviour
                 break;
         }
     }
-
-    void Update()
-    {
-        
-    }
 }
