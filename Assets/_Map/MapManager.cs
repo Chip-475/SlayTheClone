@@ -8,8 +8,13 @@ public class MapManager : MonoBehaviour
 {
     public GameObject nodePrefab;
     public Transform map;
+
+
     public float X_Offset;
     public float Y_Offset;
+    public Transform topLeft;
+    public Transform bottomRight;
+
 
     public Node entryNode;
     public List<Node> nodes = new();
@@ -36,6 +41,7 @@ public class MapManager : MonoBehaviour
         numberOfLayers = Random.Range(5, 8);
         numberOfPages = 3;
         int nodeID = 1;
+        calcOffset();
         SpawnNode(nodes, (int)Node.NodeType.Entry, -1, 0, 2);
         for (int i = 0; i < numberOfLayers; i++)
         {
@@ -155,7 +161,7 @@ public class MapManager : MonoBehaviour
     public void SpawnNode(List<Node> nodes, int whatToSpawn, int layer, int nodeID, int row)
     {
         float x, y;
-        x = (layer + 1) * X_Offset;
+        x =topLeft.position.x + (layer + 1) * X_Offset;
         Vector2 pos = new Vector2(0, 0);
         GameObject node = Instantiate(nodePrefab, pos, Quaternion.identity,map);
         Node component = node.GetComponent<Node>();
@@ -166,12 +172,13 @@ public class MapManager : MonoBehaviour
         component.type = (Node.NodeType)whatToSpawn;
         if (component.type == Node.NodeType.Entry || component.type == Node.NodeType.Boss)
         {
-            y = 0;
+            y = (topLeft.position.y + bottomRight.position.y) / 2f;
             component.normalizedRow = 0;
         }
         else
         {
-            y = (row - (numberOfNodes - 1) / 2f) * Y_Offset;
+            
+            y =((topLeft.position.y+bottomRight.position.y)/2f) + (row - (numberOfNodes - 1) / 2f) * Y_Offset;
         }
         pos = new Vector2(x, y);
         node.transform.position = pos;
@@ -197,6 +204,16 @@ public class MapManager : MonoBehaviour
                     if (Mathf.Abs(current.normalizedRow - prev.normalizedRow) <= 1 || current.type == Node.NodeType.Boss)
                     {
                         possibleConnection.Add(prev);
+                    }
+                    if (prev.layerId == i - 2 && prev.type == Node.NodeType.Shortcut)
+                    {
+                        if (Mathf.Abs(current.normalizedRow - prev.normalizedRow) <= 1)
+                        {
+                            if (Random.Range(0, 2) == 0)
+                            {
+                                current.toConnect.Add(prev.nodeId);
+                            }
+                        }
                     }
                 }
                 foreach (Node possible in possibleConnection)
@@ -322,6 +339,13 @@ public class MapManager : MonoBehaviour
                 lineRenderer.sortingOrder = -1;
             }
         }
+    }
+    public void calcOffset()
+    {
+        float width=bottomRight.position.x - topLeft.position.x;
+        float height=topLeft.position.y - bottomRight.position.y;
+        X_Offset = width / (numberOfLayers + 1);
+        Y_Offset = height /5;
     }
     public void reseed()
     {
