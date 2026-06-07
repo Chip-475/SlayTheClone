@@ -1,8 +1,10 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
-public class Node : MonoBehaviour
+public class Node : MonoBehaviour,IPointerClickHandler
 {
     public enum NodeType
     {
@@ -17,7 +19,7 @@ public class Node : MonoBehaviour
         Shortcut //max 2
     }
     public NodeType type = NodeType.Null;
-
+    public SceneManager sceneManager;
     public int layerId;
     public int nodeId;
     public int row;
@@ -54,6 +56,33 @@ public class Node : MonoBehaviour
                 break;
             case NodeType.Shortcut:
                 gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                break;
+        }
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        switch (type)
+        {
+            case NodeType.Boss:
+                //sceneManager.LoadSceneAsync("battle");
+                break;
+            case NodeType.Battle:
+                //sceneManager.LoadSceneAsync("battle");
+                break;
+            case NodeType.EliteBattle:
+                //sceneManager.LoadSceneAsync("battle");
+                break;
+            case NodeType.Shop:
+                //sceneManager.LoadSceneAsync("shop");
+                break;
+            case NodeType.Rest:
+                //sceneManager.LoadSceneAsync("rest");
+                break;
+            case NodeType.Event:
+                //sceneManager.LoadSceneAsync("event");
+                break;
+            case NodeType.Shortcut:
+                //sceneManager.LoadSceneAsync("shortcut");
                 break;
         }
     }
