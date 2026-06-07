@@ -9,11 +9,13 @@ public class BattleManager : MonoBehaviour
     public static BattleManager instance;
 
     public static event Action OnCombatStart;
-    public static event Action OnEntityActing;
+    public static event Action OnActionStart;
     public static event Action OnCardPlayed;
 
     public List<IBattleEntity> entitiesOnField;
+
     public List<IBattleEntity> actingEntities;
+    bool isPerforming;
     [SerializeField] List<Transform> spawnPoints = new();
     [SerializeField] EncounterConfigSO encounterConfig;
 
@@ -23,6 +25,13 @@ public class BattleManager : MonoBehaviour
 
         CombatStart();
     }
+    private void LateUpdate()
+    {
+        if(actingEntities != null && !isPerforming)
+        {
+            StartCoroutine(PerformActions());
+        }
+    }
 
     //
     void SpawnEnemies()
@@ -30,7 +39,11 @@ public class BattleManager : MonoBehaviour
         // Spawns each enemy at its assigned position in the entry
         for(int i = 0; i < encounterConfig.enemies.Count; i++)
         {
-            if(encounterConfig.enemies[i] != null) Instantiate(encounterConfig.enemies[i], spawnPoints[i].position, Quaternion.identity);
+            if(encounterConfig.enemies[i] != null)
+            {
+                var entity = Instantiate(encounterConfig.enemies[i], spawnPoints[i].position, Quaternion.identity);
+                entity.id = i + 1;
+            }
         }
     }
     void GetEntities()
@@ -41,6 +54,7 @@ public class BattleManager : MonoBehaviour
             .ToList();
         entitiesOnField = new List<IBattleEntity>(toReturn);
     }
+
     void StopActionBars()
     {
         foreach(var entity in entitiesOnField)
@@ -55,15 +69,29 @@ public class BattleManager : MonoBehaviour
             entity.StartActionBar();
         }
     }
+    IEnumerator PerformActions()
+    {
+        isPerforming = true;
+
+        StopActionBars();
+        actingEntities.Sort((a, b) => a.GetId().CompareTo(b.GetId()));
+        foreach (var entity in actingEntities)
+        {
+            // start action and wait until its over
+        }
+
+        isPerforming = false;
+        yield break;
+    }
 
     // Events
     public static void CombatStart()
     {
         OnCombatStart?.Invoke();
     }
-    public static void EntityActing()
+    public static void ActionStart()
     {
-        OnEntityActing?.Invoke();
+        OnActionStart?.Invoke();
     }
     public static void CardPlayed()
     {
@@ -75,14 +103,10 @@ public class BattleManager : MonoBehaviour
     {
         OnCombatStart += SpawnEnemies;
         OnCombatStart += GetEntities;
-
-        OnEntityActing += StopActionBars;
     }
     private void OnDisable()
     {
         OnCombatStart -= SpawnEnemies;
         OnCombatStart -= GetEntities;
-
-        OnEntityActing -= StopActionBars;
     }
 }

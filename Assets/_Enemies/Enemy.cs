@@ -14,10 +14,10 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         public int maxHp;
         public int spdPerSecond;
     }
-
     public LocalStats stats = new();
     public float actionBarAmount;
     bool _actionBarCanMove;
+    public int id;
 
     public List<SkillSO> skillList = new();
     [Space]
@@ -36,11 +36,10 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
     private void FixedUpdate()
     {
-        if(_actionBarCanMove) actionBarAmount += stats.spdPerSecond;
+        if(_actionBarCanMove) actionBarAmount += stats.spdPerSecond * Time.deltaTime;
         if(actionBarAmount >= 100)
         {
             BattleManager.instance.actingEntities.Add(this);
-            BattleManager.EntityActing();
         }
     }
 
@@ -58,9 +57,9 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     } 
 
     // Interface
-    public IEnumerator BattleAction()
+    public int GetId()
     {
-        yield return null;
+        return id;
     }
     public void StopActionBar()
     {
@@ -69,6 +68,10 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     public void StartActionBar()
     {
         _actionBarCanMove = true;
+    }
+    public IEnumerator BattleAction()
+    {
+        yield break;
     }
 
     //
