@@ -17,5 +17,5 @@ public abstract class SkillSO : ScriptableObject
     public float healMax;
     public float shield;
 
-    public abstract IEnumerator PlayCard(List<Enemy> targets);
+    public abstract IEnumerator PlayCard(IBattleEntity caster,List<IBattleEntity> targets);
 }

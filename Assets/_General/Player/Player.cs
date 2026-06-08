@@ -41,6 +41,11 @@ public class Player : MonoBehaviour, IBattleEntity
     {
         _actionBarCanMove = false;
     }
+    public void TakeDamage(int amount)
+    {
+        _baseStats.hp -= amount;
+        PlayerDamaged();
+    }
 
     // Management
     private void OnEnable()

@@ -58,7 +58,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     } 
 
     // Interface
-    public IEnumerator BattleAction()
+    public virtual IEnumerator BattleAction()
     {
         yield return null;
     }
@@ -70,7 +70,11 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     {
         _actionBarCanMove = true;
     }
-
+    public void TakeDamage(int damage)
+    {
+        stats.hp -= damage;
+        if (stats.hp <= 0) Destroy(gameObject);
+    }
     //
     public void OnPointerEnter(PointerEventData eventData)
     {
