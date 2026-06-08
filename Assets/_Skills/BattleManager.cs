@@ -2,78 +2,87 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using System.Linq;
 
 public class BattleManager : MonoBehaviour
 {
-    [Serializable]
-    public class PlayerBattleAction
-    {
-        public int actionId;
-
-        public List<Enemy> targetedEnemies;
-        public CardSkill selectedSkill;
-    }
-    public List<PlayerBattleAction> actions = new();
-    public int numberOfActions;
-
-    public List<Enemy> enemyList = new();
-    public List<Transform> spawnPoints = new();
-
-    public CardSkill currentSelected;
-    public List<Enemy> currentTargets = new();
-
     public static BattleManager instance;
+
+    public static event Action OnCombatStart;
+    public static event Action OnEntityActing;
+    public static event Action OnCardPlayed;
+
+    public List<IBattleEntity> entitiesOnField;
+    public List<IBattleEntity> actingEntities;
+    [SerializeField] List<Transform> spawnPoints = new();
+    [SerializeField] EncounterConfigSO encounterConfig;
+
     private void Start()
     {
         instance = this;
 
-        _SpawnEnemies();
+        CombatStart();
     }
 
-    public void BuildPlayerAction()
+    //
+    void SpawnEnemies()
     {
-        var action = new PlayerBattleAction();
-        action.actionId = numberOfActions;
-        action.selectedSkill = currentSelected;
-        action.targetedEnemies = new List<Enemy>(currentTargets);
-        actions.Add(action);
-
-        currentSelected = null;
-        currentTargets.Clear();
-    }
-
-    public IEnumerator StartCombatCR()
-    {
-        for(int i = 0; i < numberOfActions; i++)
+        // Spawns each enemy at its assigned position in the entry
+        for(int i = 0; i < encounterConfig.enemies.Count; i++)
         {
-            yield return StartCoroutine(actions[i].selectedSkill.skill.OnUse(actions[i].targetedEnemies));
-            HandManager.instance.cardsInHand.Remove(actions[i].selectedSkill);
-            Destroy(actions[i].selectedSkill.gameObject);
-            HandManager.instance.SetCards(0.15f);
+            if(encounterConfig.enemies[i] != null) Instantiate(encounterConfig.enemies[i], spawnPoints[i].position, Quaternion.identity);
         }
-        actions.Clear();
-        GameManager.State = GameManager.GameState.None;
     }
-    public void _StartCombat()
+    void GetEntities()
     {
-        StartCoroutine(StartCombatCR());
+        // Searches for all GameObjects with IBattleEntity and caches them
+        var toReturn = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
+            .OfType<IBattleEntity>()
+            .ToList();
+        entitiesOnField = new List<IBattleEntity>(toReturn);
     }
-
-    public IEnumerator SpawnEnemiesCR()
+    void StopActionBars()
     {
-        for(int i = 0; i < spawnPoints.Count; i++)
+        foreach(var entity in entitiesOnField)
         {
-            var index = UnityEngine.Random.Range(0, Database.instance.enemyPrefabs.Count);
-            var enemy = Database.instance.enemyPrefabs[index];
-            enemy.group.sortingOrder = -i;
-            Instantiate(enemy, spawnPoints[i].position, Quaternion.identity);
-            enemyList.Add(enemy);
+            entity.StopActionBar();
         }
-
-        yield return null;
     }
-    public void _SpawnEnemies()
+    void StartActionBars()
     {
-        StartCoroutine(SpawnEnemiesCR());
+        foreach (var entity in entitiesOnField)
+        {
+            entity.StartActionBar();
+        }
+    }
+
+    // Events
+    public static void CombatStart()
+    {
+        OnCombatStart?.Invoke();
+    }
+    public static void EntityActing()
+    {
+        OnEntityActing?.Invoke();
+    }
+    public static void CardPlayed()
+    {
+        OnCardPlayed?.Invoke();
+    }
+
+    // Management
+    private void OnEnable()
+    {
+        OnCombatStart += SpawnEnemies;
+        OnCombatStart += GetEntities;
+
+        OnEntityActing += StopActionBars;
+    }
+    private void OnDisable()
+    {
+        OnCombatStart -= SpawnEnemies;
+        OnCombatStart -= GetEntities;
+
+        OnEntityActing -= StopActionBars;
     }
 }

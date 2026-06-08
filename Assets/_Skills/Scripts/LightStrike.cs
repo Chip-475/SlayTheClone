@@ -1,19 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using Unity.VisualScripting;
 
 // Light attack, possibly starter skill
 [CreateAssetMenu(fileName = "LightStrike", menuName = "Scriptable Objects/Skills/LightStrike")]
-public class LightStrike : _Skill
+public class LightStrike : SkillSO
 {
-    public override IEnumerator OnUse(List<Enemy> targets)
+    public override IEnumerator PlayCard(List<Enemy> targets)
     {
         foreach(Enemy enemy in targets)
         {
             Destroy(enemy.gameObject);
         }
 
-        Debug.Log("Light Strike used successfully");
-        yield return null;
+        BattleManager.CardPlayed();
+        yield break;
     }
 }

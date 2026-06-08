@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections;
 
 // Base class for all skills
-public abstract class _Skill : ScriptableObject
+public abstract class SkillSO : ScriptableObject
 {
     public Animation anim;
 
@@ -17,5 +17,5 @@ public abstract class _Skill : ScriptableObject
     public float healMax;
     public float shield;
 
-    public abstract IEnumerator OnUse(List<Enemy> targets);
+    public abstract IEnumerator PlayCard(List<Enemy> targets);
 }

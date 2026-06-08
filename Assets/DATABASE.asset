@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88bc4015a2a1fbc4d924387dc57a9855, type: 3}
+  m_Name: DATABASE
+  m_EditorClassIdentifier: Assembly-CSharp::Database
+  skillPrefabs:
+  - {fileID: 8175300277983309982, guid: 0005811372b625d448220ea30a73263b, type: 3}
+  - {fileID: 3124563647631873765, guid: 2885cba2bbd2c744cb9dd1ae6956e474, type: 3}
+  enemyPrefabs:
+  - {fileID: 5080872731985097114, guid: b65c70cf0ff26aa4a9b3be8918a0d7a9, type: 3}

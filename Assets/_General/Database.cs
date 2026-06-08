@@ -1,13 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Database : MonoBehaviour
+[CreateAssetMenu(fileName =("Database"), menuName = ("Database"))]
+public class Database : ScriptableObject
 {
-    public static Database instance;
-    private void Start()
-    {
-        instance = this;
-    }
+    // ONLY CREATE A SINGLE INSTANCE
 
     public List<CardSkill> skillPrefabs = new();
     public List<Enemy> enemyPrefabs = new();
