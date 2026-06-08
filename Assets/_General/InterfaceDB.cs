@@ -2,8 +2,8 @@ using System.Collections;
 
 public interface IBattleEntity
 {
-    public int GetId();
+    public IEnumerator BattleAction();
     public void StopActionBar();
     public void StartActionBar();
-    public IEnumerator BattleAction();
+    public void TakeDamage(int amount);
 }

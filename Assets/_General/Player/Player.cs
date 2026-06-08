@@ -5,20 +5,14 @@ using UnityEngine;
 public class Player : MonoBehaviour, IBattleEntity
 {
     [SerializeField] private PlayerStatsSO _baseStats;
+    public float actionBarAmount;
+    bool _actionBarCanMove;
 
     public static event Action OnPlayerDamaged;
 
-    public float actionBarAmount;
-    bool _actionBarCanMove;
-    public int id;
-
     private void FixedUpdate()
     {
-        if(_actionBarCanMove) actionBarAmount += _baseStats.spdPerSecond * Time.deltaTime;
-        if(actionBarAmount >= 100)
-        {
-            BattleManager.instance.actingEntities.Add(this);
-        }
+        if(_actionBarCanMove) actionBarAmount += _baseStats.spdPerSecond;
     }
 
     //
@@ -26,7 +20,6 @@ public class Player : MonoBehaviour, IBattleEntity
     {
         actionBarAmount = 0;
         _actionBarCanMove = true;
-        id = 0;
     }
 
     // Events
@@ -36,9 +29,9 @@ public class Player : MonoBehaviour, IBattleEntity
     }
 
     // Interface
-    public int GetId()
+    public IEnumerator BattleAction()
     {
-        return id;
+        yield return null;
     }
     public void StopActionBar()
     {
@@ -48,9 +41,10 @@ public class Player : MonoBehaviour, IBattleEntity
     {
         _actionBarCanMove = false;
     }
-    public IEnumerator BattleAction()
+    public void TakeDamage(int amount)
     {
-        yield break;
+        _baseStats.hp -= amount;
+        PlayerDamaged();
     }
 
     // Management
