@@ -14,8 +14,6 @@ public class BattleManager : MonoBehaviour
 
     public List<IBattleEntity> entitiesOnField;
 
-    public List<IBattleEntity> actingEntities;
-    bool isPerforming;
     [SerializeField] List<Transform> spawnPoints = new();
     [SerializeField] EncounterConfigSO encounterConfig;
 
@@ -25,13 +23,7 @@ public class BattleManager : MonoBehaviour
 
         CombatStart();
     }
-    private void LateUpdate()
-    {
-        if(actingEntities != null && !isPerforming)
-        {
-            StartCoroutine(PerformActions());
-        }
-    }
+    
 
     //
     void SpawnEnemies()
@@ -55,34 +47,6 @@ public class BattleManager : MonoBehaviour
         entitiesOnField = new List<IBattleEntity>(toReturn);
     }
 
-    void StopActionBars()
-    {
-        foreach(var entity in entitiesOnField)
-        {
-            entity.StopActionBar();
-        }
-    }
-    void StartActionBars()
-    {
-        foreach (var entity in entitiesOnField)
-        {
-            entity.StartActionBar();
-        }
-    }
-    IEnumerator PerformActions()
-    {
-        isPerforming = true;
-
-        StopActionBars();
-        actingEntities.Sort((a, b) => a.GetId().CompareTo(b.GetId()));
-        foreach (var entity in actingEntities)
-        {
-            // start action and wait until its over
-        }
-
-        isPerforming = false;
-        yield break;
-    }
 
     // Events
     public static void CombatStart()

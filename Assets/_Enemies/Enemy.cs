@@ -18,6 +18,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     public LocalStats stats = new();
     public float actionBarAmount;
     bool _actionBarCanMove;
+    public int id;
 
     public List<SkillSO> skillList = new();
     [Space]
@@ -34,13 +35,12 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         group = GetComponent<SortingGroup>();
         baseColor = spriteRenderer.color;
     }
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if(_actionBarCanMove) actionBarAmount += stats.spdPerSecond;
         if(actionBarAmount >= 100)
         {
-            BattleManager.instance.actingEntities.Add(this);
-            BattleManager.EntityActing();
+            TurnManager.instance.actingEntities.Add(this);
         }
     }
 
@@ -58,9 +58,9 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     } 
 
     // Interface
-    public virtual IEnumerator BattleAction()
+    public int GetId()
     {
-        yield return null;
+        return id;
     }
     public void StopActionBar()
     {
@@ -70,12 +70,15 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     {
         _actionBarCanMove = true;
     }
+
+    public abstract IEnumerator BattleAction();
     public void TakeDamage(int damage)
     {
         stats.hp -= damage;
         if (stats.hp <= 0) Destroy(gameObject);
     }
-    //
+
+    // Pointer Events
     public void OnPointerEnter(PointerEventData eventData)
     {
 
@@ -90,11 +93,11 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
 
     // Management
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         BattleManager.OnCombatStart += SetInitialState;
     }
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         BattleManager.OnCombatStart -= SetInitialState;
     }

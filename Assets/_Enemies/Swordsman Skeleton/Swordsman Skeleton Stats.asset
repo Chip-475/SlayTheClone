@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e04a33c0d837c274999288159251c9a3, type: 3}
-  m_Name: Player Stats
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsSO
-  hp: 25
-  maxHp: 25
-  spdPerSecond: 50
+  m_Script: {fileID: 11500000, guid: 84c6bc2b3c12bfa4cb2ab3f858598844, type: 3}
+  m_Name: Swordsman Skeleton Stats
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStatsSO
+  hp: 10
+  maxHp: 10
+  spdPerSecond: 0
