@@ -7,7 +7,7 @@ using System.Collections;
 // Enemy base class
 public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
-    [SerializeField] private EnemyStatsSO _baseStats;
+    public EnemyStatsSO _baseStats;
     public struct LocalStats
     {
         public int hp;
@@ -16,8 +16,8 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
 
     public LocalStats stats = new();
-    public float actionBarAmount;
-    bool _actionBarCanMove;
+    public bool canGainActionPoints;
+    public float actionPoints;
     public int id;
 
     public List<SkillSO> skillList = new();
@@ -34,28 +34,20 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         spriteRenderer = GetComponent<SpriteRenderer>();
         group = GetComponent<SortingGroup>();
         baseColor = spriteRenderer.color;
+
+        SetInitialState();
     }
     protected virtual void FixedUpdate()
     {
-        if(_actionBarCanMove) actionBarAmount += stats.spdPerSecond;
-        if(actionBarAmount >= 100)
+        if(canGainActionPoints) actionPoints += stats.spdPerSecond * Time.deltaTime;
+        if(actionPoints >= 100 && !TurnManager.instance.actingEntities.Contains(this))
         {
             TurnManager.instance.actingEntities.Add(this);
         }
     }
 
     //
-    void SetInitialState()
-    {
-        // Clone stats from asset to local class to avoid modifying all enemies
-        stats.hp = _baseStats.hp;
-        stats.maxHp = _baseStats.maxHp;
-        stats.spdPerSecond = _baseStats.spdPerSecond;
-
-        // Preps for combat
-        actionBarAmount = 0f;
-        _actionBarCanMove = true;
-    } 
+    public abstract void SetInitialState();
 
     // Interface
     public int GetId()
@@ -64,11 +56,11 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
     public void StopActionBar()
     {
-        _actionBarCanMove = false;
+        canGainActionPoints = false;
     }
     public void StartActionBar()
     {
-        _actionBarCanMove = true;
+        canGainActionPoints = true;
     }
 
     public abstract IEnumerator BattleAction();
@@ -93,12 +85,6 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
 
     // Management
-    protected virtual void OnEnable()
-    {
-        BattleManager.OnCombatStart += SetInitialState;
-    }
-    protected virtual void OnDisable()
-    {
-        BattleManager.OnCombatStart -= SetInitialState;
-    }
+    public abstract void OnEnable();
+    public abstract void OnDisable();
 }

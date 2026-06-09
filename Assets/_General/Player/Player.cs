@@ -4,30 +4,34 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IBattleEntity
 {
-    [SerializeField] private PlayerStatsSO _baseStats;
-    public float actionBarAmount;
-    bool _actionBarCanMove;
-    public int id;
+    public static event Action OnPlayerHealthChanged;
 
-    public static event Action OnPlayerDamaged;
+    [SerializeField] private PlayerStatsSO _baseStats;
+    public int id;
+    public bool canGainActionPoints;
+    public float actionPoints;
 
     private void FixedUpdate()
     {
-        if(_actionBarCanMove) actionBarAmount += _baseStats.spdPerSecond;
+        if(canGainActionPoints) actionPoints += _baseStats.spdPerSecond * Time.deltaTime;
+        if (actionPoints >= 100 && !TurnManager.instance.actingEntities.Contains(this))
+        {
+            TurnManager.instance.actingEntities.Add(this);
+        }
     }
 
     //
     void SetInitialState()
     {
-        actionBarAmount = 0;
-        _actionBarCanMove = true;
+        actionPoints = 0;
+        canGainActionPoints = true;
         id = 0;
     }
 
     // Events
-    public static void PlayerDamaged()
+    public static void PlayerHealthChanged()
     {
-        OnPlayerDamaged?.Invoke();
+        OnPlayerHealthChanged?.Invoke();
     }
 
     // Interface
@@ -37,22 +41,23 @@ public class Player : MonoBehaviour, IBattleEntity
     }
     public void StopActionBar()
     {
-        _actionBarCanMove = false;
+        canGainActionPoints = false;
     }
     public void StartActionBar()
     {
-        _actionBarCanMove = false;
+        canGainActionPoints = true;
     }
 
     public IEnumerator BattleAction()
     {
         print($"{gameObject.name}: {id} has acted.");
         yield return new WaitForSeconds(2);
+        actionPoints = 0;
     }
     public void TakeDamage(int amount)
     {
         _baseStats.hp -= amount;
-        PlayerDamaged();
+        PlayerHealthChanged();
     }
 
     // Management

@@ -725,7 +725,7 @@ GameObject:
   - component: {fileID: 992243612}
   - component: {fileID: 992243614}
   m_Layer: 0
-  m_Name: player
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -818,8 +818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   _baseStats: {fileID: 11400000, guid: 2fabe13d60d7c00478ef3e8ccb6f7562, type: 2}
-  actionBarAmount: 0
   id: 0
+  actionPoints: 0
 --- !u!1 &1271561426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,6 +1059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed95a9ca3a4c25469113f1ebc77f6d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleManager
+  entitiesOnField: []
   spawnPoints:
   - {fileID: 495815296}
   - {fileID: 874845566}
@@ -1622,8 +1623,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2069942402}
-        m_TargetAssemblyTypeName: tester, Assembly-CSharp
-        m_MethodName: generate
+        m_TargetAssemblyTypeName: Tester, Assembly-CSharp
+        m_MethodName: Generate
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1635,6 +1636,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 39479120-356a-48c0-8c5f-73af01e3e5ef
     m_ActionName: 'Player/Click[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4ac76d08-878c-4aa3-84f0-d67b55e66e71
+    m_ActionName: 'Player/Drag[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: be48e09a-d69b-4328-9864-41751d93fdc9
+    m_ActionName: 'Player/Scroll[/Mouse/scroll/y]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
