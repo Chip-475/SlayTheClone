@@ -6,4 +6,5 @@ public class PlayerStatsSO : ScriptableObject
     public int hp;
     public int maxHp;
     public int spdPerSecond;
+    public int mp;
 }

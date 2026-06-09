@@ -118,6 +118,7 @@ MonoBehaviour:
   effect: {fileID: 278773037889480710}
   desc: {fileID: 5497947967652904731}
   group: {fileID: 182810997869391636}
+  stats: {fileID: 11400000, guid: 2fabe13d60d7c00478ef3e8ccb6f7562, type: 2}
 --- !u!1 &2938110550134175981
 GameObject:
   m_ObjectHideFlags: 0

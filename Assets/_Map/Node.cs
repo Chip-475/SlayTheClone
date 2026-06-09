@@ -1,10 +1,11 @@
+using DG.Tweening;
 using NUnit.Framework;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class Node : MonoBehaviour,IPointerClickHandler
+public class Node : MonoBehaviour,IPointerClickHandler,IPointerDownHandler,IPointerEnterHandler, IPointerExitHandler
 {
     public enum NodeType
     {
@@ -26,6 +27,7 @@ public class Node : MonoBehaviour,IPointerClickHandler
     public List<int> toConnect = new();
     public int normalizedRow; //row - (numberOfNodes - 1) / 2
     public bool isConnected;
+    private bool isHoveredOn = false;
     void Start()
     {
         switch (type)
@@ -85,5 +87,21 @@ public class Node : MonoBehaviour,IPointerClickHandler
                 //sceneManager.LoadSceneAsync("shortcut");
                 break;
         }
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (isHoveredOn) return;
+        gameObject.transform.DOScale(1.2f, 0.15f);
+        isHoveredOn = true;
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (!isHoveredOn) return;
+        gameObject.transform.DOScale(1f, 0.15f);
+        isHoveredOn = false;
+    }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (!isHoveredOn) return;
     }
 }

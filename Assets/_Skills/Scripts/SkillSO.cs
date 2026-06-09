@@ -16,6 +16,9 @@ public abstract class SkillSO : ScriptableObject
     public float healMin;
     public float healMax;
     public float shield;
-
+    public enum cardType
+    {
+        physmelee,physranged,magic,support
+    }
     public abstract IEnumerator PlayCard(IBattleEntity caster,List<IBattleEntity> targets);
 }

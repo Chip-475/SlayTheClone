@@ -209,7 +209,7 @@ public class MapManager : MonoBehaviour
                     {
                         if (Mathf.Abs(current.normalizedRow - prev.normalizedRow) <= 1)
                         {
-                            if (Random.Range(0, 2) == 0)
+                            if (Random.Range(0, 4) == 0)
                             {
                                 current.toConnect.Add(prev.nodeId);
                             }
@@ -218,7 +218,7 @@ public class MapManager : MonoBehaviour
                 }
                 foreach (Node possible in possibleConnection)
                 {
-                    if (Random.Range(0, 2) == 0)
+                    if (Random.Range(0, 4) == 0)
                     {
                         current.toConnect.Add(possible.nodeId);
                     }
