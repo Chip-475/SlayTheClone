@@ -18,6 +18,7 @@ public class CardSkill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public TMP_Text desc;
     [Space]
     public SortingGroup group;
+    public PlayerStatsSO stats;
 
     private bool isHoveredOn = false;
     private Vector3 basePos;
@@ -28,7 +29,19 @@ public class CardSkill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         cost.text = $"{skill.cost}";
         effect.text = $"{skill.atkMin} - {skill.atkMax}";
     }
-
+    private void Update()
+    {
+        if (stats.mp >= skill.cost)
+        {
+            background.color = Color.white;
+            cost.color = Color.white;
+        }
+        else
+        {
+            background.color = Color.gray;
+            cost.color = Color.red;
+        }
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isHoveredOn) return;
