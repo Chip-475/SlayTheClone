@@ -11,9 +11,12 @@ public class Player : MonoBehaviour, IBattleEntity
     public bool canGainActionPoints;
     public float actionPoints;
 
+    [Range(0, 15)] public int stamina;
+    bool isActing;
+
     private void FixedUpdate()
     {
-        if(canGainActionPoints) actionPoints += _baseStats.spdPerSecond * Time.deltaTime;
+        if(canGainActionPoints) actionPoints += _baseStats.actionPointsSpeed * Time.deltaTime;
         if (actionPoints >= 100 && !TurnManager.instance.actingEntities.Contains(this))
         {
             TurnManager.instance.actingEntities.Add(this);
@@ -23,9 +26,12 @@ public class Player : MonoBehaviour, IBattleEntity
     //
     void SetInitialState()
     {
+        id = 0;
         actionPoints = 0;
         canGainActionPoints = true;
-        id = 0;
+        
+        stamina = 5;
+        isActing = false;
     }
 
     // Events
@@ -50,10 +56,12 @@ public class Player : MonoBehaviour, IBattleEntity
 
     public IEnumerator BattleAction()
     {
-        print($"{gameObject.name}: {id} has acted.");
-        yield return new WaitForSeconds(2);
+        stamina += 3;
+        isActing = true;
+        yield return new WaitUntil(() => !isActing);
         actionPoints = 0;
     }
+
     public void TakeDamage(int amount)
     {
         _baseStats.hp -= amount;

@@ -17,7 +17,7 @@ public class ArcherSkeleton : Enemy
         // Clone stats from asset to local class to avoid modifying all enemies
         stats.hp = _baseStats.hp;
         stats.maxHp = _baseStats.maxHp;
-        stats.spdPerSecond = _baseStats.spdPerSecond;
+        stats.spdPerSecond = _baseStats.actionPointsSpeed;
 
         // Preps for combat
         actionPoints = 0f;

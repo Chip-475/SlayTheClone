@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30572192f5427664fadbef797477e662, type: 3}
   m_Name: Light Strike
   m_EditorClassIdentifier: Assembly-CSharp::LightStrike
+  anim: {fileID: 0}
   cost: 1
   numberOfTargets: 1
+  range: 0
+  type:
+    Slash: 1
+    Pierce: 0
+    Blunt: 0
+    Magic: 0
+    Fire: 0
+    Ice: 0
   atkMin: 3
   atkMax: 5
   healMin: 0

@@ -6,5 +6,5 @@ public class EnemyStatsSO : ScriptableObject
 {
     public int hp;
     public int maxHp;
-    public int spdPerSecond;
+    public int actionPointsSpeed;
 }

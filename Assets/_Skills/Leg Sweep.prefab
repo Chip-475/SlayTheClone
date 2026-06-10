@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4325954758701588356}
   - component: {fileID: 3124563647631873765}
   m_Layer: 0
-  m_Name: Swipe Prefab
+  m_Name: Leg Sweep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
