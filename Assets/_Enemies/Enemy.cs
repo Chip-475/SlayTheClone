@@ -3,11 +3,79 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using System.Collections;
+using Unity.VisualScripting;
 
 // Enemy base class
 public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
-    public EnemyStatsSO _baseStats;
+    [SerializeField] private EnemyStatsSO _baseStats;
+    public enum mood
+    {
+        neutral,
+        aggressive,
+        defensive,
+        desperate,
+        coordinated
+    }
+    public enum battlePlan
+    {
+        attack,
+        heal,
+        buff,
+        debuff,
+        defend
+    }
+    [System.Serializable]
+    public struct Awareness
+    {
+        [Header("hp")]
+        public int currentHP;
+        public int maxHP;
+
+        [Header("playerStats")]
+        public int playerHP;
+        public int playerMaxHP;
+        public int playerMoney;
+
+        [Header("Allies")]
+        public int aliveAllies;
+        public int totalAllies;
+        public bool isAnHealerAlly;
+        public bool isASupporterAlly;
+        public bool isADPSAlly;
+        public bool isATankAlly;
+
+        [Header("type")]
+        public bool isBoss;
+        public bool isElite;
+        public bool isEnemy;
+
+        [Header("killInfo")]
+        public bool canKillPlayer;
+        public bool canBeKilled;
+        public bool AlliesCanBeKilled;
+
+        [Header("actions")]
+        public bool canHeal;
+        public bool canBuff;
+        public bool canDebuffPlayer;
+        public bool canSummon;
+
+        [Header("dmgInfo")]
+        public int avgPlayerDamage;
+        public int avgDmgToPlayer;
+        public int totalPersonalDmgToPlayer;
+
+        [Header("lastTurnInfo")]
+        public bool wasAttackedLastTurn;
+        public bool wasAllyKilledLastTurn;
+        public bool wasHealedLastTurn;
+        public bool didPlayerHealLastTurn;
+        public bool didPlayerBuffLastTurn;
+
+        public mood currentMood;
+        public battlePlan currentBattlePlan;
+    }
     public struct LocalStats
     {
         public int hp;
@@ -16,8 +84,9 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
 
     public LocalStats stats = new();
-    public bool canGainActionPoints;
-    public float actionPoints;
+    public Awareness awareness = new();
+    public float actionBarAmount;
+    bool _actionBarCanMove;
     public int id;
 
     public List<SkillSO> skillList = new();
@@ -34,20 +103,28 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         spriteRenderer = GetComponent<SpriteRenderer>();
         group = GetComponent<SortingGroup>();
         baseColor = spriteRenderer.color;
-
-        SetInitialState();
     }
     protected virtual void FixedUpdate()
     {
-        if(canGainActionPoints) actionPoints += stats.spdPerSecond * Time.deltaTime;
-        if(actionPoints >= 100 && !TurnManager.instance.actingEntities.Contains(this))
+        if(_actionBarCanMove) actionBarAmount += stats.spdPerSecond;
+        if(actionBarAmount >= 100)
         {
             TurnManager.instance.actingEntities.Add(this);
         }
     }
 
     //
-    public abstract void SetInitialState();
+    void SetInitialState()
+    {
+        // Clone stats from asset to local class to avoid modifying all enemies
+        stats.hp = _baseStats.hp;
+        stats.maxHp = _baseStats.maxHp;
+        stats.spdPerSecond = _baseStats.spdPerSecond;
+
+        // Preps for combat
+        actionBarAmount = 0f;
+        _actionBarCanMove = true;
+    } 
 
     // Interface
     public int GetId()
@@ -56,11 +133,11 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
     public void StopActionBar()
     {
-        canGainActionPoints = false;
+        _actionBarCanMove = false;
     }
     public void StartActionBar()
     {
-        canGainActionPoints = true;
+        _actionBarCanMove = true;
     }
 
     public abstract IEnumerator BattleAction();
@@ -85,6 +162,12 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
 
     // Management
-    public abstract void OnEnable();
-    public abstract void OnDisable();
+    protected virtual void OnEnable()
+    {
+        BattleManager.OnCombatStart += SetInitialState;
+    }
+    protected virtual void OnDisable()
+    {
+        BattleManager.OnCombatStart -= SetInitialState;
+    }
 }
