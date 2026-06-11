@@ -456,8 +456,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6647d27d4f43a124098fa2309740b408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Slime_1
-  _baseStats: {fileID: 11400000, guid: ed3d9a7d033ae2e48905845da690c3e8, type: 2}
-  actionBarAmount: 0
+  baseStats: {fileID: 11400000, guid: ed3d9a7d033ae2e48905845da690c3e8, type: 2}
+  awareness:
+    currentHP: 0
+    maxHP: 0
+    playerHP: 0
+    playerMaxHP: 0
+    playerMoney: 0
+    aliveAllies: 0
+    totalAllies: 0
+    isAnHealerAlly: 0
+    isASupporterAlly: 0
+    isADPSAlly: 0
+    isATankAlly: 0
+    isBoss: 0
+    isElite: 0
+    isEnemy: 0
+    canKillPlayer: 0
+    canBeKilled: 0
+    AlliesCanBeKilled: 0
+    canHeal: 0
+    canBuff: 0
+    canDebuffPlayer: 0
+    canSummon: 0
+    avgPlayerDamage: 0
+    avgDmgToPlayer: 0
+    totalPersonalDmgToPlayer: 0
+    wasAttackedLastTurn: 0
+    wasAllyKilledLastTurn: 0
+    wasHealedLastTurn: 0
+    didPlayerHealLastTurn: 0
+    didPlayerBuffLastTurn: 0
+    currentMood: 0
+    currentBattlePlan: 0
+  actionPoints: 0
+  canGainActionPoints: 0
   id: 0
   skillList: []
   group: {fileID: 4409652005921675179}

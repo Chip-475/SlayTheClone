@@ -16,13 +16,8 @@ MonoBehaviour:
   cost: 2
   numberOfTargets: 2
   range: 0
-  type:
-    Slash: 0
-    Pierce: 0
-    Blunt: 1
-    Magic: 0
-    Fire: 0
-    Ice: 0
+  damageTypes:
+  - {fileID: 11400000, guid: 9f025853641bec646aa6fdb9bbbe17e3, type: 2}
   atkMin: 1
   atkMax: 5
   healMin: 0

@@ -17,14 +17,13 @@ public class TurnManager : MonoBehaviour
     {
         if (actingEntities.Count > 0  && !isPerforming)
         {
+            isPerforming = true;
             StartCoroutine(PerformActions());
         }
     }
 
     IEnumerator PerformActions()
     {
-        isPerforming = true;
-
         StopActionBars();
         actingEntities.Sort((a, b) => a.GetId().CompareTo(b.GetId()));
         foreach (var entity in actingEntities)

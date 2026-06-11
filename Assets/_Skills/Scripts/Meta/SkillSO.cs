@@ -7,16 +7,6 @@ using System.Collections;
 public abstract class SkillSO : ScriptableObject
 {
     [System.Serializable]
-    public struct AttackType
-    {
-        public bool Slash;
-        public bool Pierce;
-        public bool Blunt;
-
-        public bool Magic;
-        public bool Fire;
-        public bool Ice;
-    }
     public enum AttackRange
     {
         Melee,
@@ -29,14 +19,17 @@ public abstract class SkillSO : ScriptableObject
     [Header("Characteristics")]
     public int cost;
     public int numberOfTargets;
+    [Space]
     public AttackRange range;
-    public AttackType type;
+    public List<DamageTypeSO> damageTypes = new();
     [Space]
     [Header("Statistics")]
     public int atkMin;
     public int atkMax;
+    [Space]
     public float healMin;
     public float healMax;
+    [Space]
     public float shield;
     
     public abstract IEnumerator PlayCard(IBattleEntity caster,List<IBattleEntity> targets);

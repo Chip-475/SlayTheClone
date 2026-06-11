@@ -15,9 +15,9 @@ public class ShielderSkeleton : Enemy
     public override void SetInitialState()
     {
         // Clone stats from asset to local class to avoid modifying all enemies
-        stats.hp = _baseStats.hp;
-        stats.maxHp = _baseStats.maxHp;
-        stats.spdPerSecond = _baseStats.actionPointsSpeed;
+        stats.hp = baseStats.hp;
+        stats.maxHp = baseStats.maxHp;
+        stats.actionPointsSpeed = baseStats.actionPointsSpeed;
 
         // Preps for combat
         actionPoints = 0f;

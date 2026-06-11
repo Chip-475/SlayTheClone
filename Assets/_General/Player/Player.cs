@@ -12,8 +12,12 @@ public class Player : MonoBehaviour, IBattleEntity
     public float actionPoints;
 
     [Range(0, 15)] public int stamina;
-    bool isActing;
+    public bool isActing;
 
+    private void Start()
+    {
+        SetInitialState();
+    }
     private void FixedUpdate()
     {
         if(canGainActionPoints) actionPoints += _baseStats.actionPointsSpeed * Time.deltaTime;
@@ -32,6 +36,13 @@ public class Player : MonoBehaviour, IBattleEntity
         
         stamina = 5;
         isActing = false;
+    }
+    public void EndTurn()
+    {
+        if (!isActing) return;
+
+        isActing = false;
+        print("Player turn ended.");
     }
 
     // Events
@@ -58,10 +69,9 @@ public class Player : MonoBehaviour, IBattleEntity
     {
         stamina += 3;
         isActing = true;
-        yield return new WaitUntil(() => !isActing);
+        yield return new WaitUntil(() => isActing == false);
         actionPoints = 0;
     }
-
     public void TakeDamage(int amount)
     {
         _baseStats.hp -= amount;
@@ -71,10 +81,10 @@ public class Player : MonoBehaviour, IBattleEntity
     // Management
     private void OnEnable()
     {
-        BattleManager.OnCombatStart += SetInitialState;
+        
     }
     private void OnDisable()
     {
-        BattleManager.OnCombatStart -= SetInitialState;
+        
     }
 }

@@ -8,4 +8,6 @@ public class Database : ScriptableObject
 
     public List<CardSkill> skillPrefabs = new();
     public List<Enemy> enemyPrefabs = new();
+
+    public List<DamageTypeSO> damageTypes = new();
 }
