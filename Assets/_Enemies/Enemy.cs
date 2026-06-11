@@ -98,10 +98,13 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     protected Color baseColor;
     protected bool selected;
 
+    public hpBar hpBar;
+
     protected virtual void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         group = GetComponent<SortingGroup>();
+        hpBar = GetComponentInChildren<hpBar>();
         baseColor = spriteRenderer.color;
     }
     protected virtual void FixedUpdate()
@@ -144,6 +147,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     public void TakeDamage(int damage)
     {
         stats.hp -= damage;
+        hpBar.SetHealthBarFillAmount();
         if (stats.hp <= 0) Destroy(gameObject);
     }
 

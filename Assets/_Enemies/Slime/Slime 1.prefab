@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 512192816512145543}
   - component: {fileID: 5617408160652960875}
   - component: {fileID: 7835516353671825195}
+  - component: {fileID: 7858902469204827345}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -152,6 +153,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7858902469204827345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082850663987884176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0673f946bb2f29b40b69c9a1f9f9fb23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::hpBar
 --- !u!1 &3612832640977584915
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.19339621, b: 0.19339621, a: 1}
+  m_Color: {r: 0.19215685, g: 0.6296518, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -457,11 +470,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Slime_1
   _baseStats: {fileID: 11400000, guid: ed3d9a7d033ae2e48905845da690c3e8, type: 2}
+  awareness:
+    currentHP: 0
+    maxHP: 0
+    playerHP: 0
+    playerMaxHP: 0
+    playerMoney: 0
+    aliveAllies: 0
+    totalAllies: 0
+    isAnHealerAlly: 0
+    isASupporterAlly: 0
+    isADPSAlly: 0
+    isATankAlly: 0
+    isBoss: 0
+    isElite: 0
+    isEnemy: 0
+    canKillPlayer: 0
+    canBeKilled: 0
+    AlliesCanBeKilled: 0
+    canHeal: 0
+    canBuff: 0
+    canDebuffPlayer: 0
+    canSummon: 0
+    avgPlayerDamage: 0
+    avgDmgToPlayer: 0
+    totalPersonalDmgToPlayer: 0
+    wasAttackedLastTurn: 0
+    wasAllyKilledLastTurn: 0
+    wasHealedLastTurn: 0
+    didPlayerHealLastTurn: 0
+    didPlayerBuffLastTurn: 0
+    currentMood: 0
+    currentBattlePlan: 0
   actionBarAmount: 0
   id: 0
   skillList: []
   group: {fileID: 4409652005921675179}
   animator: {fileID: 3611365936900487951}
+  hpBar: {fileID: 7858902469204827345}
 --- !u!210 &4409652005921675179
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -787,7 +833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -946.9917, y: -542.38965}
+  m_AnchoredPosition: {x: -958.5, y: -541.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3560531514262036487
