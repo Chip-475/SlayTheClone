@@ -9,13 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95b69a2d791547f468e9f94203c649fc, type: 3}
-  m_Name: Swipe
-  m_EditorClassIdentifier: Assembly-CSharp::Swipe
-  cost: 2
-  numberOfTargets: 2
-  atkMin: 1
-  atkMax: 5
-  healMin: 0
-  healMax: 0
-  shield: 0
+  m_Script: {fileID: 11500000, guid: 5918781d4e35a964abaaff69ad84f667, type: 3}
+  m_Name: Pierce
+  m_EditorClassIdentifier: Assembly-CSharp::DamageTypeSO

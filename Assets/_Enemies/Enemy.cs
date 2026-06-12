@@ -8,8 +8,8 @@ using Unity.VisualScripting;
 // Enemy base class
 public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
-    [SerializeField] private EnemyStatsSO _baseStats;
-    public enum mood
+    [SerializeField] protected EnemyStatsSO baseStats;
+    public enum Mood
     {
         neutral,
         aggressive,
@@ -17,7 +17,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         desperate,
         coordinated
     }
-    public enum battlePlan
+    public enum BattlePlan
     {
         attack,
         heal,
@@ -73,20 +73,20 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         public bool didPlayerHealLastTurn;
         public bool didPlayerBuffLastTurn;
 
-        public mood currentMood;
-        public battlePlan currentBattlePlan;
+        public Mood currentMood;
+        public BattlePlan currentBattlePlan;
     }
     public struct LocalStats
     {
         public int hp;
         public int maxHp;
-        public int spdPerSecond;
+        public int actionPointsSpeed;
     }
 
     public LocalStats stats = new();
     public Awareness awareness = new();
-    public float actionBarAmount;
-    bool _actionBarCanMove;
+    public float actionPoints;
+    public bool canGainActionPoints;
     public int id;
 
     public List<SkillSO> skillList = new();
@@ -106,28 +106,20 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         group = GetComponent<SortingGroup>();
         hpBar = GetComponentInChildren<hpBar>();
         baseColor = spriteRenderer.color;
+
+        SetInitialState();
     }
     protected virtual void FixedUpdate()
     {
-        if(_actionBarCanMove) actionBarAmount += stats.spdPerSecond;
-        if(actionBarAmount >= 100)
+        if(canGainActionPoints) actionPoints += stats.actionPointsSpeed * Time.deltaTime;
+        if(actionPoints >= 100 && !TurnManager.instance.actingEntities.Contains(this))
         {
             TurnManager.instance.actingEntities.Add(this);
         }
     }
 
     //
-    void SetInitialState()
-    {
-        // Clone stats from asset to local class to avoid modifying all enemies
-        stats.hp = _baseStats.hp;
-        stats.maxHp = _baseStats.maxHp;
-        stats.spdPerSecond = _baseStats.spdPerSecond;
-
-        // Preps for combat
-        actionBarAmount = 0f;
-        _actionBarCanMove = true;
-    } 
+    public abstract void SetInitialState();
 
     // Interface
     public int GetId()
@@ -136,11 +128,11 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
     public void StopActionBar()
     {
-        _actionBarCanMove = false;
+        canGainActionPoints = false;
     }
     public void StartActionBar()
     {
-        _actionBarCanMove = true;
+        canGainActionPoints = true;
     }
 
     public abstract IEnumerator BattleAction();
@@ -166,12 +158,6 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
 
     // Management
-    protected virtual void OnEnable()
-    {
-        BattleManager.OnCombatStart += SetInitialState;
-    }
-    protected virtual void OnDisable()
-    {
-        BattleManager.OnCombatStart -= SetInitialState;
-    }
+    public abstract void OnEnable();
+    public abstract void OnDisable();
 }

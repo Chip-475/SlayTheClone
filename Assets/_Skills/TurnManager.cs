@@ -7,30 +7,27 @@ public class TurnManager : MonoBehaviour
     public static TurnManager instance;
 
     public List<IBattleEntity> actingEntities = new();
-    bool isPerforming;
+    bool isPerforming = false;
 
     private void Start()
     {
         instance = this;
-        isPerforming = false;
     }
     private void LateUpdate()
     {
-        if (actingEntities != null && !isPerforming)
+        if (actingEntities.Count > 0  && !isPerforming)
         {
+            isPerforming = true;
             StartCoroutine(PerformActions());
         }
     }
 
     IEnumerator PerformActions()
     {
-        isPerforming = true;
-
         StopActionBars();
         actingEntities.Sort((a, b) => a.GetId().CompareTo(b.GetId()));
         foreach (var entity in actingEntities)
         {
-            print("entity cycled");
             yield return StartCoroutine(entity.BattleAction());
         }
         actingEntities.Clear();

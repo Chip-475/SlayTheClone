@@ -4,30 +4,51 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IBattleEntity
 {
+    public static event Action OnPlayerHealthChanged;
+
     [SerializeField] private PlayerStatsSO _baseStats;
-    public float actionBarAmount;
-    bool _actionBarCanMove;
     public int id;
+    public bool canGainActionPoints;
+    public float actionPoints;
 
-    public static event Action OnPlayerDamaged;
+    [Range(0, 15)] public int stamina;
+    public bool isActing;
 
+    private void Start()
+    {
+        SetInitialState();
+    }
     private void FixedUpdate()
     {
-        if(_actionBarCanMove) actionBarAmount += _baseStats.spdPerSecond;
+        if(canGainActionPoints) actionPoints += _baseStats.actionPointsSpeed * Time.deltaTime;
+        if (actionPoints >= 100 && !TurnManager.instance.actingEntities.Contains(this))
+        {
+            TurnManager.instance.actingEntities.Add(this);
+        }
     }
 
     //
     void SetInitialState()
     {
-        actionBarAmount = 0;
-        _actionBarCanMove = true;
         id = 0;
+        actionPoints = 0;
+        canGainActionPoints = true;
+        
+        stamina = 5;
+        isActing = false;
+    }
+    public void EndTurn()
+    {
+        if (!isActing) return;
+
+        isActing = false;
+        print("Player turn ended.");
     }
 
     // Events
-    public static void PlayerDamaged()
+    public static void PlayerHealthChanged()
     {
-        OnPlayerDamaged?.Invoke();
+        OnPlayerHealthChanged?.Invoke();
     }
 
     // Interface
@@ -37,31 +58,33 @@ public class Player : MonoBehaviour, IBattleEntity
     }
     public void StopActionBar()
     {
-        _actionBarCanMove = false;
+        canGainActionPoints = false;
     }
     public void StartActionBar()
     {
-        _actionBarCanMove = false;
+        canGainActionPoints = true;
     }
 
     public IEnumerator BattleAction()
     {
-        print($"{gameObject.name}: {id} has acted.");
-        yield return new WaitForSeconds(2);
+        stamina += 3;
+        isActing = true;
+        yield return new WaitUntil(() => isActing == false);
+        actionPoints = 0;
     }
     public void TakeDamage(int amount)
     {
         _baseStats.hp -= amount;
-        PlayerDamaged();
+        PlayerHealthChanged();
     }
 
     // Management
     private void OnEnable()
     {
-        BattleManager.OnCombatStart += SetInitialState;
+        
     }
     private void OnDisable()
     {
-        BattleManager.OnCombatStart -= SetInitialState;
+        
     }
 }

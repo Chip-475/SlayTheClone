@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsSO
   hp: 25
   maxHp: 25
-  spdPerSecond: 50
+  actionPointsSpeed: 75

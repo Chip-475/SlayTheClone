@@ -31,16 +31,16 @@ public class CardSkill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
     private void Update()
     {
-        if (stats.mp >= skill.cost)
-        {
-            background.color = Color.white;
-            cost.color = Color.white;
-        }
-        else
-        {
-            background.color = Color.gray;
-            cost.color = Color.red;
-        }
+        //if (stats.stamina >= skill.cost)
+        //{
+        //    background.color = Color.white;
+        //    cost.color = Color.white;
+        //}
+        //else
+        //{
+        //    background.color = Color.gray;
+        //    cost.color = Color.red;
+        //}
     }
     public void OnPointerEnter(PointerEventData eventData)
     {

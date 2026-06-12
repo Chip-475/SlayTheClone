@@ -9,17 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30572192f5427664fadbef797477e662, type: 3}
-  m_Name: Light Strike
-  m_EditorClassIdentifier: Assembly-CSharp::LightStrike
+  m_Script: {fileID: 11500000, guid: 08a0fb2afa367bc4993d9654e21b8267, type: 3}
+  m_Name: Guard
+  m_EditorClassIdentifier: Assembly-CSharp::Guard
   anim: {fileID: 0}
-  cost: 1
-  numberOfTargets: 1
+  cost: 0
+  numberOfTargets: 0
   range: 0
-  damageTypes:
-  - {fileID: 11400000, guid: 2f8c7d43351994745a9154a20e2c1671, type: 2}
-  atkMin: 3
-  atkMax: 5
+  damageTypes: []
+  atkMin: 0
+  atkMax: 0
   healMin: 0
   healMax: 0
-  shield: 0
+  shield: 5

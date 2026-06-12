@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30572192f5427664fadbef797477e662, type: 3}
-  m_Name: Light Strike
-  m_EditorClassIdentifier: Assembly-CSharp::LightStrike
+  m_Script: {fileID: 11500000, guid: 95b69a2d791547f468e9f94203c649fc, type: 3}
+  m_Name: Leg Sweep
+  m_EditorClassIdentifier: Assembly-CSharp::Swipe
   anim: {fileID: 0}
-  cost: 1
-  numberOfTargets: 1
+  cost: 2
+  numberOfTargets: 2
   range: 0
   damageTypes:
-  - {fileID: 11400000, guid: 2f8c7d43351994745a9154a20e2c1671, type: 2}
-  atkMin: 3
+  - {fileID: 11400000, guid: 9f025853641bec646aa6fdb9bbbe17e3, type: 2}
+  atkMin: 1
   atkMax: 5
   healMin: 0
   healMax: 0
