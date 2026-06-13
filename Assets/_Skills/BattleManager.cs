@@ -22,6 +22,7 @@ public class BattleManager : MonoBehaviour
         instance = this;
 
         CombatStart();
+        
     }
     
 

@@ -81,6 +81,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         public int hp;
         public int maxHp;
         public int actionPointsSpeed;
+        public int[] res;//0 blunt 1 fire 2 ice 3 magic 4 pierce 5 slash
     }
 
     public LocalStats stats = new();
@@ -98,13 +99,13 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     protected Color baseColor;
     protected bool selected;
 
-    public Bars hpBar;
+    public hpBar hpBar;
 
     protected virtual void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         group = GetComponent<SortingGroup>();
-        hpBar = GetComponentInChildren<Bars>();
+        hpBar = GetComponentInChildren<hpBar>();
         baseColor = spriteRenderer.color;
 
         SetInitialState();
@@ -137,12 +138,16 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
 
     public abstract IEnumerator BattleAction();
 
-    public void CalcDmg(int amount)
+    public void CalcDmg(int damage)
     {
-        return;
+        foreach (int r in stats.res)
+        {
+            
+        }
     }
     public void TakeDamage(int damage)
     {
+        
         stats.hp -= damage;
         hpBar.SetHealthBarFillAmount();
         if (stats.hp <= 0) Destroy(gameObject);
