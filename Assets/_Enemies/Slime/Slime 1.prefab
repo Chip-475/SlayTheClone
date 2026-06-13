@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6647d27d4f43a124098fa2309740b408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Slime_1
-  _baseStats: {fileID: 11400000, guid: ed3d9a7d033ae2e48905845da690c3e8, type: 2}
+  baseStats: {fileID: 11400000, guid: ed3d9a7d033ae2e48905845da690c3e8, type: 2}
   awareness:
     currentHP: 0
     maxHP: 0
@@ -502,7 +502,8 @@ MonoBehaviour:
     didPlayerBuffLastTurn: 0
     currentMood: 0
     currentBattlePlan: 0
-  actionBarAmount: 0
+  actionPoints: 0
+  canGainActionPoints: 0
   id: 0
   skillList: []
   group: {fileID: 4409652005921675179}
