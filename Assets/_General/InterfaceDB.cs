@@ -8,4 +8,5 @@ public interface IBattleEntity
 
     public IEnumerator BattleAction();
     public void TakeDamage(int amount);
+    public void CalcDmg(int amount);
 }
