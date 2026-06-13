@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour, IBattleEntity
 {
@@ -11,7 +12,8 @@ public class Player : MonoBehaviour, IBattleEntity
     public bool canGainActionPoints;
     public float actionPoints;
 
-    [Range(0, 15)] public int stamina;
+    public int stamina;
+    [SerializeField] private TMP_Text _staminaText;
     public bool isActing;
 
     private void Start()
@@ -36,6 +38,10 @@ public class Player : MonoBehaviour, IBattleEntity
         
         stamina = 5;
         isActing = false;
+    }
+    public void StaminaChanged()
+    {
+        _staminaText.text = $"{stamina}";
     }
     public void EndTurn()
     {
@@ -68,9 +74,16 @@ public class Player : MonoBehaviour, IBattleEntity
     public IEnumerator BattleAction()
     {
         stamina += 3;
+        stamina = Math.Clamp(stamina ,0, 15);
+        StaminaChanged();
         isActing = true;
         yield return new WaitUntil(() => isActing == false);
         actionPoints = 0;
+    }
+
+    public void CalcDmg(int amount)
+    {
+        return;
     }
     public void TakeDamage(int amount)
     {
