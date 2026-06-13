@@ -77,7 +77,9 @@ public class Player : MonoBehaviour, IBattleEntity
         stamina = Math.Clamp(stamina ,0, 15);
         StaminaChanged();
         isActing = true;
+        HandManager.instance.HideCards(false);
         yield return new WaitUntil(() => isActing == false);
+        HandManager.instance.HideCards(true);
         actionPoints = 0;
     }
 

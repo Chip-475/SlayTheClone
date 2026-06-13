@@ -2,13 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Bars : MonoBehaviour
 {
-    [SerializeField] Enemy _enemy;
+    Enemy _enemy;
     [SerializeField] Image _healthBar;
     [SerializeField] Image _actionBar;
 
-    private void Update()
+    private void Start()
     {
-        SetHealthBarFillAmount();
+        _enemy = GetComponent<Enemy>();
+    }
+    private void LateUpdate()
+    {
         SetActionBarFillAmount();
     }
 

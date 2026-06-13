@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Basic Attack", menuName = "Scriptable Objects/Skills/Enemy Skills/Basic Attack")]
 public class EnemyBasicAttack : SkillSO
 {
-    public override IEnumerator PlayCard(IBattleEntity caster, List<IBattleEntity> targets)
+    public override IEnumerator Execute(IBattleEntity caster, List<IBattleEntity> targets)
     {
         foreach (IBattleEntity target in targets)
         {

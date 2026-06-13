@@ -6,7 +6,7 @@ using System.Collections;
 [CreateAssetMenu(fileName = "Leg Sweep", menuName = "Scriptable Objects/Skills/Leg Sweep")]
 public class LegSweep : SkillSO
 {
-    public override IEnumerator PlayCard(IBattleEntity caster,List<IBattleEntity> targets)
+    public override IEnumerator Execute(IBattleEntity caster,List<IBattleEntity> targets)
     {
         foreach (Enemy enemy in targets)
         {

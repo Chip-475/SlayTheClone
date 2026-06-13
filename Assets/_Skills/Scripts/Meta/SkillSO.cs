@@ -32,5 +32,5 @@ public abstract class SkillSO : ScriptableObject
     [Space]
     public float shield;
     
-    public abstract IEnumerator PlayCard(IBattleEntity caster,List<IBattleEntity> targets);
+    public abstract IEnumerator Execute(IBattleEntity caster, List<IBattleEntity> targets);
 }

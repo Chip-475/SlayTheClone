@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 using DG.Tweening;
 
 // Attached to card game object
-public class CardSkill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     public GameObject self;
     public SkillSO skill;
@@ -21,8 +21,8 @@ public class CardSkill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public PlayerStatsSO stats;
 
     private bool isHoveredOn = false;
-    private Vector3 basePos;
-    private Quaternion baseRot;
+    public Vector3 basePos;
+    public Quaternion baseRot;
 
     private void Start()
     {
@@ -46,8 +46,6 @@ public class CardSkill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (isHoveredOn) return;
         
-        basePos = transform.position;
-        baseRot = transform.rotation;
         transform.DOMove(new Vector3(transform.position.x, -2, 0), 0.15f);
         transform.DORotate(new Vector3(0, 0, 0), 0.15f);
         group.sortingOrder = 99;

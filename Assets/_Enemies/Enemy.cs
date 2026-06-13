@@ -11,11 +11,11 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     [SerializeField] protected EnemyStatsSO baseStats;
     public enum Mood
     {
-        neutral,
-        aggressive,
-        defensive,
-        desperate,
-        coordinated
+        Neutral,
+        Aggressive,
+        Defensive,
+        Desperate,
+        Doordinated
     }
     public enum BattlePlan
     {
@@ -99,20 +99,23 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     protected Color baseColor;
     protected bool selected;
 
-    public hpBar hpBar;
+    public Bars bars;
 
     protected virtual void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         group = GetComponent<SortingGroup>();
-        hpBar = GetComponentInChildren<hpBar>();
+        bars = GetComponent<Bars>();
         baseColor = spriteRenderer.color;
 
         SetInitialState();
     }
     protected virtual void FixedUpdate()
     {
-        if(canGainActionPoints) actionPoints += stats.actionPointsSpeed * Time.deltaTime;
+        if (canGainActionPoints)
+        {
+            actionPoints += stats.actionPointsSpeed * Time.deltaTime;
+        }
         if(actionPoints >= 100 && !TurnManager.instance.actingEntities.Contains(this))
         {
             TurnManager.instance.actingEntities.Add(this);
@@ -149,7 +152,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     {
         
         stats.hp -= damage;
-        hpBar.SetHealthBarFillAmount();
+        bars.SetHealthBarFillAmount();
         if (stats.hp <= 0) Destroy(gameObject);
     }
 

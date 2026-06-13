@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 [CreateAssetMenu(fileName = "LightStrike", menuName = "Scriptable Objects/Skills/LightStrike")]
 public class LightStrike : SkillSO
 {
-    public override IEnumerator PlayCard(IBattleEntity caster, List<IBattleEntity> targets)
+    public override IEnumerator Execute(IBattleEntity caster, List<IBattleEntity> targets)
     {
         foreach(IBattleEntity target in targets)
         {
