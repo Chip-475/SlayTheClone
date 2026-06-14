@@ -193,7 +193,10 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        animator.SetTrigger("Hurt");
+        if (!Player.selecting) return;
+
+        Player.target = this;
+        print("Target Selected");
     }
 
     // Management

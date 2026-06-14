@@ -12,6 +12,12 @@ public abstract class SkillSO : ScriptableObject
         Melee,
         Ranged
     }
+    public enum TargetingMode
+    {
+        Single,
+        Nearest,
+        All
+    }
 
 
     public Animation anim;
@@ -21,6 +27,7 @@ public abstract class SkillSO : ScriptableObject
     public int numberOfTargets;
     [Space]
     public AttackRange range;
+    public TargetingMode targetingMode;
     public List<DamageTypeSO> damageTypes = new();
     [Space]
     [Header("Statistics")]
@@ -32,5 +39,5 @@ public abstract class SkillSO : ScriptableObject
     [Space]
     public float shield;
     
-    public abstract IEnumerator Execute(IBattleEntity caster, List<IBattleEntity> targets);
+    public abstract IEnumerator Execute(Enemy target);
 }

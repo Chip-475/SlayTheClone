@@ -1,4 +1,0 @@
-bs-like speed system, all speed bars start at 0
-every time a bar gets filled, the corresponding entity can use its available cost to act
-+X cost every bar
-guard/defend doesnt use cost
