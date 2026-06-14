@@ -12,7 +12,7 @@ public class LightStrike : SkillSO
         foreach(IBattleEntity target in targets)
         {
             int damage= Random.Range(atkMax, atkMin);
-            target.TakeDamage(damage);
+            target.CalcDmg(damage,damageTypes);
         }
 
         BattleManager.CardPlayed();

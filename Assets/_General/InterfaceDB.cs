@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 
 public interface IBattleEntity
 {
@@ -8,5 +9,5 @@ public interface IBattleEntity
 
     public IEnumerator BattleAction();
     public void TakeDamage(int amount);
-    public void CalcDmg(int amount);
+    public void CalcDmg(int amount, List<DamageTypeSO> types);
 }

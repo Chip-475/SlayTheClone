@@ -141,17 +141,43 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
 
     public abstract IEnumerator BattleAction();
 
-    public void CalcDmg(int damage)
+    public void CalcDmg(int damage, List<DamageTypeSO> types)
     {
-        foreach (int r in stats.res)
+        float minRes = float.MaxValue;
+        foreach (var t in types)
         {
-            
+            //0 blunt 1 fire 2 ice 3 magic 4 pierce 5 slash
+            if (t.name == "blunt" && stats.res[0] <= minRes)
+            {
+                minRes = stats.res[0];
+            }
+            if (t.name == "fire" && stats.res[1] <= minRes)
+            {
+                minRes = stats.res[1];
+            }
+            if (t.name == "ice" && stats.res[2] <= minRes)
+            {
+                minRes = stats.res[2];
+            }
+            if (t.name == "magic" && stats.res[3] <= minRes)
+            {
+                minRes = stats.res[3];
+            }
+            if (t.name == "pierce" && stats.res[4] <= minRes)
+            {
+                minRes = stats.res[4];
+            }
+            if (t.name == "slash" && stats.res[5] <= minRes)
+            {
+                minRes = stats.res[4];
+            }
         }
+        TakeDamage((int)(damage*minRes));
     }
     public void TakeDamage(int damage)
     {
         
-        stats.hp -= damage;
+        stats.hp -= (int)damage;
         bars.SetHealthBarFillAmount();
         if (stats.hp <= 0) Destroy(gameObject);
     }

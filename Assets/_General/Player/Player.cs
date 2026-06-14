@@ -1,7 +1,8 @@
 using System;
 using System.Collections;
-using UnityEngine;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 
 public class Player : MonoBehaviour, IBattleEntity
 {
@@ -58,6 +59,7 @@ public class Player : MonoBehaviour, IBattleEntity
     }
 
     // Interface
+
     public int GetId()
     {
         return id;
@@ -83,7 +85,7 @@ public class Player : MonoBehaviour, IBattleEntity
         actionPoints = 0;
     }
 
-    public void CalcDmg(int amount)
+    public void CalcDmg(int amount, List<DamageTypeSO> types)
     {
         return;
     }
