@@ -7,13 +7,9 @@ using Unity.VisualScripting;
 [CreateAssetMenu(fileName = "LightStrike", menuName = "Scriptable Objects/Skills/LightStrike")]
 public class LightStrike : SkillSO
 {
-    public override IEnumerator Execute(IBattleEntity caster, List<IBattleEntity> targets)
+    public override IEnumerator Execute(Enemy target)
     {
-        foreach(IBattleEntity target in targets)
-        {
-            int damage= Random.Range(atkMax, atkMin);
-            target.TakeDamage(damage);
-        }
+        Destroy(target.gameObject);
 
         BattleManager.CardPlayed();
         yield break;

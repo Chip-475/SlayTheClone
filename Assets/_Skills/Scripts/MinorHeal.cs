@@ -5,7 +5,7 @@ using System.Collections;
 [CreateAssetMenu(fileName = "Minor Heal", menuName = "Scriptable Objects/Skills/Minor Heal")]
 public class MinorHeal : SkillSO
 {
-    public override IEnumerator Execute(IBattleEntity caster, List<IBattleEntity> targets)
+    public override IEnumerator Execute(Enemy target)
     {
         yield break;
     }

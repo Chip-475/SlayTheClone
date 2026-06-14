@@ -22,7 +22,6 @@ public class BattleManager : MonoBehaviour
         instance = this;
 
         CombatStart();
-        
     }
     
 
@@ -47,7 +46,6 @@ public class BattleManager : MonoBehaviour
             .ToList();
         entitiesOnField = new List<IBattleEntity>(toReturn);
     }
-
 
     // Events
     public static void CombatStart()

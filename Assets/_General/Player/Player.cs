@@ -14,7 +14,10 @@ public class Player : MonoBehaviour, IBattleEntity
 
     public int stamina;
     [SerializeField] private TMP_Text _staminaText;
+    public static bool selecting;
     public bool isActing;
+    public static SkillCard cardInUse = null;
+    public static Enemy target = null;
 
     private void Start()
     {
@@ -27,6 +30,8 @@ public class Player : MonoBehaviour, IBattleEntity
         {
             TurnManager.instance.actingEntities.Add(this);
         }
+
+        if (cardInUse != null && target != null) StartCoroutine(UseCard());
     }
 
     //
@@ -49,6 +54,17 @@ public class Player : MonoBehaviour, IBattleEntity
 
         isActing = false;
         print("Player turn ended.");
+    }
+    public IEnumerator UseCard()
+    {
+        yield return StartCoroutine(cardInUse.skill.Execute(target));
+        HandManager.instance.cardsInHand.Remove(cardInUse);
+        Destroy(cardInUse.gameObject);
+        HandManager.instance.SetCards(0.15f);
+
+        cardInUse = null;
+        target = null;
+        selecting = false;
     }
 
     // Events
@@ -91,15 +107,5 @@ public class Player : MonoBehaviour, IBattleEntity
     {
         _baseStats.hp -= amount;
         PlayerHealthChanged();
-    }
-
-    // Management
-    private void OnEnable()
-    {
-        
-    }
-    private void OnDisable()
-    {
-        
     }
 }
