@@ -24,7 +24,6 @@ public abstract class SkillSO : ScriptableObject
     [Space]
     [Header("Characteristics")]
     public int cost;
-    public int numberOfTargets;
     [Space]
     public AttackRange range;
     public TargetingMode targetingMode;

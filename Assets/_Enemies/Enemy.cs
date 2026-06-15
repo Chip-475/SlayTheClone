@@ -139,7 +139,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         canGainActionPoints = true;
     }
 
-    public abstract IEnumerator BattleAction();
+    public abstract IEnumerator Action();
 
     public void CalcDmg(int damage)
     {

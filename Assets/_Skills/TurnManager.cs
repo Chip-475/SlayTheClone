@@ -28,7 +28,7 @@ public class TurnManager : MonoBehaviour
         actingEntities.Sort((a, b) => a.GetId().CompareTo(b.GetId()));
         foreach (var entity in actingEntities)
         {
-            yield return StartCoroutine(entity.BattleAction());
+            yield return StartCoroutine(entity.Action());
         }
         actingEntities.Clear();
         StartActionBars();

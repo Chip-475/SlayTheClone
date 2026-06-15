@@ -6,7 +6,7 @@ public interface IBattleEntity
     public void StopActionBar();
     public void StartActionBar();
 
-    public IEnumerator BattleAction();
+    public IEnumerator Action();
     public void TakeDamage(int amount);
     public void CalcDmg(int amount);
 }

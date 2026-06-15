@@ -1,9 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using static UnityEngine.GraphicsBuffer;
-using Unity.VisualScripting;
 
 public class Slime : Enemy
 {
@@ -27,7 +23,7 @@ public class Slime : Enemy
         actionPoints = 0f;
         canGainActionPoints = true;
     }
-    public override IEnumerator BattleAction()
+    public override IEnumerator Action()
     {
         print($"{gameObject.name}: {id} has acted.");
         yield return new WaitForSeconds(2);

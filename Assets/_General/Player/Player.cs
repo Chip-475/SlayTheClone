@@ -5,6 +5,17 @@ using TMPro;
 
 public class Player : MonoBehaviour, IBattleEntity
 {
+    public class BattleAction
+    {
+        SkillCard card;
+        Enemy target;
+
+        public void Execute()
+        {
+            card.skill.Execute(target);
+        }
+    }
+
     public static event Action OnPlayerHealthChanged;
 
     [SerializeField] private PlayerStatsSO _baseStats;
@@ -16,6 +27,7 @@ public class Player : MonoBehaviour, IBattleEntity
     [SerializeField] private TMP_Text _staminaText;
     public static bool selecting;
     public bool isActing;
+    bool playingCard = false;
     public static SkillCard cardInUse = null;
     public static Enemy target = null;
 
@@ -31,7 +43,7 @@ public class Player : MonoBehaviour, IBattleEntity
             TurnManager.instance.actingEntities.Add(this);
         }
 
-        if (cardInUse != null && target != null) StartCoroutine(UseCard());
+        if (cardInUse != null && target != null && !playingCard) StartCoroutine(UseCard());
     }
 
     //
@@ -57,6 +69,8 @@ public class Player : MonoBehaviour, IBattleEntity
     }
     public IEnumerator UseCard()
     {
+        playingCard = true;
+
         yield return StartCoroutine(cardInUse.skill.Execute(target));
         HandManager.instance.cardsInHand.Remove(cardInUse);
         Destroy(cardInUse.gameObject);
@@ -65,6 +79,8 @@ public class Player : MonoBehaviour, IBattleEntity
         cardInUse = null;
         target = null;
         selecting = false;
+
+        playingCard = false;
     }
 
     // Events
@@ -87,7 +103,7 @@ public class Player : MonoBehaviour, IBattleEntity
         canGainActionPoints = true;
     }
 
-    public IEnumerator BattleAction()
+    public IEnumerator Action()
     {
         stamina += 3;
         stamina = Math.Clamp(stamina ,0, 15);
