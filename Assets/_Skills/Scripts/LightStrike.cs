@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 [CreateAssetMenu(fileName = "LightStrike", menuName = "Scriptable Objects/Skills/LightStrike")]
 public class LightStrike : SkillSO
 {
-    public override IEnumerator Execute(Enemy target)
+    public override IEnumerator Effect(Enemy target)
     {
         int dmg = Random.Range(atkMin, atkMax);
         target.CalcDmg(dmg, damageTypes);

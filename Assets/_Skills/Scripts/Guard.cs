@@ -5,7 +5,7 @@ using System.Collections;
 [CreateAssetMenu(fileName = "Guard", menuName = "Scriptable Objects/Skills/Guard")]
 public class Guard : SkillSO
 {
-    public override IEnumerator Execute(Enemy target)
+    public override IEnumerator Effect(Enemy target)
     {
         yield break;
     }

@@ -38,5 +38,5 @@ public abstract class SkillSO : ScriptableObject
     [Space]
     public float shield;
     
-    public abstract IEnumerator Execute(Enemy target);
+    public abstract IEnumerator Effect(Enemy target);
 }

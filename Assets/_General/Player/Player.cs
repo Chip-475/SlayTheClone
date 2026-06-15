@@ -8,12 +8,30 @@ public class Player : MonoBehaviour, IBattleEntity
 {
     public class BattleAction
     {
-        SkillCard card;
-        Enemy target;
+        public SkillCard card;
+        public Enemy target;
 
+        /// <summary>
+        /// Executes a skill on a target enemy.
+        /// </summary>
         public void Execute()
         {
-            card.skill.Execute(target);
+            var runner = new MonoBehaviour();
+            runner.StartCoroutine(ExecuteCR(runner));
+        }
+        IEnumerator ExecuteCR(MonoBehaviour runner)
+        {
+            yield return runner.StartCoroutine(card.skill.Effect(target));
+            HandManager.instance.cardsInHand.Remove(card);
+            Destroy(card.gameObject);
+            HandManager.instance.SetCards(0.15f);
+
+            card = null;
+            target = null;
+            selecting = false;
+
+            Destroy(runner);
+            print("BattleAction executed successfully!");
         }
     }
 
@@ -28,7 +46,6 @@ public class Player : MonoBehaviour, IBattleEntity
     [SerializeField] private TMP_Text _staminaText;
     public static bool selecting;
     public bool isActing;
-    bool playingCard = false;
     public static SkillCard cardInUse = null;
     public static Enemy target = null;
 
@@ -43,8 +60,6 @@ public class Player : MonoBehaviour, IBattleEntity
         {
             TurnManager.instance.actingEntities.Add(this);
         }
-
-        if (cardInUse != null && target != null && !playingCard) StartCoroutine(UseCard());
     }
 
     //
@@ -67,21 +82,6 @@ public class Player : MonoBehaviour, IBattleEntity
 
         isActing = false;
         print("Player turn ended.");
-    }
-    public IEnumerator UseCard()
-    {
-        playingCard = true;
-
-        yield return StartCoroutine(cardInUse.skill.Execute(target));
-        HandManager.instance.cardsInHand.Remove(cardInUse);
-        Destroy(cardInUse.gameObject);
-        HandManager.instance.SetCards(0.15f);
-
-        cardInUse = null;
-        target = null;
-        selecting = false;
-
-        playingCard = false;
     }
 
     // Events

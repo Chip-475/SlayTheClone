@@ -6,7 +6,7 @@ using System.Collections;
 [CreateAssetMenu(fileName = "Leg Sweep", menuName = "Scriptable Objects/Skills/Leg Sweep")]
 public class LegSweep : SkillSO
 {
-    public override IEnumerator Execute(Enemy target)
+    public override IEnumerator Effect(Enemy target)
     {
         Destroy(target.gameObject);
 
