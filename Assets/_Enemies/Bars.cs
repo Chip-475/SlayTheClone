@@ -10,7 +10,7 @@ public class Bars : MonoBehaviour
     {
         _enemy = GetComponent<Enemy>();
     }
-    private void LateUpdate()
+    private void Update()
     {
         SetActionBarFillAmount();
     }

@@ -29,19 +29,7 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         cost.text = $"{skill.cost}";
         effect.text = $"{skill.atkMin} - {skill.atkMax}";
     }
-    private void Update()
-    {
-        //if (stats.stamina >= skill.cost)
-        //{
-        //    background.color = Color.white;
-        //    cost.color = Color.white;
-        //}
-        //else
-        //{
-        //    background.color = Color.gray;
-        //    cost.color = Color.red;
-        //}
-    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isHoveredOn) return;

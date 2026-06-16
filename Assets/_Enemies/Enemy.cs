@@ -99,7 +99,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     protected Color baseColor;
     protected bool selected;
 
-    public Bars bars;
+    Bars bars;
 
     protected virtual void Start()
     {
@@ -185,7 +185,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     // Pointer Events
     public void OnPointerEnter(PointerEventData eventData)
     {
-
+        print($"{this.name} hovered on.");
     }
     public void OnPointerExit(PointerEventData eventData)
     {

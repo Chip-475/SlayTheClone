@@ -16,7 +16,7 @@ public class Player : MonoBehaviour, IBattleEntity
         /// </summary>
         public void Execute()
         {
-            var runner = new MonoBehaviour();
+            var runner = CoRoutineRunner.instance;
             runner.StartCoroutine(ExecuteCR(runner));
         }
         IEnumerator ExecuteCR(MonoBehaviour runner)
@@ -26,12 +26,26 @@ public class Player : MonoBehaviour, IBattleEntity
             Destroy(card.gameObject);
             HandManager.instance.SetCards(0.15f);
 
-            card = null;
-            target = null;
             selecting = false;
 
-            Destroy(runner);
             print("BattleAction executed successfully!");
+
+            Player.cardInUse = null;
+            Player.target = null;
+        }
+
+        /// <summary>
+        /// Builds a BattleAction using Card and targeting Enemy.
+        /// </summary>
+        public static BattleAction Build(SkillCard Card, Enemy Enemy)
+        {
+            BattleAction actionToReturn = new()
+            {
+                card = Card,
+                target = Enemy
+            };
+
+            return actionToReturn;
         }
     }
 
@@ -59,6 +73,13 @@ public class Player : MonoBehaviour, IBattleEntity
         if (actionPoints >= 100 && !TurnManager.instance.actingEntities.Contains(this))
         {
             TurnManager.instance.actingEntities.Add(this);
+        }
+
+        // TO REFINE LATER
+        if(cardInUse != null && target != null)
+        {
+            var battleAction = BattleAction.Build(cardInUse, target);
+            battleAction.Execute();
         }
     }
 
@@ -91,7 +112,6 @@ public class Player : MonoBehaviour, IBattleEntity
     }
 
     // Interface
-
     public int GetId()
     {
         return id;
