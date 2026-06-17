@@ -14,8 +14,14 @@ public class Tester : MonoBehaviour
         HandManager.instance.AddCard(_database.skillPrefabs[Random.Range(0, _database.skillPrefabs.Count)]);
     }
 
-    public void Debug()
+    public void TestClick(InputAction.CallbackContext context)
     {
-        print("clicked");
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+
+        if (hit.collider != null)
+        {
+            print($"Hovering {hit.collider.gameObject.name}");
+        }
     }
 }

@@ -93,7 +93,6 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     public List<SkillSO> skillList = new();
     [Space]
 
-    public SortingGroup group;
     public Animator animator;
     protected SpriteRenderer spriteRenderer;
     protected Color baseColor;
@@ -104,7 +103,6 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     protected virtual void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        group = GetComponent<SortingGroup>();
         bars = GetComponent<Bars>();
         baseColor = spriteRenderer.color;
 
@@ -193,6 +191,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        print("diogay");
         if (!Player.selecting) return;
 
         Player.target = this;
