@@ -3,24 +3,45 @@ using System.Collections.Generic;
 using UnityEngine.Splines;
 using System.Collections;
 using DG.Tweening;
-using UnityEditor.Rendering;
+using Unity.VisualScripting;
 
 public class HandManager : MonoBehaviour
 {
+    [SerializeField] Database database;
+
     public static HandManager instance;
     private void Start()
     {
         instance = this;
+
+        Draw(startingCardsCount);
     }
 
     public SplineContainer splineContainer;
     [Space]
     public List<SkillCard> cardsInHand = new();
+    public int startingCardsCount;
 
+    public void Draw(int nToTake)
+    {
+        // Pick out cards at random
+        List<SkillCard> startingCards = new();
+        for (int i = 0; i < nToTake; i++)
+        {
+            var cardToAddIndex = Random.Range(0, database.skillPrefabs.Count);
+            startingCards.Add(database.skillPrefabs[cardToAddIndex]);
+        }
+
+        // Add them to hand
+        foreach(var card in startingCards)
+        {
+            AddCard(card);
+        }
+    }
     public void AddCard(SkillCard skill)
     {
-        var temp = CardCreator.instance.CreateCard(skill, splineContainer.transform.position, Quaternion.identity);
-        cardsInHand.Add(temp);
+        var cardToAdd = CardCreator.instance.CreateCard(skill, splineContainer.transform.position, Quaternion.identity);
+        cardsInHand.Add(cardToAdd);
         SetCards(0.15f);
     }
     public void SetCards(float duration)

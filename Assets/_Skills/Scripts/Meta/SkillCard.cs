@@ -51,6 +51,11 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerDown(PointerEventData eventData)
     {
         if(!isHoveredOn) return;
+        if(Player.instance.stamina < skill.cost)
+        {
+            print("Insufficient stamina to use card.");
+            return;
+        }
 
         Player.cardInUse = this;
         Player.selecting = true;

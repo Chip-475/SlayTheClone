@@ -6,7 +6,7 @@ using UnityEngine;
 public class CardCreator : MonoBehaviour
 {
     public static CardCreator instance;
-    private void Start()
+    private void Awake()
     {
         instance = this;
     }

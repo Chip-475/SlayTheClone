@@ -8,7 +8,8 @@ public class LegSweep : SkillSO
 {
     public override IEnumerator Effect(Enemy target)
     {
-        Destroy(target.gameObject);
+        int damageToDeal = Random.Range(atkMin, atkMax + 1);
+        target.TakeDamage(damageToDeal);
 
         BattleManager.CardPlayed();
         yield break;

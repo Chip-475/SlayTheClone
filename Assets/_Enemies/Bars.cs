@@ -17,10 +17,10 @@ public class Bars : MonoBehaviour
 
     public void SetHealthBarFillAmount()
     {
-        _healthBar.fillAmount = _enemy.stats.hp / _enemy.stats.maxHp;
+        _healthBar.fillAmount = (float)_enemy.stats.hp / (float)_enemy.stats.maxHp;
     }
     public void SetActionBarFillAmount()
     {
-        _actionBar.fillAmount = _enemy.actionPoints / 100;
+        _actionBar.fillAmount = (float)_enemy.actionPoints / 100;
     }
 }

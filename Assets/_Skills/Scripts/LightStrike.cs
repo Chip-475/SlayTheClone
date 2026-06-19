@@ -9,8 +9,8 @@ public class LightStrike : SkillSO
 {
     public override IEnumerator Effect(Enemy target)
     {
-        int dmg = Random.Range(atkMin, atkMax);
-        target.CalcDmg(dmg, damageTypes);
+        int damageToDeal = Random.Range(atkMin, atkMax + 1);
+        target.TakeDamage(damageToDeal);
 
         BattleManager.CardPlayed();
         yield break;

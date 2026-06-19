@@ -8,6 +8,7 @@ public class Player : MonoBehaviour, IBattleEntity
 {
     public class BattleAction
     {
+        public static Player player;
         public SkillCard card;
         public Enemy target;
 
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour, IBattleEntity
             HandManager.instance.cardsInHand.Remove(card);
             Destroy(card.gameObject);
             HandManager.instance.SetCards(0.15f);
+            player.stamina -= card.skill.cost;
+            player.StaminaChanged();
 
             selecting = false;
 
@@ -49,12 +52,15 @@ public class Player : MonoBehaviour, IBattleEntity
         }
     }
 
+    public static Player instance;
+
     public static event Action OnPlayerHealthChanged;
 
     [SerializeField] private PlayerStatsSO _baseStats;
     public int id;
     public bool canGainActionPoints;
     public float actionPoints;
+    public int cardsEveryTurn;
 
     public int stamina;
     [SerializeField] private TMP_Text _staminaText;
@@ -66,6 +72,9 @@ public class Player : MonoBehaviour, IBattleEntity
     private void Start()
     {
         SetInitialState();
+
+        instance = this;
+        BattleAction.player = this;
     }
     private void FixedUpdate()
     {
@@ -132,6 +141,7 @@ public class Player : MonoBehaviour, IBattleEntity
         StaminaChanged();
         isActing = true;
         HandManager.instance.HideCards(false);
+        HandManager.instance.Draw(cardsEveryTurn);
         yield return new WaitUntil(() => isActing == false);
         HandManager.instance.HideCards(true);
         actionPoints = 0;

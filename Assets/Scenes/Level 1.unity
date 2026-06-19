@@ -164,8 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca993adbae2c664b90b048a71191ef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandManager
+  database: {fileID: 11400000, guid: 22b7a869274bef4448023ff6472e5ec4, type: 2}
   splineContainer: {fileID: 1702368112}
   cardsInHand: []
+  startingCardsCount: 4
 --- !u!1 &268320222
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,6 +858,7 @@ MonoBehaviour:
   id: 0
   canGainActionPoints: 0
   actionPoints: 0
+  cardsEveryTurn: 1
   stamina: 0
   _staminaText: {fileID: 1609046783}
   isActing: 0
@@ -1351,7 +1354,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &1595449423
 GameObject:

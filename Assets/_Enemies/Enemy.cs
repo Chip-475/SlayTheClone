@@ -1,9 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
 using System.Collections;
-using Unity.VisualScripting;
 
 // Enemy base class
 public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
@@ -76,6 +74,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         public Mood currentMood;
         public BattlePlan currentBattlePlan;
     }
+    [System.Serializable]
     public struct LocalStats
     {
         public int hp;

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Light Strike
   m_EditorClassIdentifier: Assembly-CSharp::LightStrike
   anim: {fileID: 0}
-  cost: 1
-  numberOfTargets: 1
+  cost: 2
   range: 0
+  targetingMode: 0
   damageTypes:
   - {fileID: 11400000, guid: 2f8c7d43351994745a9154a20e2c1671, type: 2}
   atkMin: 3

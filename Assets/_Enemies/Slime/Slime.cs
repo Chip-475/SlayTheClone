@@ -25,7 +25,16 @@ public class Slime : Enemy
     }
     public override IEnumerator Action()
     {
-        print($"{gameObject.name}: {id} has acted.");
+        // AI goes here
+
+        // this method is too shit this gotta be changed
+        int chanceToStrike = Random.Range(0, 2);
+        if(chanceToStrike == 1)
+        {
+            Player.instance.TakeDamage(2);
+            print("Player attacked!");
+        }
+
         yield return new WaitForSeconds(2);
         actionPoints = 0;
     }
