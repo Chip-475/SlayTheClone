@@ -56,7 +56,7 @@ public class Player : MonoBehaviour, IBattleEntity
 
     public static event Action OnPlayerHealthChanged;
 
-    [SerializeField] private PlayerStatsSO _baseStats;
+    public PlayerStatsSO stats;
     public int id;
     public bool canGainActionPoints;
     public float actionPoints;
@@ -78,7 +78,7 @@ public class Player : MonoBehaviour, IBattleEntity
     }
     private void FixedUpdate()
     {
-        if(canGainActionPoints) actionPoints += _baseStats.actionPointsSpeed * Time.deltaTime;
+        if(canGainActionPoints) actionPoints += stats.actionPointsSpeed * Time.deltaTime;
         if (actionPoints >= 100 && !TurnManager.instance.actingEntities.Contains(this))
         {
             TurnManager.instance.actingEntities.Add(this);
@@ -153,7 +153,7 @@ public class Player : MonoBehaviour, IBattleEntity
     }
     public void TakeDamage(int amount)
     {
-        _baseStats.hp -= amount;
+        stats.hp -= amount;
         PlayerHealthChanged();
     }
 }

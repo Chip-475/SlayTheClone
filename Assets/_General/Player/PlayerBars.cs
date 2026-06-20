@@ -1,16 +1,30 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBars : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] Image hpBar;
+    [SerializeField] Image apBar;
+    Player player;
+
+    private void Awake()
     {
-        
+        player = GetComponent<Player>();
+    }
+    private void Update()
+    {
+        SetHealthBarFillAmount();
+        SetActionBarFillAmount();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SetHealthBarFillAmount()
     {
-        
+        var amount = player.stats.hp / player.stats.maxHp;
+        hpBar.fillAmount = amount;
+    }
+    private void SetActionBarFillAmount()
+    {
+        var amount = player.actionPoints / 100;
+        apBar.fillAmount = amount;
     }
 }
