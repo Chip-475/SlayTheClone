@@ -15,3 +15,4 @@ MonoBehaviour:
   hp: 25
   maxHp: 25
   actionPointsSpeed: 75
+  res: 0
