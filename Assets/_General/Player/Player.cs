@@ -23,9 +23,9 @@ public class Player : MonoBehaviour, IBattleEntity
         IEnumerator ExecuteCR(MonoBehaviour runner)
         {
             yield return runner.StartCoroutine(card.skill.Effect(target));
-            HandManager.instance.cardsInHand.Remove(card);
+            Hand.instance.cardsInHand.Remove(card);
             Destroy(card.gameObject);
-            HandManager.instance.SetCards(0.15f);
+            //HandManager.instance.SetCards(0.15f);
             player.stamina -= card.skill.cost;
             player.StaminaChanged();
 
@@ -60,7 +60,6 @@ public class Player : MonoBehaviour, IBattleEntity
     public int id;
     public bool canGainActionPoints;
     public float actionPoints;
-    public int cardsEveryTurn;
 
     public int stamina;
     [SerializeField] private TMP_Text _staminaText;
@@ -140,10 +139,8 @@ public class Player : MonoBehaviour, IBattleEntity
         stamina = Math.Clamp(stamina ,0, 15);
         StaminaChanged();
         isActing = true;
-        HandManager.instance.HideCards(false);
-        HandManager.instance.Draw(cardsEveryTurn);
+        Hand.instance.DrawCards(Globals.instance.db.cardsPerTurn);
         yield return new WaitUntil(() => isActing == false);
-        HandManager.instance.HideCards(true);
         actionPoints = 0;
     }
 

@@ -9,9 +9,9 @@ public class Tester : MonoBehaviour
 
     public void Generate(InputAction.CallbackContext context)
     {
-        if(!context.performed || _database.skillPrefabs[0] == null) return;
+        if (!context.performed || _database.skillPrefabs[0] == null) return;
 
-        HandManager.instance.AddCard(_database.skillPrefabs[Random.Range(0, _database.skillPrefabs.Count)]);
+        Hand.instance.AddCard(_database.skillPrefabs[Random.Range(0, _database.skillPrefabs.Count)]);
     }
 
     public void TestClick(InputAction.CallbackContext context)

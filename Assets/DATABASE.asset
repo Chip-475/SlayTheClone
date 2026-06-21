@@ -12,15 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88bc4015a2a1fbc4d924387dc57a9855, type: 3}
   m_Name: DATABASE
   m_EditorClassIdentifier: Assembly-CSharp::Database
+  startingCardsCount: 2
+  cardsPerTurn: 1
   skillPrefabs:
   - {fileID: 8175300277983309982, guid: 0005811372b625d448220ea30a73263b, type: 3}
   - {fileID: 3124563647631873765, guid: 2885cba2bbd2c744cb9dd1ae6956e474, type: 3}
   enemyPrefabs:
   - {fileID: 4654366484208664380, guid: b1c7d18ca3ea2b740a7556e2282e4035, type: 3}
-  damageTypes:
-  - {fileID: 11400000, guid: 9f025853641bec646aa6fdb9bbbe17e3, type: 2}
-  - {fileID: 11400000, guid: 84c1dd2c86698c54fbe6a6116c4f2b1a, type: 2}
-  - {fileID: 11400000, guid: 88651e51cf75f2246873db4bea8a2772, type: 2}
-  - {fileID: 11400000, guid: f3aaa69f7a20fa64da11e53c14ba719a, type: 2}
-  - {fileID: 11400000, guid: 4a26c870ac5e37047b76b8b9775935fe, type: 2}
-  - {fileID: 11400000, guid: 2f8c7d43351994745a9154a20e2c1671, type: 2}

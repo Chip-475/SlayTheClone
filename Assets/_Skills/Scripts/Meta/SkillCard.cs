@@ -24,6 +24,12 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public Vector3 basePos;
     public Quaternion baseRot;
 
+
+    private void Awake()
+    {
+        self = GetComponent<GameObject>();
+        group = GetComponent<SortingGroup>();
+    }
     private void Start()
     {
         cost.text = $"{skill.cost}";
@@ -33,9 +39,9 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isHoveredOn) return;
-        
-        transform.DOMove(new Vector3(transform.position.x, -2, 0), 0.15f);
-        transform.DORotate(new Vector3(0, 0, 0), 0.15f);
+        basePos = transform.position;
+
+        transform.DOMove(new Vector3(transform.position.x, transform.position.y + 1, 0), 0.15f);
         group.sortingOrder = 99;
         isHoveredOn = true;
     }
@@ -44,8 +50,7 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (!isHoveredOn) return;
 
         transform.DOMove(basePos, 0.15f);
-        transform.DORotate(baseRot.eulerAngles, 0.15f);
-        group.sortingOrder = 0;
+        group.sortingOrder = 1;
         isHoveredOn = false;
     }
     public void OnPointerDown(PointerEventData eventData)
