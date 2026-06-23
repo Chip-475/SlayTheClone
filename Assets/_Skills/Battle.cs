@@ -4,11 +4,10 @@ using System.Collections;
 using System;
 using System.Linq;
 
-public class BattleManager : MonoBehaviour
+public class Battle : MonoBehaviour
 {
-    public static BattleManager instance;
+    public static Battle instance;
 
-    public static event Action OnCombatStart;
     public static event Action OnActionStart;
     public static event Action OnCardPlayed;
 
@@ -21,7 +20,8 @@ public class BattleManager : MonoBehaviour
     {
         instance = this;
 
-        CombatStart();
+        SpawnEnemies();
+        GetEntities();
     }
     
 
@@ -48,10 +48,6 @@ public class BattleManager : MonoBehaviour
     }
 
     // Events
-    public static void CombatStart()
-    {
-        OnCombatStart?.Invoke();
-    }
     public static void ActionStart()
     {
         OnActionStart?.Invoke();
@@ -59,17 +55,5 @@ public class BattleManager : MonoBehaviour
     public static void CardPlayed()
     {
         OnCardPlayed?.Invoke();
-    }
-
-    // Management
-    private void OnEnable()
-    {
-        OnCombatStart += SpawnEnemies;
-        OnCombatStart += GetEntities;
-    }
-    private void OnDisable()
-    {
-        OnCombatStart -= SpawnEnemies;
-        OnCombatStart -= GetEntities;
     }
 }

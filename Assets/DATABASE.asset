@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88bc4015a2a1fbc4d924387dc57a9855, type: 3}
   m_Name: DATABASE
   m_EditorClassIdentifier: Assembly-CSharp::Database
+  maxCardsInHand: 5
   startingCardsCount: 2
   cardsPerTurn: 1
   skillPrefabs:
