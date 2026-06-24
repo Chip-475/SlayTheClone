@@ -1589,6 +1589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1345159547}
   - component: {fileID: 1345159548}
+  - component: {fileID: 1345159549}
   m_Layer: 0
   m_Name: Deck
   m_TagString: Untagged
@@ -1670,6 +1671,22 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1345159549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345159546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ecd64a6b6e796245bc090d35f2ebdd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Deck
+  startingCards:
+  - {fileID: 3124563647631873765, guid: 2885cba2bbd2c744cb9dd1ae6956e474, type: 3}
+  - {fileID: 8175300277983309982, guid: 0005811372b625d448220ea30a73263b, type: 3}
+  - {fileID: 8175300277983309982, guid: 0005811372b625d448220ea30a73263b, type: 3}
 --- !u!1 &1420669785
 GameObject:
   m_ObjectHideFlags: 0
