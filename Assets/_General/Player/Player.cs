@@ -52,8 +52,7 @@ public class Player : MonoBehaviour, IBattleEntity
         }
     }
 
-    public static Player instance;
-
+    #region Declarations
     public static event Action OnPlayerHealthChanged;
 
     public PlayerStatsSO stats;
@@ -67,31 +66,36 @@ public class Player : MonoBehaviour, IBattleEntity
     public bool isActing;
     public static SkillCard cardInUse = null;
     public static Enemy target = null;
+    #endregion
 
+    #region Unity Methods
+    private void Awake()
+    {
+        CombatManager.instance.player = this;
+        BattleAction.player = this;
+    }
     private void Start()
     {
         SetInitialState();
-
-        instance = this;
-        BattleAction.player = this;
     }
     private void FixedUpdate()
     {
         if(canGainActionPoints) actionPoints += stats.actionPointsSpeed * Time.deltaTime;
-        if (actionPoints >= 100 && !TurnManager.instance.actingEntities.Contains(this))
+        if (actionPoints >= 100 && !CombatManager.instance.actingEntities.Contains(this))
         {
-            TurnManager.instance.actingEntities.Add(this);
+            CombatManager.instance.actingEntities.Add(this);
         }
 
         // TO REFINE LATER
         if(cardInUse != null && target != null)
         {
-            var battleAction = BattleAction.Build(cardInUse, target);
-            battleAction.Execute();
+            var action = BattleAction.Build(cardInUse, target);
+            action.Execute();
         }
     }
+    #endregion
 
-    //
+    #region Methods
     void SetInitialState()
     {
         id = 0;
@@ -112,14 +116,16 @@ public class Player : MonoBehaviour, IBattleEntity
         isActing = false;
         print("Player turn ended.");
     }
+    #endregion
 
-    // Events
+    #region Events
     public static void PlayerHealthChanged()
     {
         OnPlayerHealthChanged?.Invoke();
     }
+    #endregion
 
-    // Interface
+    #region Interface
     public int GetId()
     {
         return id;
@@ -153,4 +159,5 @@ public class Player : MonoBehaviour, IBattleEntity
         stats.hp -= amount;
         PlayerHealthChanged();
     }
+    #endregion
 }

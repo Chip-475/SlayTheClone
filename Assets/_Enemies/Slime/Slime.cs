@@ -27,11 +27,11 @@ public class Slime : Enemy
     {
         // AI goes here
 
-        // this method is too shit this gotta be changed
+        // this way is too shit this gotta be changed
         int chanceToStrike = Random.Range(0, 2);
         if(chanceToStrike == 1)
         {
-            Player.instance.TakeDamage(2);
+            CombatManager.instance.player.TakeDamage(2);
             print("Player attacked!");
         }
 

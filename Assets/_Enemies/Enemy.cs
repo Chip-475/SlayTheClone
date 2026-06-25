@@ -113,9 +113,9 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         {
             actionPoints += stats.actionPointsSpeed * Time.deltaTime;
         }
-        if(actionPoints >= 100 && !TurnManager.instance.actingEntities.Contains(this))
+        if(actionPoints >= 100 && !CombatManager.instance.actingEntities.Contains(this))
         {
-            TurnManager.instance.actingEntities.Add(this);
+            CombatManager.instance.actingEntities.Add(this);
         }
     }
 
