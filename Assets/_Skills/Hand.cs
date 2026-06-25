@@ -22,16 +22,14 @@ public class Hand : MonoBehaviour
     public void DrawCards(int nToDraw)
     {
         // Pick out cards at random from the deck
-        List<SkillCard> cardsToAdd = new();
+        List<SkillCard> cardsToDraw = new();
         for (int i = 0; i < nToDraw; i++)
         {
-            // to modify once deck is created
-            var cardToAddIndex = Random.Range(0, Globals.instance.db.skillPrefabs.Count);
-            var card = Instantiate(Globals.instance.db.skillPrefabs[cardToAddIndex], deckPos.position, Quaternion.identity);
-            cardsToAdd.Add(card);
+            var card = Instantiate(Deck.instance.deckQueue.Dequeue(), Deck.instance.transform.position, Quaternion.identity);
+            cardsToDraw.Add(card);
         }
 
-        AddCard(cardsToAdd.ToArray());
+        AddCard(cardsToDraw.ToArray());
     }
     public void AddCard(params SkillCard[] cards)
     {
