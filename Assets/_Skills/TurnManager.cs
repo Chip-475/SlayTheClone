@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turns : MonoBehaviour
+public class TurnManager : MonoBehaviour
 {
-    public static Turns instance;
+    public static TurnManager instance;
 
     public List<IBattleEntity> actingEntities = new();
     bool isPerforming = false;
 
-    private void Awake()
+    private void Start()
     {
         instance = this;
     }
@@ -38,14 +38,14 @@ public class Turns : MonoBehaviour
 
     void StopActionBars()
     {
-        foreach (var entity in Battle.instance.entitiesOnField)
+        foreach (var entity in BattleManager.instance.entitiesOnField)
         {
             entity.StopActionBar();
         }
     }
     void StartActionBars()
     {
-        foreach (var entity in Battle.instance.entitiesOnField)
+        foreach (var entity in BattleManager.instance.entitiesOnField)
         {
             entity.StartActionBar();
         }

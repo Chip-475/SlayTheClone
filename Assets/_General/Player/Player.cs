@@ -78,9 +78,9 @@ public class Player : MonoBehaviour, IBattleEntity
     private void FixedUpdate()
     {
         if(canGainActionPoints) actionPoints += stats.actionPointsSpeed * Time.deltaTime;
-        if (actionPoints >= 100 && !Turns.instance.actingEntities.Contains(this))
+        if (actionPoints >= 100 && !TurnManager.instance.actingEntities.Contains(this))
         {
-            Turns.instance.actingEntities.Add(this);
+            TurnManager.instance.actingEntities.Add(this);
         }
 
         // TO REFINE LATER

@@ -35,8 +35,7 @@ public class Hand : MonoBehaviour
     {
         foreach(var card in cards)
         {
-            if (cardsInHand.Count < Globals.instance.db.maxCardsInHand) cardsInHand.Add(card);
-            else continue;
+            cardsInHand.Add(card);
         }
 
         Organize();
