@@ -27,6 +27,8 @@ public class CombatManager : MonoBehaviour
     }
     private void Start()
     {
+        InitDeck();
+        InitHand();
         InitBattle();
     }
     private void LateUpdate()
@@ -39,11 +41,25 @@ public class CombatManager : MonoBehaviour
     #endregion
 
     #region Methods
+    void InitDeck()
+    {
+        deck.FillDeck();
+    }
+
+    void InitHand()
+    {
+
+    }
+
     void InitBattle()
     {
         battle.SpawnEnemies();
         entitiesOnField = new List<IBattleEntity>(battle.GetEnemies());
+
+        deck.DrawCards(GameRules.instance.gameRules.nStartingCards);
     }
+
+    
     #endregion
 
     #region Helpers

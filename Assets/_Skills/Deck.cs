@@ -4,17 +4,15 @@ using UnityEngine.EventSystems;
 
 public class Deck : MonoBehaviour, IPointerDownHandler
 {
-    public static Deck instance;
-
+    #region Declarations
     public List<SkillCard> startingCards;
-    public Queue<SkillCard> deckQueue;
+    public Queue<SkillCard> deckQueue = new();
 
-    private void Awake()
-    {
-        instance = this;
-    }
+    public Transform deckTransform;
+    #endregion
 
-    public void Init()
+    #region Methods
+    public void FillDeck()
     {
         for (int i = 0; i < startingCards.Count; i++)
         {
@@ -24,8 +22,22 @@ public class Deck : MonoBehaviour, IPointerDownHandler
         }
     }
 
+    /// <summary>
+    /// Draws nToDraw cards from the deck and adds them to the hand.
+    /// </summary>
+    public void DrawCards(int nToDraw)
+    {
+        for (int i = 0; i < nToDraw; i++)
+        {
+            var card = Instantiate(deckQueue.Dequeue(), deckTransform.position, Quaternion.identity);
+
+            CombatManager.instance.hand.cardsInHand.Add(card);
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         //open card inventory
     }
+    #endregion
 }

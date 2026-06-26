@@ -23,7 +23,7 @@ public class Player : MonoBehaviour, IBattleEntity
         IEnumerator ExecuteCR(MonoBehaviour runner)
         {
             yield return runner.StartCoroutine(card.skill.Effect(target));
-            Hand.instance.cardsInHand.Remove(card);
+            CombatManager.instance.hand.cardsInHand.Remove(card);
             Destroy(card.gameObject);
             //HandManager.instance.SetCards(0.15f);
             player.stamina -= card.skill.cost;
@@ -145,7 +145,7 @@ public class Player : MonoBehaviour, IBattleEntity
         stamina = Math.Clamp(stamina ,0, 15);
         StaminaChanged();
         isActing = true;
-        Hand.instance.DrawCards(Globals.instance.db.cardsPerTurn);
+        //Hand.instance.DrawCards();
         yield return new WaitUntil(() => isActing == false);
         actionPoints = 0;
     }

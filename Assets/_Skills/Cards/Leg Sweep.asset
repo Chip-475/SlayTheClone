@@ -9,17 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95b69a2d791547f468e9f94203c649fc, type: 3}
+  m_Script: {fileID: 11500000, guid: f311d2d77b7a50249b160559448ec0e3, type: 3}
   m_Name: Leg Sweep
-  m_EditorClassIdentifier: Assembly-CSharp::Swipe
+  m_EditorClassIdentifier: Assembly-CSharp::LegSweep
   anim: {fileID: 0}
-  cost: 3
+  cost: 2
+  numberOfTargets: 2
   range: 0
   targetingMode: 1
-  damageTypes:
-  - {fileID: 11400000, guid: 9f025853641bec646aa6fdb9bbbe17e3, type: 2}
+  damageTypes: []
   atkMin: 1
-  atkMax: 5
+  atkMax: 2
   healMin: 0
   healMax: 0
   shield: 0

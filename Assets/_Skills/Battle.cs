@@ -14,7 +14,6 @@ public class Battle : MonoBehaviour
 
     [SerializeField] List<Transform> spawnPoints = new();
     [SerializeField] EncounterConfigSO encounterConfig;
-    
     #endregion
 
     #region Methods

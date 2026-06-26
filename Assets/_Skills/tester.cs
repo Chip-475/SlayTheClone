@@ -5,13 +5,13 @@ using UnityEngine.Splines;
 
 public class Tester : MonoBehaviour
 {
-    [SerializeField] private Database _database;
+    [SerializeField] private DatabaseSO _database;
 
     public void Generate(InputAction.CallbackContext context)
     {
         if (!context.performed || _database.skillPrefabs[0] == null) return;
 
-        Hand.instance.AddCard(_database.skillPrefabs[Random.Range(0, _database.skillPrefabs.Count)]);
+        CombatManager.instance.deck.DrawCards(GameRules.instance.gameRules.nCardsAtTurnStart);
     }
 
     public void TestClick(InputAction.CallbackContext context)

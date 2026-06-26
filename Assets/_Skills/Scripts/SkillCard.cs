@@ -17,30 +17,21 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public TMP_Text effect;
     public TMP_Text desc;
     [Space]
-    public SortingGroup group;
+    public SpriteRenderer wrapperRenderer;
     public PlayerStatsSO stats;
 
     private bool isHoveredOn = false;
     public Vector3 basePos;
     public Quaternion baseRot;
 
+    private void Awake()
+    {
+        wrapperRenderer = GetComponent<SpriteRenderer>();
+    }
     private void Start()
     {
         cost.text = $"{skill.cost}";
         effect.text = $"{skill.atkMin} - {skill.atkMax}";
-    }
-    private void Update()
-    {
-        //if (stats.stamina >= skill.cost)
-        //{
-        //    background.color = Color.white;
-        //    cost.color = Color.white;
-        //}
-        //else
-        //{
-        //    background.color = Color.gray;
-        //    cost.color = Color.red;
-        //}
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -48,7 +39,7 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         
         transform.DOMove(new Vector3(transform.position.x, -2, 0), 0.15f);
         transform.DORotate(new Vector3(0, 0, 0), 0.15f);
-        group.sortingOrder = 99;
+        wrapperRenderer.sortingOrder = 99;
         isHoveredOn = true;
     }
     public void OnPointerExit(PointerEventData eventData)
@@ -57,7 +48,7 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         transform.DOMove(basePos, 0.15f);
         transform.DORotate(baseRot.eulerAngles, 0.15f);
-        group.sortingOrder = 0;
+        wrapperRenderer.sortingOrder = 0;
         isHoveredOn = false;
     }
     public void OnPointerDown(PointerEventData eventData)
