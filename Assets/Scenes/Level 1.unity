@@ -1376,10 +1376,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1208441553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab7beb8a8a2111044aa0bc95baea4d1b, type: 3}
+  m_Script: {fileID: 11500000, guid: ed3ef02dd5222e74aa5e1c1465cf5b94, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameRules
-  gameRules: {fileID: 11400000, guid: bd334baa0f703304398a0c23d7f3196d, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::DB
+  database: {fileID: 11400000, guid: 22b7a869274bef4448023ff6472e5ec4, type: 2}
 --- !u!1 &1271561426
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,8 +37,7 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (isHoveredOn) return;
         
-        transform.DOMove(new Vector3(transform.position.x, -2, 0), 0.15f);
-        transform.DORotate(new Vector3(0, 0, 0), 0.15f);
+        transform.DOMove(new Vector3(transform.position.x, transform.position.y + 1, 0), 0.15f);
         wrapperRenderer.sortingOrder = 99;
         isHoveredOn = true;
     }
@@ -46,8 +45,7 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (!isHoveredOn) return;
 
-        transform.DOMove(basePos, 0.15f);
-        transform.DORotate(baseRot.eulerAngles, 0.15f);
+        transform.DOMove(new Vector3(transform.position.x, transform.position.y - 1, 0), 0.15f);
         wrapperRenderer.sortingOrder = 0;
         isHoveredOn = false;
     }

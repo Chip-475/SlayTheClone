@@ -17,7 +17,7 @@ public class Player : MonoBehaviour, IBattleEntity
         /// </summary>
         public void Execute()
         {
-            var runner = CoRoutineRunner.instance;
+            var runner = CombatManager.instance.player;
             runner.StartCoroutine(ExecuteCR(runner));
         }
         IEnumerator ExecuteCR(MonoBehaviour runner)
@@ -145,7 +145,7 @@ public class Player : MonoBehaviour, IBattleEntity
         stamina = Math.Clamp(stamina ,0, 15);
         StaminaChanged();
         isActing = true;
-        //Hand.instance.DrawCards();
+        CombatManager.Draw();
         yield return new WaitUntil(() => isActing == false);
         actionPoints = 0;
     }

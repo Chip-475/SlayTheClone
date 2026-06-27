@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using NUnit.Framework;
 
 public class Deck : MonoBehaviour, IPointerDownHandler
 {
@@ -14,11 +15,15 @@ public class Deck : MonoBehaviour, IPointerDownHandler
     #region Methods
     public void FillDeck()
     {
-        for (int i = 0; i < startingCards.Count; i++)
+        for (int i = startingCards.Count - 1; i > 0; i--)
         {
-            int index = Random.Range(0, startingCards.Count);
-            deckQueue.Enqueue(startingCards[index]);
-            startingCards.RemoveAt(index);
+            int j = Random.Range(0, i + 1); // UnityEngine.Random
+            (startingCards[i], startingCards[j]) = (startingCards[j], startingCards[i]);
+        }
+
+        foreach (var card in startingCards)
+        {
+            deckQueue.Enqueue(card);
         }
     }
 
@@ -29,9 +34,12 @@ public class Deck : MonoBehaviour, IPointerDownHandler
     {
         for (int i = 0; i < nToDraw; i++)
         {
-            var card = Instantiate(deckQueue.Dequeue(), deckTransform.position, Quaternion.identity);
+            if(deckQueue.TryDequeue(out SkillCard cardToDraw))
+            {
+                var drawnCard = Instantiate(cardToDraw, deckTransform.position, Quaternion.identity);
 
-            CombatManager.instance.hand.cardsInHand.Add(card);
+                CombatManager.instance.hand.cardsInHand.Add(drawnCard);
+            }
         }
     }
 

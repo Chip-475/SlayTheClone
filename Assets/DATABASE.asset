@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88bc4015a2a1fbc4d924387dc57a9855, type: 3}
   m_Name: DATABASE
   m_EditorClassIdentifier: Assembly-CSharp::Database
-  startingCardsCount: 2
-  cardsPerTurn: 1
+  nStartingCards: 2
+  nCardsAtTurnStart: 1
   skillPrefabs:
   - {fileID: 8175300277983309982, guid: 0005811372b625d448220ea30a73263b, type: 3}
   - {fileID: 3124563647631873765, guid: 2885cba2bbd2c744cb9dd1ae6956e474, type: 3}

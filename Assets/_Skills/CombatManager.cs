@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,6 +7,9 @@ public class CombatManager : MonoBehaviour
 {
     #region Declarations
     public static CombatManager instance;
+    public DatabaseSO Database => DB.instance.database;
+
+    //public static event Action OnCardPlayed;
 
     [Header("Essentials")]
     public Battle battle;
@@ -27,39 +31,65 @@ public class CombatManager : MonoBehaviour
     }
     private void Start()
     {
-        InitDeck();
-        InitHand();
         InitBattle();
     }
     private void LateUpdate()
     {
         if (actingEntities.Count > 0 && !entitiesAreActing)
         {
-            StartCoroutine(battle.PerformActions(actingEntities));
+            StartCoroutine(PerformActions(actingEntities));
         }
     }
     #endregion
 
     #region Methods
-    void InitDeck()
-    {
-        deck.FillDeck();
-    }
-
-    void InitHand()
-    {
-
-    }
-
     void InitBattle()
     {
         battle.SpawnEnemies();
         entitiesOnField = new List<IBattleEntity>(battle.GetEnemies());
 
-        deck.DrawCards(GameRules.instance.gameRules.nStartingCards);
+        deck.FillDeck();
+        deck.DrawCards(Database.nStartingCards);
+
+        hand.Organize();
     }
 
-    
+    public IEnumerator PerformActions(List<IBattleEntity> entities)
+    {
+        entitiesAreActing = true;
+
+        StopActionBars();
+        entities.Sort((a, b) => a.GetId().CompareTo(b.GetId()));
+        foreach (var entity in entities)
+        {
+            yield return StartCoroutine(entity.Action());
+        }
+        entities.Clear();
+        StartActionBars();
+
+        entitiesAreActing = false;
+    }
+
+    public static void Draw()
+    {
+        instance.deck.DrawCards(instance.Database.nCardsAtTurnStart);
+        instance.hand.Organize();
+    }
+
+    public void StopActionBars()
+    {
+        foreach (var entity in entitiesOnField)
+        {
+            entity.StopActionBar();
+        }
+    }
+    public void StartActionBars()
+    {
+        foreach (var entity in entitiesOnField)
+        {
+            entity.StartActionBar();
+        }
+    }
     #endregion
 
     #region Helpers

@@ -12,7 +12,6 @@ public class LightStrike : SkillSO
         int damageToDeal = Random.Range(atkMin, atkMax + 1);
         target.TakeDamage(damageToDeal);
 
-        Battle.CardPlayed();
         yield break;
     }
 }
