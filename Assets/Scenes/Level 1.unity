@@ -1380,6 +1380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DB
   database: {fileID: 11400000, guid: 22b7a869274bef4448023ff6472e5ec4, type: 2}
+  playerStats: {fileID: 11400000, guid: 2fabe13d60d7c00478ef3e8ccb6f7562, type: 2}
 --- !u!1 &1271561426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,7 +2353,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1831920112}
-  - {fileID: 1761208961}
   - {fileID: 836051348}
   - {fileID: 1826013866}
+  - {fileID: 1761208961}
   - {fileID: 268320225}
