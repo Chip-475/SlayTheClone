@@ -80,7 +80,7 @@ public class Player : MonoBehaviour, IBattleEntity
     }
     private void FixedUpdate()
     {
-        if(canGainActionPoints) actionPoints += stats.actionPointsSpeed * Time.deltaTime;
+        if(canGainActionPoints) actionPoints += stats.actionPointsSpeed * UnityEngine.Time.deltaTime;
         if (actionPoints >= 100 && !CombatManager.instance.actingEntities.Contains(this))
         {
             CombatManager.instance.actingEntities.Add(this);

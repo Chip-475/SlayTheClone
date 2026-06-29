@@ -6,7 +6,12 @@ using System.Collections;
 // Enemy base class
 public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    #region Declarations
     [SerializeField] protected EnemyStatsSO baseStats;
+
+    DatabaseSO Database => CombatManager.instance.Database;
+
+    #region Non Variables
     public enum Mood
     {
         Neutral,
@@ -82,9 +87,17 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         public int actionPointsSpeed;
         public int[] res;//0 blunt 1 fire 2 ice 3 magic 4 pierce 5 slash
     }
+    [System.Serializable]
+    public struct Drop
+    {
+        public MobDrop item;
+        public int dropChance;
+    }
+    #endregion Non Variables
 
     public LocalStats stats = new();
     public Awareness awareness = new();
+    public List<Drop> itemPool = new();
     public float actionPoints;
     public bool canGainActionPoints;
     public int id;
@@ -98,7 +111,9 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     protected bool selected;
 
     Bars bars;
+    #endregion Declarations
 
+    #region Unity Methods
     protected virtual void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -119,10 +134,29 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         }
     }
 
-    //
-    public abstract void SetInitialState();
+    public abstract void OnEnable();
+    public abstract void OnDisable();
+    #endregion
 
-    // Interface
+    #region Methods
+    public abstract void SetInitialState();
+    public void DropItems()
+    {
+        List<Drop> droppedItems = new();
+
+        foreach(var drop in itemPool)
+        {
+            int r = Random.Range(0, 101);
+            if (r <= drop.dropChance) droppedItems.Add(drop);
+        }
+
+        foreach(var drop in droppedItems)
+        {
+            drop.item.amount += 1;
+        }
+    }
+
+    #region Interface
     public int GetId()
     {
         return id;
@@ -144,27 +178,27 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         foreach (var t in types)
         {
             //0 blunt 1 fire 2 ice 3 magic 4 pierce 5 slash
-            if (t.name == "blunt" && stats.res[0] <= minRes)
+            if (t.name == "Blunt" && stats.res[0] <= minRes)
             {
                 minRes = stats.res[0];
             }
-            if (t.name == "fire" && stats.res[1] <= minRes)
+            if (t.name == "Fire" && stats.res[1] <= minRes)
             {
                 minRes = stats.res[1];
             }
-            if (t.name == "ice" && stats.res[2] <= minRes)
+            if (t.name == "Ice" && stats.res[2] <= minRes)
             {
                 minRes = stats.res[2];
             }
-            if (t.name == "magic" && stats.res[3] <= minRes)
+            if (t.name == "Magic" && stats.res[3] <= minRes)
             {
                 minRes = stats.res[3];
             }
-            if (t.name == "pierce" && stats.res[4] <= minRes)
+            if (t.name == "Pierce" && stats.res[4] <= minRes)
             {
                 minRes = stats.res[4];
             }
-            if (t.name == "slash" && stats.res[5] <= minRes)
+            if (t.name == "Slash" && stats.res[5] <= minRes)
             {
                 minRes = stats.res[4];
             }
@@ -178,8 +212,11 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         bars.SetHealthBarFillAmount();
         if (stats.hp <= 0) Destroy(gameObject);
     }
+    #endregion Interface
 
-    // Pointer Events
+    #endregion Methods
+
+    #region Events
     public void OnPointerEnter(PointerEventData eventData)
     {
         print($"{this.name} hovered on.");
@@ -196,8 +233,5 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         Player.target = this;
         print("Target Selected");
     }
-
-    // Management
-    public abstract void OnEnable();
-    public abstract void OnDisable();
+    #endregion
 }

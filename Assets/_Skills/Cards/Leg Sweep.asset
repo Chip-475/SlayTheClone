@@ -17,7 +17,8 @@ MonoBehaviour:
   numberOfTargets: 2
   range: 0
   targetingMode: 1
-  damageTypes: []
+  damageTypes:
+  - {fileID: 11400000, guid: e5f5ff15d2d569e45a4dd316bc641cf2, type: 2}
   atkMin: 1
   atkMax: 2
   healMin: 0
