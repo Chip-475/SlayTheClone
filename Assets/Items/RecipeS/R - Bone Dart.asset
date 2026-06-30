@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2917114fb7556494395378b90fac51b3, type: 3}
+  m_Name: R - Bone Dart
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeSO
+  id: 0
+  icon: {fileID: 0}
+  recipeName: Bone Dart
+  desc: A piece of paper with instructions on it. Maybe it could turn out useful.
+  ingredients:
+  - item: {fileID: 11400000, guid: 87885ba751f47c240bd7ce604a980a22, type: 2}
+    amount: 1
+  results:
+  - item: {fileID: 11400000, guid: 6935367f6fd45f747aab9901e125ab39, type: 2}
+    amount: 3

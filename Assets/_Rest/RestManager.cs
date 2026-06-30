@@ -17,9 +17,9 @@ public class RestManager : MonoBehaviour
     #endregion
 
     #region Methods
-    public static void DecreaseTime(int amount)
+    public void DecreaseTime(int amount)
     {
-        instance.time -= amount;
+        time -= amount;
     }
     #endregion
 }

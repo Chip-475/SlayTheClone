@@ -116,14 +116,6 @@ public class Player : MonoBehaviour, IBattleEntity
         isActing = false;
         print("Player turn ended.");
     }
-    #endregion
-
-    #region Events
-    public static void PlayerHealthChanged()
-    {
-        OnPlayerHealthChanged?.Invoke();
-    }
-    #endregion
 
     #region Interface
     public int GetId()
@@ -142,7 +134,7 @@ public class Player : MonoBehaviour, IBattleEntity
     public IEnumerator Action()
     {
         stamina += 3;
-        stamina = Math.Clamp(stamina ,0, 15);
+        stamina = Math.Clamp(stamina, 0, 15);
         StaminaChanged();
         isActing = true;
         CombatManager.Draw();
@@ -159,5 +151,15 @@ public class Player : MonoBehaviour, IBattleEntity
         stats.hp -= amount;
         PlayerHealthChanged();
     }
+    #endregion Interface
+
+    #endregion Methods
+
+    #region Events
+    public static void PlayerHealthChanged()
+    {
+        OnPlayerHealthChanged?.Invoke();
+    }
     #endregion
+    
 }

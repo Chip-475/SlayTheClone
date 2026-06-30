@@ -2,6 +2,6 @@ public class ToDoList
 {
     // Restructure enemy resistances
     // Clean up / Organize project files
-    // Revise overall combat and data architecture
-    // Rework card hand and HandManager
+    // Finish implementing item drops and crafting recipes
+    // Fix cards not returning to deck after being played
 }

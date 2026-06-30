@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2917114fb7556494395378b90fac51b3, type: 3}
+  m_Name: R - Napalm
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeSO
+  id: 0
+  icon: {fileID: 0}
+  recipeName: Napalm
+  desc: A piece of paper with instructions on it. Maybe it could turn out useful.
+  ingredients:
+  - item: {fileID: 11400000, guid: e027d7960921dc6439b8bf899c851b91, type: 2}
+    amount: 5
+  results:
+  - item: {fileID: 11400000, guid: b66fe8ebf2c93304c8ef0706d6dae56c, type: 2}
+    amount: 1

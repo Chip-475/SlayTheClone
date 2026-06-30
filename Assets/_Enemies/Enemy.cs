@@ -90,8 +90,10 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     [System.Serializable]
     public struct Drop
     {
-        public MobDrop item;
+        public ItemSO item;
         public int dropChance;
+        public int minAmount;
+        public int maxAmount;
     }
     #endregion Non Variables
 
@@ -152,7 +154,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
 
         foreach(var drop in droppedItems)
         {
-            drop.item.amount += 1;
+            drop.item.amount += Random.Range(drop.minAmount, drop.maxAmount + 1);
         }
     }
 

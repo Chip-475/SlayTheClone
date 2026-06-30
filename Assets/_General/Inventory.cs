@@ -6,5 +6,5 @@ public class Inventory : ScriptableObject
 {
     public List<SkillCard> ownedCards;
 
-    public List<MobDrop> drops;
+    public List<ItemSO> items;
 }

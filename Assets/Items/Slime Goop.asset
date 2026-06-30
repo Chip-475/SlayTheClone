@@ -17,5 +17,5 @@ MonoBehaviour:
   itemName: Slime Goop
   desc: Residue of the gooey substance slimes are made of. Highly flammable.
   canSell: 1
-  sellPrice: 10
+  sellPrice: 2
   amount: 0

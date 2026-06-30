@@ -452,6 +452,8 @@ MonoBehaviour:
   itemPool:
   - item: {fileID: 11400000, guid: e027d7960921dc6439b8bf899c851b91, type: 2}
     dropChance: 100
+    minAmount: 1
+    maxAmount: 3
   actionPoints: 0
   canGainActionPoints: 0
   id: 0
