@@ -55,6 +55,5 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         Player.cardInUse = this;
         Player.selecting = true;
-        print("Card Selected");
     }
 }

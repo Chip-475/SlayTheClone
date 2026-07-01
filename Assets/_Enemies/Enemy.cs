@@ -174,43 +174,19 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
 
     public abstract IEnumerator Action();
 
-    public void CalcDmg(int damage, List<DamageTypeSO> types)
+    public void CalcDmg(int damage)
     {
-        float minRes = float.MaxValue;
-        foreach (var t in types)
-        {
-            //0 blunt 1 fire 2 ice 3 magic 4 pierce 5 slash
-            if (t.name == "Blunt" && stats.res[0] <= minRes)
-            {
-                minRes = stats.res[0];
-            }
-            if (t.name == "Fire" && stats.res[1] <= minRes)
-            {
-                minRes = stats.res[1];
-            }
-            if (t.name == "Ice" && stats.res[2] <= minRes)
-            {
-                minRes = stats.res[2];
-            }
-            if (t.name == "Magic" && stats.res[3] <= minRes)
-            {
-                minRes = stats.res[3];
-            }
-            if (t.name == "Pierce" && stats.res[4] <= minRes)
-            {
-                minRes = stats.res[4];
-            }
-            if (t.name == "Slash" && stats.res[5] <= minRes)
-            {
-                minRes = stats.res[4];
-            }
-        }
-        TakeDamage((int)(damage*minRes));
+        //int finalDamage = 0;
+
+        //foreach(var value in baseStats.resistances.Values())
+        //{
+        //    finalDamage += ;
+        //}
     }
     public void TakeDamage(int damage)
     {
         
-        stats.hp -= (int)damage;
+        stats.hp -= damage;
         bars.SetHealthBarFillAmount();
         if (stats.hp <= 0) Destroy(gameObject);
     }
@@ -221,7 +197,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     #region Events
     public void OnPointerEnter(PointerEventData eventData)
     {
-        print($"{this.name} hovered on.");
+        
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -229,11 +205,9 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        print("diogay");
         if (!Player.selecting) return;
 
         Player.target = this;
-        print("Target Selected");
     }
     #endregion
 }

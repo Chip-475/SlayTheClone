@@ -9,5 +9,5 @@ public interface IBattleEntity
 
     public IEnumerator Action();
     public void TakeDamage(int amount);
-    public void CalcDmg(int amount, List<DamageTypeSO> types);
+    public void CalcDmg(int amount);
 }

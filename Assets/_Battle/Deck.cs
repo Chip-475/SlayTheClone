@@ -15,12 +15,14 @@ public class Deck : MonoBehaviour, IPointerDownHandler
     #region Methods
     public void FillDeck()
     {
+        // Shuffle starting cards
         for (int i = startingCards.Count - 1; i > 0; i--)
         {
-            int j = Random.Range(0, i + 1); // UnityEngine.Random
+            int j = Random.Range(0, i + 1);
             (startingCards[i], startingCards[j]) = (startingCards[j], startingCards[i]);
         }
 
+        // Insert in deck
         foreach (var card in startingCards)
         {
             deckQueue.Enqueue(card);

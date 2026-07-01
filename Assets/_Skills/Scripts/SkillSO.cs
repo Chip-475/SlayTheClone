@@ -2,11 +2,22 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using System;
 
 // Base class for all skills
 public abstract class SkillSO : ScriptableObject
 {
-    [System.Serializable]
+    [Serializable]
+    public struct DamageTable
+    {
+        public float slash;
+        public float pierce;
+        public float blunt;
+        public float fire;
+        public float ice;
+        public float magic;
+    }
+
     public enum AttackRange
     {
         Melee,
@@ -28,7 +39,7 @@ public abstract class SkillSO : ScriptableObject
     [Space]
     public AttackRange range;
     public TargetingMode targetingMode;
-    public List<DamageTypeSO> damageTypes = new();
+    public DamageTable damageTable;
     [Space]
     [Header("Statistics")]
     public int atkMin;

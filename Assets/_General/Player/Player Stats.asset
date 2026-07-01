@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04a33c0d837c274999288159251c9a3, type: 3}
   m_Name: Player Stats
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsSO
-  hp: 25
+  hp: 19
   maxHp: 25
   actionPointsSpeed: 75
-  res: 0

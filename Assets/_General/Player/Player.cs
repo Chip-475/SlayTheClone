@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -24,8 +23,8 @@ public class Player : MonoBehaviour, IBattleEntity
         {
             yield return runner.StartCoroutine(card.skill.Effect(target));
             CombatManager.instance.hand.cardsInHand.Remove(card);
-            Destroy(card.gameObject);
-            //HandManager.instance.SetCards(0.15f);
+            CombatManager.instance.deck.deckQueue.Enqueue(card);
+            card.gameObject.SetActive(false);
             player.stamina -= card.skill.cost;
             player.StaminaChanged();
 
@@ -114,7 +113,6 @@ public class Player : MonoBehaviour, IBattleEntity
         if (!isActing) return;
 
         isActing = false;
-        print("Player turn ended.");
     }
 
     #region Interface
@@ -142,10 +140,8 @@ public class Player : MonoBehaviour, IBattleEntity
         actionPoints = 0;
     }
 
-    public void CalcDmg(int amount, List<DamageTypeSO> types)
-    {
-        return;
-    }
+    public void CalcDmg(int amount){ return; }
+
     public void TakeDamage(int amount)
     {
         stats.hp -= amount;

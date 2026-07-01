@@ -19,7 +19,7 @@ public class PlayerBars : MonoBehaviour
 
     private void SetHealthBarFillAmount()
     {
-        var amount = player.stats.hp / player.stats.maxHp;
+        float amount = (float)player.stats.hp / player.stats.maxHp;
         hpBar.fillAmount = amount;
     }
     private void SetActionBarFillAmount()

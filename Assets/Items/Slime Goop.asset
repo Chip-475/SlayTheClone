@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Slime Goop
   m_EditorClassIdentifier: Assembly-CSharp::MobDrop
   id: 1
-  icon: {fileID: 0}
+  sprite: {fileID: 1208040086343421634, guid: d0b50044cee2ac74fbe3b50040731d19, type: 3}
   itemName: Slime Goop
   desc: Residue of the gooey substance slimes are made of. Highly flammable.
   canSell: 1

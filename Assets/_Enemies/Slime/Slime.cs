@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Slime : Enemy
 {
+    #region Unity Methods
     new void Start()
     {
         base.Start();
@@ -11,6 +12,15 @@ public class Slime : Enemy
     {
         base.FixedUpdate();
     }
+    public override void OnEnable()
+    {
+
+    }
+    public override void OnDisable()
+    {
+
+    }
+    #endregion
 
     public override void SetInitialState()
     {
@@ -32,26 +42,9 @@ public class Slime : Enemy
         if(chanceToStrike == 1)
         {
             CombatManager.instance.player.TakeDamage(2);
-            print("Player attacked!");
         }
 
         yield return new WaitForSeconds(2);
         actionPoints = 0;
     }
-
-    // Management
-    public override void OnEnable()
-    {
-        
-    }
-    public override void OnDisable()
-    {
-        
-    }
 }
-
-//Player player = FindFirstObjectByType<Player>();
-//SkillSO chosenSkill = skillList[UnityEngine.Random.Range(0, skillList.Count)];
-//List<IBattleEntity> targets = new() { player };
-//yield return chosenSkill.PlayCard(this, targets);
-//actionBarAmount = 0;
