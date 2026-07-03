@@ -12,6 +12,7 @@ public class DatabaseSO : ScriptableObject
     public int nStartingCards;
     public int nCardsAtTurnStart;
 
-    public List<SkillCard> skillPrefabs = new();
-    public List<Enemy> enemyPrefabs = new();
+    [Header("Misc")]
+    public List<SkillCard> allSkillPrefabs = new();
+    public List<Enemy> allEnemyPrefabs = new();
 }

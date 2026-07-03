@@ -1091,7 +1091,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2120212713}
   - {fileID: 1978135358}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1948,7 +1947,7 @@ GameObject:
   - component: {fileID: 2120212713}
   - component: {fileID: 2120212714}
   m_Layer: 0
-  m_Name: DATA
+  m_Name: DDoL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1962,12 +1961,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120212712}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1178222833}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2120212714
 MonoBehaviour:
@@ -1982,7 +1981,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DB
   database: {fileID: 11400000, guid: 22b7a869274bef4448023ff6472e5ec4, type: 2}
-  playerStats: {fileID: 11400000, guid: 2fabe13d60d7c00478ef3e8ccb6f7562, type: 2}
 --- !u!1 &2121200158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,6 +2076,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2120212713}
   - {fileID: 1178222833}
   - {fileID: 1802211804}
   - {fileID: 2070946757}

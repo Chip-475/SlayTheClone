@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System.Collections;
+using Unity.Mathematics;
+using System;
+using System.Linq;
 
 // Enemy base class
 public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
@@ -148,13 +151,13 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
 
         foreach(var drop in itemPool)
         {
-            int r = Random.Range(0, 101);
+            int r = UnityEngine.Random.Range(0, 101);
             if (r <= drop.dropChance) droppedItems.Add(drop);
         }
 
         foreach(var drop in droppedItems)
         {
-            drop.item.amount += Random.Range(drop.minAmount, drop.maxAmount + 1);
+            drop.item.amount += UnityEngine.Random.Range(drop.minAmount, drop.maxAmount + 1);
         }
     }
 
@@ -174,19 +177,25 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
 
     public abstract IEnumerator Action();
 
-    public void CalcDmg(int damage)
+    public int CalcDmg(int damage)
     {
-        //int finalDamage = 0;
+        float finalDamage = 0;
 
-        //foreach(var value in baseStats.resistances.Values())
-        //{
-        //    finalDamage += ;
-        //}
+        var damageValues = CombatManager.instance.selectedCard.skill.damageTable.Values().ToList();
+        var resistanceValues = baseStats.resistances.Values().ToList();
+        
+
+        for (int i = 0; i < damageValues.Count; i++)
+        {
+            finalDamage += damageValues[i] * resistanceValues[i];
+        }
+
+        return (int)Math.Ceiling(finalDamage);
     }
     public void TakeDamage(int damage)
     {
-        
-        stats.hp -= damage;
+        print(damage);
+        stats.hp -= CalcDmg(damage);
         bars.SetHealthBarFillAmount();
         if (stats.hp <= 0) Destroy(gameObject);
     }
@@ -207,7 +216,9 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     {
         if (!Player.selecting) return;
 
-        Player.target = this;
+        CombatManager.instance.selectedEnemy = this;
+
+        CombatManager.instance.executor.Execute();
     }
     #endregion
 }

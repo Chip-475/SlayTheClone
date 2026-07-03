@@ -15,12 +15,17 @@ public class CombatManager : MonoBehaviour
     public Battle battle;
     public Deck deck;
     public Hand hand;
+    public SkillExecutor executor;
     [Space]
     public Player player;
 
     public bool entitiesAreActing = false;
     public List<IBattleEntity> entitiesOnField = new();
     public List<IBattleEntity> actingEntities = new();
+
+
+    public SkillCard selectedCard;
+    public Enemy selectedEnemy;
     #endregion
 
     #region Unity Methods
@@ -98,6 +103,7 @@ public class CombatManager : MonoBehaviour
         if (battle == null) throw new System.ArgumentNullException("battle");
         if (deck == null) throw new System.ArgumentNullException("deck");
         if (hand == null) throw new System.ArgumentNullException("hand");
+        if (executor == null) throw new System.ArgumentNullException("executor");
     }
     #endregion
 }

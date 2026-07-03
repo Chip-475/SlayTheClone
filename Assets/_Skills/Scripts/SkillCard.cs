@@ -7,6 +7,8 @@ using DG.Tweening;
 // Attached to card game object
 public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    DatabaseSO Database => DB.instance.database;
+
     public GameObject self;
     public SkillSO skill;
     [Space]
@@ -53,7 +55,7 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if(!isHoveredOn) return;
 
-        Player.cardInUse = this;
+        CombatManager.instance.selectedCard = this;
         Player.selecting = true;
     }
 }

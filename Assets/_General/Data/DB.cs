@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class DB : MonoBehaviour
 {
+
     public static DB instance;
 
     public DatabaseSO database;
 
-    private void Awake()
+    void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 }

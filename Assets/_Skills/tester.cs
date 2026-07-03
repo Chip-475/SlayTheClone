@@ -9,7 +9,7 @@ public class Tester : MonoBehaviour
 
     public void Generate(InputAction.CallbackContext context)
     {
-        if (!context.performed || _database.skillPrefabs[0] == null) return;
+        if (!context.performed || _database.allSkillPrefabs[0] == null) return;
 
         CombatManager.instance.deck.DrawCards(CombatManager.instance.Database.nCardsAtTurnStart);
     }

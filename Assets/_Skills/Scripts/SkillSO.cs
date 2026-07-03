@@ -16,6 +16,16 @@ public abstract class SkillSO : ScriptableObject
         public float fire;
         public float ice;
         public float magic;
+
+        public readonly IEnumerable<float> Values()
+        {
+            yield return slash;
+            yield return pierce;
+            yield return blunt;
+            yield return fire;
+            yield return ice;
+            yield return magic;
+        }
     }
 
     public enum AttackRange

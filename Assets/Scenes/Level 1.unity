@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 129036015}
   - component: {fileID: 129036014}
   - component: {fileID: 129036013}
+  - component: {fileID: 129036016}
   m_Layer: 0
   m_Name: Combat
   m_TagString: Untagged
@@ -200,8 +201,11 @@ MonoBehaviour:
   battle: {fileID: 129036015}
   deck: {fileID: 129036014}
   hand: {fileID: 129036013}
+  executor: {fileID: 129036016}
   player: {fileID: 0}
   entitiesAreActing: 0
+  selectedCard: {fileID: 0}
+  selectedEnemy: {fileID: 0}
 --- !u!114 &129036013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +261,18 @@ MonoBehaviour:
   - {fileID: 303139243}
   - {fileID: 1731678500}
   encounterConfig: {fileID: 11400000, guid: 1ccf374636602cd4f99b4ca998fcdfbb, type: 2}
+--- !u!114 &129036016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129036010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe56577e1c2176f45b7f5c82194d4b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillExecutor
 --- !u!1 &268320222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,7 +1362,7 @@ GameObject:
   - component: {fileID: 1208441554}
   - component: {fileID: 1208441555}
   m_Layer: 0
-  m_Name: DATA
+  m_Name: DDoL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1360,12 +1376,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208441553}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1831920112}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1208441555
 MonoBehaviour:
@@ -1380,7 +1396,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DB
   database: {fileID: 11400000, guid: 22b7a869274bef4448023ff6472e5ec4, type: 2}
-  playerStats: {fileID: 11400000, guid: 2fabe13d60d7c00478ef3e8ccb6f7562, type: 2}
 --- !u!1 &1271561426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,7 +2011,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1208441554}
   - {fileID: 129036011}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2352,6 +2366,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1208441554}
   - {fileID: 1831920112}
   - {fileID: 836051348}
   - {fileID: 1826013866}
