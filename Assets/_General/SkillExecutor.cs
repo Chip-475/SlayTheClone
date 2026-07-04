@@ -21,12 +21,14 @@ public class SkillExecutor : MonoBehaviour
     IEnumerator ExecuteCR(MonoBehaviour runner)
     {
         yield return runner.StartCoroutine(card.skill.Effect(enemy));
+
         CombatManager.instance.hand.cardsInHand.Remove(card);
         CombatManager.instance.deck.deckQueue.Enqueue(card);
         card.gameObject.SetActive(false);
+        card.gameObject.transform.position = CombatManager.instance.deck.deckTransform.position;
+
         player.stamina -= card.skill.cost;
         player.StaminaChanged();
-
         Player.selecting = false;
 
         print("BattleAction executed successfully!");

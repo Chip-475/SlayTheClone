@@ -115,14 +115,14 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     protected Color baseColor;
     protected bool selected;
 
-    Bars bars;
+    EnemyBars bars;
     #endregion Declarations
 
     #region Unity Methods
     protected virtual void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        bars = GetComponent<Bars>();
+        bars = GetComponent<EnemyBars>();
         baseColor = spriteRenderer.color;
 
         SetInitialState();
@@ -197,7 +197,11 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         print(damage);
         stats.hp -= CalcDmg(damage);
         bars.SetHealthBarFillAmount();
-        if (stats.hp <= 0) Destroy(gameObject);
+        if (stats.hp <= 0)
+        {
+            DropItems();
+            Destroy(gameObject);
+        };
     }
     #endregion Interface
 

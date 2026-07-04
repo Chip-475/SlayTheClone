@@ -13,7 +13,7 @@ public class Deck : MonoBehaviour, IPointerDownHandler
     #endregion
 
     #region Methods
-    public void FillDeck()
+    public void InitDeck()
     {
         // Shuffle starting cards
         for (int i = startingCards.Count - 1; i > 0; i--)
@@ -25,7 +25,11 @@ public class Deck : MonoBehaviour, IPointerDownHandler
         // Insert in deck
         foreach (var card in startingCards)
         {
-            deckQueue.Enqueue(card);
+            var cardObject = Instantiate(card, deckTransform.position, Quaternion.identity);
+            cardObject.gameObject.SetActive(false);
+            cardObject.transform.position = deckTransform.position;
+
+            deckQueue.Enqueue(cardObject); 
         }
     }
 
@@ -38,9 +42,7 @@ public class Deck : MonoBehaviour, IPointerDownHandler
         {
             if(deckQueue.TryDequeue(out SkillCard cardToDraw))
             {
-                var drawnCard = Instantiate(cardToDraw, deckTransform.position, Quaternion.identity);
-
-                CombatManager.instance.hand.cardsInHand.Add(drawnCard);
+                CombatManager.instance.hand.cardsInHand.Add(cardToDraw);
             }
         }
     }

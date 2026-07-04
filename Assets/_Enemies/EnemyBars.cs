@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-public class Bars : MonoBehaviour
+public class EnemyBars : MonoBehaviour
 {
     Enemy _enemy;
     [SerializeField] Image _healthBar;
@@ -17,10 +17,12 @@ public class Bars : MonoBehaviour
 
     public void SetHealthBarFillAmount()
     {
-        _healthBar.fillAmount = (float)_enemy.stats.hp / (float)_enemy.stats.maxHp;
+        float amount = (float)_enemy.stats.hp / (float)_enemy.stats.maxHp;
+        _healthBar.fillAmount = amount;
     }
     public void SetActionBarFillAmount()
     {
-        _actionBar.fillAmount = (float)_enemy.actionPoints / 100;
+        float amount = (float)_enemy.actionPoints / 100;
+        _actionBar.fillAmount = amount;
     }
 }

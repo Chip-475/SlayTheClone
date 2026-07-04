@@ -468,7 +468,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4038437480180815823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0673f946bb2f29b40b69c9a1f9f9fb23, type: 3}
+  m_Script: {fileID: 11500000, guid: 77498ef3829c17348967ba669fd21d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bars
   _healthBar: {fileID: 7835516353671825195}

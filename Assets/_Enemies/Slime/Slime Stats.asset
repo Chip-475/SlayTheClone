@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c6bc2b3c12bfa4cb2ab3f858598844, type: 3}
   m_Name: Slime Stats
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  hp: 15
-  maxHp: 15
+  hp: 3
+  maxHp: 3
   actionPointsSpeed: 50
   resistances:
     slash: 0.8

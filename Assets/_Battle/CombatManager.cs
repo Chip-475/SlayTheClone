@@ -32,7 +32,11 @@ public class CombatManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        CheckValidity();
+        
+        battle = GetComponent<Battle>();
+        deck = GetComponent<Deck>();
+        hand = GetComponent<Hand>();
+        executor = GetComponent<SkillExecutor>();
     }
     private void Start()
     {
@@ -53,7 +57,7 @@ public class CombatManager : MonoBehaviour
         battle.SpawnEnemies();
         entitiesOnField = new List<IBattleEntity>(battle.GetEnemies());
 
-        deck.FillDeck();
+        deck.InitDeck();
         deck.DrawCards(Database.nStartingCards);
 
         hand.Organize();
@@ -94,16 +98,6 @@ public class CombatManager : MonoBehaviour
         {
             entity.StartActionBar();
         }
-    }
-    #endregion
-
-    #region Helpers
-    void CheckValidity()
-    {
-        if (battle == null) throw new System.ArgumentNullException("battle");
-        if (deck == null) throw new System.ArgumentNullException("deck");
-        if (hand == null) throw new System.ArgumentNullException("hand");
-        if (executor == null) throw new System.ArgumentNullException("executor");
     }
     #endregion
 }

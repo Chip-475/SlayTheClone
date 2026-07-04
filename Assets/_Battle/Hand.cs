@@ -17,6 +17,9 @@ public class Hand : MonoBehaviour
     {
         for(int i = 0; i < cardsInHand.Count; i++)
         {
+            cardsInHand[i].gameObject.SetActive(true);
+
+            cardsInHand[i].basePos = cardSlots[i].position;
             cardsInHand[i].transform.DOMove(cardSlots[i].position, 0.2f);
         }
     }
