@@ -19,6 +19,7 @@ public class RecipeSO : ScriptableObject
     }
 
     public int id;
+    public bool unlocked;
     [Space]
     public Sprite icon;
     public string recipeName;

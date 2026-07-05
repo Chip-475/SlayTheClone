@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName =("Database"), menuName = ("Database"))]
+[CreateAssetMenu(fileName = "Database", menuName = "Database")]
 public class DatabaseSO : ScriptableObject
 {
     // ONLY CREATE A SINGLE INSTANCE
@@ -15,4 +15,5 @@ public class DatabaseSO : ScriptableObject
     [Header("Misc")]
     public List<SkillCard> allSkillPrefabs = new();
     public List<Enemy> allEnemyPrefabs = new();
+    public List<RecipeSO> unlockedRecipes;
 }

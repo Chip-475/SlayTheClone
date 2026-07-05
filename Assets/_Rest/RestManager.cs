@@ -6,6 +6,8 @@ public class RestManager : MonoBehaviour
     public static RestManager instance;
     public DatabaseSO Database => DB.instance.database;
 
+    public CraftMenu craftMenu;
+
     public int time;
     #endregion
 
@@ -13,6 +15,8 @@ public class RestManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        craftMenu = GetComponent<CraftMenu>();
     }
     #endregion
 
