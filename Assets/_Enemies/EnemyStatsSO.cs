@@ -29,6 +29,7 @@ public class EnemyStatsSO : ScriptableObject
 
     public int hp;
     public int maxHp;
+    public int atk;
     public int actionPointsSpeed;
     public Resistances resistances;
 }

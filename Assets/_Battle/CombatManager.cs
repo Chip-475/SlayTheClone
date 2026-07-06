@@ -9,6 +9,7 @@ public class CombatManager : MonoBehaviour
     public static CombatManager instance;
     public DatabaseSO Database => DB.instance.database;
 
+    public static event Action OnPlayerDeath;
     //public static event Action OnCardPlayed;
 
     [Header("Essentials")]
@@ -18,7 +19,8 @@ public class CombatManager : MonoBehaviour
     public SkillExecutor executor;
     [Space]
     public Player player;
-
+    public GameObject deathScreen;
+    [Space]
     public bool entitiesAreActing = false;
     public List<IBattleEntity> entitiesOnField = new();
     public List<IBattleEntity> actingEntities = new();

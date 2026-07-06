@@ -9,17 +9,14 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 {
     DatabaseSO Database => DB.instance.database;
 
-    public GameObject self;
+    public int id;
+
     public SkillSO skill;
     [Space]
-    public SpriteRenderer background;
-    public SpriteRenderer image;
+    public TMP_Text costText;
+    public TMP_Text descText;
     [Space]
-    public TMP_Text cost;
-    public TMP_Text effect;
-    public TMP_Text desc;
-    [Space]
-    public SpriteRenderer wrapperRenderer;
+    public SortingGroup wrapperGroup;
     public PlayerStatsSO stats;
 
     private bool isHoveredOn = false;
@@ -28,27 +25,27 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void Awake()
     {
-        wrapperRenderer = GetComponent<SpriteRenderer>();
+        wrapperGroup = GetComponent<SortingGroup>();
     }
     private void Start()
     {
-        cost.text = $"{skill.cost}";
-        effect.text = $"{skill.atkMin} - {skill.atkMax}";
+        costText.text = $"{skill.cost}";
+        descText.text = $"Popipopipopipopi <color=orange>{skill.atkMin} - {skill.atkMax}</color> poppipopipoipipipio"; 
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isHoveredOn) return;
         
-        transform.DOMove(new Vector3(transform.position.x, basePos.y + 1, 0), 0.15f);
-        wrapperRenderer.sortingOrder = 99;
+        transform.DOMove(new Vector3(basePos.x, basePos.y + 1, 0), 0.15f);
+        wrapperGroup.sortingOrder = 99;
         isHoveredOn = true;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         if (!isHoveredOn) return;
 
-        transform.DOMove(new Vector3(transform.position.x, basePos.y, 0), 0.15f);
-        wrapperRenderer.sortingOrder = 0;
+        transform.DOMove(new Vector3(basePos.x, basePos.y, 0), 0.15f);
+        wrapperGroup.sortingOrder = 1;
         isHoveredOn = false;
     }
     public void OnPointerDown(PointerEventData eventData)

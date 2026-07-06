@@ -87,6 +87,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     {
         public int hp;
         public int maxHp;
+        public int atk;
         public int actionPointsSpeed;
         public int[] res;//0 blunt 1 fire 2 ice 3 magic 4 pierce 5 slash
     }

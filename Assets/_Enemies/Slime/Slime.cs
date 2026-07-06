@@ -27,6 +27,7 @@ public class Slime : Enemy
         // Clone stats from asset to local class to avoid modifying all enemies
         stats.hp = baseStats.hp;
         stats.maxHp = baseStats.maxHp;
+        stats.atk = baseStats.atk;
         stats.actionPointsSpeed = baseStats.actionPointsSpeed;
 
         // Preps for combat
@@ -35,16 +36,30 @@ public class Slime : Enemy
     }
     public override IEnumerator Action()
     {
-        // AI goes here
-
-        // this way is too shit this gotta be changed
-        int chanceToStrike = Random.Range(0, 2);
-        if(chanceToStrike == 1)
+        int temp = Random.Range(0, 2);
+        if(temp == 0)
         {
-            CombatManager.instance.player.TakeDamage(2);
+            yield return StartCoroutine(BasicAttack());
+            print($"{gameObject.name} attacks!");
+        }
+        else
+        {
+            print($"{gameObject.name} does nothing!");
         }
 
-        yield return new WaitForSeconds(2);
         actionPoints = 0;
+    }
+
+    IEnumerator BasicAttack()
+    {
+        // Deals damage between atk + 1 and atk - 1 
+        int range = 1;
+        int damageToDeal = Random.Range(stats.atk - range, stats.atk + range + 1);
+        print(damageToDeal);
+
+        // play animation ToDo
+        CombatManager.instance.player.TakeDamage(damageToDeal);
+
+        yield break;
     }
 }
