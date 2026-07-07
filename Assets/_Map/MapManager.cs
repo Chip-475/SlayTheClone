@@ -1,11 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.Collections;
-using UnityEngine.Rendering;
-using System.Xml.Linq;
 
 public class MapManager : MonoBehaviour
 {
+    #region Declarations
     public GameObject nodePrefab;
     public Transform map;
 
@@ -27,21 +25,26 @@ public class MapManager : MonoBehaviour
     public int attempts;
     int nBattle, nEliteBattle, nShop, nRest, nEvent, nShortCut;
     bool finalShop = false, finalRest = false, finalEvent = false,finalFinal=false;
+    #endregion
+
+    #region Unity Methods
     void Start()
     {
         seed = Random.Range(0, int.MaxValue);
         Random.InitState(seed);
         nodes = GenerateMap();
-        generateConnection();
-        drawConnection();
+        GenerateConnection();
+        DrawConnection();
     }
+    #endregion
+
     public List<Node> GenerateMap()
     {
         List<Node> nodes = new();
         numberOfLayers = Random.Range(5, 8);
         numberOfPages = 3;
         int nodeID = 1;
-        calcOffset();
+        CalcOffset();
         SpawnNode(nodes, (int)Node.NodeType.Entry, -1, 0, 2);
         for (int i = 0; i < numberOfLayers; i++)
         {
@@ -92,7 +95,7 @@ public class MapManager : MonoBehaviour
                 if (CanSpawn(whatToSpawn, i, numberOfNodes))
                 {
                     SpawnNode(nodes, whatToSpawn, i, nodeID, order);
-                    setNumber(whatToSpawn);
+                    SetNumber(whatToSpawn);
                     order++;
                     nodeID++;
                 }
@@ -113,7 +116,7 @@ public class MapManager : MonoBehaviour
         if (tries > 100)
         {
             tries = 0;
-            reseed();
+            Reseed();
             return false;
         }
         if ((Node.NodeType)type == Node.NodeType.Rest && layer == 0)
@@ -162,7 +165,7 @@ public class MapManager : MonoBehaviour
     {
         float x, y;
         x =topLeft.position.x + (layer + 1) * X_Offset;
-        Vector2 pos = new Vector2(0, 0);
+        Vector2 pos = new(0, 0);
         GameObject node = Instantiate(nodePrefab, pos, Quaternion.identity,map);
         Node component = node.GetComponent<Node>();
         component.nodeId = nodeID;
@@ -184,7 +187,7 @@ public class MapManager : MonoBehaviour
         node.transform.position = pos;
         nodes.Add(component);
     }
-    public void generateConnection()
+    public void GenerateConnection()
     {
         Debug.Log(attempts + "attempts to generate");
         for (int i = 0; i <= numberOfLayers; i++)
@@ -194,7 +197,7 @@ public class MapManager : MonoBehaviour
                 if (current.layerId != i) continue;
                 if (current.layerId == 0)
                 {
-                    current.toConnect.Add(entryNode.nodeId);
+                    current.nodesToConnect.Add(entryNode.nodeId);
                     continue;
                 }
                 List<Node> possibleConnection = new();
@@ -211,7 +214,7 @@ public class MapManager : MonoBehaviour
                         {
                             if (Random.Range(0, 4) == 0)
                             {
-                                current.toConnect.Add(prev.nodeId);
+                                current.nodesToConnect.Add(prev.nodeId);
                             }
                         }
                     }
@@ -220,12 +223,12 @@ public class MapManager : MonoBehaviour
                 {
                     if (Random.Range(0, 4) == 0)
                     {
-                        current.toConnect.Add(possible.nodeId);
+                        current.nodesToConnect.Add(possible.nodeId);
                     }
                 }
-                if (current.toConnect.Count == 0 && possibleConnection.Count > 0)
+                if (current.nodesToConnect.Count == 0 && possibleConnection.Count > 0)
                 {
-                    current.toConnect.Add(possibleConnection[Random.Range(0, possibleConnection.Count)].nodeId);
+                    current.nodesToConnect.Add(possibleConnection[Random.Range(0, possibleConnection.Count)].nodeId);
                 }
             }
 
@@ -235,7 +238,7 @@ public class MapManager : MonoBehaviour
                 bool hasExit = false;
                 foreach (Node current in nodes)
                 {
-                    if (current.layerId == i && current.toConnect.Contains(prev.nodeId))
+                    if (current.layerId == i && current.nodesToConnect.Contains(prev.nodeId))
                     {
                         hasExit = true;
                         break;
@@ -255,7 +258,7 @@ public class MapManager : MonoBehaviour
                     if (possibleTargets.Count > 0)
                     {
                         Node target = possibleTargets[Random.Range(0, possibleTargets.Count)];
-                        target.toConnect.Add(prev.nodeId);
+                        target.nodesToConnect.Add(prev.nodeId);
                     }
                 }
             }
@@ -266,7 +269,7 @@ public class MapManager : MonoBehaviour
                 bool hasEntry = false;
                 foreach (Node prev in nodes) 
                 { 
-                    if (current.toConnect.Contains(prev.nodeId)) 
+                    if (current.nodesToConnect.Contains(prev.nodeId)) 
                     { 
                         hasEntry = true; 
                         break;
@@ -286,13 +289,13 @@ public class MapManager : MonoBehaviour
                     if (possibleSources.Count > 0)
                     {
                         Node source = possibleSources[Random.Range(0, possibleSources.Count)];
-                        current.toConnect.Add(source.nodeId);
+                        current.nodesToConnect.Add(source.nodeId);
                     }
                 }
             }
         }
     }
-    public void setNumber(int spawned)
+    public void SetNumber(int spawned)
     {
         Node.NodeType type = (Node.NodeType)spawned;
         switch (type)
@@ -317,15 +320,15 @@ public class MapManager : MonoBehaviour
                 break;
         }
     }
-    public void drawConnection()
+    public void DrawConnection()
     {
         foreach (Node node in nodes)
         {
-            foreach (int id in node.toConnect)
+            foreach (int id in node.nodesToConnect)
             {
                 Node target = nodes.Find(x => x.nodeId == id);
                 if (target == null) { Debug.LogWarning("Node not found: " + id); continue; }
-                GameObject lnObj = new GameObject("Line");
+                GameObject lnObj = new("Line");
                 lnObj.transform.parent = map;
                 LineRenderer lineRenderer = lnObj.AddComponent<LineRenderer>();
                 lineRenderer.positionCount = 2;
@@ -340,14 +343,14 @@ public class MapManager : MonoBehaviour
             }
         }
     }
-    public void calcOffset()
+    public void CalcOffset()
     {
         float width=bottomRight.position.x - topLeft.position.x;
         float height=topLeft.position.y - bottomRight.position.y;
         X_Offset = width / (numberOfLayers + 1);
         Y_Offset = height /5;
     }
-    public void reseed()
+    public void Reseed()
     {
         Debug.Log("Reseeding,old seed:" + seed);
         attempts++;
@@ -361,7 +364,7 @@ public class MapManager : MonoBehaviour
         if (attempts < 10)
         {
             nodes = GenerateMap();
-            generateConnection();
+            GenerateConnection();
         }
         else
         {

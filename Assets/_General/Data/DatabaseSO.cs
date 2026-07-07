@@ -11,6 +11,13 @@ public class DatabaseSO : ScriptableObject
     [Space]
     public int nStartingCards;
     public int nCardsAtTurnStart;
+    [Space]
+    public int minNodesPerLayer;
+    public int maxNodesPerLayer;
+    public int bossLayer;
+    [Space]
+    public float nodeOffsetX;
+    public float nodeOffsetY;
 
     [Header("Misc")]
     public List<SkillCard> allSkillPrefabs = new();

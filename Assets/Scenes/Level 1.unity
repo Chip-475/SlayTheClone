@@ -203,6 +203,7 @@ MonoBehaviour:
   hand: {fileID: 129036013}
   executor: {fileID: 129036016}
   player: {fileID: 0}
+  deathScreen: {fileID: 1113493640}
   entitiesAreActing: 0
   selectedCard: {fileID: 0}
   selectedEnemy: {fileID: 0}
@@ -1419,13 +1420,14 @@ GameObject:
   - component: {fileID: 1113493641}
   - component: {fileID: 1113493643}
   - component: {fileID: 1113493642}
+  - component: {fileID: 1113493644}
   m_Layer: 0
   m_Name: Death Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1113493641
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1487,6 +1489,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113493640}
   m_CullTransparentMesh: 1
+--- !u!225 &1113493644
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113493640}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1129498376
 GameObject:
   m_ObjectHideFlags: 0

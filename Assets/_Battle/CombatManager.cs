@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class CombatManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class CombatManager : MonoBehaviour
     public static event Action OnPlayerDeath;
     //public static event Action OnCardPlayed;
 
-    [Header("Essentials")]
+    [Header("References")]
     public Battle battle;
     public Deck deck;
     public Hand hand;
@@ -42,20 +43,8 @@ public class CombatManager : MonoBehaviour
     }
     private void Start()
     {
-        InitBattle();
-    }
-    private void LateUpdate()
-    {
-        if (actingEntities.Count > 0 && !entitiesAreActing)
-        {
-            StartCoroutine(PerformActions(actingEntities));
-        }
-    }
-    #endregion
+        deathScreen.SetActive(false);
 
-    #region Methods
-    void InitBattle()
-    {
         battle.SpawnEnemies();
         entitiesOnField = new List<IBattleEntity>(battle.GetEnemies());
 
@@ -64,7 +53,27 @@ public class CombatManager : MonoBehaviour
 
         hand.Organize();
     }
+    private void LateUpdate()
+    {
+        if (actingEntities.Count > 0 && !entitiesAreActing)
+        {
+            StartCoroutine(PerformActions(actingEntities));
+        }
+    }
 
+    private void OnEnable()
+    {
+        OnPlayerDeath += SlowTime;
+        OnPlayerDeath += OpenDeathPanel;
+    }
+    private void OnDisable()
+    {
+        OnPlayerDeath -= SlowTime;
+        OnPlayerDeath -= OpenDeathPanel;
+    }
+    #endregion
+
+    #region Methods
     public IEnumerator PerformActions(List<IBattleEntity> entities)
     {
         entitiesAreActing = true;
@@ -100,6 +109,40 @@ public class CombatManager : MonoBehaviour
         {
             entity.StartActionBar();
         }
+    }
+
+    void SlowTime()
+    {
+        DOVirtual.Float
+        (
+            1,
+            0,
+            2f,
+            value =>
+            {
+                Time.timeScale = value; ;
+            }
+        );
+    }
+
+    void OpenDeathPanel()
+    {
+        deathScreen.SetActive(true);
+        var panelGroup = deathScreen.GetComponent<CanvasGroup>();
+        
+        panelGroup.alpha = 0f;
+        panelGroup.interactable = false;
+
+        panelGroup.DOFade(1f, 0.5f)
+            .SetEase(Ease.InQuad)
+            .OnComplete(() => panelGroup.interactable = true);
+    }
+    #endregion
+
+    #region Events
+    public static void PlayerDeath()
+    {
+        OnPlayerDeath?.Invoke();
     }
     #endregion
 }

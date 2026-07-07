@@ -5,8 +5,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class Node : MonoBehaviour,IPointerClickHandler,IPointerDownHandler,IPointerEnterHandler, IPointerExitHandler
+public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    #region Declarations
+    DatabaseSO Database => DB.instance.database;
+
     public enum NodeType
     {
         Null,
@@ -20,47 +23,60 @@ public class Node : MonoBehaviour,IPointerClickHandler,IPointerDownHandler,IPoin
         Shortcut //max 2
     }
     public NodeType type = NodeType.Null;
-    public SceneManager sceneManager;
+    [Space]
+    [Header("References")]
+    public SpriteRenderer spriteRenderer;
+    [Header("Meta")]
     public int layerId;
     public int nodeId;
     public int row;
-    public List<int> toConnect = new();
+    public List<int> nodesToConnect = new();
     public int normalizedRow; //row - (numberOfNodes - 1) / 2
     public bool isConnected;
-    private bool isHoveredOn = false;
+    bool isHoveredOn = false;
+    #endregion
+
+    #region Unity Methods
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     void Start()
     {
         switch (type)
         {
             case NodeType.Null:
-                gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+                spriteRenderer.color = Color.black;
                 break;
             case NodeType.Entry:
-                gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                spriteRenderer.color = Color.white;
                 break;
             case NodeType.Boss:
-                gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+                spriteRenderer.color = Color.black;
                 break;
             case NodeType.Battle:
-                gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                spriteRenderer.color = Color.red;
                 break;
             case NodeType.EliteBattle:
-                gameObject.GetComponent<SpriteRenderer>().color = Color.violet;
+                spriteRenderer.color = Color.violet;
                 break;
             case NodeType.Shop:
-                gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                spriteRenderer.color = Color.green;
                 break;
             case NodeType.Rest:
-                gameObject.GetComponent<SpriteRenderer>().color = Color.orange;
+                spriteRenderer.color = Color.orange;
                 break;
             case NodeType.Event:
-                gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                spriteRenderer.color = Color.yellow;
                 break;
             case NodeType.Shortcut:
-                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+                spriteRenderer.color = Color.blue;
                 break;
         }
     }
+    #endregion
+
+    #region Handlers
     public void OnPointerClick(PointerEventData eventData)
     {
         switch (type)
@@ -100,8 +116,5 @@ public class Node : MonoBehaviour,IPointerClickHandler,IPointerDownHandler,IPoin
         gameObject.transform.DOScale(1f, 0.15f);
         isHoveredOn = false;
     }
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (!isHoveredOn) return;
-    }
+    #endregion
 }

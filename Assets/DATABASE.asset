@@ -16,8 +16,11 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: e5363377cced9d74bbadef182c77b38b, type: 2}
   nStartingCards: 2
   nCardsAtTurnStart: 1
-  skillPrefabs:
-  - {fileID: 8175300277983309982, guid: 0005811372b625d448220ea30a73263b, type: 3}
-  - {fileID: 3124563647631873765, guid: 2885cba2bbd2c744cb9dd1ae6956e474, type: 3}
-  enemyPrefabs:
-  - {fileID: 4654366484208664380, guid: b1c7d18ca3ea2b740a7556e2282e4035, type: 3}
+  minNodesPerLayer: 2
+  maxNodesPerLayer: 5
+  bossLayer: 5
+  nodeOffsetX: 0.5
+  nodeOffsetY: 0.5
+  allSkillPrefabs: []
+  allEnemyPrefabs: []
+  unlockedRecipes: []

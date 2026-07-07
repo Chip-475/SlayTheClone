@@ -17,6 +17,7 @@ public class Player : MonoBehaviour, IBattleEntity
 
     public int stamina;
     [SerializeField] private TMP_Text _staminaText;
+    public static bool isDead = false;
     public static bool selecting;
     public bool isActing;
     #endregion
@@ -37,6 +38,16 @@ public class Player : MonoBehaviour, IBattleEntity
         {
             CombatManager.instance.actingEntities.Add(this);
         }
+    }
+
+    void SetDeathState() => isDead = true;
+    private void OnEnable()
+    {
+        CombatManager.OnPlayerDeath += SetDeathState;
+    }
+    private void OnDisable()
+    {
+        CombatManager.OnPlayerDeath -= SetDeathState;
     }
     #endregion
 
@@ -95,6 +106,7 @@ public class Player : MonoBehaviour, IBattleEntity
     {
         stats.hp -= amount;
         PlayerHealthChanged();
+        if(stats.hp <= 0) CombatManager.PlayerDeath();
     }
     #endregion Interface
 
