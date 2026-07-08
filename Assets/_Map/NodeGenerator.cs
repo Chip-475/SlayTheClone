@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 
 #pragma warning disable
-public class newMapGenerator : MonoBehaviour
+public class NodeGenerator : MonoBehaviour
 {
     #region Declarations
     public DatabaseSO Database => DB.instance.database;
@@ -19,24 +19,13 @@ public class newMapGenerator : MonoBehaviour
     public Dictionary<int, List<Node>> layers = new();
     #endregion
 
-    #region Unity Methods
-    private void Start()
-    {
-        InitLayerKeys();
-        SpawnNodes();
-        PositionNodes();
-
-        print(layers.Count);
-    }
-    #endregion
-
     #region Methods
     public void InitLayerKeys()
     {
         layers.Add(0, null);
         layers.Add(Database.bossLayer, null);
 
-        for (int i = 1; i < Database.bossLayer - 1; i++)
+        for (int i = 1; i < Database.bossLayer; i++)
         {
             layers.Add(i, null);
         }
@@ -48,11 +37,11 @@ public class newMapGenerator : MonoBehaviour
 
         for (int i = 1; i < layers.Count - 1; i++)
         {
+            layers[i] = new();
+
             int numberOfNodes = Random.Range(Database.minNodesPerLayer, Database.maxNodesPerLayer + 1);
             for (int j = 0; j < numberOfNodes; j++)
             {
-                layers[i] = new();
-
                 layers[i].Add
                 (
                     Instantiate
@@ -67,9 +56,9 @@ public class newMapGenerator : MonoBehaviour
     }
     public void PositionNodes()
     {
-        foreach(var layer in layers)
+        foreach (var layer in layers)
         {
-            for (int i = 0; i < layers.Values.Count; i++)
+            for (int i = 0; i < layer.Value.Count; i++)
             {
                 // Positions nodes one under the other.
                 layer.Value[i].transform.position = new Vector3
@@ -84,9 +73,9 @@ public class newMapGenerator : MonoBehaviour
             var columnHeight = Vector2.Distance
                 (
                     layer.Value[0].transform.position,
-                    layer.Value[layers.Values.Count].transform.position
+                    layer.Value[layer.Value.Count - 1].transform.position
                  );
-            for (int i = 0; i < layers.Values.Count; i++)
+            for (int i = 0; i < layer.Value.Count; i++)
             {
                 layer.Value[i].transform.position = new Vector3
                     (
@@ -96,7 +85,7 @@ public class newMapGenerator : MonoBehaviour
                     );
             }
 
-            for (int i = 0; i < layers.Values.Count; i++)
+            for (int i = 0; i < layer.Value.Count; i++)
             {
                 // Adds offset
                 float xOffset = Random.Range(-Database.nodeOffsetX, Database.nodeOffsetX);

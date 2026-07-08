@@ -17,10 +17,11 @@ MonoBehaviour:
   nStartingCards: 2
   nCardsAtTurnStart: 1
   minNodesPerLayer: 2
-  maxNodesPerLayer: 5
-  bossLayer: 5
-  nodeOffsetX: 0.5
-  nodeOffsetY: 0.5
+  maxNodesPerLayer: 4
+  bossLayer: 8
+  maxEliteBattles: 6
+  nodeOffsetX: 0.7
+  nodeOffsetY: 0.7
   allSkillPrefabs: []
   allEnemyPrefabs: []
   unlockedRecipes: []

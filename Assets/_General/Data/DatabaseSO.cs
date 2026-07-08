@@ -15,6 +15,7 @@ public class DatabaseSO : ScriptableObject
     public int minNodesPerLayer;
     public int maxNodesPerLayer;
     public int bossLayer;
+    public int maxEliteBattles;
     [Space]
     public float nodeOffsetX;
     public float nodeOffsetY;

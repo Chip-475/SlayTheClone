@@ -41,7 +41,7 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    void Start()
+    private void Update()
     {
         switch (type)
         {
