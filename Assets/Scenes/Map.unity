@@ -182,9 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa8260fe5c88b04a8e526117efb7793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::newMapGenerator
-  startingNode: {fileID: 1040362261}
-  bossNode: {fileID: 742362108}
-  nodePrefab: {fileID: -3497525624960012089, guid: 6eb29934b8276264c94fdc4facc6a49d, type: 3}
   distanceBetweenLayers: 5
   distanceBetweenNodes: 3
 --- !u!4 &164570509
@@ -234,6 +231,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapManager
   nodeGenerator: {fileID: 0}
   nodeAssigner: {fileID: 0}
+  startingNode: {fileID: 1040362261}
+  bossNode: {fileID: 742362108}
+  nodePrefab: {fileID: -3497525624960012089, guid: 6eb29934b8276264c94fdc4facc6a49d, type: 3}
 --- !u!1 &302290292
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +653,7 @@ MonoBehaviour:
   nodesToConnect: 
   normalizedRow: 0
   isConnected: 0
+  isAssigned: 0
 --- !u!212 &742362109
 SpriteRenderer:
   serializedVersion: 2
@@ -859,6 +860,7 @@ MonoBehaviour:
   nodesToConnect: 
   normalizedRow: 0
   isConnected: 0
+  isAssigned: 0
 --- !u!1 &1102008655
 GameObject:
   m_ObjectHideFlags: 0

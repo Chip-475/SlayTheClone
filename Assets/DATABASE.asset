@@ -18,8 +18,12 @@ MonoBehaviour:
   nCardsAtTurnStart: 1
   minNodesPerLayer: 2
   maxNodesPerLayer: 4
-  bossLayer: 8
-  maxEliteBattles: 6
+  bossLayer: 10
+  maxEliteBattles: 5
+  maxEvents: 4
+  maxShops: 2
+  maxRests: 2
+  maxShortcuts: 1
   nodeOffsetX: 0.7
   nodeOffsetY: 0.7
   allSkillPrefabs: []

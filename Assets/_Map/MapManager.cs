@@ -13,7 +13,10 @@ public class MapManager : MonoBehaviour
     public NodeGenerator nodeGenerator;
     public NodeAssigner nodeAssigner;
 
-    public Dictionary<int, List<Node>> layers;
+    public Node startingNode;
+    public Node bossNode;
+    public Node nodePrefab;
+    public Dictionary<int, List<Node>> map;
     #endregion
 
     #region Unity Methods
@@ -29,9 +32,9 @@ public class MapManager : MonoBehaviour
         nodeGenerator.InitLayerKeys();
         nodeGenerator.SpawnNodes();
         nodeGenerator.PositionNodes();
-        layers = nodeGenerator.layers;
+        map = nodeGenerator.layers;
 
-        nodeAssigner.AssignEliteBattles();
+        nodeAssigner.AssignSpecialNodes();
     }
     #endregion
 }

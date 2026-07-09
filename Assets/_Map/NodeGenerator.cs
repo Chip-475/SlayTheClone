@@ -9,9 +9,9 @@ public class NodeGenerator : MonoBehaviour
     #region Declarations
     public DatabaseSO Database => DB.instance.database;
 
-    public Node startingNode;
-    public Node bossNode;
-    public Node nodePrefab;
+    public Node startingNode => MapManager.instance.startingNode;
+    public Node bossNode => MapManager.instance.bossNode;
+    public Node nodePrefab => MapManager.instance.nodePrefab;
 
     public float distanceBetweenLayers;
     public float distanceBetweenNodes;

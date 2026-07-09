@@ -33,6 +33,7 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public List<int> nodesToConnect = new();
     public int normalizedRow; //row - (numberOfNodes - 1) / 2
     public bool isConnected;
+    public bool isAssigned = false;
     bool isHoveredOn = false;
     #endregion
 
@@ -115,6 +116,17 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         if (!isHoveredOn) return;
         gameObject.transform.DOScale(1f, 0.15f);
         isHoveredOn = false;
+    }
+    #endregion
+
+    #region Utilities
+    public static IEnumerable<NodeType> NodeTypes()
+    {
+        yield return NodeType.EliteBattle;
+        yield return NodeType.Event;
+        yield return NodeType.Shop;
+        yield return NodeType.Rest;   
+        yield return NodeType.Shortcut;
     }
     #endregion
 }
