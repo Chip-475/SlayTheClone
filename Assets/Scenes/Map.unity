@@ -148,7 +148,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 631844417}
+  - {fileID: 164570509}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &164570507
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 164570508}
   - component: {fileID: 164570510}
   m_Layer: 0
-  m_Name: test
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,8 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa8260fe5c88b04a8e526117efb7793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::newMapGenerator
-  distanceBetweenLayers: 5
-  distanceBetweenNodes: 3
+  distanceBetweenLayers: 2.5
+  distanceBetweenNodes: 1.5
 --- !u!4 &164570509
 Transform:
   m_ObjectHideFlags: 0
@@ -192,12 +192,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164570507}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 140660719}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &164570510
 MonoBehaviour:
@@ -541,65 +541,6 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!1 &631844416
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 631844417}
-  - component: {fileID: 631844418}
-  m_Layer: 0
-  m_Name: Map
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &631844417
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631844416}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 140660719}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &631844418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631844416}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d45dd5a1764ff8b4c83c683cb90bf01a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MapManager
-  nodePrefab: {fileID: 4661219911854169726, guid: 6eb29934b8276264c94fdc4facc6a49d, type: 3}
-  map: {fileID: 1102008656}
-  X_Offset: 10
-  Y_Offset: 5
-  topLeft: {fileID: 1815017322}
-  bottomRight: {fileID: 424374042}
-  entryNode: {fileID: 1040362261}
-  nodes: []
-  ln: {fileID: 0}
-  seed: 0
-  numberOfLayers: 0
-  numberOfPages: 0
-  numberOfNodes: 0
-  tries: 0
-  attempts: 0
 --- !u!1 &742362106
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,7 +568,7 @@ Transform:
   m_GameObject: {fileID: 742362106}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 35, y: 0, z: 0}
+  m_LocalPosition: {x: 45, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -964,6 +905,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1309587174}
   - component: {fileID: 1309587175}
+  - component: {fileID: 1309587176}
   m_Layer: 0
   m_Name: DDoL
   m_TagString: Untagged
@@ -999,6 +941,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DB
   database: {fileID: 11400000, guid: 22b7a869274bef4448023ff6472e5ec4, type: 2}
+--- !u!114 &1309587176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309587173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42f4b7cae216224a976a0d0c95e8fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Seeder
 --- !u!1 &1524018018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,4 +1241,3 @@ SceneRoots:
   - {fileID: 1001493397}
   - {fileID: 302290293}
   - {fileID: 506648747}
-  - {fileID: 164570509}

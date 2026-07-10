@@ -11,6 +11,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
 {
     #region Declarations
     [SerializeField] protected EnemyStatsSO baseStats;
+    public EnemyStatsSO stats;
 
     DatabaseSO Database => CombatManager.instance.Database;
 
@@ -83,15 +84,6 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         public BattlePlan currentBattlePlan;
     }
     [System.Serializable]
-    public struct LocalStats
-    {
-        public int hp;
-        public int maxHp;
-        public int atk;
-        public int actionPointsSpeed;
-        public int[] res;//0 blunt 1 fire 2 ice 3 magic 4 pierce 5 slash
-    }
-    [System.Serializable]
     public struct Drop
     {
         public ItemSO item;
@@ -101,7 +93,6 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     }
     #endregion Non Variables
 
-    public LocalStats stats = new();
     public Awareness awareness = new();
     public List<Drop> itemPool = new();
     public float actionPoints;
@@ -120,13 +111,14 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     #endregion Declarations
 
     #region Unity Methods
+    public virtual void Awake()
+    {
+        stats = Instantiate(baseStats);
+    }
     protected virtual void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         bars = GetComponent<EnemyBars>();
-        baseColor = spriteRenderer.color;
-
-        SetInitialState();
     }
     protected virtual void FixedUpdate()
     {
@@ -145,7 +137,12 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     #endregion
 
     #region Methods
-    public abstract void SetInitialState();
+    public void SetInitialState()
+    {
+        // Preps for combat
+        actionPoints = 0f;
+        canGainActionPoints = true;
+    }
     public void DropItems()
     {
         List<Drop> droppedItems = new();
@@ -202,7 +199,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
         {
             DropItems();
             Destroy(gameObject);
-        };
+        }
     }
     #endregion Interface
 

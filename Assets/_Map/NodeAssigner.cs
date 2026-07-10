@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 
 public class NodeAssigner : MonoBehaviour
 {
@@ -12,6 +14,15 @@ public class NodeAssigner : MonoBehaviour
     public int nShops;
     public int nRests;
     public int nShortcuts;
+
+    public IEnumerable<int> Values()
+    {
+        yield return nEliteBattles;
+        yield return nEvents;
+        yield return nShops;
+        yield return nRests;
+        yield return nShortcuts;
+    }
     #endregion
 
     #region Unity Methods
@@ -28,195 +39,56 @@ public class NodeAssigner : MonoBehaviour
     #region Methods
     public void AssignSpecialNodes()
     {
+        // im not typing the entire explanation here
+        // ask if you need
+
         var map = MapManager.instance.map;
 
-        var nodeTypes = Node.NodeTypes();
-        var nodeMaxAmounts = Database.MaxNodeAmounts();
+        var nodeTypes = Node.NodeTypes().ToList();
+        var nodeCurrentAmounts = Values().ToList();
+        var nodeMaxAmounts = Database.MaxNodeAmounts().ToList();
 
-        foreach (var typeAmountPair in nodeTypes.Zip(nodeMaxAmounts, (type, maxAmount) => new { type, maxAmount }))
+        int cycles = nodeTypes.Count;
+        for(int i = 0; i < cycles; i++)
         {
-            int chanceToSpawn = 50;
+            int chanceToSpawn = 80;
 
-            for (int i = 0; i < typeAmountPair.maxAmount; i++)
+            for (int j = 0; j < nodeTypes.Count; j++)
             {
                 bool generate = Random.Range(0, 100) < chanceToSpawn;
 
-                while (generate)
+                while (generate && nodeCurrentAmounts[j] < nodeMaxAmounts[j])
                 {
-
                     int layerIndex = Random.Range(1, map.Keys.Count);
                     int nodeIndex = Random.Range(0, map[layerIndex].Count);
 
                     var node = map[layerIndex][nodeIndex];
                     if (node.isAssigned == false)
                     {
-                        node.type = typeAmountPair.type;
+                        node.type = nodeTypes[j];
                         node.isAssigned = true;
 
+                        nodeCurrentAmounts[j]++;
                         generate = false;
                     }
                 }
             }
         }
     }
-
-    public void AssignEliteBattles()
+    public void AssignBattles()
     {
-        // Max 1 per layer
-
         var map = MapManager.instance.map;
 
-        int chanceToSpawn = 50;
-        
-        for(int i = 0; i < Database.maxEliteBattles; i++)
+        foreach (var layer in map.Values)
         {
-            bool generate = Random.Range(0, 100) < chanceToSpawn;
-
-            while (true)
+            foreach (var node in layer)
             {
-                if (generate)
+                if(node.isAssigned == false)
                 {
-                    int layerIndex = Random.Range(1, map.Keys.Count);
-                    int nodeIndex = Random.Range(0, map[layerIndex].Count);
-
-                    var node = map[layerIndex][nodeIndex];
-                    if (node.isAssigned == false)
-                    {
-                        node.type = Node.NodeType.EliteBattle;
-                        node.isAssigned = true;
-                        nEliteBattles++;
-                        break;
-                    }
-                    else continue;
+                    node.type = Node.NodeType.Battle;
+                    nBattles++;
                 }
-            }
-        }
-    }
-    public void AssignEvents()
-    {
-        // Max 1 per layer
-
-        var map = MapManager.instance.map;
-
-        int chanceToSpawn = 60;
-
-        for (int i = 0; i < Database.maxEvents; i++)
-        {
-            bool generate = Random.Range(0, 100) < chanceToSpawn;
-
-            while (true)
-            {
-                if (generate)
-                {
-                    int layerIndex = Random.Range(1, map.Keys.Count);
-                    int nodeIndex = Random.Range(0, map[layerIndex].Count);
-
-                    var node = map[layerIndex][nodeIndex];
-                    if (node.isAssigned == false)
-                    {
-                        node.type = Node.NodeType.Event;
-                        node.isAssigned = true;
-                        nEvents++;
-                        break;
-                    }
-                    else continue;
-                }
-            }
-        }
-    }
-    public void AssignShops()
-    {
-        // Max 1 per layer
-
-        var map = MapManager.instance.map;
-
-        int chanceToSpawn = 60;
-
-        for (int i = 0; i < Database.maxShops; i++)
-        {
-            bool generate = Random.Range(0, 100) < chanceToSpawn;
-
-            while (true)
-            {
-                if (generate)
-                {
-                    int layerIndex = Random.Range(1, map.Keys.Count);
-                    int nodeIndex = Random.Range(0, map[layerIndex].Count);
-
-                    var node = map[layerIndex][nodeIndex];
-                    if (node.isAssigned == false)
-                    {
-                        node.type = Node.NodeType.Shop;
-                        node.isAssigned = true;
-                        nShops++;
-                        break;
-                    }
-                    else continue;
-                }
-            }
-        }
-    }
-    public void AssignRests()
-    {
-        // Max 1 per layer
-
-        var map = MapManager.instance.map;
-
-        int chanceToSpawn = 60;
-
-        for (int i = 0; i < Database.maxRests; i++)
-        {
-            bool generate = Random.Range(0, 100) < chanceToSpawn;
-
-            while (true)
-            {
-                if (generate)
-                {
-                    int layerIndex = Random.Range(1, map.Keys.Count);
-                    int nodeIndex = Random.Range(0, map[layerIndex].Count);
-
-                    var node = map[layerIndex][nodeIndex];
-                    if (node.isAssigned == false)
-                    {
-                        node.type = Node.NodeType.Rest;
-                        node.isAssigned = true;
-                        nRests++;
-                        break;
-                    }
-                    else continue;
-                }
-            }
-        }
-    }
-    public void AssignShortcuts()
-    {
-        // Max 1 per layer
-
-        var map = MapManager.instance.map;
-
-        int chanceToSpawn = 60;
-
-        for (int i = 0; i < Database.maxShortcuts; i++)
-        {
-            bool generate = Random.Range(0, 100) < chanceToSpawn;
-
-            while (true)
-            {
-                if (generate)
-                {
-                    int layerIndex = Random.Range(1, map.Keys.Count);
-                    int nodeIndex = Random.Range(0, map[layerIndex].Count);
-
-                    var node = map[layerIndex][nodeIndex];
-                    if (node.isAssigned == false)
-                    {
-                        node.type = Node.NodeType.Shortcut;
-                        node.isAssigned = true;
-                        nShortcuts++;
-                        break;
-                    }
-                    else continue;
-                }
+                node.LoadType();
             }
         }
     }

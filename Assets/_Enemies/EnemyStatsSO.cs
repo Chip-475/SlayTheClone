@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-// Stores stat data for every enemy
+// Stores stat data for each enemy
 [CreateAssetMenu(fileName = "Enemy Stats", menuName = "Scriptable Objects/Stats/Enemy Stats")]
 public class EnemyStatsSO : ScriptableObject
 {
@@ -31,5 +31,17 @@ public class EnemyStatsSO : ScriptableObject
     public int maxHp;
     public int atk;
     public int actionPointsSpeed;
+    public int acc;
     public Resistances resistances;
+
+    #region Utilities
+    public IEnumerable<int> Values()
+    {
+        yield return hp;
+        yield return maxHp;
+        yield return atk;
+        yield return actionPointsSpeed;
+        yield return acc;
+    }
+    #endregion
 }

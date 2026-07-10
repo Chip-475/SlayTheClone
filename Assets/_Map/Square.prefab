@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.08281, y: 0.82234, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -106,12 +106,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Node
   type: 0
+  spriteRenderer: {fileID: 0}
   layerId: 0
   nodeId: 0
   row: 0
-  toConnect: 
+  nodesToConnect: 
   normalizedRow: 0
   isConnected: 0
+  isAssigned: 0
 --- !u!61 &1256550843993429463
 BoxCollider2D:
   m_ObjectHideFlags: 0

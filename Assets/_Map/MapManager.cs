@@ -35,6 +35,7 @@ public class MapManager : MonoBehaviour
         map = nodeGenerator.layers;
 
         nodeAssigner.AssignSpecialNodes();
+        nodeAssigner.AssignBattles();
     }
     #endregion
 }

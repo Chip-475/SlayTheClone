@@ -24,8 +24,8 @@ MonoBehaviour:
   maxShops: 2
   maxRests: 2
   maxShortcuts: 1
-  nodeOffsetX: 0.7
-  nodeOffsetY: 0.7
+  nodeOffsetX: 0.4
+  nodeOffsetY: 0.4
   allSkillPrefabs: []
   allEnemyPrefabs: []
   unlockedRecipes: []

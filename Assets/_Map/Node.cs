@@ -42,7 +42,10 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    private void Update()
+    #endregion
+
+    #region Methods
+    public void LoadType()
     {
         switch (type)
         {
@@ -75,9 +78,7 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
                 break;
         }
     }
-    #endregion
 
-    #region Handlers
     public void OnPointerClick(PointerEventData eventData)
     {
         switch (type)
@@ -108,13 +109,13 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isHoveredOn) return;
-        gameObject.transform.DOScale(1.2f, 0.15f);
+        gameObject.transform.DOScale(0.8f, 0.15f);
         isHoveredOn = true;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         if (!isHoveredOn) return;
-        gameObject.transform.DOScale(1f, 0.15f);
+        gameObject.transform.DOScale(0.5f, 0.15f);
         isHoveredOn = false;
     }
     #endregion
