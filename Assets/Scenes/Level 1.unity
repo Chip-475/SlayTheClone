@@ -1849,6 +1849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1208441554}
   - component: {fileID: 1208441555}
+  - component: {fileID: 1208441556}
   m_Layer: 0
   m_Name: DDoL
   m_TagString: Untagged
@@ -1884,6 +1885,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DB
   database: {fileID: 11400000, guid: 22b7a869274bef4448023ff6472e5ec4, type: 2}
+--- !u!114 &1208441556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208441553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: accb5abcc68f7b14b9cd4802f9828ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveAndLoad
 --- !u!1 &1271561426
 GameObject:
   m_ObjectHideFlags: 0

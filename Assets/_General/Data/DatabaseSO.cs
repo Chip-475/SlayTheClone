@@ -12,6 +12,7 @@ public class DatabaseSO : ScriptableObject
     public int nStartingCards;
     public int nCardsAtTurnStart;
     [Space]
+
     [Header("Map Generation Settings")]
     public int minNodesPerLayer;
     public int maxNodesPerLayer;
@@ -25,10 +26,13 @@ public class DatabaseSO : ScriptableObject
     public float nodeOffsetX;
     public float nodeOffsetY;
     [Space]
+
     [Header("Misc")]
     public List<SkillCard> allSkillPrefabs = new();
     public List<Enemy> allEnemyPrefabs = new();
     public List<RecipeSO> unlockedRecipes;
+
+    public Settings settings;
 
     #region Utilities
     public IEnumerable<int> MaxNodeAmounts()
@@ -38,6 +42,16 @@ public class DatabaseSO : ScriptableObject
         yield return maxShops;
         yield return maxRests;
         yield return maxShortcuts;
+    }
+    #endregion
+
+    #region Utilities
+    [System.Serializable]
+    public class Settings
+    {
+        public float masterVolume;
+        public float sfxVolume;
+        public float bgmVolume;
     }
     #endregion
 }

@@ -29,3 +29,7 @@ MonoBehaviour:
   allSkillPrefabs: []
   allEnemyPrefabs: []
   unlockedRecipes: []
+  settings:
+    masterVolume: 5
+    sfxVolume: 3
+    bgmVolume: 6
