@@ -1,7 +1,9 @@
 using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
+using System.Collections.Generic;
 
+[DefaultExecutionOrder(-1000)]
 public class SaveAndLoad : MonoBehaviour
 {
     #region Declarations
@@ -10,11 +12,14 @@ public class SaveAndLoad : MonoBehaviour
     public static SaveAndLoad instance;
 
     string settingsPath;
+    string itemsPath;
     #endregion
 
     #region Unity Methods
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+
         if (instance == null)
         {
             instance = this;
@@ -27,11 +32,20 @@ public class SaveAndLoad : MonoBehaviour
     private void Start()
     {
         settingsPath = Path.Combine(Application.persistentDataPath, "settings.json");
+        itemsPath = Path.Combine(Application.persistentDataPath, "items.json");
+
+        LoadSettings();
+        LoadItems();
+    }
+    private void OnApplicationQuit()
+    {
+        SaveSettings();
+        SaveItems();
     }
     #endregion
 
     #region Settings
-    [ContextMenu("Save")]
+    [ContextMenu("Save Settings")]
     public void SaveSettings()
     {
         DatabaseSO.Settings data = Database.settings;
@@ -39,7 +53,7 @@ public class SaveAndLoad : MonoBehaviour
         string json = JsonConvert.SerializeObject(data, Formatting.Indented);
         File.WriteAllText(settingsPath, json);
     }
-    [ContextMenu("Load")]
+    [ContextMenu("Load Settings")]
     public void LoadSettings()
     {
         if(File.Exists(settingsPath))
@@ -50,6 +64,45 @@ public class SaveAndLoad : MonoBehaviour
         else
         {
             Debug.Log("No settings save file found.");
+        }
+    }
+    #endregion
+
+    #region Inventory
+    [ContextMenu("Save Items")]
+    public void SaveItems()
+    {
+        List<ItemDatabase.ItemSaveData> itemData = new();
+        foreach (var item in ItemDatabase.instance.itemTable.Values)
+        {
+            itemData.Add
+            (
+                new ItemDatabase.ItemSaveData
+                {
+                    id = item.id,
+                    amount = item.amount
+                }
+            );
+        }
+
+        string json = JsonConvert.SerializeObject(itemData, Formatting.Indented);
+        File.WriteAllText(itemsPath, json);
+    }
+    [ContextMenu("Load Items")]
+    public void LoadItems()
+    {
+        if (File.Exists(itemsPath))
+        {
+            string json = File.ReadAllText(itemsPath);
+            List<ItemDatabase.ItemSaveData> itemData = JsonConvert.DeserializeObject<List<ItemDatabase.ItemSaveData>>(json);
+            foreach (var item in itemData)
+            {
+                ItemDatabase.GetItem(item.id).amount = item.amount;
+            }
+        }
+        else
+        {
+            Debug.Log("No inventory save file found.");
         }
     }
     #endregion

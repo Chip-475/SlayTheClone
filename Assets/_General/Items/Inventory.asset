@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e091fa2b41622834e9cba634dc01d146, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  ownedCards: []
-  drops:
+  money: 0
+  cards: []
+  items:
   - {fileID: 11400000, guid: e027d7960921dc6439b8bf899c851b91, type: 2}
+  - {fileID: 11400000, guid: b66fe8ebf2c93304c8ef0706d6dae56c, type: 2}
+  - {fileID: 11400000, guid: 87885ba751f47c240bd7ce604a980a22, type: 2}
+  - {fileID: 11400000, guid: 6935367f6fd45f747aab9901e125ab39, type: 2}

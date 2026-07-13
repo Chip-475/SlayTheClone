@@ -7,7 +7,8 @@ public class DatabaseSO : ScriptableObject
     // ONLY CREATE A SINGLE INSTANCE
 
     public PlayerStatsSO playerStats;
-    public Inventory inventory;
+    public InventorySO inventory;
+    public Settings settings;
     [Space]
     public int nStartingCards;
     public int nCardsAtTurnStart;
@@ -31,8 +32,6 @@ public class DatabaseSO : ScriptableObject
     public List<SkillCard> allSkillPrefabs = new();
     public List<Enemy> allEnemyPrefabs = new();
     public List<RecipeSO> unlockedRecipes;
-
-    public Settings settings;
 
     #region Utilities
     public IEnumerable<int> MaxNodeAmounts()

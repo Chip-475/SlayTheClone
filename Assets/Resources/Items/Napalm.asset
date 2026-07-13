@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96391d7a233bd44cadcabb2aee6820e, type: 3}
   m_Name: Napalm
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  id: 0
-  icon: {fileID: 0}
+  id: napalm
+  sprite: {fileID: 0}
   itemName: Napalm
   desc: 'Highly flammable substance fashioned from slime residues.
 
@@ -21,4 +21,4 @@ MonoBehaviour:
     to enhance fire type damage on an enemy.'
   canSell: 1
   sellPrice: 10
-  amount: 0
+  amount: 21

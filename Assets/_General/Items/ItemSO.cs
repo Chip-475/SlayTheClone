@@ -5,7 +5,7 @@ public class ItemSO : ScriptableObject
 {
     public Sprite Icon => sprite;
 
-    public int id;
+    public string id;
     [Space]
     public Sprite sprite;
     public string itemName;

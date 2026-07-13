@@ -8,7 +8,9 @@ public class DB : MonoBehaviour
 
     void Awake()
     {
-        if(instance == null)
+        DontDestroyOnLoad(gameObject);
+
+        if (instance == null)
         {
             instance = this;
         }
@@ -16,7 +18,5 @@ public class DB : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 }

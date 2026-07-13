@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96391d7a233bd44cadcabb2aee6820e, type: 3}
   m_Name: Bones
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  id: 0
-  icon: {fileID: 0}
+  id: bones
+  sprite: {fileID: 0}
   itemName: Bones
   desc: A pile of human bones. Not like the former owners are going to need them
     anymore.
   canSell: 1
   sellPrice: 2
-  amount: 0
+  amount: 12

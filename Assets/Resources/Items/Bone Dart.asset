@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f96391d7a233bd44cadcabb2aee6820e, type: 3}
-  m_Name: Slime Goop
-  m_EditorClassIdentifier: Assembly-CSharp::MobDrop
-  id: 1
-  sprite: {fileID: 1208040086343421634, guid: d0b50044cee2ac74fbe3b50040731d19, type: 3}
-  itemName: Slime Goop
-  desc: Residue of the gooey substance slimes are made of. Highly flammable.
-  canSell: 1
-  sellPrice: 2
-  amount: 0
+  m_Name: Bone Dart
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSO
+  id: bone_dart
+  sprite: {fileID: 0}
+  itemName: Bone Dart
+  desc: 'A simple dart made of pieces of bone. Very sharp and pointy.
+
+    Can be
+    used as a makeshift knife.'
+  canSell: 0
+  sellPrice: 4
+  amount: 26

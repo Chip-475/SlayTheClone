@@ -8,6 +8,8 @@ public class Seeder : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+
         if (instance == null)
         {
             instance = this;
@@ -16,8 +18,6 @@ public class Seeder : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        DontDestroyOnLoad(gameObject);
 
         seed = Random.Range(0, int.MaxValue);
 
