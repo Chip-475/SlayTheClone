@@ -41,17 +41,19 @@ public abstract class SkillSO : ScriptableObject
     }
 
 
-    public Animation anim;
+    public string id;
+    public int amount;
     [Space]
     [Header("Characteristics")]
     public int cost;
     public int numberOfTargets;
     [Space]
+    public Animation anim;
     public AttackRange range;
     public TargetingMode targetingMode;
     public DamageTable damageTable;
     [Space]
-    [Header("Statistics")]
+    [Header("Stats")]
     public int atkMin;
     public int atkMax;
     [Space]

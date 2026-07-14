@@ -15,3 +15,11 @@ MonoBehaviour:
   hp: 19
   maxHp: 25
   actionPointsSpeed: 75
+  timesDied: 42
+  enemiesKilled: 0
+  distanceTravelled: 42
+  moneyEarned: 0
+  cardsPlayed: 28
+  totDamageDealt: 0
+  highestDamageDealt: 35
+  killer: 
