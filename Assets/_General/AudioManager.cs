@@ -4,7 +4,7 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     #region Declarations
-    DatabaseSO Database => DB.instance.database;
+    MainDatabase Database => MainDatabase.instance;
 
     public static AudioManager instance;
 

@@ -6,11 +6,11 @@ using UnityEngine;
 public class Player : MonoBehaviour, IBattleEntity
 {
     #region Declarations
-    DatabaseSO Database => DB.instance.database;
+    MainDatabase Database => MainDatabase.instance;
 
     public static event Action OnPlayerHealthChanged;
 
-    public PlayerStatsSO stats;
+    public MainDatabase.PlayerStats Stats => Database.playerStats;
     public int id;
     public bool canGainActionPoints;
     public float actionPoints;
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour, IBattleEntity
     }
     private void FixedUpdate()
     {
-        if(canGainActionPoints) actionPoints += stats.actionPointsSpeed * UnityEngine.Time.deltaTime;
+        if(canGainActionPoints) actionPoints += Stats.actionPointsSpeed * UnityEngine.Time.deltaTime;
         if (actionPoints >= 100 && !CombatManager.instance.actingEntities.Contains(this))
         {
             CombatManager.instance.actingEntities.Add(this);
@@ -104,9 +104,9 @@ public class Player : MonoBehaviour, IBattleEntity
 
     public void TakeDamage(int amount)
     {
-        stats.hp -= amount;
+        Stats.hp -= amount;
         PlayerHealthChanged();
-        if(stats.hp <= 0) CombatManager.PlayerDeath();
+        if(Stats.hp <= 0) CombatManager.PlayerDeath();
     }
     #endregion Interface
 

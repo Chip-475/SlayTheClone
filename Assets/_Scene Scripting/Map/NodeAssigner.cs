@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class NodeAssigner : MonoBehaviour
 {
     #region Declarations
-    DatabaseSO Database => DB.instance.database;
+    MainDatabase Database => MainDatabase.instance;
 
     public int nBattles;
     public int nEliteBattles;

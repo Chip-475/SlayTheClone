@@ -13,7 +13,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerEnterHandler
     [SerializeField] protected EnemyStatsSO baseStats;
     public EnemyStatsSO stats;
 
-    DatabaseSO Database => CombatManager.instance.Database;
+    MainDatabase Database => CombatManager.instance.Database;
 
     #region Non Variables
     public enum Mood

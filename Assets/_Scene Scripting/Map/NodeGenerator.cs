@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 public class NodeGenerator : MonoBehaviour
 {
     #region Declarations
-    public DatabaseSO Database => DB.instance.database;
+    public MainDatabase Database => MainDatabase.instance;
 
     public Node startingNode => MapManager.instance.startingNode;
     public Node bossNode => MapManager.instance.bossNode;

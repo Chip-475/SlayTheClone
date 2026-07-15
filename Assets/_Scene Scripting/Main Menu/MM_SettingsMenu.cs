@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class MM_SettingsMenu : MonoBehaviour
 {
     #region Declarations
-    DatabaseSO Database => DB.instance.database;
+    MainDatabase Database => MainDatabase.instance;
 
     public Image settingsMenu;
     public bool menuOpen;

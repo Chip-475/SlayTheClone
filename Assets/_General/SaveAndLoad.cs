@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class SaveAndLoad : MonoBehaviour
 {
     #region Declarations
-    DatabaseSO Database => DB.instance.database;
+    MainDatabase Database => MainDatabase.instance;
 
     public static SaveAndLoad instance;
 
@@ -15,6 +15,7 @@ public class SaveAndLoad : MonoBehaviour
     string settingsPath;
     string itemsPath;
     string skillsPath;
+    string recipesPath;
     #endregion
 
     #region Unity Methods
@@ -37,11 +38,13 @@ public class SaveAndLoad : MonoBehaviour
         settingsPath = Path.Combine(Application.persistentDataPath, "settings.json");
         itemsPath = Path.Combine(Application.persistentDataPath, "items.json");
         skillsPath = Path.Combine(Application.persistentDataPath, "skills.json");
+        recipesPath = Path.Combine(Application.persistentDataPath, "recipes.json");
 
         LoadPlayerStats();
         LoadSettings();
         LoadItems();
         LoadSkills();
+        LoadRecipes();
     }
     private void OnApplicationQuit()
     {
@@ -49,6 +52,7 @@ public class SaveAndLoad : MonoBehaviour
         SaveSettings();
         SaveItems();
         SaveSkills();
+        SaveRecipes();
     }
     #endregion
 
@@ -56,7 +60,7 @@ public class SaveAndLoad : MonoBehaviour
     [ContextMenu("Save Player Stats")]
     public void SavePlayerStats()
     {
-        PlayerStatsSO data = Database.playerStats;
+        MainDatabase.PlayerStats data = Database.playerStats;
 
         string json = JsonConvert.SerializeObject(data, Formatting.Indented);
         File.WriteAllText(playerStatsPath, json);
@@ -67,7 +71,7 @@ public class SaveAndLoad : MonoBehaviour
         if (File.Exists(playerStatsPath))
         {
             string json = File.ReadAllText(playerStatsPath);
-            Database.playerStats = JsonConvert.DeserializeObject<PlayerStatsSO>(json);
+            Database.playerStats = JsonConvert.DeserializeObject<MainDatabase.PlayerStats>(json);
         }
         else
         {
@@ -80,7 +84,7 @@ public class SaveAndLoad : MonoBehaviour
     [ContextMenu("Save Settings")]
     public void SaveSettings()
     {
-        DatabaseSO.Settings data = Database.settings;
+        MainDatabase.Settings data = Database.settings;
 
         string json = JsonConvert.SerializeObject(data, Formatting.Indented);
         File.WriteAllText(settingsPath, json);
@@ -91,7 +95,7 @@ public class SaveAndLoad : MonoBehaviour
         if(File.Exists(settingsPath))
         {
             string json = File.ReadAllText(settingsPath);
-            Database.settings = JsonConvert.DeserializeObject<DatabaseSO.Settings>(json);
+            Database.settings = JsonConvert.DeserializeObject<MainDatabase.Settings>(json);
         }
         else
         {
@@ -144,7 +148,7 @@ public class SaveAndLoad : MonoBehaviour
     public void SaveSkills()
     {
         List<SkillDatabase.SkillSaveData> skillData = new();
-        foreach (var skill in ItemDatabase.instance.itemTable.Values)
+        foreach (var skill in SkillDatabase.instance.skillTable.Values)
         {
             skillData.Add
             (
@@ -174,6 +178,47 @@ public class SaveAndLoad : MonoBehaviour
         else
         {
             Debug.Log("No skill save file found.");
+        }
+    }
+    #endregion
+
+    #region Recipes
+    [ContextMenu("Save Recipes")]
+    public void SaveRecipes()
+    {
+        List<RecipeDatabase.RecipeSaveData> recipeData = new();
+        foreach (var recipe in RecipeDatabase.instance.recipeTable.Values)
+        {
+            recipeData.Add
+            (
+                new RecipeDatabase.RecipeSaveData
+                {
+                    id = recipe.id,
+                    amount = recipe.amount,
+                    isUnlocked = recipe.isUnlocked
+                }
+            );
+        }
+
+        string json = JsonConvert.SerializeObject(recipeData, Formatting.Indented);
+        File.WriteAllText(skillsPath, json);
+    }
+    [ContextMenu("Load Recipes")]
+    public void LoadRecipes()
+    {
+        if (File.Exists(recipesPath))
+        {
+            string json = File.ReadAllText(recipesPath);
+            List<RecipeDatabase.RecipeSaveData> recipeData = JsonConvert.DeserializeObject<List<RecipeDatabase.RecipeSaveData>>(json);
+            foreach (var recipe in recipeData)
+            {
+                RecipeDatabase.GetItem(recipe.id).amount = recipe.amount;
+                RecipeDatabase.GetItem(recipe.id).isUnlocked = recipe.isUnlocked;
+            }
+        }
+        else
+        {
+            Debug.Log("No recipe save file found.");
         }
     }
     #endregion

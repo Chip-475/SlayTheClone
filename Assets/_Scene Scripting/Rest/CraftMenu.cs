@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CraftMenu : MonoBehaviour
 {
     #region Declarations
-    DatabaseSO Database => DB.instance.database;
+    MainDatabase Database => MainDatabase.instance;
 
     public List<RecipeSO> recipes;
     public GameObject menuPanel;
@@ -17,7 +17,7 @@ public class CraftMenu : MonoBehaviour
     {
         foreach (var recipe in Database.unlockedRecipes)
         {
-            if(recipe.unlocked)
+            if(recipe.isUnlocked)
             {
                 recipes.Add(recipe);
             }

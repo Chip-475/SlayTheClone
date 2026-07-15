@@ -5,7 +5,7 @@ using System.Collections;
 public class SkillExecutor : MonoBehaviour
 {
     #region Declarations
-    DatabaseSO Database => DB.instance.database;
+    MainDatabase Database => MainDatabase.instance;
 
     public static Player player => CombatManager.instance.player;
     public SkillCard card => CombatManager.instance.selectedCard;

@@ -145,10 +145,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 194967486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed3ef02dd5222e74aa5e1c1465cf5b94, type: 3}
+  m_Script: {fileID: 11500000, guid: 14432679b577a6a4fb94690ef256e8fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DB
-  database: {fileID: 11400000, guid: 22b7a869274bef4448023ff6472e5ec4, type: 2}
+  settings:
+    masterVolume: 0
+    sfxVolume: 0
+    bgmVolume: 0
+  playerStats:
+    hp: 20
+    maxHp: 20
+    actionPointsSpeed: 75
+    timesDied: 0
+    enemiesKilled: 0
+    distanceTravelled: 0
+    moneyEarned: 0
+    cardsPlayed: 0
+    totDamageDealt: 0
+    highestDamageDealt: 0
+    killer: 
+  inventory:
+    money: 0
+    cards: []
+    items: []
+  nStartingCards: 2
+  nCardsAtTurnStart: 1
+  minNodesPerLayer: 0
+  maxNodesPerLayer: 0
+  bossLayer: 0
+  maxEliteBattles: 0
+  maxEvents: 0
+  maxShops: 0
+  maxRests: 0
+  maxShortcuts: 0
+  nodeOffsetX: 0
+  nodeOffsetY: 0
+  unlockedRecipes: []
 --- !u!4 &194967488
 Transform:
   m_ObjectHideFlags: 0
@@ -340,6 +372,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1899882802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899882804}
+  - component: {fileID: 1899882803}
+  m_Layer: 0
+  m_Name: Recipe Database
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1899882803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899882802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1410ce7202fa15b49b7e9ca42732146e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeDatabase
+--- !u!4 &1899882804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899882802}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1992630487
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,5 +470,6 @@ SceneRoots:
   - {fileID: 194967488}
   - {fileID: 942487340}
   - {fileID: 446335563}
+  - {fileID: 1899882804}
   - {fileID: 1018351335}
   - {fileID: 1329161332}

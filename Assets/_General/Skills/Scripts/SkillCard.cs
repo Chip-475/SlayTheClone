@@ -7,7 +7,7 @@ using DG.Tweening;
 // Attached to card game object
 public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
-    DatabaseSO Database => DB.instance.database;
+    MainDatabase Database => MainDatabase.instance;
 
     public int id;
 
@@ -17,7 +17,7 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public TMP_Text descText;
     [Space]
     public SortingGroup wrapperGroup;
-    public PlayerStatsSO stats;
+    public MainDatabase.PlayerStats Stats => Database.playerStats;
 
     private bool isHoveredOn = false;
     public Vector3 basePos;

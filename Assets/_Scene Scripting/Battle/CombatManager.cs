@@ -8,7 +8,7 @@ public class CombatManager : MonoBehaviour
 {
     #region Declarations
     public static CombatManager instance;
-    public DatabaseSO Database => DB.instance.database;
+    public MainDatabase Database => MainDatabase.instance;
 
     public static event Action OnPlayerDeath;
     //public static event Action OnCardPlayed;

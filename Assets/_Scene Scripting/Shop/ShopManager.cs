@@ -5,7 +5,7 @@ public class ShopManager : MonoBehaviour
     #region Declarations
     public static ShopManager instance;
 
-    DatabaseSO Database => DB.instance.database;
+    MainDatabase Database => MainDatabase.instance;
 
     ShopMoneyCounter moneyCounter;
     #endregion
