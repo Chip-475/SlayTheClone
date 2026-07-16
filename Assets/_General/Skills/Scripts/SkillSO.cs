@@ -45,7 +45,6 @@ public abstract class SkillSO : ScriptableObject
     public int amount;
     [Space]
     [Header("Characteristics")]
-    public int cost;
     public int numberOfTargets;
     [Space]
     public Animation anim;
@@ -54,6 +53,9 @@ public abstract class SkillSO : ScriptableObject
     public DamageTable damageTable;
     [Space]
     [Header("Stats")]
+    public int cost;
+    [TextArea] public string desc;
+    [Space]
     public int atkMin;
     public int atkMax;
     [Space]

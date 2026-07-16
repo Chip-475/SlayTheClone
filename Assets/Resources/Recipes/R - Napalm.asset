@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2917114fb7556494395378b90fac51b3, type: 3}
   m_Name: R - Napalm
   m_EditorClassIdentifier: Assembly-CSharp::RecipeSO
-  id: 0
+  id: napalm
+  amount: 0
+  isUnlocked: 0
   icon: {fileID: 0}
   recipeName: Napalm
   desc: A piece of paper with instructions on it. Maybe it could turn out useful.

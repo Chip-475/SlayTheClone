@@ -29,8 +29,8 @@ public class SkillCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
     private void Start()
     {
-        costText.text = $"{skill.cost}";
-        descText.text = $"Popipopipopipopi <color=orange>{skill.atkMin} - {skill.atkMax}</color> poppipopipoipipipio"; 
+        costText.text = skill.cost.ToString();
+        descText.text = $"Strike an enemy with moderate force, dealing <color=orange>{skill.atkMin} - {skill.atkMax}</color> damage."; 
     }
     public void OnPointerEnter(PointerEventData eventData)
     {

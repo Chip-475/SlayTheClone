@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LightStrike
   id: light_strike
   amount: 0
-  cost: 1
   numberOfTargets: 1
   anim: {fileID: 0}
   range: 0
@@ -26,6 +25,8 @@ MonoBehaviour:
     fire: 0
     ice: 0
     magic: 0
+  cost: 1
+  desc: Strike an enemy with moderate force, dealing <color=orange> </color> damage.
   atkMin: 1
   atkMax: 3
   healMin: 0
