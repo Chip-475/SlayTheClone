@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 
 // Stores stat data for each enemy
-[CreateAssetMenu(fileName = "Enemy Stats", menuName = "Scriptable Objects/Stats/Enemy Stats")]
-public class EnemyStatsSO : ScriptableObject
+[CreateAssetMenu(fileName = "Enemy Info", menuName = "Scriptable Objects/Stats/Enemy Info")]
+public class EnemyInfoSO : ScriptableObject
 {
     [Serializable]
     public struct Resistances
@@ -26,22 +26,24 @@ public class EnemyStatsSO : ScriptableObject
             yield return magic;
         }
     }
+    [Serializable]
+    public struct Drop
+    {
+        public ItemSO item;
+        public int dropChance;
+        public int minAmount;
+        public int maxAmount;
+    }
 
+    [Header("Combat Stats")]
     public int hp;
     public int maxHp;
     public int atk;
-    public int actionPointsSpeed;
-    public int acc;
+    public int startingAp;
+    [Tooltip("Points per second.")] public int speed;
+    public int accuracy;
     public Resistances resistances;
 
-    #region Utilities
-    public IEnumerable<int> Values()
-    {
-        yield return hp;
-        yield return maxHp;
-        yield return atk;
-        yield return actionPointsSpeed;
-        yield return acc;
-    }
-    #endregion
+    [Header("Misc Info")]
+    public List<Drop> dropPool;
 }

@@ -8,6 +8,7 @@ public interface IBattleEntity
     public void StartActionBar();
 
     public IEnumerator Action();
+    public int ApplyResistances(int amount);
     public void TakeDamage(int amount);
-    public int CalcDmg(int amount);
+    public IEnumerator DeathSequence();
 }

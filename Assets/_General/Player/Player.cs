@@ -37,17 +37,8 @@ public class Player : MonoBehaviour, IBattleEntity
         if (actionPoints >= 100 && !CombatManager.instance.actingEntities.Contains(this))
         {
             CombatManager.instance.actingEntities.Add(this);
+            CombatManager.PerformActions();
         }
-    }
-
-    void SetDeathState() => isDead = true;
-    private void OnEnable()
-    {
-        CombatManager.OnPlayerDeath += SetDeathState;
-    }
-    private void OnDisable()
-    {
-        CombatManager.OnPlayerDeath -= SetDeathState;
     }
     #endregion
 
@@ -72,7 +63,6 @@ public class Player : MonoBehaviour, IBattleEntity
         isActing = false;
     }
 
-    #region Interface
     public int GetId()
     {
         return id;
@@ -96,8 +86,7 @@ public class Player : MonoBehaviour, IBattleEntity
         yield return new WaitUntil(() => isActing == false);
         actionPoints = 0;
     }
-
-    public int CalcDmg(int amount)
+    public int ApplyResistances(int amount)
     {
         return 0;
     }
@@ -106,10 +95,17 @@ public class Player : MonoBehaviour, IBattleEntity
     {
         Stats.hp -= amount;
         PlayerHealthChanged();
-        if(Stats.hp <= 0) CombatManager.PlayerDeath();
-    }
-    #endregion Interface
 
+        if(Stats.hp <= 0) CombatManager.instance.StartCoroutine(DeathSequence());
+    }
+    public IEnumerator DeathSequence()
+    {
+        isDead = true;
+        CombatManager.instance.SlowTime();
+        CombatManager.instance.OpenDeathPanel();
+
+        yield break;
+    }
     #endregion Methods
 
     #region Events
@@ -118,5 +114,4 @@ public class Player : MonoBehaviour, IBattleEntity
         OnPlayerHealthChanged?.Invoke();
     }
     #endregion
-    
 }

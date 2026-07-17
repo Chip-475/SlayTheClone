@@ -10,9 +10,6 @@ public class CombatManager : MonoBehaviour
     public static CombatManager instance;
     public MainDatabase Database => MainDatabase.instance;
 
-    public static event Action OnPlayerDeath;
-    //public static event Action OnCardPlayed;
-
     [Header("References")]
     public Battle battle;
     public Deck deck;
@@ -53,28 +50,14 @@ public class CombatManager : MonoBehaviour
 
         hand.Organize();
     }
-    private void LateUpdate()
-    {
-        if (actingEntities.Count > 0 && !entitiesAreActing)
-        {
-            StartCoroutine(PerformActions(actingEntities));
-        }
-    }
-
-    private void OnEnable()
-    {
-        OnPlayerDeath += SlowTime;
-        OnPlayerDeath += OpenDeathPanel;
-    }
-    private void OnDisable()
-    {
-        OnPlayerDeath -= SlowTime;
-        OnPlayerDeath -= OpenDeathPanel;
-    }
     #endregion
 
     #region Methods
-    public IEnumerator PerformActions(List<IBattleEntity> entities)
+    public static void PerformActions()
+    {
+        instance.StartCoroutine(instance.PerformActionsCR(instance.actingEntities));
+    }
+    public IEnumerator PerformActionsCR(List<IBattleEntity> entities)
     {
         entitiesAreActing = true;
 
@@ -111,7 +94,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    void SlowTime()
+    public void SlowTime()
     {
         DOVirtual.Float
         (
@@ -124,8 +107,7 @@ public class CombatManager : MonoBehaviour
             }
         );
     }
-
-    void OpenDeathPanel()
+    public void OpenDeathPanel()
     {
         deathScreen.SetActive(true);
         var panelGroup = deathScreen.GetComponent<CanvasGroup>();
@@ -136,13 +118,6 @@ public class CombatManager : MonoBehaviour
         panelGroup.DOFade(1f, 0.5f)
             .SetEase(Ease.InQuad)
             .OnComplete(() => panelGroup.interactable = true);
-    }
-    #endregion
-
-    #region Events
-    public static void PlayerDeath()
-    {
-        OnPlayerDeath?.Invoke();
     }
     #endregion
 }

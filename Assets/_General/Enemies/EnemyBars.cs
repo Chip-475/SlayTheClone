@@ -17,7 +17,7 @@ public class EnemyBars : MonoBehaviour
 
     public void SetHealthBarFillAmount()
     {
-        float amount = (float)_enemy.stats.hp / (float)_enemy.stats.maxHp;
+        float amount = (float)_enemy.info.hp / (float)_enemy.info.maxHp;
         _healthBar.fillAmount = amount;
     }
     public void SetActionBarFillAmount()

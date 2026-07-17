@@ -7,10 +7,11 @@ public class MainDatabase : MonoBehaviour
     public static MainDatabase instance;
 
     public Settings settings = new();
-    public PlayerStats playerStats = new();
     public Inventory inventory = new();
-    
+
+    public PlayerStats playerStats = new();
     [Space]
+
     public int nStartingCards;
     public int nCardsAtTurnStart;
     [Space]
@@ -27,10 +28,6 @@ public class MainDatabase : MonoBehaviour
     [Space]
     public float nodeOffsetX;
     public float nodeOffsetY;
-    [Space]
-
-    [Header("Misc")]
-    public List<RecipeSO> unlockedRecipes;
     #endregion
 
     #region Unity Methods

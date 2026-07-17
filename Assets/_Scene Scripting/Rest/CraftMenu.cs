@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class CraftMenu : MonoBehaviour
 {
     #region Declarations
-    MainDatabase Database => MainDatabase.instance;
-
     public List<RecipeSO> recipes;
     public GameObject menuPanel;
     #endregion
@@ -15,13 +13,7 @@ public class CraftMenu : MonoBehaviour
     #region Unity Methods
     private void Start()
     {
-        foreach (var recipe in Database.unlockedRecipes)
-        {
-            if(recipe.isUnlocked)
-            {
-                recipes.Add(recipe);
-            }
-        }
+        foreach (var recipe in RecipeDatabase.GetUnlockedRecipes()) recipes.Add(recipe);
     }
     #endregion
 

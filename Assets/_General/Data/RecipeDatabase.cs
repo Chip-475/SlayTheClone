@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class RecipeDatabase : MonoBehaviour
 {
@@ -39,6 +40,12 @@ public class RecipeDatabase : MonoBehaviour
             Debug.Log("Recipe not found.");
             return null;
         }
+    }
+    public static List<RecipeSO> GetUnlockedRecipes()
+    {
+        return instance.recipeTable.Values
+            .Where(recipe => recipe.isUnlocked)
+            .ToList();
     }
     #endregion
 

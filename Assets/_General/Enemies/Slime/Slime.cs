@@ -50,7 +50,7 @@ public class Slime : Enemy
     {
         // Deals damage in atk +- range
         int range = 1;
-        int damageToDeal = Random.Range(stats.atk - range, stats.atk + range + 1);
+        int damageToDeal = Random.Range(info.atk - range, info.atk + range + 1);
         print(damageToDeal);
 
         // play animation ToDo
