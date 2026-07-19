@@ -3,14 +3,28 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerAnimController))]
 public class Player : MonoBehaviour, IBattleEntity
 {
     #region Declarations
     MainDatabase Database => MainDatabase.instance;
 
+    public enum State
+    {
+        Idle,
+        LightAttacking,
+        HeavyAttacking,
+        Casting,
+        Dead
+    }
+    public State state;
+
     public static event Action OnPlayerHealthChanged;
 
     public MainDatabase.PlayerStats Stats => Database.playerStats;
+    public PlayerAnimController animController;
+    public Animator animator;
+
     public int id;
     public bool canGainActionPoints;
     public float actionPoints;
@@ -26,10 +40,15 @@ public class Player : MonoBehaviour, IBattleEntity
     private void Awake()
     {
         CombatManager.instance.player = this;
+
+        animController = GetComponent<PlayerAnimController>();
+        animator = GetComponent<Animator>();
     }
     private void Start()
     {
         SetInitialState();
+
+        state = State.Idle;
     }
     private void FixedUpdate()
     {

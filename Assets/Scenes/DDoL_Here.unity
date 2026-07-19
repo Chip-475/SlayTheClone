@@ -152,6 +152,10 @@ MonoBehaviour:
     masterVolume: 0
     sfxVolume: 0
     bgmVolume: 0
+  inventory:
+    money: 0
+    cards: []
+    items: []
   playerStats:
     hp: 20
     maxHp: 20
@@ -164,10 +168,6 @@ MonoBehaviour:
     totDamageDealt: 0
     highestDamageDealt: 0
     killer: 
-  inventory:
-    money: 0
-    cards: []
-    items: []
   nStartingCards: 2
   nCardsAtTurnStart: 1
   minNodesPerLayer: 0
@@ -180,7 +180,6 @@ MonoBehaviour:
   maxShortcuts: 0
   nodeOffsetX: 0
   nodeOffsetY: 0
-  unlockedRecipes: []
 --- !u!4 &194967488
 Transform:
   m_ObjectHideFlags: 0
