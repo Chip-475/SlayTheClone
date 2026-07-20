@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Collections.Generic;
 
-[DefaultExecutionOrder(-1000)]
+[DefaultExecutionOrder(1)]
 public class SaveAndLoad : MonoBehaviour
 {
     #region Declarations
@@ -201,7 +201,7 @@ public class SaveAndLoad : MonoBehaviour
         }
 
         string json = JsonConvert.SerializeObject(recipeData, Formatting.Indented);
-        File.WriteAllText(skillsPath, json);
+        File.WriteAllText(recipesPath, json);
     }
     [ContextMenu("Load Recipes")]
     public void LoadRecipes()

@@ -35,6 +35,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         bars = GetComponent<EnemyBars>();
+        animator = GetComponent<Animator>();
     }
     protected virtual void FixedUpdate()
     {
@@ -75,6 +76,10 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
             int amountToDrop = UnityEngine.Random.Range(drop.minAmount, drop.maxAmount);
             ItemDatabase.instance.itemTable[drop.item.id].amount += amountToDrop;
         }
+    }
+    public virtual void SwitchAnimation(string animName)
+    {
+        animator.CrossFade(animName, 0, 0);
     }
 
     public int GetId()

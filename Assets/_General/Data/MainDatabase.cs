@@ -38,6 +38,8 @@ public class MainDatabase : MonoBehaviour
             instance = this;
         }
         else Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
     }
     #endregion
 
