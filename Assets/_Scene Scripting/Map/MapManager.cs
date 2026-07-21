@@ -12,6 +12,7 @@ public class MapManager : MonoBehaviour
 
     public NodeGenerator nodeGenerator;
     public NodeAssigner nodeAssigner;
+    public NodeConnecter nodeConnecter;
 
     public Node startingNode;
     public Node bossNode;
@@ -26,6 +27,7 @@ public class MapManager : MonoBehaviour
 
         nodeGenerator = GetComponent<NodeGenerator>();
         nodeAssigner = GetComponent<NodeAssigner>();
+        nodeConnecter= GetComponent<NodeConnecter>();
     }
     private void Start()
     {

@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 164570511}
   - component: {fileID: 164570508}
   - component: {fileID: 164570510}
+  - component: {fileID: 164570512}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -177,7 +178,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164570507}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fa8260fe5c88b04a8e526117efb7793, type: 3}
   m_Name: 
@@ -206,7 +207,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164570507}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b7ccf995c946874da97322edd4f472c, type: 3}
   m_Name: 
@@ -231,9 +232,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapManager
   nodeGenerator: {fileID: 0}
   nodeAssigner: {fileID: 0}
+  nodeConnecter: {fileID: 0}
   startingNode: {fileID: 1040362261}
   bossNode: {fileID: 742362108}
   nodePrefab: {fileID: -3497525624960012089, guid: 6eb29934b8276264c94fdc4facc6a49d, type: 3}
+--- !u!114 &164570512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164570507}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d9ee8b61f0c1f48ad770964d37572c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NodeConnecter
 --- !u!1 &302290292
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +605,7 @@ MonoBehaviour:
   layerId: 0
   nodeId: 0
   row: 0
-  nodesToConnect: 
+  forwardConnections: []
   normalizedRow: 0
   isConnected: 0
   isAssigned: 0
@@ -798,7 +812,7 @@ MonoBehaviour:
   layerId: 0
   nodeId: 0
   row: 0
-  nodesToConnect: 
+  forwardConnections: []
   normalizedRow: 0
   isConnected: 0
   isAssigned: 0

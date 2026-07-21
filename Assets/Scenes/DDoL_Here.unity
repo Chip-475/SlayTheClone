@@ -170,16 +170,16 @@ MonoBehaviour:
     killer: 
   nStartingCards: 2
   nCardsAtTurnStart: 1
-  minNodesPerLayer: 0
-  maxNodesPerLayer: 0
-  bossLayer: 0
-  maxEliteBattles: 0
-  maxEvents: 0
-  maxShops: 0
-  maxRests: 0
-  maxShortcuts: 0
-  nodeOffsetX: 0
-  nodeOffsetY: 0
+  minNodesPerLayer: 1
+  maxNodesPerLayer: 3
+  bossLayer: 5
+  maxEliteBattles: 2
+  maxEvents: 2
+  maxShops: 2
+  maxRests: 2
+  maxShortcuts: 1
+  nodeOffsetX: 1
+  nodeOffsetY: 1
 --- !u!4 &194967488
 Transform:
   m_ObjectHideFlags: 0

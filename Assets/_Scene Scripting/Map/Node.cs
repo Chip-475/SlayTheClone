@@ -30,7 +30,7 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public int layerId;
     public int nodeId;
     public int row;
-    public List<int> nodesToConnect = new();
+    public List<Node> forwardConnections = new();
     public int normalizedRow; //row - (numberOfNodes - 1) / 2
     public bool isConnected;
     public bool isAssigned = false;
