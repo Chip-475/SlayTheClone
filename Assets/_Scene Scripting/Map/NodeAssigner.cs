@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public class NodeAssigner : MonoBehaviour
 {
@@ -37,7 +38,9 @@ public class NodeAssigner : MonoBehaviour
     #endregion
 
     #region Methods
-    public void AssignSpecialNodes()
+
+#pragma warning disable
+    public async Task AssignSpecialNodes()
     {
         // im not typing the entire explanation here
         // ask if you need
@@ -75,7 +78,9 @@ public class NodeAssigner : MonoBehaviour
             }
         }
     }
-    public void AssignBattles()
+#pragma warning enable
+
+    public async Task AssignBattles()
     {
         var map = MapManager.instance.map;
 

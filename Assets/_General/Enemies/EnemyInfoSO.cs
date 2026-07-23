@@ -39,6 +39,7 @@ public class EnemyInfoSO : ScriptableObject
     public int hp;
     public int maxHp;
     public int atk;
+    public int atkRange;
     public int startingAp;
     [Tooltip("Points per second.")] public int speed;
     public int accuracy;

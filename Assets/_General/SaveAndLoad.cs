@@ -40,19 +40,11 @@ public class SaveAndLoad : MonoBehaviour
         skillsPath = Path.Combine(Application.persistentDataPath, "skills.json");
         recipesPath = Path.Combine(Application.persistentDataPath, "recipes.json");
 
-        LoadPlayerStats();
         LoadSettings();
-        LoadItems();
-        LoadSkills();
-        LoadRecipes();
     }
     private void OnApplicationQuit()
     {
-        SavePlayerStats();
         SaveSettings();
-        SaveItems();
-        SaveSkills();
-        SaveRecipes();
     }
     #endregion
 

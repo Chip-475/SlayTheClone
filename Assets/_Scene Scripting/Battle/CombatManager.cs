@@ -42,6 +42,7 @@ public class CombatManager : MonoBehaviour
     {
         deathScreen.SetActive(false);
 
+        battle.SpawnBackground();
         battle.SpawnEnemies();
         entitiesOnField = new List<IBattleEntity>(battle.GetEnemies());
 

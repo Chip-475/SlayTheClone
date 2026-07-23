@@ -10,32 +10,30 @@ public class NodeConnecter : MonoBehaviour
     #region Methods
     public void AssignConnections()
     {
-        foreach(var layer in Map.Keys)
+        foreach (var layer in Map.Keys.ToList())
         {
-            if(layer == 0)
+            if (!Map.ContainsKey(layer + 1)) continue;
+
+            if (layer == 0)
             {
                 var entryNode = Map[layer][0];
-                foreach(var node in Map[layer + 1])
-                {
-                    entryNode.forwardConnections.Add(node);
-                }
+                entryNode.forwardConnections.AddRange(Map[layer + 1]);
             }
 
-            foreach(var node in Map[layer])
+            foreach (var node in Map[layer])
             {
                 int nConnections = Random.Range(1, 4);
-                List<Node> toConnect = new();
 
-                List<Node> nextLayerNodes = Map[layer + 1]
+                var nextLayerNodes = Map[layer + 1]
                     .OrderBy(n => (n.transform.position - node.transform.position).sqrMagnitude)
                     .ToList();
 
-                for(int i = 0; i < nConnections - 1; i++)
-                {
-                    if(nextLayerNodes[i] != null) toConnect.Add(nextLayerNodes[i]);
-                }
+                int count = Mathf.Min(nConnections - 1, nextLayerNodes.Count);
 
-                node.forwardConnections.AddRange(toConnect);
+                for (int i = 0; i < count; i++)
+                {
+                    node.forwardConnections.Add(nextLayerNodes[i]);
+                }
             }
         }
     }

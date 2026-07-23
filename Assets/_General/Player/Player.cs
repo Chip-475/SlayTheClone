@@ -115,7 +115,7 @@ public class Player : MonoBehaviour, IBattleEntity
         Stats.hp -= amount;
         PlayerHealthChanged();
 
-        if(Stats.hp <= 0) CombatManager.instance.StartCoroutine(DeathSequence());
+        if(Stats.hp <= 0 && !isDead) CombatManager.instance.StartCoroutine(DeathSequence());
     }
     public IEnumerator DeathSequence()
     {

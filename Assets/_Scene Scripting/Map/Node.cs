@@ -76,6 +76,8 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
             case NodeType.Shortcut:
                 spriteRenderer.color = Color.blue;
                 break;
+            default:
+                break;
         }
     }
 

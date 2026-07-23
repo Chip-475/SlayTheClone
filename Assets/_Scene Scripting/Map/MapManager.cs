@@ -29,15 +29,15 @@ public class MapManager : MonoBehaviour
         nodeAssigner = GetComponent<NodeAssigner>();
         nodeConnecter= GetComponent<NodeConnecter>();
     }
-    private void Start()
+    private async void Start()
     {
         nodeGenerator.InitLayerKeys();
         nodeGenerator.SpawnNodes();
         nodeGenerator.PositionNodes();
         map = nodeGenerator.layers;
 
-        nodeAssigner.AssignSpecialNodes();
-        nodeAssigner.AssignBattles();
+        await nodeAssigner.AssignSpecialNodes();
+        await nodeAssigner.AssignBattles();
     }
     #endregion
 }

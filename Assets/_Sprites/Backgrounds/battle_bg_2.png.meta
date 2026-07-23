@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 443f748c20ab13f4ab58b5ded6a3bb91
+guid: b618c3ff29fdf6c47a668c39951c723e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7108270916565576199
-    second: dungeon_bg4_0
+      213: 9172489035796222400
+    second: battle_bg_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dungeon_bg4_0
+      name: battle_bg_2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 429
-        height: 240
+        width: 2400
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70aa125ccb6a5a260800000000000000
-      internalID: 7108270916565576199
+      spriteID: 0c19ccc1e2a3b4f70800000000000000
+      internalID: 9172489035796222400
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dungeon_bg4_0: 7108270916565576199
+      battle_bg_2_0: 9172489035796222400
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

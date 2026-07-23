@@ -54,8 +54,7 @@ public class HeavyGolem : Enemy
     IEnumerator BasicAttack()
     {
         // Deals damage in atk +- range
-        int range = 2;
-        int damageToDeal = Random.Range(info.atk - range, info.atk + range + 1);
+        int damageToDeal = Random.Range(info.atk - info.atkRange, info.atk + info.atkRange + 1);
         print(damageToDeal);
 
         // play animation ToDo

@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 
 // Enemy base class
+[RequireComponent(typeof(EnemyBars))]
 public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
 {
     #region Declarations
@@ -36,6 +37,8 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
         spriteRenderer = GetComponent<SpriteRenderer>();
         bars = GetComponent<EnemyBars>();
         animator = GetComponent<Animator>();
+
+        transform.localScale *= 0.8f;
     }
     protected virtual void FixedUpdate()
     {

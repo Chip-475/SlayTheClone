@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: testing
   m_EditorClassIdentifier: Assembly-CSharp::EncounterConfig
   enemies:
+  - {fileID: 4776937251297766324, guid: d5f88767b25fb164594ee7fab8497340, type: 3}
+  - {fileID: 8325649752185812279, guid: 92771217d35a6a244bb2f1ec6a4682b3, type: 3}
+  - {fileID: 6339390192763993091, guid: 5e7129b9c10dea94f88185139e9f28ad, type: 3}
   - {fileID: 4254345752803884338, guid: 2b93c912a090c134bb72a8176cdd7c8e, type: 3}
-  - {fileID: 4254345752803884338, guid: 2b93c912a090c134bb72a8176cdd7c8e, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
