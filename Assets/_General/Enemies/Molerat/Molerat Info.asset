@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyInfoSO
   hp: 7
   maxHp: 7
-  atk: 3
+  atk: 2
+  atkRange: 0
   startingAp: 0
   speed: 70
   accuracy: 0

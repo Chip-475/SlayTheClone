@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c6bc2b3c12bfa4cb2ab3f858598844, type: 3}
   m_Name: Sword Skeleton Info
   m_EditorClassIdentifier: Assembly-CSharp::EnemyInfoSO
-  hp: 5
-  maxHp: 5
+  hp: 10
+  maxHp: 10
   atk: 0
   atkRange: 0
   startingAp: 0
-  speed: 50
+  speed: 30
   accuracy: 0
   resistances:
     slash: 1

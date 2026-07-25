@@ -60,7 +60,8 @@ public class NodeAssigner : MonoBehaviour
             {
                 bool generate = Random.Range(0, 100) < chanceToSpawn;
 
-                while (generate && nodeCurrentAmounts[j] < nodeMaxAmounts[j])
+                int terribleSolution = 0;
+                while (generate && nodeCurrentAmounts[j] < nodeMaxAmounts[j] && terribleSolution < 50)
                 {
                     int layerIndex = Random.Range(1, map.Keys.Count);
                     int nodeIndex = Random.Range(0, map[layerIndex].Count);
@@ -74,6 +75,8 @@ public class NodeAssigner : MonoBehaviour
                         nodeCurrentAmounts[j]++;
                         generate = false;
                     }
+
+                    terribleSolution++;
                 }
             }
         }

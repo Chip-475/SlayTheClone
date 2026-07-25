@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using Newtonsoft.Json;
 
 public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     #region Declarations
-    MainDatabase Database => MainDatabase.instance;
+    [JsonIgnore] MainDatabase Database => MainDatabase.instance;
 
     public enum NodeType
     {
@@ -24,17 +25,16 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     }
     public NodeType type = NodeType.Null;
     [Space]
+
     [Header("References")]
-    public SpriteRenderer spriteRenderer;
+    [JsonIgnore] public SpriteRenderer spriteRenderer;
+
     [Header("Meta")]
-    public int layerId;
-    public int nodeId;
-    public int row;
-    public List<Node> forwardConnections = new();
-    public int normalizedRow; //row - (numberOfNodes - 1) / 2
-    public bool isConnected;
+    public int id;
+    public List<int> forwardConnections = new();
+
     public bool isAssigned = false;
-    bool isHoveredOn = false;
+    [JsonIgnore] bool isHoveredOn = false;
     #endregion
 
     #region Unity Methods
@@ -131,5 +131,44 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         yield return NodeType.Rest;   
         yield return NodeType.Shortcut;
     }
+
+    public class SaveData
+    {
+        public int id;
+        public List<int> forwardConnections = new();
+        public SerializableVector3 position;
+        public NodeType type;
+    }
+    public SaveData CompileData()
+    {
+        SaveData saveData = new()
+        {
+            id = id,
+            forwardConnections = forwardConnections,
+            position = new SerializableVector3(transform.position),
+            type = type
+        };
+
+        return saveData;
+    }
     #endregion
+}
+
+public class SerializableVector3
+{
+    public float x;
+    public float y;
+    public float z;
+
+    public SerializableVector3(Vector3 vector)
+    {
+        x = vector.x;
+        y = vector.y;
+        z = vector.z;
+    }
+
+    public Vector3 ToVector3()
+    {
+        return new Vector3(x, y, z);
+    }
 }

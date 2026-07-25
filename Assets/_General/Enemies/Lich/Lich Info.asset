@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyInfoSO
   hp: 5
   maxHp: 5
-  atk: 0
-  atkRange: 0
+  atk: 4
+  atkRange: 1
   startingAp: 0
-  speed: 50
+  speed: 30
   accuracy: 0
   resistances:
     slash: 1
     pierce: 1
     blunt: 1
-    fire: 1
-    ice: 1
-    magic: 1
+    fire: 0.8
+    ice: 0.8
+    magic: 0.5
   dropPool: []

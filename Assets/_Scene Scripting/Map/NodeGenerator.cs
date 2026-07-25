@@ -32,9 +32,12 @@ public class NodeGenerator : MonoBehaviour
     }
     public void SpawnNodes()
     {
+        startingNode.id = 0;
+
         layers[0] = new List<Node>() { startingNode };
         layers[Database.bossLayer] = new List<Node>() { bossNode };
 
+        int autoIncrementID = 1;
         for (int i = 1; i < layers.Count - 1; i++)
         {
             layers[i] = new();
@@ -42,17 +45,18 @@ public class NodeGenerator : MonoBehaviour
             int numberOfNodes = Random.Range(Database.minNodesPerLayer, Database.maxNodesPerLayer + 1);
             for (int j = 0; j < numberOfNodes; j++)
             {
-                layers[i].Add
-                (
-                    Instantiate
+                autoIncrementID++;
+                var node = Instantiate
                     (
                         nodePrefab,
                         new Vector3(startingNode.transform.position.x + (distanceBetweenLayers * i), startingNode.transform.position.y, 0),
                         Quaternion.identity
-                    )
-                );
+                    );
+                node.id = autoIncrementID;
+                layers[i].Add(node);
             }
         }
+        bossNode.id = autoIncrementID++;
     }
     public void PositionNodes()
     {

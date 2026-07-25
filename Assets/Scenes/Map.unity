@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::newMapGenerator
   distanceBetweenLayers: 2.5
-  distanceBetweenNodes: 1.5
+  distanceBetweenNodes: 2
 --- !u!4 &164570509
 Transform:
   m_ObjectHideFlags: 0

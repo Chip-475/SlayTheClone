@@ -258,9 +258,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Battle
   backgrounds:
   - {fileID: 5957242972062389050, guid: fcf2dae42615fd3428fc55145db9071c, type: 3}
+  - {fileID: 3407066740902759679, guid: addbe8dabed4c3c4faefa9e9bf352d63, type: 3}
+  - {fileID: 296054917675070328, guid: 6eb3a2fdc45612e4180ba9feeec4e5aa, type: 3}
   playerPosition: {fileID: 0}
   spawnPoints: []
-  encounterConfig: {fileID: 11400000, guid: 1ccf374636602cd4f99b4ca998fcdfbb, type: 2}
+  encounterConfigs:
+  - {fileID: 11400000, guid: 0605e4625fdc0b249954e63e53e59a96, type: 2}
+  - {fileID: 11400000, guid: 37de91414d14aea4b8c7ce6ddab78ae3, type: 2}
+  - {fileID: 11400000, guid: be8a760e271d060458451c9487dc311d, type: 2}
+  - {fileID: 11400000, guid: ce24958594fb950448399291b2c3eb97, type: 2}
+  - {fileID: 11400000, guid: b100b3a30935ce34d80afe7aa19b19fa, type: 2}
+  - {fileID: 11400000, guid: 0523aad0647f6bd45b1b392f536fc9bd, type: 2}
+  - {fileID: 11400000, guid: 1ccf374636602cd4f99b4ca998fcdfbb, type: 2}
+  - {fileID: 11400000, guid: 1ccf374636602cd4f99b4ca998fcdfbb, type: 2}
+  - {fileID: 11400000, guid: 1ccf374636602cd4f99b4ca998fcdfbb, type: 2}
+  - {fileID: 11400000, guid: 1ccf374636602cd4f99b4ca998fcdfbb, type: 2}
+  - {fileID: 11400000, guid: 1ccf374636602cd4f99b4ca998fcdfbb, type: 2}
+  - {fileID: 11400000, guid: 1ccf374636602cd4f99b4ca998fcdfbb, type: 2}
 --- !u!114 &129036016
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -115,15 +115,24 @@ public class Player : MonoBehaviour, IBattleEntity
         Stats.hp -= amount;
         PlayerHealthChanged();
 
-        if(Stats.hp <= 0 && !isDead) CombatManager.instance.StartCoroutine(DeathSequence());
+        if(Stats.hp <= 0 && !isDead)
+        {
+            CombatManager.instance.StartCoroutine(DeathSequence());
+        }
     }
     public IEnumerator DeathSequence()
     {
         isDead = true;
+        ChangeAnimation("Death");
         CombatManager.instance.SlowTime();
         CombatManager.instance.OpenDeathPanel();
 
         yield break;
+    }
+
+    public void ChangeAnimation(string anim)
+    {
+        animator.CrossFade(anim, 0, 0);
     }
     #endregion Methods
 

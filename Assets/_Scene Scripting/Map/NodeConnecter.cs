@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 
 public class NodeConnecter : MonoBehaviour
 {
@@ -17,7 +18,10 @@ public class NodeConnecter : MonoBehaviour
             if (layer == 0)
             {
                 var entryNode = Map[layer][0];
-                entryNode.forwardConnections.AddRange(Map[layer + 1]);
+                foreach(var node in Map[layer + 1])
+                {
+                    entryNode.forwardConnections.Add(node.id);
+                }
             }
 
             foreach (var node in Map[layer])
@@ -28,11 +32,11 @@ public class NodeConnecter : MonoBehaviour
                     .OrderBy(n => (n.transform.position - node.transform.position).sqrMagnitude)
                     .ToList();
 
-                int count = Mathf.Min(nConnections - 1, nextLayerNodes.Count);
+                int count = Mathf.Min(nConnections, nextLayerNodes.Count);
 
                 for (int i = 0; i < count; i++)
                 {
-                    node.forwardConnections.Add(nextLayerNodes[i]);
+                    node.forwardConnections.Add(nextLayerNodes[i].id);
                 }
             }
         }

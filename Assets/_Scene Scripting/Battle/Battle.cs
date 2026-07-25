@@ -10,7 +10,7 @@ public class Battle : MonoBehaviour
     public List<BattleBackground> backgrounds = new();
     public Transform playerPosition;
     public List<Transform> spawnPoints = new();
-    [SerializeField] EncounterConfigSO encounterConfig;
+    [SerializeField] List<EncounterConfigSO> encounterConfigs;
     #endregion
 
     #region Methods
@@ -23,12 +23,13 @@ public class Battle : MonoBehaviour
     public void SpawnEnemies()
     {
         CombatManager.instance.player.transform.position = playerPosition.position;
+        var currentConfig = encounterConfigs[UnityEngine.Random.Range(0, encounterConfigs.Count)];
 
-        for(int i = 0; i < encounterConfig.enemies.Count; i++)
+        for(int i = 0; i < currentConfig.enemies.Count; i++)
         {
-            if(encounterConfig.enemies[i] != null && spawnPoints[i] != null)
+            if(currentConfig.enemies[i] != null && spawnPoints[i] != null)
             {
-                var entity = Instantiate(encounterConfig.enemies[i], spawnPoints[i].position, Quaternion.identity);
+                var entity = Instantiate(currentConfig.enemies[i], spawnPoints[i].position, Quaternion.identity);
                 entity.id = i + 1;
             }
         }

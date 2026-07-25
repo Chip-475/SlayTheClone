@@ -15,8 +15,9 @@ MonoBehaviour:
   hp: 3
   maxHp: 3
   atk: 2
+  atkRange: 0
   startingAp: 0
-  speed: 50
+  speed: 25
   accuracy: 0
   resistances:
     slash: 0.8

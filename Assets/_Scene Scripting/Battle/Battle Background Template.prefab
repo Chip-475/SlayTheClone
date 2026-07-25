@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 4631884940513173883}
   - component: {fileID: 2499142448016158162}
   - component: {fileID: 4554659176224819143}
+  - component: {fileID: 2612187699586427889}
   m_Layer: 0
   m_Name: Battle Background Template
   m_TagString: Untagged
@@ -201,6 +202,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BattleBackground
   playerPosition: {fileID: 0}
   spawnPoints: []
+--- !u!210 &2612187699586427889
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592655182665165525}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -1
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &7078218338347746043
 GameObject:
   m_ObjectHideFlags: 0
