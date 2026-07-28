@@ -84,7 +84,6 @@ public class MainDatabase : MonoBehaviour
     {
         public int money;
 
-        public List<SkillCard> cards;
         public List<ItemSO> items;
     }
     #endregion

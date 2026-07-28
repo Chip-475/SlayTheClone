@@ -15,8 +15,6 @@ public class CombatManager : MonoBehaviour
 
     [Header("References")]
     public Battle battle;
-    public Deck deck;
-    public Hand hand;
     public SkillExecutor executor;
     [Space]
     public Player player;
@@ -27,7 +25,7 @@ public class CombatManager : MonoBehaviour
     public List<IBattleEntity> actingEntities = new();
     public BattleResults results = new();
 
-    public SkillCard selectedCard;
+    // selected skill
     public Enemy selectedEnemy;
 
     public GameObject fadePanel;
@@ -39,8 +37,6 @@ public class CombatManager : MonoBehaviour
         instance = this;
         
         battle = GetComponent<Battle>();
-        deck = GetComponent<Deck>();
-        hand = GetComponent<Hand>();
         executor = GetComponent<SkillExecutor>();
     }
     private void Start()
@@ -53,10 +49,6 @@ public class CombatManager : MonoBehaviour
         battle.SpawnBackground();
         battle.SpawnEnemies();
 
-        deck.InitDeck();
-        deck.DrawCards(Database.nStartingCards);
-
-        hand.Organize();
         StartCoroutine(BattleWinCR());
     }
     #endregion
@@ -80,12 +72,6 @@ public class CombatManager : MonoBehaviour
         StartActionBars();
 
         entitiesAreActing = false;
-    }
-
-    public static void Draw()
-    {
-        instance.deck.DrawCards(instance.Database.nCardsAtTurnStart);
-        instance.hand.Organize();
     }
 
     public void StopActionBars()

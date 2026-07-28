@@ -97,18 +97,10 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
 
     public virtual int ApplyResistances(int damage)
     {
-        float finalDamage = 0;
+        // damage calculation
+        // preferrably use dictionary for resistance storing
 
-        var damageValues = CombatManager.instance.selectedCard.skill.damageTable.Values().ToList();
-        var resistanceValues = baseInfo.resistances.Values().ToList();
-        
-
-        for (int i = 0; i < damageValues.Count; i++)
-        {
-            finalDamage += damageValues[i] * resistanceValues[i];
-        }
-
-        return (int)Math.Ceiling(finalDamage);
+        return damage;
     }
     public virtual void TakeDamage(int damage)
     {

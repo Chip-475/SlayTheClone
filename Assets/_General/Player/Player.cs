@@ -75,12 +75,6 @@ public class Player : MonoBehaviour, IBattleEntity
     {
         _staminaText.text = $"{stamina}";
     }
-    public void EndTurn()
-    {
-        if (!isActing) return;
-
-        isActing = false;
-    }
 
     public int GetId()
     {
@@ -101,7 +95,6 @@ public class Player : MonoBehaviour, IBattleEntity
         stamina = Math.Clamp(stamina, 0, 15);
         StaminaChanged();
         isActing = true;
-        CombatManager.Draw();
         yield return new WaitUntil(() => isActing == false);
         actionPoints = 0;
     }

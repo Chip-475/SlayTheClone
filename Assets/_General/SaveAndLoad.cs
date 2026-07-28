@@ -139,33 +139,18 @@ public class SaveAndLoad : MonoBehaviour
     [ContextMenu("Save Skills")]
     public void SaveSkills()
     {
-        List<SkillDatabase.SkillSaveData> skillData = new();
-        foreach (var skill in SkillDatabase.instance.skillTable.Values)
-        {
-            skillData.Add
-            (
-                new SkillDatabase.SkillSaveData
-                {
-                    id = skill.id,
-                    amount = skill.amount
-                }
-            );
-        }
+        // data to json conversion
 
-        string json = JsonConvert.SerializeObject(skillData, Formatting.Indented);
-        File.WriteAllText(skillsPath, json);
+        //string json = JsonConvert.SerializeObject(skillData, Formatting.Indented);
+        //File.WriteAllText(skillsPath, json);
     }
     [ContextMenu("Load Skills")]
     public void LoadSkills()
     {
         if (File.Exists(skillsPath))
         {
-            string json = File.ReadAllText(skillsPath);
-            List<SkillDatabase.SkillSaveData> skillData = JsonConvert.DeserializeObject<List<SkillDatabase.SkillSaveData>>(json);
-            foreach (var skill in skillData)
-            {
-                SkillDatabase.GetItem(skill.id).amount = skill.amount;
-            }
+            //string json = File.ReadAllText(skillsPath);
+            // json to data loading
         }
         else
         {
