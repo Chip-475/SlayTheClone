@@ -31,8 +31,6 @@ public class SkillExecutor : MonoBehaviour
         player.StaminaChanged();
         Player.selecting = false;
 
-        print("BattleAction executed successfully!");
-
         CombatManager.instance.selectedCard = null;
         CombatManager.instance.selectedEnemy = null;
     }

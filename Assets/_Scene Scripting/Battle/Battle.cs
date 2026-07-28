@@ -34,13 +34,5 @@ public class Battle : MonoBehaviour
             }
         }
     }
-
-    public List<IBattleEntity> GetEnemies()
-    {
-        var toReturn = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
-            .OfType<IBattleEntity>()
-            .ToList();
-        return new List<IBattleEntity>(toReturn);
-    }
     #endregion
 }

@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
-using UnityEditor.Timeline;
+using System.Threading.Tasks;
+using System.Data;
 using System.Linq;
+using DG.Tweening;
 
 [RequireComponent(typeof(NodeGenerator))]
 [RequireComponent(typeof(NodeAssigner))]
@@ -23,7 +25,10 @@ public class MapManager : MonoBehaviour
     public Node nodePrefab;
 
     public Dictionary<int, List<Node>> map;
+    public List<Node> nodeLookupTable;
     public string mapPath;
+
+    public GameObject fadePanel;
     #endregion
 
     #region Unity Methods
@@ -37,28 +42,23 @@ public class MapManager : MonoBehaviour
     }
     private async void Start()
     {
-         //PlayerPrefs.SetInt("generated", 0); // testing purposes
+        fadePanel.SetActive(true);
+        fadePanel.GetComponent<CanvasGroup>().DOFade(0, 0.3f);
 
         mapPath = Path.Combine(Application.persistentDataPath, "map.json");
 
         if (PlayerPrefs.GetInt("generated") == 0)  // false
         {
-            nodeGenerator.InitLayerKeys();
-            nodeGenerator.SpawnNodes();
-            nodeGenerator.PositionNodes();
-            map = nodeGenerator.layers;
-
-            await nodeAssigner.AssignSpecialNodes();
-            await nodeAssigner.AssignBattles();
-
-            nodeConnecter.AssignConnections();
-
-            SaveMap();
-            PlayerPrefs.SetInt("generated", 1); // set true
+            await Generate();
         }
         else
         {
             LoadMap();
+            FillNodeTable();
+            nodeConnecter.DrawConnections();
+
+            startingNode.gameObject.SetActive(false);
+            bossNode.gameObject.SetActive(false);
         }
     }
     #endregion
@@ -70,8 +70,6 @@ public class MapManager : MonoBehaviour
 
         foreach (var key in map.Keys)
         {
-            if (key == 0) continue;
-
             List<Node.SaveData> nodeData = new();
             foreach(var node in map[key])
             {
@@ -92,7 +90,7 @@ public class MapManager : MonoBehaviour
             var data = JsonConvert.DeserializeObject<Dictionary<int, List<Node.SaveData>>>(json);
             map = new();
 
-            for(int i = 1; i < data.Keys.Count; i++)
+            for(int i = 0; i < data.Keys.Count; i++)
             {
                 List<Node> nodes = new();
 
@@ -108,8 +106,67 @@ public class MapManager : MonoBehaviour
 
                     nodes.Add(node);
                 }
+
+                map.Add(i, nodes);
             }
         }
+    }
+    public void FillNodeTable()
+    {
+        nodeLookupTable.Add(startingNode);
+
+        foreach (var layer in map.Keys)
+        {
+            foreach(var node in map[layer])
+            {
+                nodeLookupTable.Add(node);
+            }
+        }
+
+        nodeLookupTable.Add(bossNode);
+    }
+
+    [ContextMenu("ReGenerate Map")]
+    public async Task Generate()
+    {
+        foreach (var layer in map.Keys)
+        {
+            foreach(var node in map[layer])
+            {
+                Destroy(node.gameObject);
+            }
+        }
+        map = new();
+
+        nodeGenerator.InitLayerKeys();
+        nodeGenerator.SpawnNodes();
+        nodeGenerator.PositionNodes();
+        map = nodeGenerator.layers;
+
+        await nodeAssigner.AssignSpecialNodes();
+        await nodeAssigner.AssignBattles();
+
+        nodeConnecter.AssignConnections();
+        FillNodeTable();
+        nodeConnecter.DrawConnections();
+
+        SaveMap();
+        PlayerPrefs.SetInt("generated", 1); // set true
+
+        startingNode.gameObject.SetActive(false);
+        bossNode.gameObject.SetActive(false);
+    }
+    public static Node GetNodeById(int id)
+    {
+        foreach(var layer in instance.map.Keys)
+        {
+            foreach(var node in instance.map[layer])
+            {
+                if(node.id == id) return node;
+            }
+        }
+
+        return null;
     }
     #endregion
 }

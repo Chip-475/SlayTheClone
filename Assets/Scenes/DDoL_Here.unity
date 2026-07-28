@@ -169,7 +169,7 @@ MonoBehaviour:
     highestDamageDealt: 0
     killer: 
   nStartingCards: 2
-  nCardsAtTurnStart: 1
+  nCardsAtTurnStart: 3
   minNodesPerLayer: 2
   maxNodesPerLayer: 4
   bossLayer: 8
@@ -178,8 +178,8 @@ MonoBehaviour:
   maxShops: 2
   maxRests: 2
   maxShortcuts: 1
-  nodeOffsetX: 1
-  nodeOffsetY: 2
+  nodeOffsetX: 0.4
+  nodeOffsetY: 0.4
 --- !u!4 &194967488
 Transform:
   m_ObjectHideFlags: 0

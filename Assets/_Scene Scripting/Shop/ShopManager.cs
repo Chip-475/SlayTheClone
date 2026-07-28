@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
@@ -7,7 +8,9 @@ public class ShopManager : MonoBehaviour
 
     MainDatabase Database => MainDatabase.instance;
 
-    ShopMoneyCounter moneyCounter;
+    public ShopMoneyCounter moneyCounter;
+
+    public GameObject fadePanel;
     #endregion
 
     #region Unity Methods
@@ -19,6 +22,9 @@ public class ShopManager : MonoBehaviour
     }
     private void Start()
     {
+        fadePanel.SetActive(true);
+        fadePanel.GetComponent<CanvasGroup>().DOFade(0, 0.3f);
+
         moneyCounter.UpdateCounter();
     }
     #endregion

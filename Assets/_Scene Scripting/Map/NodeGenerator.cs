@@ -37,7 +37,7 @@ public class NodeGenerator : MonoBehaviour
         layers[0] = new List<Node>() { startingNode };
         layers[Database.bossLayer] = new List<Node>() { bossNode };
 
-        int autoIncrementID = 1;
+        int autoIncrementID = 0;
         for (int i = 1; i < layers.Count - 1; i++)
         {
             layers[i] = new();
@@ -56,7 +56,7 @@ public class NodeGenerator : MonoBehaviour
                 layers[i].Add(node);
             }
         }
-        bossNode.id = autoIncrementID++;
+        bossNode.id = autoIncrementID + 1;
     }
     public void PositionNodes()
     {

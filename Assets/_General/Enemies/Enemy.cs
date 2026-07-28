@@ -5,6 +5,7 @@ using System.Collections;
 using Unity.Mathematics;
 using System;
 using System.Linq;
+using static EnemyInfoSO;
 
 // Enemy base class
 [RequireComponent(typeof(EnemyBars))]
@@ -13,7 +14,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
     #region Declarations
     [SerializeField] protected EnemyInfoSO baseInfo;
 
-    [HideInInspector] public EnemyInfoSO info;
+    public EnemyInfoSO info;
 
     public float actionPoints;
     public bool canGainActionPoints;
@@ -31,9 +32,10 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
     public virtual void Awake()
     {
         info = Instantiate(baseInfo);
+        CombatManager.instance.enemiesOnField.Add(this);
     }
     protected virtual void Start()
-    {
+    { 
         spriteRenderer = GetComponent<SpriteRenderer>();
         bars = GetComponent<EnemyBars>();
         animator = GetComponent<Animator>();
@@ -66,19 +68,12 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
     }
     public virtual void DropItems()
     {
-        List<EnemyInfoSO.Drop> droppedItems = new();
+        if (info.dropPool.Count == 0) return;
 
-        foreach(var drop in info.dropPool)
-        {
-            int rand = UnityEngine.Random.Range(0, 101);
-            if (rand <= drop.dropChance) droppedItems.Add(drop);
-        }
+        var drop = info.dropPool[UnityEngine.Random.Range(0, info.dropPool.Count)];
+        int amountToDrop = UnityEngine.Random.Range(drop.minAmount, drop.maxAmount);
 
-        foreach(var drop in droppedItems)
-        {
-            int amountToDrop = UnityEngine.Random.Range(drop.minAmount, drop.maxAmount);
-            ItemDatabase.instance.itemTable[drop.item.id].amount += amountToDrop;
-        }
+        CombatManager.instance.results.drops.Add(drop.item, amountToDrop);
     }
     public virtual void SwitchAnimation(string animName)
     {
@@ -129,9 +124,8 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
     }
     public virtual IEnumerator DeathSequence()
     {
-        // basically OnDeath event.
-        // death anim, game stats increases etc...
         DropItems();
+        CombatManager.instance.enemiesOnField.Remove(this);
 
         Destroy(gameObject);
         yield break;

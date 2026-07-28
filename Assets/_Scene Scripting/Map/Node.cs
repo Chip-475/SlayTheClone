@@ -31,6 +31,7 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
     [Header("Meta")]
     public int id;
+    public bool connected;
     public List<int> forwardConnections = new();
 
     public bool isAssigned = false;
@@ -81,32 +82,12 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         }
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public async void OnPointerClick(PointerEventData eventData)
     {
-        switch (type)
-        {
-            case NodeType.Boss:
-                //sceneManager.LoadSceneAsync("battle");
-                break;
-            case NodeType.Battle:
-                //sceneManager.LoadSceneAsync("battle");
-                break;
-            case NodeType.EliteBattle:
-                //sceneManager.LoadSceneAsync("battle");
-                break;
-            case NodeType.Shop:
-                //sceneManager.LoadSceneAsync("shop");
-                break;
-            case NodeType.Rest:
-                //sceneManager.LoadSceneAsync("rest");
-                break;
-            case NodeType.Event:
-                //sceneManager.LoadSceneAsync("event");
-                break;
-            case NodeType.Shortcut:
-                //sceneManager.LoadSceneAsync("shortcut");
-                break;
-        }
+        string sceneToLoad = type.ToString();
+        await MapManager.instance.fadePanel.GetComponent<CanvasGroup>().DOFade(1, 0.3f)
+            .AsyncWaitForCompletion();
+        await SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Single);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -129,7 +110,6 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         yield return NodeType.Event;
         yield return NodeType.Shop;
         yield return NodeType.Rest;   
-        yield return NodeType.Shortcut;
     }
 
     public class SaveData

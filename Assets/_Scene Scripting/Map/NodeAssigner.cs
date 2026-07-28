@@ -22,7 +22,6 @@ public class NodeAssigner : MonoBehaviour
         yield return nEvents;
         yield return nShops;
         yield return nRests;
-        yield return nShortcuts;
     }
     #endregion
 

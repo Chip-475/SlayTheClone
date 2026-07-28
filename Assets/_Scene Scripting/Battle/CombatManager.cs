@@ -3,6 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using System.Linq;
+using UnityEngine.SceneManagement;
+using UnityEditor.UIElements;
 
 public class CombatManager : MonoBehaviour
 {
@@ -20,12 +23,14 @@ public class CombatManager : MonoBehaviour
     public GameObject deathScreen;
     [Space]
     public bool entitiesAreActing = false;
-    public List<IBattleEntity> entitiesOnField = new();
+    public List<Enemy> enemiesOnField = new();
     public List<IBattleEntity> actingEntities = new();
-
+    public BattleResults results = new();
 
     public SkillCard selectedCard;
     public Enemy selectedEnemy;
+
+    public GameObject fadePanel;
     #endregion
 
     #region Unity Methods
@@ -40,16 +45,19 @@ public class CombatManager : MonoBehaviour
     }
     private void Start()
     {
+        fadePanel.SetActive(true);
+        fadePanel.GetComponent<CanvasGroup>().DOFade(0, 0.3f);
+
         deathScreen.SetActive(false);
 
         battle.SpawnBackground();
         battle.SpawnEnemies();
-        entitiesOnField = new List<IBattleEntity>(battle.GetEnemies());
 
         deck.InitDeck();
         deck.DrawCards(Database.nStartingCards);
 
         hand.Organize();
+        StartCoroutine(BattleWinCR());
     }
     #endregion
 
@@ -82,17 +90,33 @@ public class CombatManager : MonoBehaviour
 
     public void StopActionBars()
     {
-        foreach (var entity in entitiesOnField)
+        foreach (var entity in enemiesOnField)
         {
             entity.StopActionBar();
         }
+        player.StopActionBar();
     }
     public void StartActionBars()
     {
-        foreach (var entity in entitiesOnField)
+        foreach (var entity in enemiesOnField)
         {
             entity.StartActionBar();
         }
+        player.StartActionBar();
+    }
+
+    IEnumerator BattleWinCR()
+    {
+        yield return new WaitUntil(() => enemiesOnField.Count == 0 && !Player.isDead);
+
+        player.ChangeAnimation("Win"); yield return new WaitForSeconds(3);
+
+        // show results screen
+        results.Validate();
+
+        fadePanel.GetComponent<CanvasGroup>().DOFade(1, 0.3f);
+        yield return new WaitForSeconds(0.3f);
+        SceneManager.LoadSceneAsync("Map", LoadSceneMode.Single);
     }
 
     public void SlowTime()
@@ -121,4 +145,16 @@ public class CombatManager : MonoBehaviour
             .OnComplete(() => panelGroup.interactable = true);
     }
     #endregion
+}
+public class BattleResults
+{
+    public Dictionary<ItemSO, int> drops = new();
+
+    public void Validate()
+    {
+        foreach (var item in drops)
+        {
+            ItemDatabase.GetItem(item.Key.id).amount = item.Value;
+        }
+    }
 }
