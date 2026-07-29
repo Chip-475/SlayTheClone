@@ -5,6 +5,7 @@ public class BattleMenu : MonoBehaviour
 {
     public Stack<GameObject> menuHistory = new();
 
+    public CanvasGroup menuGroup;
     public GameObject baseMenu;
     public GameObject attackMenu;
     public GameObject defendMenu;
@@ -12,6 +13,8 @@ public class BattleMenu : MonoBehaviour
     private void Start()
     {
         menuHistory.Push(baseMenu);
+
+        menuGroup.interactable = false;
     }
 
     #region Methods

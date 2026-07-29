@@ -21,7 +21,7 @@ public class Player : MonoBehaviour, IBattleEntity
 
     public static event Action OnPlayerHealthChanged;
 
-    public MainDatabase.PlayerStats Stats => Database.playerStats;
+    public PlayerStats Stats => PlayerManager.instance.stats;
     public PlayerAnimController animController;
     public Animator animator;
 
@@ -49,6 +49,7 @@ public class Player : MonoBehaviour, IBattleEntity
         SetInitialState();
 
         state = State.Idle;
+        PlayerManager.player = this;
     }
     private void FixedUpdate()
     {
@@ -94,8 +95,10 @@ public class Player : MonoBehaviour, IBattleEntity
         stamina += 3;
         stamina = Math.Clamp(stamina, 0, 15);
         StaminaChanged();
+        CombatManager.instance.battleMenu.menuGroup.interactable = true;
         isActing = true;
         yield return new WaitUntil(() => isActing == false);
+        CombatManager.instance.battleMenu.menuGroup.interactable = false;
         actionPoints = 0;
     }
     public int ApplyResistances(int amount)

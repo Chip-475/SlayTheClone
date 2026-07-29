@@ -7,7 +7,7 @@ public class HealButton : MonoBehaviour
 
     public void Heal()
     {
-        restManager.Database.playerStats.hp += 5;
+        PlayerManager.instance.stats.hp += 5;
 
         RestManager.DecreaseTime(3);
     }

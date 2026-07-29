@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 public class NodeAssigner : MonoBehaviour
 {
     #region Declarations
-    MainDatabase Database => MainDatabase.instance;
+    MapManager Manager => MapManager.instance;
 
     public int nBattles;
     public int nEliteBattles;
@@ -48,7 +48,7 @@ public class NodeAssigner : MonoBehaviour
 
         var nodeTypes = Node.NodeTypes().ToList();
         var nodeCurrentAmounts = Values().ToList();
-        var nodeMaxAmounts = Database.MaxNodeAmounts().ToList();
+        var nodeMaxAmounts = Manager.MaxNodeAmounts().ToList();
 
         int cycles = nodeTypes.Count;
         for(int i = 0; i < cycles; i++)

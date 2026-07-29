@@ -15,7 +15,8 @@ public class CombatManager : MonoBehaviour
 
     [Header("References")]
     public Battle battle;
-    public SkillExecutor executor;
+    public SkillExecutor skillExecutor;
+    public BattleMenu battleMenu;
     [Space]
     public Player player;
     public GameObject deathScreen;
@@ -25,7 +26,7 @@ public class CombatManager : MonoBehaviour
     public List<IBattleEntity> actingEntities = new();
     public BattleResults results = new();
 
-    // selected skill
+    public Skill selectedSkill;
     public Enemy selectedEnemy;
 
     public GameObject fadePanel;
@@ -37,7 +38,8 @@ public class CombatManager : MonoBehaviour
         instance = this;
         
         battle = GetComponent<Battle>();
-        executor = GetComponent<SkillExecutor>();
+        skillExecutor = GetComponent<SkillExecutor>();
+        battleMenu = GetComponent<BattleMenu>();
     }
     private void Start()
     {

@@ -8,7 +8,7 @@ public class SkillExecutor : MonoBehaviour
     MainDatabase Database => MainDatabase.instance;
 
     public static Player player => CombatManager.instance.player;
-    //public SkillCard card => CombatManager.instance.selectedCard;
+    public Skill skill => CombatManager.instance.selectedSkill;
     public Enemy enemy => CombatManager.instance.selectedEnemy;
     #endregion
 
@@ -20,7 +20,7 @@ public class SkillExecutor : MonoBehaviour
     }
     IEnumerator ExecuteCR(MonoBehaviour runner)
     {
-        // skill execution procedure
+        skill.Effect(enemy);
         yield break;
     }
     #endregion

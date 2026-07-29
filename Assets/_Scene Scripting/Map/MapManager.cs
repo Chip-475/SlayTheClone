@@ -12,18 +12,30 @@ using DG.Tweening;
 public class MapManager : MonoBehaviour
 {
     #region Declarations
-    MainDatabase Database => MainDatabase.instance;
+    public MainDatabase Database => MainDatabase.instance;
 
     public static MapManager instance;
 
     public NodeGenerator nodeGenerator;
     public NodeAssigner nodeAssigner;
     public NodeConnecter nodeConnecter;
-
+    [Space]
     public Node startingNode;
     public Node bossNode;
     public Node nodePrefab;
-
+    [Space]
+    public int minNodesPerLayer;
+    public int maxNodesPerLayer;
+    public int bossLayer;
+    public int maxEliteBattles;
+    public int maxEvents;
+    public int maxShops;
+    public int maxRests;
+    public int maxShortcuts;
+    [Space]
+    public float nodeOffsetX;
+    public float nodeOffsetY;
+    [Space]
     public Dictionary<int, List<Node>> map;
     public List<Node> nodeLookupTable;
     public string mapPath;
@@ -167,6 +179,17 @@ public class MapManager : MonoBehaviour
         }
 
         return null;
+    }
+    #endregion
+
+    #region Utilities
+    public IEnumerable<int> MaxNodeAmounts()
+    {
+        yield return maxEliteBattles;
+        yield return maxEvents;
+        yield return maxShops;
+        yield return maxRests;
+        yield return maxShortcuts;
     }
     #endregion
 }

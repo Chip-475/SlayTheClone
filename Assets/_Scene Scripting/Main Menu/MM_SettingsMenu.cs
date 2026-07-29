@@ -6,8 +6,6 @@ using UnityEngine.Rendering;
 public class MM_SettingsMenu : MonoBehaviour
 {
     #region Declarations
-    MainDatabase Database => MainDatabase.instance;
-
     public Image settingsMenu;
     public bool menuOpen;
     #endregion
@@ -26,7 +24,6 @@ public class MM_SettingsMenu : MonoBehaviour
         {
             // Close menu
 
-            SaveAndLoad.instance.SaveSettings();
             settingsMenu.transform.DOScale(0, 0.15f);
             menuOpen = false;
         }
@@ -34,17 +31,17 @@ public class MM_SettingsMenu : MonoBehaviour
 
     public void SetMaster(float volume)
     {
-        Database.settings.masterVolume = volume;
+        PlayerPrefs.SetFloat("Master Volume", volume);
         SetMixerVolume("Master", volume);
     }
     public void SetSFX(float volume)
     {
-        Database.settings.sfxVolume = volume;
+        PlayerPrefs.SetFloat("SFX Volume", volume);
         SetMixerVolume("SFX", volume);
     }
     public void SetBGM(float volume)
     {
-        Database.settings.bgmVolume = volume;
+        PlayerPrefs.SetFloat("BGM Volume", volume);
         SetMixerVolume("BGM", volume);
     }
 

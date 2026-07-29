@@ -148,37 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14432679b577a6a4fb94690ef256e8fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DB
-  settings:
-    masterVolume: 0
-    sfxVolume: 0
-    bgmVolume: 0
-  inventory:
-    money: 0
-    items: []
-  playerStats:
-    hp: 20
-    maxHp: 20
-    actionPointsSpeed: 75
-    timesDied: 0
-    enemiesKilled: 0
-    distanceTravelled: 0
-    moneyEarned: 0
-    cardsPlayed: 0
-    totDamageDealt: 0
-    highestDamageDealt: 0
-    killer: 
   nStartingCards: 2
   nCardsAtTurnStart: 3
-  minNodesPerLayer: 2
-  maxNodesPerLayer: 4
-  bossLayer: 8
-  maxEliteBattles: 2
-  maxEvents: 2
-  maxShops: 2
-  maxRests: 2
-  maxShortcuts: 1
-  nodeOffsetX: 0.4
-  nodeOffsetY: 0.4
 --- !u!4 &194967488
 Transform:
   m_ObjectHideFlags: 0
@@ -313,50 +284,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1329161330
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1329161332}
-  - component: {fileID: 1329161331}
-  m_Layer: 0
-  m_Name: SaveAndLoad
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1329161331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329161330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: accb5abcc68f7b14b9cd4802f9828ce0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SaveAndLoad
---- !u!4 &1329161332
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329161330}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1899882802
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,14 +374,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2030139549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2030139550}
+  - component: {fileID: 2030139551}
+  m_Layer: 0
+  m_Name: Player Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2030139550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030139549}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2030139551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030139549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a81a1066542a8345b745fc3027f9ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
+  statsPath: 
+  inventoryPath: 
+  stats:
+    hp: 0
+    maxHp: 0
+    actionPointsSpeed: 0
+    timesDied: 0
+    enemiesKilled: 0
+    distanceTravelled: 0
+    moneyEarned: 0
+    cardsPlayed: 0
+    totDamageDealt: 0
+    highestDamageDealt: 0
+    killer: 
+  inventory:
+    money: 0
+    ownedSkills: []
+    items: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1992630489}
+  - {fileID: 2030139550}
   - {fileID: 194967488}
   - {fileID: 942487340}
   - {fileID: 446335563}
   - {fileID: 1899882804}
   - {fileID: 1018351335}
-  - {fileID: 1329161332}

@@ -132,7 +132,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
 
         CombatManager.instance.selectedEnemy = this;
 
-        CombatManager.instance.executor.Execute();
+        CombatManager.instance.skillExecutor.Execute();
     }
     #endregion
 }

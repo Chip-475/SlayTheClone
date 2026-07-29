@@ -7,11 +7,11 @@ using Unity.VisualScripting;
 public class NodeGenerator : MonoBehaviour
 {
     #region Declarations
-    public MainDatabase Database => MainDatabase.instance;
+    public MapManager Manager => MapManager.instance;
 
-    public Node startingNode => MapManager.instance.startingNode;
-    public Node bossNode => MapManager.instance.bossNode;
-    public Node nodePrefab => MapManager.instance.nodePrefab;
+    public Node startingNode => Manager.startingNode;
+    public Node bossNode => Manager.bossNode;
+    public Node nodePrefab => Manager.nodePrefab;
 
     public float distanceBetweenLayers;
     public float distanceBetweenNodes;
@@ -23,9 +23,9 @@ public class NodeGenerator : MonoBehaviour
     public void InitLayerKeys()
     {
         layers.Add(0, null);
-        layers.Add(Database.bossLayer, null);
+        layers.Add(Manager.bossLayer, null);
 
-        for (int i = 1; i < Database.bossLayer; i++)
+        for (int i = 1; i < Manager.bossLayer; i++)
         {
             layers.Add(i, null);
         }
@@ -35,14 +35,14 @@ public class NodeGenerator : MonoBehaviour
         startingNode.id = 0;
 
         layers[0] = new List<Node>() { startingNode };
-        layers[Database.bossLayer] = new List<Node>() { bossNode };
+        layers[Manager.bossLayer] = new List<Node>() { bossNode };
 
         int autoIncrementID = 0;
         for (int i = 1; i < layers.Count - 1; i++)
         {
             layers[i] = new();
 
-            int numberOfNodes = Random.Range(Database.minNodesPerLayer, Database.maxNodesPerLayer + 1);
+            int numberOfNodes = Random.Range(Manager.minNodesPerLayer, Manager.maxNodesPerLayer + 1);
             for (int j = 0; j < numberOfNodes; j++)
             {
                 autoIncrementID++;
@@ -92,8 +92,8 @@ public class NodeGenerator : MonoBehaviour
             for (int i = 0; i < layer.Value.Count; i++)
             {
                 // Adds offset
-                float xOffset = Random.Range(-Database.nodeOffsetX, Database.nodeOffsetX);
-                float yOffset = Random.Range(-Database.nodeOffsetY, Database.nodeOffsetY);
+                float xOffset = Random.Range(-Manager.nodeOffsetX, Manager.nodeOffsetX);
+                float yOffset = Random.Range(-Manager.nodeOffsetY, Manager.nodeOffsetY);
                 layer.Value[i].transform.position += new Vector3(xOffset, yOffset, 0);
             }
         }

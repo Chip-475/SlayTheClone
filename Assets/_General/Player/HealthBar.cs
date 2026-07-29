@@ -1,11 +1,10 @@
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
 
 #pragma warning disable
 public class HealthBar : MonoBehaviour
 {
-    MainDatabase.PlayerStats playerStats => MainDatabase.instance.playerStats;
+    PlayerStats playerStats => PlayerManager.instance.stats;
     Image _bar;
     AnimationCurve curve;
 

@@ -1,10 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class NodeConnecter : MonoBehaviour
 {
@@ -18,7 +14,7 @@ public class NodeConnecter : MonoBehaviour
         {
             MapManager.instance.startingNode.forwardConnections.Add(node.id);
         }
-        foreach (var node in Map[MainDatabase.instance.bossLayer - 1])
+        foreach (var node in Map[MapManager.instance.bossLayer - 1])
         {
             node.forwardConnections.Add(MapManager.instance.bossNode.id);
             MapManager.instance.bossNode.connected = true;
