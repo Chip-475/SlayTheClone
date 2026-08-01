@@ -13,8 +13,8 @@ public class PlayerManager : MonoBehaviour
     public string inventoryPath;
 
     [Header("Data Packets")]
-    public PlayerStats stats = new();
-    public Inventory inventory = new();
+    public static PlayerStats stats = new();
+    public static Inventory inventory = new();
     #endregion
 
     #region Unity Methods
@@ -32,7 +32,8 @@ public class PlayerManager : MonoBehaviour
         SaveAndLoad.Load(ref stats, statsPath);
         SaveAndLoad.Load(ref inventory, inventoryPath);
 
-        stats.hp = stats.maxHp; // testing
+        if (player == null) return;
+        player.Health = stats.maxHp; // testing
     }
     private void OnApplicationQuit()
     {

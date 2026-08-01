@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -7,8 +8,6 @@ using UnityEngine;
 public class Player : MonoBehaviour, IBattleEntity
 {
     #region Declarations
-    MainDatabase Database => MainDatabase.instance;
-
     public enum State
     {
         Idle,
@@ -20,20 +19,53 @@ public class Player : MonoBehaviour, IBattleEntity
     public State state;
 
     public static event Action OnPlayerHealthChanged;
+    public static event Action OnPlayerStaminaChanged;
 
-    public PlayerStats Stats => PlayerManager.instance.stats;
+    public PlayerStats Stats => PlayerManager.stats;
     public PlayerAnimController animController;
     public Animator animator;
 
     public int id;
+    public int ID { get { return id; } set { id = value; } }
+
     public bool canGainActionPoints;
     public float actionPoints;
 
-    public int stamina;
+    int _stamina;
     [SerializeField] private TMP_Text _staminaText;
     public static bool isDead = false;
     public static bool selecting;
     public bool isActing;
+    #endregion
+    #region Properties
+    public int Stamina 
+    { 
+        get { return _stamina; } 
+        set {
+            int clamped = Math.Clamp(value, 0, 15);
+
+            if (_stamina == clamped)
+                return;
+
+            _stamina = clamped;
+            OnPlayerStaminaChanged?.Invoke();
+        } 
+    }
+    public int Health
+    {
+        get { return Stats.hp; }
+        set
+        {
+            int clamped = Math.Clamp(value, 0, Stats.maxHp);
+
+            if (Stats.hp == clamped)
+                return;
+
+            Stats.hp = clamped;
+            OnPlayerHealthChanged?.Invoke();
+        }
+    }
+
     #endregion
 
     #region Unity Methods
@@ -50,6 +82,8 @@ public class Player : MonoBehaviour, IBattleEntity
 
         state = State.Idle;
         PlayerManager.player = this;
+
+        OnPlayerStaminaChanged?.Invoke();
     }
     private void FixedUpdate()
     {
@@ -57,8 +91,16 @@ public class Player : MonoBehaviour, IBattleEntity
         if (actionPoints >= 100 && !CombatManager.instance.actingEntities.Contains(this))
         {
             CombatManager.instance.actingEntities.Add(this);
-            CombatManager.PerformActions();
+            CombatManager.instance.StartCoroutine(CombatManager.PerformActions());
         }
+    }
+    private void OnEnable()
+    {
+        OnPlayerStaminaChanged += () => _staminaText.text = Stamina.ToString();
+    }
+    private void OnDisable()
+    {
+        OnPlayerStaminaChanged -= () => _staminaText.text = Stamina.ToString();
     }
     #endregion
 
@@ -69,49 +111,32 @@ public class Player : MonoBehaviour, IBattleEntity
         actionPoints = 0;
         canGainActionPoints = true;
         
-        stamina = 5;
+        _stamina = 5;
         isActing = false;
     }
-    public void StaminaChanged()
-    {
-        _staminaText.text = $"{stamina}";
-    }
 
-    public int GetId()
+    public void ActionBarMovement(bool active)
     {
-        return id;
-    }
-    public void StopActionBar()
-    {
-        canGainActionPoints = false;
-    }
-    public void StartActionBar()
-    {
-        canGainActionPoints = true;
+        if (active) { canGainActionPoints = true; }
+        else { canGainActionPoints = false; }
     }
 
     public IEnumerator Action()
     {
-        stamina += 3;
-        stamina = Math.Clamp(stamina, 0, 15);
-        StaminaChanged();
+        Stamina += 3;
         CombatManager.instance.battleMenu.menuGroup.interactable = true;
         isActing = true;
         yield return new WaitUntil(() => isActing == false);
         CombatManager.instance.battleMenu.menuGroup.interactable = false;
         actionPoints = 0;
     }
-    public int ApplyResistances(int amount)
-    {
-        return 0;
-    }
 
+    public int ApplyResistances(int amount) { return 0; }
     public void TakeDamage(int amount)
     {
-        Stats.hp -= amount;
-        PlayerHealthChanged();
+        Health -= amount;
 
-        if(Stats.hp <= 0 && !isDead)
+        if(Health <= 0 && !isDead)
         {
             CombatManager.instance.StartCoroutine(DeathSequence());
         }

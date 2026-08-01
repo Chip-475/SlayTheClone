@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Threading.Tasks;
 using System.Collections;
 
 public class Slime : Enemy
@@ -12,7 +13,7 @@ public class Slime : Enemy
     {
         base.Start();
 
-        SetInitialState();
+        Init();
     }
     new void FixedUpdate()
     {
@@ -30,31 +31,22 @@ public class Slime : Enemy
 
     public override IEnumerator Action()
     {
-        bool attack = Random.Range(0, 2) == 0;
-        if(attack)
-        {
-            yield return StartCoroutine(BasicAttack());
-            print($"{gameObject.name} attacks!");
-        }
-        else
-        {
-            print($"{gameObject.name} does nothing!");
-        }
+        bool ifAttack = Random.Range(0, 100) < 60;
 
-        yield return new WaitForSeconds(1); // To remove once animation is implemented
+        if (ifAttack)
+        {
+            SwitchAnimation("Attack");
+            float animLength = GetAnimation("Attack").length;
+            yield return new WaitForSeconds(animLength);
+
+            SwitchAnimation("Idle");
+        }
 
         actionPoints = 0;
     }
-
-    IEnumerator BasicAttack()
+    public void DealDamage()
     {
-        // Deals damage in atk +- range
         int damageToDeal = Random.Range(info.atk - info.atkRange, info.atk + info.atkRange + 1);
-        print(damageToDeal);
-
-        // play animation ToDo
         CombatManager.instance.player.TakeDamage(damageToDeal);
-
-        yield break;
     }
 }

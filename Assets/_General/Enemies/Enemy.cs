@@ -6,6 +6,7 @@ using Unity.Mathematics;
 using System;
 using System.Linq;
 using static EnemyInfoSO;
+using System.Threading.Tasks;
 
 // Enemy base class
 [RequireComponent(typeof(EnemyBars))]
@@ -19,6 +20,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
     public float actionPoints;
     public bool canGainActionPoints;
     public int id;
+    public int ID { get { return id; } set { id = value; } }
 
     public Animator animator;
     protected SpriteRenderer spriteRenderer;
@@ -51,7 +53,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
         if(actionPoints >= 100 && !CombatManager.instance.actingEntities.Contains(this))
         {
             CombatManager.instance.actingEntities.Add(this);
-            CombatManager.PerformActions();
+            CombatManager.instance.StartCoroutine(CombatManager.PerformActions());
         }
     }
 
@@ -60,7 +62,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
     #endregion
 
     #region Methods
-    public virtual void SetInitialState()
+    public virtual void Init()
     {
         // Preps for combat
         actionPoints = 0f;
@@ -79,22 +81,26 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
     {
         animator.CrossFade(animName, 0, 0);
     }
+    public virtual AnimationClip GetAnimation(string animName)
+    {
+        foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
+        {
+            if (clip.name == animName)
+            {
+                return clip;
+            }
+        }
 
-    public int GetId()
-    {
-        return id;
+        print($"No clip named {animName} found.");
+        return null;
     }
-    public void StopActionBar()
+    public void ActionBarMovement(bool active)
     {
-        canGainActionPoints = false;
-    }
-    public void StartActionBar()
-    {
-        canGainActionPoints = true;
+        if (active) { canGainActionPoints = true; }
+        else { canGainActionPoints = false; }
     }
 
     public virtual IEnumerator Action() { yield break; }
-
     public virtual int ApplyResistances(int damage)
     {
         // damage calculation
@@ -123,86 +129,11 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
         yield break;
     }
 
-    #endregion Methods
-
-    #region Events
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!Player.selecting) return;
+        if (CombatManager.instance.selectedSkill == null) return;
 
         CombatManager.instance.selectedEnemy = this;
-
-        CombatManager.instance.skillExecutor.Execute();
     }
-    #endregion
+    #endregion Methods
 }
-
-#region Pending
-//public enum Mood
-//{
-//    Neutral,
-//    Aggressive,
-//    Defensive,
-//    Desperate,
-//    Doordinated
-//}
-//public enum BattlePlan
-//{
-//    attack,
-//    heal,
-//    buff,
-//    debuff,
-//    defend
-//}
-//[System.Serializable]
-//public struct Awareness
-//{
-//    [Header("hp")]
-//    public int currentHP;
-//    public int maxHP;
-
-//    [Header("playerStats")]
-//    public int playerHP;
-//    public int playerMaxHP;
-//    public int playerMoney;
-
-//    [Header("Allies")]
-//    public int aliveAllies;
-//    public int totalAllies;
-//    public bool isAnHealerAlly;
-//    public bool isASupporterAlly;
-//    public bool isADPSAlly;
-//    public bool isATankAlly;
-
-//    [Header("type")]
-//    public bool isBoss;
-//    public bool isElite;
-//    public bool isEnemy;
-
-//    [Header("killInfo")]
-//    public bool canKillPlayer;
-//    public bool canBeKilled;
-//    public bool AlliesCanBeKilled;
-
-//    [Header("actions")]
-//    public bool canHeal;
-//    public bool canBuff;
-//    public bool canDebuffPlayer;
-//    public bool canSummon;
-
-//    [Header("dmgInfo")]
-//    public int avgPlayerDamage;
-//    public int avgDmgToPlayer;
-//    public int totalPersonalDmgToPlayer;
-
-//    [Header("lastTurnInfo")]
-//    public bool wasAttackedLastTurn;
-//    public bool wasAllyKilledLastTurn;
-//    public bool wasHealedLastTurn;
-//    public bool didPlayerHealLastTurn;
-//    public bool didPlayerBuffLastTurn;
-
-//    public Mood currentMood;
-//    public BattlePlan currentBattlePlan;
-//}
-#endregion

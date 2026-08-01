@@ -5,11 +5,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using Newtonsoft.Json;
+using static MapManager;
 
 public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     #region Declarations
     [JsonIgnore] MainDatabase Database => MainDatabase.instance;
+    [JsonIgnore] MapManager Manager => MapManager.instance;
 
     public enum NodeType
     {
@@ -35,7 +37,6 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public List<int> forwardConnections = new();
 
     public bool isAssigned = false;
-    [JsonIgnore] bool isHoveredOn = false;
     #endregion
 
     #region Unity Methods
@@ -82,24 +83,34 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         }
     }
 
+    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        List<int> nextNodes = new();
+        GetNodeById(Manager.currentNodeId).forwardConnections.ForEach(id => { nextNodes.Add(id); });
+        if (!nextNodes.Contains(id)) return;
+
+        gameObject.transform.DOScale(0.8f, 0.15f);
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        List<int> nextNodes = new();
+        GetNodeById(Manager.currentNodeId).forwardConnections.ForEach(id => { nextNodes.Add(id); });
+        if (!nextNodes.Contains(id)) return;
+
+        gameObject.transform.DOScale(0.5f, 0.15f);
+    }
     public async void OnPointerClick(PointerEventData eventData)
     {
+        List<int> nextNodes = new();
+        GetNodeById(Manager.currentNodeId).forwardConnections.ForEach(id => { nextNodes.Add(id); });
+        if (!nextNodes.Contains(id)) return;
+
+        PlayerPrefs.SetInt("Current Node", id);
         string sceneToLoad = type.ToString();
         await MapManager.instance.fadePanel.GetComponent<CanvasGroup>().DOFade(1, 0.3f)
             .AsyncWaitForCompletion();
         await SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Single);
-    }
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (isHoveredOn) return;
-        gameObject.transform.DOScale(0.8f, 0.15f);
-        isHoveredOn = true;
-    }
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (!isHoveredOn) return;
-        gameObject.transform.DOScale(0.5f, 0.15f);
-        isHoveredOn = false;
     }
     #endregion
 

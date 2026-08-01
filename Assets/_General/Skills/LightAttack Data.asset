@@ -18,4 +18,5 @@ MonoBehaviour:
   description: Fast physical attack.
   skillType: 0
   damagePercentage: 80
+  staminaCost: 3
   damageTypes: 00000000

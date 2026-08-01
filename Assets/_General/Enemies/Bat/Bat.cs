@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Collections;
 
 public class Bat : Enemy
@@ -14,7 +16,7 @@ public class Bat : Enemy
     {
         base.Start();
 
-        SetInitialState();
+        Init();
     }
     new void FixedUpdate()
     {
@@ -36,37 +38,25 @@ public class Bat : Enemy
 
         if (ifAttack)
         {
-            yield return StartCoroutine(BasicAttack());
+            SwitchAnimation("Attack");
+            float animLength = GetAnimation("Attack").length;
+            yield return new WaitForSeconds(animLength);
+
             SwitchAnimation("Idle");
         }
 
         actionPoints = 0;
-        yield break;
     }
-
-    IEnumerator BasicAttack()
+    public void DealDamage()
     {
-        // Deals damage in atk +- range
         int damageToDeal = Random.Range(info.atk - info.atkRange, info.atk + info.atkRange + 1);
-        SwitchAnimation("Attack");
+        CombatManager.instance.player.TakeDamage(damageToDeal);
 
-        float animLength = 0f;
-        foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
-        {
-            if (clip.name == "Attack")
-            {
-                animLength = clip.length;
-                break;
-            }
-        }
+        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+        float remaining = GetAnimation("Attack").length * (1f - (state.normalizedTime % 1f));
 
         var effectPosition = new Vector2(CombatManager.instance.player.transform.position.x + 0.5f, CombatManager.instance.player.transform.position.y + 1);
         var effect = Instantiate(attackEffect, effectPosition, Quaternion.identity);
-        effect.GetComponent<BatAttackEffect>().destroyTime = animLength;
-
-        CombatManager.instance.player.TakeDamage(damageToDeal);
-
-        yield return new WaitForSeconds(animLength);
-        yield break;
+        effect.GetComponent<BatAttackEffect>().destroyTime = remaining;
     }
 }

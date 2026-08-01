@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Threading.Tasks;
 using System.Collections;
 
 public class Molerat : Enemy
@@ -12,7 +13,7 @@ public class Molerat : Enemy
     {
         base.Start();
 
-        SetInitialState();
+        Init();
     }
     new void FixedUpdate()
     {
@@ -30,36 +31,22 @@ public class Molerat : Enemy
 
     public override IEnumerator Action()
     {
-        SwitchAnimation("Attack");
-        float animLength = 0f;
+        bool ifAttack = Random.Range(0, 100) < 60;
 
-        foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
+        if (ifAttack)
         {
-            if (clip.name == "Attack")
-            {
-                animLength = clip.length;
-                break;
-            }
+            SwitchAnimation("Attack");
+            float animLength = GetAnimation("Attack").length;
+            yield return new WaitForSeconds(animLength);
+
+            SwitchAnimation("Idle");
         }
-
-        yield return new WaitForSeconds(animLength);
-        yield return StartCoroutine(BasicAttack());
-
-        yield return new WaitForSeconds(animLength / 5);
-        SwitchAnimation("Idle");
 
         actionPoints = 0;
     }
-
-    IEnumerator BasicAttack()
+    public void DealDamage()
     {
-        // Deals damage in atk +- range
         int damageToDeal = Random.Range(info.atk - info.atkRange, info.atk + info.atkRange + 1);
-        print(damageToDeal);
-
-        // play animation ToDo
         CombatManager.instance.player.TakeDamage(damageToDeal);
-
-        yield break;
     }
 }

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1989853090894362002}
   - component: {fileID: 5345866176343156631}
-  - component: {fileID: 1364038155955420365}
+  - component: {fileID: 1105041343074167591}
   m_Layer: 0
-  m_Name: Lich Attack
+  m_Name: Kirin Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7836843479089718094, guid: 4d781403b892dca4bb923dc1020676d6, type: 3}
+  m_Sprite: {fileID: 5392706922469149626, guid: 8212a04952ec67243a9827e0d3057a84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1364038155955420365
+--- !u!114 &1105041343074167591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 717712023669167275}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cd9ee7cfdeb8cf4e9d37cfb8315d216, type: 3}
+  m_Script: {fileID: 11500000, guid: 49e5b698d839bb943b39599f9c53d628, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SwordSkeletonAttackEffect
+  m_EditorClassIdentifier: Assembly-CSharp::KirinAttackEffect
   destroyTime: 0

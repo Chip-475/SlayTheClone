@@ -38,6 +38,7 @@ public class MapManager : MonoBehaviour
     [Space]
     public Dictionary<int, List<Node>> map;
     public List<Node> nodeLookupTable;
+    public int currentNodeId;
     public string mapPath;
 
     public GameObject fadePanel;
@@ -71,6 +72,7 @@ public class MapManager : MonoBehaviour
 
             startingNode.gameObject.SetActive(false);
             bossNode.gameObject.SetActive(false);
+            print(currentNodeId);
         }
     }
     #endregion
@@ -90,6 +92,7 @@ public class MapManager : MonoBehaviour
 
             data.Add(key, nodeData);
         }
+        PlayerPrefs.SetInt("Current Node", currentNodeId);
 
         string json = JsonConvert.SerializeObject(data, Formatting.Indented);
         File.WriteAllText(mapPath, json);
@@ -121,6 +124,8 @@ public class MapManager : MonoBehaviour
 
                 map.Add(i, nodes);
             }
+
+            currentNodeId = PlayerPrefs.GetInt("Current Node");
         }
     }
     public void FillNodeTable()
@@ -162,6 +167,7 @@ public class MapManager : MonoBehaviour
         FillNodeTable();
         nodeConnecter.DrawConnections();
 
+        currentNodeId = 0;
         SaveMap();
         PlayerPrefs.SetInt("generated", 1); // set true
 

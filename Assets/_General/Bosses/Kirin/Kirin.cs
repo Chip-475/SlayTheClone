@@ -1,9 +1,10 @@
 using UnityEngine;
-using System.Threading.Tasks;
 using System.Collections;
 
-public class HeavyGolem : Enemy
+public class Kirin : Enemy
 {
+    public GameObject attackEffect;
+
     #region Unity Methods
     new void Awake()
     {
@@ -31,7 +32,7 @@ public class HeavyGolem : Enemy
 
     public override IEnumerator Action()
     {
-        bool ifAttack = Random.Range(0, 100) < 60;
+        bool ifAttack = Random.Range(0, 100) < 100;
 
         if (ifAttack)
         {
@@ -48,5 +49,12 @@ public class HeavyGolem : Enemy
     {
         int damageToDeal = Random.Range(info.atk - info.atkRange, info.atk + info.atkRange + 1);
         CombatManager.instance.player.TakeDamage(damageToDeal);
+
+        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+        float remaining = GetAnimation("Attack").length * (1f - (state.normalizedTime % 1f));
+
+        var effectPosition = new Vector2(CombatManager.instance.player.transform.position.x + 0.5f, CombatManager.instance.player.transform.position.y + 1);
+        var effect = Instantiate(attackEffect, effectPosition, Quaternion.identity);
+        effect.GetComponent<KirinAttackEffect>().destroyTime = remaining;
     }
 }

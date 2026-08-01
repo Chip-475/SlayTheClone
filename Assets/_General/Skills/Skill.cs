@@ -18,6 +18,7 @@ public class Skill : MonoBehaviour
     public string skillName;
     public SkillType skillType;
     public int damagePercentage;
+    public int staminaCost;
     public List<DamageTypes> damageTypes;
     [Space]
 
@@ -36,6 +37,7 @@ public class Skill : MonoBehaviour
         skillName = data.skillName;
         skillType = data.skillType;
         damagePercentage = data.damagePercentage;
+        staminaCost = data.staminaCost;
         damageTypes = new List<DamageTypes>(data.damagePercentage);
 
         image = GetComponent<Image>();
@@ -46,11 +48,15 @@ public class Skill : MonoBehaviour
     {
         nameText.text = skillName;
     }
+    private void Update()
+    {
+        button.interactable = Manager.player.Stamina >= staminaCost;
+    }
     #endregion
 
     #region Methods
-    public virtual void Effect(Enemy target) { return; }
-    public virtual void Effect(Player target) { return; }
+    public virtual void Effect(Enemy target) { print("Skill used."); }
+    public virtual void Effect(Player target) { print("Skill used."); }
 
     public virtual void OnPointerEnter()
     {

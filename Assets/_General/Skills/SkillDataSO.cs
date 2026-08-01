@@ -26,5 +26,6 @@ public class SkillDataSO : ScriptableObject
 
     public SkillType skillType;
     public int damagePercentage;
+    public int staminaCost;
     public List<DamageTypes> damageTypes;
 }

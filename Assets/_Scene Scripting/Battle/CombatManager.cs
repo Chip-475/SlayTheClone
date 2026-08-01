@@ -7,6 +7,7 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using UnityEditor.UIElements;
 
+[DefaultExecutionOrder(-1)]
 public class CombatManager : MonoBehaviour
 {
     #region Declarations
@@ -52,45 +53,46 @@ public class CombatManager : MonoBehaviour
         battle.SpawnEnemies();
 
         StartCoroutine(BattleWinCR());
+        StartCoroutine(skillExecutor.SkillExecutionCR(this));
     }
     #endregion
 
     #region Methods
-    public static void PerformActions()
+    public static IEnumerator PerformActions()
     {
-        instance.StartCoroutine(instance.PerformActionsCR(instance.actingEntities));
-    }
-    public IEnumerator PerformActionsCR(List<IBattleEntity> entities)
-    {
-        entitiesAreActing = true;
+        instance.entitiesAreActing = true;
 
-        StopActionBars();
-        entities.Sort((a, b) => a.GetId().CompareTo(b.GetId()));
-        foreach (var entity in entities)
+        instance.AllActionBarsMovement(false);
+        instance.actingEntities.Sort((a, b) => a.ID.CompareTo(b.ID));
+        foreach (var entity in instance.actingEntities.ToList())
         {
-            yield return StartCoroutine(entity.Action());
+            yield return instance.StartCoroutine(entity.Action());
         }
-        entities.Clear();
-        StartActionBars();
+        instance.actingEntities.Clear();
+        instance.AllActionBarsMovement(true);
 
-        entitiesAreActing = false;
+        instance.entitiesAreActing = false;
     }
 
-    public void StopActionBars()
+    public void AllActionBarsMovement(bool active)
     {
-        foreach (var entity in enemiesOnField)
+        if (active)
         {
-            entity.StopActionBar();
+            foreach (var entity in enemiesOnField)
+            {
+                entity.ActionBarMovement(active);
+            }
+            player.ActionBarMovement(active);
         }
-        player.StopActionBar();
-    }
-    public void StartActionBars()
-    {
-        foreach (var entity in enemiesOnField)
+        else
         {
-            entity.StartActionBar();
+            foreach (var entity in enemiesOnField)
+            {
+                entity.ActionBarMovement(active);
+            }
+            player.ActionBarMovement(active);
         }
-        player.StartActionBar();
+        
     }
 
     IEnumerator BattleWinCR()

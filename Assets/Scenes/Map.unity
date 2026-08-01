@@ -236,6 +236,16 @@ MonoBehaviour:
   startingNode: {fileID: 1040362261}
   bossNode: {fileID: 742362108}
   nodePrefab: {fileID: -3497525624960012089, guid: 6eb29934b8276264c94fdc4facc6a49d, type: 3}
+  minNodesPerLayer: 2
+  maxNodesPerLayer: 4
+  bossLayer: 8
+  maxEliteBattles: 4
+  maxEvents: 2
+  maxShops: 0
+  maxRests: 3
+  maxShortcuts: 0
+  nodeOffsetX: 0.5
+  nodeOffsetY: 0.5
   nodeLookupTable: []
   mapPath: 
   fadePanel: {fileID: 1937162861}

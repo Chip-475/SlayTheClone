@@ -1,11 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public interface IBattleEntity
 {
-    public int GetId();
-    public void StopActionBar();
-    public void StartActionBar();
+    public int ID { get; set; }
 
     public IEnumerator Action();
     public int ApplyResistances(int amount);

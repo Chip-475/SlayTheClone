@@ -5,23 +5,19 @@ using System.Collections;
 public class SkillExecutor : MonoBehaviour
 {
     #region Declarations
-    MainDatabase Database => MainDatabase.instance;
-
-    public static Player player => CombatManager.instance.player;
-    public Skill skill => CombatManager.instance.selectedSkill;
-    public Enemy enemy => CombatManager.instance.selectedEnemy;
+    CombatManager Manager => CombatManager.instance;
     #endregion
 
     #region Methods
-    public void Execute()
+    public IEnumerator SkillExecutionCR(MonoBehaviour runner)
     {
-        var runner = CombatManager.instance;
-        runner.StartCoroutine(ExecuteCR(runner));
-    }
-    IEnumerator ExecuteCR(MonoBehaviour runner)
-    {
-        skill.Effect(enemy);
-        yield break;
+        yield return new WaitUntil(() => Manager.selectedSkill != null && Manager.selectedEnemy != null);
+
+        Manager.selectedSkill.Effect(Manager.selectedEnemy);
+        Manager.selectedSkill = null;
+        Manager.selectedEnemy = null;
+
+        StartCoroutine(SkillExecutionCR(Manager));
     }
     #endregion
 }

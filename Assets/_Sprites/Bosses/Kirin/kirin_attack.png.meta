@@ -1,0 +1,416 @@
+fileFormatVersion: 2
+guid: 1d6758c5bd48a4040928dd15ac223c5a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2033288128480037564
+    second: kirin_attack_0
+  - first:
+      213: -5212240996524800494
+    second: kirin_attack_1
+  - first:
+      213: -6495198420427805667
+    second: kirin_attack_2
+  - first:
+      213: -2737206796743002671
+    second: kirin_attack_3
+  - first:
+      213: -2727189396375859804
+    second: kirin_attack_4
+  - first:
+      213: -5427458500022885713
+    second: kirin_attack_5
+  - first:
+      213: 1652979861363914296
+    second: kirin_attack_6
+  - first:
+      213: 2748169146223603394
+    second: kirin_attack_7
+  - first:
+      213: -5118014055239818682
+    second: kirin_attack_8
+  - first:
+      213: -2394204388708254624
+    second: kirin_attack_9
+  - first:
+      213: -2538250961899643645
+    second: kirin_attack_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: kirin_attack_0
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 139
+        width: 2132
+        height: 1022
+      alignment: 9
+      pivot: {x: 0.7082778, y: 0.0044103423}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 445bdef483f48c3e0800000000000000
+      internalID: -2033288128480037564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kirin_attack_1
+      rect:
+        serializedVersion: 2
+        x: 2409
+        y: 58
+        width: 2132
+        height: 1133
+      alignment: 9
+      pivot: {x: 0.7131594, y: 0.07745841}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2164966ed666aa7b0800000000000000
+      internalID: -5212240996524800494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kirin_attack_2
+      rect:
+        serializedVersion: 2
+        x: 4859
+        y: 39
+        width: 2132
+        height: 1142
+      alignment: 9
+      pivot: {x: 0.7359397, y: 0.08686397}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1ce8bc137b6cd5a0800000000000000
+      internalID: -6495198420427805667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kirin_attack_3
+      rect:
+        serializedVersion: 2
+        x: 7292
+        y: 169
+        width: 2132
+        height: 1022
+      alignment: 9
+      pivot: {x: 0.709905, y: 0.028171487}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d53953bbec730ad0800000000000000
+      internalID: -2737206796743002671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kirin_attack_4
+      rect:
+        serializedVersion: 2
+        x: 9669
+        y: 31
+        width: 2132
+        height: 1160
+      alignment: 9
+      pivot: {x: 0.71478647, y: 0.12617163}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ad0ec971b3172ad0800000000000000
+      internalID: -2727189396375859804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kirin_attack_5
+      rect:
+        serializedVersion: 2
+        x: 12079
+        y: 159
+        width: 2122
+        height: 1012
+      alignment: 9
+      pivot: {x: 0.68964136, y: 0.01665316}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa226f8004bcda4b0800000000000000
+      internalID: -5427458500022885713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kirin_attack_6
+      rect:
+        serializedVersion: 2
+        x: 14492
+        y: 179
+        width: 2012
+        height: 1022
+      alignment: 9
+      pivot: {x: 0.6224193, y: 0.011199234}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83678711d6090f610800000000000000
+      internalID: 1652979861363914296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kirin_attack_7
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 109
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cea85f2745732620800000000000000
+      internalID: 2748169146223603394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kirin_attack_8
+      rect:
+        serializedVersion: 2
+        x: 3343
+        y: 148
+        width: 22
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64269f9455929f8b0800000000000000
+      internalID: -5118014055239818682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kirin_attack_9
+      rect:
+        serializedVersion: 2
+        x: 10109
+        y: 119
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06cfc532bc316ced0800000000000000
+      internalID: -2394204388708254624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kirin_attack_10
+      rect:
+        serializedVersion: 2
+        x: 10219
+        y: 49
+        width: 52
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30d9d29c23256ccd0800000000000000
+      internalID: -2538250961899643645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b80ec8ec399d136448d9d2933cdabbf2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      kirin_attack_0: -2033288128480037564
+      kirin_attack_1: -5212240996524800494
+      kirin_attack_10: -2538250961899643645
+      kirin_attack_2: -6495198420427805667
+      kirin_attack_3: -2737206796743002671
+      kirin_attack_4: -2727189396375859804
+      kirin_attack_5: -5427458500022885713
+      kirin_attack_6: 1652979861363914296
+      kirin_attack_7: 2748169146223603394
+      kirin_attack_8: -5118014055239818682
+      kirin_attack_9: -2394204388708254624
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
