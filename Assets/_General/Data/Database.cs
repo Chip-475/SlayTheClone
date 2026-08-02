@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [DefaultExecutionOrder(-10)]
-public class MainDatabase : MonoBehaviour
+public class Database : MonoBehaviour
 {
     #region Declarations
-    public static MainDatabase instance;
+    public static Database instance;
 
-    public int nStartingCards;
-    public int nCardsAtTurnStart;
+    public List<Skill> skillPrefabs = new();
+    public static Dictionary<string, Skill> skillTable = new();
     #endregion
 
     #region Unity Methods
@@ -21,6 +21,11 @@ public class MainDatabase : MonoBehaviour
         else Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        skillPrefabs.ForEach(s => skillTable.Add(s.data.id, s));
     }
     #endregion
 }

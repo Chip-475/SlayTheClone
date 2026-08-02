@@ -6,7 +6,7 @@ public class RestManager : MonoBehaviour
 {
     #region Declarations
     public static RestManager instance;
-    public MainDatabase Database => MainDatabase.instance;
+    public Database Database => Database.instance;
 
     public CraftMenu craftMenu;
 

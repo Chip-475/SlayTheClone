@@ -12,7 +12,7 @@ using DG.Tweening;
 public class MapManager : MonoBehaviour
 {
     #region Declarations
-    public MainDatabase Database => MainDatabase.instance;
+    public Database Database => Database.instance;
 
     public static MapManager instance;
 

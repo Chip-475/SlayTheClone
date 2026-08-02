@@ -18,7 +18,7 @@ public class SkillDataSO : ScriptableObject
         Defensive
     }
 
-    public int id;
+    public string id;
     public bool unlocked;
 
     public string skillName;

@@ -10,10 +10,10 @@ public class Skill : MonoBehaviour
     #region Declarations
     protected CombatManager Manager => CombatManager.instance;
 
-    [SerializeField] SkillDataSO data;
+    public SkillDataSO data;
 
     [Header("Info")]
-    public int id;
+    public string id;
     public bool unlocked;
     public string skillName;
     public SkillType skillType;

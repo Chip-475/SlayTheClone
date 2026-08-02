@@ -13,11 +13,17 @@ public class NodeGenerator : MonoBehaviour
     public Node bossNode => Manager.bossNode;
     public Node nodePrefab => Manager.nodePrefab;
 
-    public float distanceBetweenLayers;
+    float distanceBetweenLayers;
     public float distanceBetweenNodes;
 
     public Dictionary<int, List<Node>> layers = new();
     #endregion
+
+    private void Start()
+    {
+        distanceBetweenLayers = Vector2.Distance(startingNode.transform.position, bossNode.transform.position) / Manager.bossLayer;
+        print(distanceBetweenLayers);
+    }
 
     #region Methods
     public void InitLayerKeys()

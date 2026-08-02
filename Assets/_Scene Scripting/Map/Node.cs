@@ -10,7 +10,7 @@ using static MapManager;
 public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     #region Declarations
-    [JsonIgnore] MainDatabase Database => MainDatabase.instance;
+    [JsonIgnore] Database Database => Database.instance;
     [JsonIgnore] MapManager Manager => MapManager.instance;
 
     public enum NodeType

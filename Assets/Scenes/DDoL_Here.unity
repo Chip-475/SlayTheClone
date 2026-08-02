@@ -145,11 +145,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 194967486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14432679b577a6a4fb94690ef256e8fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 4963ee32f4778d44793f5a2d943e7734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DB
-  nStartingCards: 2
-  nCardsAtTurnStart: 3
+  skillPrefabs:
+  - {fileID: 1367733735964634893, guid: 50fb912c997bbe64d9ff8eeb038ba634, type: 3}
 --- !u!4 &194967488
 Transform:
   m_ObjectHideFlags: 0
@@ -420,22 +420,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
   statsPath: 
   inventoryPath: 
-  stats:
-    hp: 0
-    maxHp: 0
-    actionPointsSpeed: 0
-    timesDied: 0
-    enemiesKilled: 0
-    distanceTravelled: 0
-    moneyEarned: 0
-    cardsPlayed: 0
-    totDamageDealt: 0
-    highestDamageDealt: 0
-    killer: 
-  inventory:
-    money: 0
-    ownedSkills: []
-    items: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 164570508}
   - component: {fileID: 164570510}
   - component: {fileID: 164570512}
+  - component: {fileID: 164570514}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -247,6 +248,7 @@ MonoBehaviour:
   nodeOffsetX: 0.5
   nodeOffsetY: 0.5
   nodeLookupTable: []
+  currentNodeId: 0
   mapPath: 
   fadePanel: {fileID: 1937162861}
 --- !u!114 &164570512
@@ -262,6 +264,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NodeConnecter
   lines: []
+--- !u!114 &164570514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164570507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 39479120-356a-48c0-8c5f-73af01e3e5ef
+    m_ActionName: 'Player/Interact[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: be48e09a-d69b-4328-9864-41751d93fdc9
+    m_ActionName: 'Player/Scroll[/Mouse/scroll/y]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a3e63f01-953b-4f00-b387-6973424f039a
+    m_ActionName: 'Player/Click[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2226fb41-9d03-4946-a6b0-2b64463aca64
+    m_ActionName: 'Camera/Drag[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 58fcc7a4-aa35-49ed-bee4-ee9d4e62a819
+    m_ActionName: 'Camera/Pointer Delta[/Mouse/delta,/Pen/delta]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 1837442359}
 --- !u!1 &302290292
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +649,7 @@ Transform:
   m_GameObject: {fileID: 742362106}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 45, y: 0, z: 0}
+  m_LocalPosition: {x: 23, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -851,7 +903,7 @@ Transform:
   m_GameObject: {fileID: 1102008655}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 26.4383, y: 0, z: 0}
+  m_LocalPosition: {x: 8.7199, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -913,7 +965,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 10, y: 70.8766}
+  m_Size: {x: 10, y: 35.439903}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1043,7 +1095,7 @@ GameObject:
   - component: {fileID: 1837442356}
   - component: {fileID: 1837442360}
   m_Layer: 0
-  m_Name: mainCamera
+  m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1192,11 +1244,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1837442354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4382c5dedce70e44886961b34797b2ed, type: 3}
+  m_Script: {fileID: 11500000, guid: a3f0c9809f03ee441b1007e264fea423, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::cameraMovement
-  topleft: {fileID: 1815017322}
-  bottomright: {fileID: 424374042}
+  m_EditorClassIdentifier: Assembly-CSharp::CameraDrag
+  dragSpeed: 0.03
 --- !u!1 &1937162861
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "name": "InputSystem_Actions",
+    "name": "Player Input",
     "maps": [
         {
             "name": "Player",
@@ -10,15 +10,6 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "39479120-356a-48c0-8c5f-73af01e3e5ef",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Drag",
-                    "type": "Button",
-                    "id": "4ac76d08-878c-4aa3-84f0-d67b55e66e71",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -57,17 +48,6 @@
                 },
                 {
                     "name": "",
-                    "id": "0eb43f3c-c37e-4f19-83c3-5d6dfbd47a0e",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Drag",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4abb1c59-58d7-4135-9b73-ce425fa9c0d6",
                     "path": "<Mouse>/scroll/y",
                     "interactions": "",
@@ -85,6 +65,54 @@
                     "processors": "",
                     "groups": "",
                     "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Camera",
+            "id": "08a8dc28-a639-4d19-8613-163b2656219e",
+            "actions": [
+                {
+                    "name": "Drag",
+                    "type": "Button",
+                    "id": "2226fb41-9d03-4946-a6b0-2b64463aca64",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pointer Delta",
+                    "type": "Value",
+                    "id": "58fcc7a4-aa35-49ed-bee4-ee9d4e62a819",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "84e4b905-3185-45e1-b146-7f4da3da6b74",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29f7ac1f-faac-4bc7-96da-344f0891ca46",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pointer Delta",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

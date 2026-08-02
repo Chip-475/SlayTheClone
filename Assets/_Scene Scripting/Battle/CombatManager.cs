@@ -12,7 +12,7 @@ public class CombatManager : MonoBehaviour
 {
     #region Declarations
     public static CombatManager instance;
-    public MainDatabase Database => MainDatabase.instance;
+    public Database Database => Database.instance;
 
     [Header("References")]
     public Battle battle;
