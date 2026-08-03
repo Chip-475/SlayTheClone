@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21fe13cfbbb4e5f4ca8469ef5c9974cd, type: 3}
-  m_Name: Empty Data
+  m_Name: Light Slash
   m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
-  id: 0
+  id: light_slash
   unlocked: 1
-  skillName: Empty
-  description: Does nothing
+  skillName: Light Slash
+  description: Fast physical attack.
   skillType: 0
-  damagePercentage: 0
-  staminaCost: 0
-  damageTypes: 0000000004000000
+  damagePercentage: 80
+  staminaCost: 3
+  damageTypes: 00000000

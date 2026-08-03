@@ -148,8 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4963ee32f4778d44793f5a2d943e7734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DB
-  skillPrefabs:
-  - {fileID: 1367733735964634893, guid: 50fb912c997bbe64d9ff8eeb038ba634, type: 3}
+  skills:
+  - {fileID: 491134050331142792, guid: ca93e9f46dd295d45a8b21a02e311333, type: 3}
+  - {fileID: 1655726701683368988, guid: 6983405876170c445a1f9c8dbb1a2799, type: 3}
+  - {fileID: 8628228595863200728, guid: addea0f9eeee2e84182bd75c1674a83e, type: 3}
 --- !u!4 &194967488
 Transform:
   m_ObjectHideFlags: 0
@@ -424,9 +426,9 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 194967488}
   - {fileID: 1992630489}
   - {fileID: 2030139550}
-  - {fileID: 194967488}
   - {fileID: 942487340}
   - {fileID: 446335563}
   - {fileID: 1899882804}

@@ -222,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BattleMenu
   menuGroup: {fileID: 924942167}
   baseMenu: {fileID: 1402684354}
+  skillButtonPrefab: {fileID: 1453755917376466837, guid: 18bbec46ac9db4d40ac117e6bfef7ecd, type: 3}
   skillButtonsPositions:
   - {fileID: 3684861216124579243}
   - {fileID: 6145694331413825561}

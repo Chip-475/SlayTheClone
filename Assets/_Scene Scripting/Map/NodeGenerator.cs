@@ -22,7 +22,6 @@ public class NodeGenerator : MonoBehaviour
     private void Start()
     {
         distanceBetweenLayers = Vector2.Distance(startingNode.transform.position, bossNode.transform.position) / Manager.bossLayer;
-        print(distanceBetweenLayers);
     }
 
     #region Methods

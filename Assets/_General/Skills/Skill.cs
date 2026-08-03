@@ -10,66 +10,40 @@ public class Skill : MonoBehaviour
     #region Declarations
     protected CombatManager Manager => CombatManager.instance;
 
+    [Header("To Fill Out")]
     public SkillDataSO data;
-
-    [Header("Info")]
-    public string id;
-    public bool unlocked;
-    public string skillName;
-    public SkillType skillType;
-    public int damagePercentage;
-    public int staminaCost;
-    public List<DamageTypes> damageTypes;
+    public Skill skill;
     [Space]
 
-    [Header("Meta")]
-    public Image image;
-    public Button button;
-    public TMP_Text nameText;
-    public bool isSelected;
+    [Header("Meta Data")]
+    public string id;
+    public bool unlocked;
+
+    [Header("Data")]
+    public string skillName;
+    public SkillType skillType;
+
+    [Header("Stats")]
+    public int staminaCost;
+    public int damagePercentage;
+    public List<DamageTypes> damageTypes;
     #endregion
 
-    #region Unity Methods
-    private void Awake()
+    public void Awake()
     {
-        id = data.id;
+        id = data.Id;
         unlocked = data.unlocked;
         skillName = data.skillName;
         skillType = data.skillType;
-        damagePercentage = data.damagePercentage;
         staminaCost = data.staminaCost;
+        damagePercentage = data.damagePercentage;
         damageTypes = new List<DamageTypes>(data.damagePercentage);
-
-        image = GetComponent<Image>();
-        button = GetComponent<Button>();
-        nameText = GetComponentInChildren<TMP_Text>();
     }
-    private void Start()
-    {
-        nameText.text = skillName;
-    }
-    private void Update()
-    {
-        button.interactable = Manager.player.Stamina >= staminaCost;
-    }
-    #endregion
 
     #region Methods
-    public virtual void Effect(Enemy target) { print("Skill used."); }
-    public virtual void Effect(Player target) { print("Skill used."); }
+    public virtual void Effect(Enemy target) { return; }
+    public virtual void Effect(Player target) { return; }
 
-    public virtual void OnPointerEnter()
-    {
-        transform.DOScale(1.05f, 0.1f);
-    }
-    public void OnPointerExit()
-    {
-        transform.DOScale(1f, 0.1f);
-    }
-    public virtual void OnPointerClick()
-    {
-        isSelected = true;
-        Manager.selectedSkill = this;
-    }
+    public virtual void Select() { Manager.selectedSkill = skill; }
     #endregion
 }

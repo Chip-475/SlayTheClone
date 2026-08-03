@@ -9,6 +9,7 @@ using DG.Tweening;
 
 [RequireComponent(typeof(NodeGenerator))]
 [RequireComponent(typeof(NodeAssigner))]
+[RequireComponent(typeof(NodeConnecter))]
 public class MapManager : MonoBehaviour
 {
     #region Declarations
@@ -40,7 +41,8 @@ public class MapManager : MonoBehaviour
     public List<Node> nodeLookupTable;
     public int currentNodeId;
     public string mapPath;
-
+    [Space]
+    public Stack<GameObject> menuHistory;
     public GameObject fadePanel;
     #endregion
 
@@ -72,7 +74,6 @@ public class MapManager : MonoBehaviour
 
             startingNode.gameObject.SetActive(false);
             bossNode.gameObject.SetActive(false);
-            print(currentNodeId);
         }
     }
     #endregion
@@ -174,18 +175,8 @@ public class MapManager : MonoBehaviour
         startingNode.gameObject.SetActive(false);
         bossNode.gameObject.SetActive(false);
     }
-    public static Node GetNodeById(int id)
-    {
-        foreach(var layer in instance.map.Keys)
-        {
-            foreach(var node in instance.map[layer])
-            {
-                if(node.id == id) return node;
-            }
-        }
+    
 
-        return null;
-    }
     #endregion
 
     #region Utilities
@@ -196,6 +187,18 @@ public class MapManager : MonoBehaviour
         yield return maxShops;
         yield return maxRests;
         yield return maxShortcuts;
+    }
+    public static Node GetNodeById(int id)
+    {
+        foreach (var layer in instance.map.Keys)
+        {
+            foreach (var node in instance.map[layer])
+            {
+                if (node.id == id) return node;
+            }
+        }
+
+        return null;
     }
     #endregion
 }

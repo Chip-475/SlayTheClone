@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21fe13cfbbb4e5f4ca8469ef5c9974cd, type: 3}
-  m_Name: HeavyAttackData
+  m_Name: Lightning Bolt
   m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
-  id: 
   unlocked: 0
-  skillName: 
-  description: 
+  skillName: Lightning Bolt
+  description: A mildly powerful electric bolt.
   skillType: 0
-  damagePercentage: 0
-  staminaCost: 0
-  damageTypes: 
+  staminaCost: 2
+  damagePercentage: 60
+  damageTypes: 03000000
