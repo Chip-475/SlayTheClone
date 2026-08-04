@@ -27,6 +27,7 @@ public class BattleMenu : MonoBehaviour
 
         CombatManager.instance.player.isActing = false;
     }
+    [ContextMenu("Build Skills")]
     public void BuildSkillButtons()
     {
         int i = 0;

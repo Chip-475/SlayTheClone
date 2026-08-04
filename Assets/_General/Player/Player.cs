@@ -18,39 +18,27 @@ public class Player : MonoBehaviour, IBattleEntity
     }
     public State state;
 
-    public static event Action OnPlayerHealthChanged;
-    public static event Action OnPlayerStaminaChanged;
+    public static event Action OnHealthChanged;
+    public static event Action OnStaminaChanged;
 
     public PlayerStats Stats => PlayerManager.stats;
     public PlayerAnimController animController;
     public Animator animator;
 
-    public int id;
-    public int ID { get { return id; } set { id = value; } }
+    int id;
 
     public bool canGainActionPoints;
     public float actionPoints;
 
-    int _stamina;
-    [SerializeField] private TMP_Text _staminaText;
+    int stamina;
+    [SerializeField] private TMP_Text staminaText;
     public static bool isDead = false;
     public static bool selecting;
     public bool isActing;
     #endregion
     #region Properties
-    public int Stamina 
-    { 
-        get { return _stamina; } 
-        set {
-            int clamped = Math.Clamp(value, 0, 15);
-
-            if (_stamina == clamped)
-                return;
-
-            _stamina = clamped;
-            OnPlayerStaminaChanged?.Invoke();
-        } 
-    }
+    public int ID { get { return id; } set { id = value; } }
+    
     public int Health
     {
         get { return Stats.hp; }
@@ -62,10 +50,23 @@ public class Player : MonoBehaviour, IBattleEntity
                 return;
 
             Stats.hp = clamped;
-            OnPlayerHealthChanged?.Invoke();
+            OnStaminaChanged?.Invoke();
         }
     }
+    public int Stamina
+    {
+        get { return stamina; }
+        set
+        {
+            int clamped = Math.Clamp(value, 0, 8);
 
+            if (stamina == clamped)
+                return;
+
+            stamina = clamped;
+            OnHealthChanged?.Invoke();
+        }
+    }
     #endregion
 
     #region Unity Methods
@@ -78,12 +79,12 @@ public class Player : MonoBehaviour, IBattleEntity
     }
     private void Start()
     {
-        SetInitialState();
+        Init();
 
         state = State.Idle;
         PlayerManager.player = this;
 
-        OnPlayerStaminaChanged?.Invoke();
+        OnHealthChanged?.Invoke();
     }
     private void FixedUpdate()
     {
@@ -96,22 +97,23 @@ public class Player : MonoBehaviour, IBattleEntity
     }
     private void OnEnable()
     {
-        OnPlayerStaminaChanged += () => _staminaText.text = Stamina.ToString();
+        OnHealthChanged += () => staminaText.text = Stamina.ToString();
     }
     private void OnDisable()
     {
-        OnPlayerStaminaChanged -= () => _staminaText.text = Stamina.ToString();
+        OnHealthChanged -= () => staminaText.text = Stamina.ToString();
     }
     #endregion
 
     #region Methods
-    void SetInitialState()
+    void Init()
     {
-        id = 0;
+        ID = 0;
+        Stamina = 3;
+
         actionPoints = 0;
         canGainActionPoints = true;
-        
-        _stamina = 5;
+
         isActing = false;
     }
 
@@ -120,12 +122,12 @@ public class Player : MonoBehaviour, IBattleEntity
         if (active) { canGainActionPoints = true; }
         else { canGainActionPoints = false; }
     }
-
     public IEnumerator Action()
     {
-        Stamina += 3;
         CombatManager.instance.battleMenu.menuGroup.interactable = true;
+        Stamina += 1;
         isActing = true;
+
         yield return new WaitUntil(() => isActing == false);
         CombatManager.instance.battleMenu.menuGroup.interactable = false;
         actionPoints = 0;
@@ -156,11 +158,4 @@ public class Player : MonoBehaviour, IBattleEntity
         animator.CrossFade(anim, 0, 0);
     }
     #endregion Methods
-
-    #region Events
-    public static void PlayerHealthChanged()
-    {
-        OnPlayerHealthChanged?.Invoke();
-    }
-    #endregion
 }

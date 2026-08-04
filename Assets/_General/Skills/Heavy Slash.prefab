@@ -60,7 +60,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4956675771857682152, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -85,12 +86,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17c14ddc4538d943913551511f7b0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeavySlash
-  data: {fileID: 0}
-  skill: {fileID: 0}
+  data: {fileID: 11400000, guid: 27c22514a72883141925bd44abdcc8a2, type: 2}
+  skill: {fileID: 5662006472292015793}
   id: 
   unlocked: 0
   skillName: 
   skillType: 0
-  damagePercentage: 0
   staminaCost: 0
+  damagePercentage: 0
   damageTypes: 

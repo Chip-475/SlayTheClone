@@ -26,14 +26,13 @@ public class PlayerManager : MonoBehaviour
 
         inventoryPath = Path.Combine(Application.persistentDataPath, "inventory.json");
         statsPath = Path.Combine(Application.persistentDataPath, "playerStats.json");
+
+        SaveAndLoad.Load(ref stats, statsPath);
+        SaveAndLoad.Load(ref inventory, inventoryPath);
     }
     private void Start()
     {
-        SaveAndLoad.Load(ref stats, statsPath);
-        SaveAndLoad.Load(ref inventory, inventoryPath);
-
-        if (player == null) return;
-        player.Health = stats.maxHp; // testing
+        if (player != null) player.Health = stats.maxHp; // testing
     }
     private void OnApplicationQuit()
     {

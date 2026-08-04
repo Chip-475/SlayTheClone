@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-[DefaultExecutionOrder(-10)]
+[DefaultExecutionOrder(-100)]
 public class Database : MonoBehaviour
 {
     #region Declarations
@@ -14,6 +14,7 @@ public class Database : MonoBehaviour
     public static Dictionary<string, Skill> skillsDB = new();
     public static List<string> unlockedSkills = new();
     public static List <string> equippedSkills = new();
+    public List<string> tempEquipped = new();
     #endregion
 
     #region Unity Methods
@@ -31,13 +32,15 @@ public class Database : MonoBehaviour
     private void Start()
     {
         LoadSkills();
+
+        equippedSkills.AddRange(tempEquipped);
     }
     #endregion
 
     #region Methods
     void LoadSkills()
     {
-        foreach (var s in skills) skillsDB.Add(s.data.Id, s);
+        foreach (var s in skills) { var skill = Instantiate(s); skillsDB.Add(skill.data.Id, skill); }
         foreach (var s in skillsDB.Where(s => s.Value.data.unlocked)) unlockedSkills.Add(s.Key);
     }
     #endregion

@@ -1,8 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
-using TMPro;
-using DG.Tweening;
 using static SkillDataSO;
 
 public class Skill : MonoBehaviour
@@ -29,7 +26,7 @@ public class Skill : MonoBehaviour
     public List<DamageTypes> damageTypes;
     #endregion
 
-    public void Awake()
+    public virtual void Awake()
     {
         id = data.Id;
         unlocked = data.unlocked;
@@ -38,12 +35,22 @@ public class Skill : MonoBehaviour
         staminaCost = data.staminaCost;
         damagePercentage = data.damagePercentage;
         damageTypes = new List<DamageTypes>(data.damagePercentage);
+
+        DontDestroyOnLoad(gameObject);
     }
 
     #region Methods
-    public virtual void Effect(Enemy target) { return; }
-    public virtual void Effect(Player target) { return; }
+    public virtual void Effect(Enemy target) { print("Empty skill used."); }
+    public virtual void Effect(Player target) { print("Empty skill used."); }
 
     public virtual void Select() { Manager.selectedSkill = skill; }
+    public virtual void OnPointerEnter()
+    {
+        print($"Hovered {skillName}");
+    }
+    public virtual void OnPointerExit()
+    {
+        print($"Unhovered {skillName}");
+    }
     #endregion
 }

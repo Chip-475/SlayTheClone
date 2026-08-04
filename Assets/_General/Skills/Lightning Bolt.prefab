@@ -60,7 +60,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4956675771857682152, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -85,8 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbdd55e1f0852884e91f77b49b2ef31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightningBolt
-  data: {fileID: 0}
-  skill: {fileID: 0}
+  data: {fileID: 11400000, guid: 364ba0571d15f144b9c63a60b7894068, type: 2}
+  skill: {fileID: -190109208358988738}
   id: 
   unlocked: 0
   skillName: 

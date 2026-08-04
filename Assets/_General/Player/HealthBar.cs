@@ -24,10 +24,10 @@ public class HealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        Player.OnPlayerHealthChanged += SetHealthBarFillAmount;
+        Player.OnStaminaChanged += SetHealthBarFillAmount;
     }
     private void OnDisable()
     {
-        Player.OnPlayerHealthChanged -= SetHealthBarFillAmount;
+        Player.OnStaminaChanged -= SetHealthBarFillAmount;
     }
 }
