@@ -26,8 +26,7 @@ public class CameraDrag : MonoBehaviour
 
     void Update()
     {
-        if (!input.Camera.Drag.IsPressed())
-            return;
+        if (!input.Camera.Drag.IsPressed() || MapManager.instance.menuHistory.Count > 0) return;
 
         Vector2 delta = input.Camera.PointerDelta.ReadValue<Vector2>();
         transform.position -= new Vector3(delta.x, delta.y, 0) * dragSpeed;

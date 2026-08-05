@@ -46,6 +46,22 @@ public class Database : MonoBehaviour
     #endregion
 
     #region Utilities
+    public static Transform FindDeepChild(Transform parent, string name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == name)
+                return child;
+
+            Transform result = FindDeepChild(child, name);
+
+            if (result != null)
+                return result;
+        }
+
+        return null;
+    }
+
     // Skills
     public static Skill GetSkill(string id) { return skillsDB[id]; }
     public static IEnumerable<KeyValuePair<string, Skill>> GetSkill(Func<KeyValuePair<string, Skill>, bool> condition) { return skillsDB.Where(condition); }

@@ -42,7 +42,8 @@ public class MapManager : MonoBehaviour
     public int currentNodeId;
     public string mapPath;
     [Space]
-    public Stack<GameObject> menuHistory;
+    public Stack<GameObject> menuHistory = new();
+    public GameObject loadoutPanel;
     public GameObject fadePanel;
     #endregion
 
@@ -175,8 +176,13 @@ public class MapManager : MonoBehaviour
         startingNode.gameObject.SetActive(false);
         bossNode.gameObject.SetActive(false);
     }
-    
 
+    public void MenuBack() { menuHistory.Pop().SetActive(false); }
+    public void MenuClick(GameObject menuObject)
+    {
+        menuObject.SetActive(true);
+        menuHistory.Push(menuObject);
+    }
     #endregion
 
     #region Utilities
