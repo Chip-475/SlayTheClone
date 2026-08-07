@@ -868,10 +868,9 @@ MonoBehaviour:
   state: 0
   animController: {fileID: 0}
   animator: {fileID: 0}
-  id: 0
   canGainActionPoints: 0
   actionPoints: 0
-  _staminaText: {fileID: 1609046783}
+  staminaText: {fileID: 1609046783}
   isActing: 0
 --- !u!61 &992243615
 BoxCollider2D:

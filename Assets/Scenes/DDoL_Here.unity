@@ -152,6 +152,7 @@ MonoBehaviour:
   - {fileID: 5662006472292015793, guid: ca93e9f46dd295d45a8b21a02e311333, type: 3}
   - {fileID: -8451322054298055222, guid: 6983405876170c445a1f9c8dbb1a2799, type: 3}
   - {fileID: -190109208358988738, guid: addea0f9eeee2e84182bd75c1674a83e, type: 3}
+  skillAnim: {fileID: 8539600757878840824, guid: ffd47c3e198de0b41aab25cb86d31ed4, type: 3}
   tempEquipped:
   - heavy_slash
   - light_slash

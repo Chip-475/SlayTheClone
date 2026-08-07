@@ -46,11 +46,11 @@ public class Skill : MonoBehaviour
     public virtual void Select() { Manager.selectedSkill = skill; }
     public virtual void OnPointerEnter()
     {
-        print($"Hovered {skillName}");
+        return;
     }
     public virtual void OnPointerExit()
     {
-        print($"Unhovered {skillName}");
+        return;
     }
     #endregion
 }

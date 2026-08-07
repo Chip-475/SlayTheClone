@@ -11,9 +11,11 @@ public class Database : MonoBehaviour
 
     // Skills
     public List<Skill> skills = new();
+    public SkillVisual skillAnim;
     public static Dictionary<string, Skill> skillsDB = new();
     public static List<string> unlockedSkills = new();
     public static List <string> equippedSkills = new();
+
     public List<string> tempEquipped = new();
     #endregion
 
