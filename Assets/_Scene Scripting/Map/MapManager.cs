@@ -42,7 +42,7 @@ public class MapManager : MonoBehaviour
     public int currentNodeId;
     public string mapPath;
     [Space]
-    public Stack<GameObject> menuHistory = new();
+    public static Stack<GameObject> menuHistory = new();
     public GameObject loadoutPanel;
     public GameObject fadePanel;
     #endregion

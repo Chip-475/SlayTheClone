@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 6f0e9da8f5ca25f4e91e4e9b87e9baaf
+guid: a9f46b1cc8981dd4f8e62b0e38f4aa8d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7136055839195825877
-    second: scroll_rect_BG_0
+      213: -4285450955543727861
+    second: menu_arrows_0
+  - first:
+      213: 7027238164411308245
+    second: menu_arrows_1
+  - first:
+      213: -771298954746809040
+    second: menu_arrows_2
+  - first:
+      213: -4818988275748499696
+    second: menu_arrows_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,13 +55,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 500
-  spriteBorder: {x: 120, y: 120, z: 120, w: 120}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -113,23 +122,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scroll_rect_BG_0
+      name: menu_arrows_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 960
-        height: 960
+        x: 179
+        y: 419
+        width: 122
+        height: 282
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5d68e903afc580360800000000000000
-      internalID: 7136055839195825877
+      spriteID: b01357caf050784c0800000000000000
+      internalID: -4285450955543727861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_arrows_1
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 419
+        width: 122
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d8ddcde0e3c58160800000000000000
+      internalID: 7027238164411308245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_arrows_2
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 99
+        width: 122
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 035bfaaefabcb45f0800000000000000
+      internalID: -771298954746809040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_arrows_3
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 99
+        width: 122
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01f0d3ff1b38f1db0800000000000000
+      internalID: -4818988275748499696
       vertices: []
       indices: 
       edges: []
@@ -138,8 +213,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -148,7 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      scroll_rect_BG_0: 7136055839195825877
+      menu_arrows_0: -4285450955543727861
+      menu_arrows_1: 7027238164411308245
+      menu_arrows_2: -771298954746809040
+      menu_arrows_3: -4818988275748499696
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

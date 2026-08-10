@@ -14,9 +14,7 @@ public class Database : MonoBehaviour
     public SkillVisual skillAnim;
     public static Dictionary<string, Skill> skillsDB = new();
     public static List<string> unlockedSkills = new();
-    public static List <string> equippedSkills = new();
-
-    public List<string> tempEquipped = new();
+    public static Dictionary<int, string> equippedSkills = new();
     #endregion
 
     #region Unity Methods
@@ -34,8 +32,6 @@ public class Database : MonoBehaviour
     private void Start()
     {
         LoadSkills();
-
-        equippedSkills.AddRange(tempEquipped);
     }
     #endregion
 

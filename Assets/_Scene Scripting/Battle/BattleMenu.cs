@@ -10,6 +10,7 @@ public class BattleMenu : MonoBehaviour
     public GameObject baseMenu;
 
     public GameObject skillButtonPrefab;
+    public GameObject skillButtonPrefab_empty;
     public List<RectTransform> skillButtonsPositions = new();
 
     private void Start()
@@ -30,23 +31,30 @@ public class BattleMenu : MonoBehaviour
     [ContextMenu("Build Skills")]
     public void BuildSkillButtons()
     {
-        int i = 0;
-        foreach (var point in skillButtonsPositions)
+        for (int i = 0; i < 6; i++)
         {
-            if (i >= equippedSkills.Count) continue;
+            if (equippedSkills[i] == null)
+            {
+                Instantiate
+                (
+                    skillButtonPrefab_empty,
+                    skillButtonsPositions[i].position,
+                    Quaternion.identity,
+                    baseMenu.transform
+                );
+                return;
+            }
 
             var button = Instantiate
             (
                 skillButtonPrefab,
-                point.position,
+                skillButtonsPositions[i].position,
                 Quaternion.identity,
                 baseMenu.transform
             );
 
             SkillButton sb = button.GetComponent<SkillButton>();
             sb.skill = GetSkill(equippedSkills[i]);
-
-            i++;
         }
     }
     #endregion
