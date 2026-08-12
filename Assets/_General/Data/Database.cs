@@ -1,46 +1,41 @@
 using UnityEngine;
-using System;
-using System.Linq;
 using System.Collections.Generic;
+using System;
 
 [DefaultExecutionOrder(-100)]
 public class Database : MonoBehaviour
 {
-    #region Declarations
     public static Database instance;
+    public static bool initialized = false;
 
-    // Skills
+    #region Skills
     public List<Skill> skills = new();
     public SkillVisual skillAnim;
     public static Dictionary<string, Skill> skillsDB = new();
-    public static List<string> unlockedSkills = new();
-    public static Dictionary<int, string> equippedSkills = new();
+    public static List<Skill> unlockedSkills = new();
+    public static Dictionary<int, Skill> equippedSkills = new();
     #endregion
 
     #region Unity Methods
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
+        if (instance == null) instance = this;
         else Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
     }
-
     private void Start()
     {
-        LoadSkills();
+        InitSkillsDB();
+        InitUnlockedSkills();
+
+        initialized = true;
     }
     #endregion
 
     #region Methods
-    void LoadSkills()
-    {
-        foreach (var s in skills) { var skill = Instantiate(s); skillsDB.Add(skill.data.Id, skill); }
-        foreach (var s in skillsDB.Where(s => s.Value.data.unlocked)) unlockedSkills.Add(s.Key);
-    }
+    void InitSkillsDB() => skills.ForEach(s => skillsDB.Add(s.data.Id, Instantiate(s)));
+    public static void InitUnlockedSkills() { foreach (var s in skillsDB) if (s.Value.data.unlocked == true) unlockedSkills.Add(s.Value); }
     #endregion
 
     #region Utilities
@@ -61,7 +56,6 @@ public class Database : MonoBehaviour
     }
 
     // Skills
-    public static Skill GetSkill(string id) { return skillsDB[id]; }
-    public static IEnumerable<KeyValuePair<string, Skill>> GetSkill(Func<KeyValuePair<string, Skill>, bool> condition) { return skillsDB.Where(condition); }
+    public static Skill GetSkillById(string id) { return skillsDB[id]; }
     #endregion
 }

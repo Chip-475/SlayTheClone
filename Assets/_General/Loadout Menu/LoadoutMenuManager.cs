@@ -1,9 +1,14 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using static MapManager;
-using UnityEngine.LightTransport;
+using static Database;
+using System.Collections;
+using UnityEngine.UI;
+using System.Linq;
 
 /// <summary>
 /// EST => Equipped Skills Tab
@@ -14,31 +19,39 @@ public class LoadoutMenuManager : MonoBehaviour
     public GameObject loadoutPanel;
     public EventTrigger loadout_open;
     public EventTrigger loadout_close;
+    [Serializable] public struct MenuElement
+    {
+        public GameObject self;
+        public Transform innerPoint;
+        public Transform outerPoint;
+    }
 
     #region Loadout Panel
     [Header("Resources")]
-    public SlotUI skillSlot;
-
-    [Header("Equipped Skills Tab")]
-    public GameObject est;
-    public Transform est_inner;
-    public Transform est_outer;
-
-    [Header("Unlocked Skills Tab")]
-    public GameObject ust;
-    public Transform ust_inner;
-    public Transform ust_outer;
+    public SkillSlot skillSlotPrefab;
+    public SkillEntry skillEntryPrefab;
     [Space]
-    public Transform ust_content;
+    public MenuElement EST;
+    public Transform estContent;
+    [Space]
+    public MenuElement UST;
+    public Transform ustContent;
+
+    [Header("Data")]
+    public Dictionary<int, SkillSlot> slots = new();
+    public Dictionary<int, SkillEntry> entries = new();
     #endregion
 
     private void Awake()
     {
         if(loadoutPanel.activeSelf) menuHistory.Push(loadoutPanel);
     }
-    void Start()
+    IEnumerator Start()
     {
+        yield return new WaitUntil(() => initialized == true);
+
         loadoutPanel.SetActive(false);
+        BuildSlots();
 
         loadout_open.AddEvent
         (
@@ -62,26 +75,45 @@ public class LoadoutMenuManager : MonoBehaviour
         );
     }
 
-    void BuildUST(int nSlots)
+    // instantiate 1 entry per unlocked skill
+    // have each slot have a unique id
+    // have each entry have a unique id
+    // sync entry id to slot id
+    void BuildSlots()
     {
-        foreach (Transform child in ust_content) Destroy(child.gameObject);
+        if (slots.Keys.Count != 0) return;
 
-        for (int i = 0; i < nSlots; i++)
+        int id = 1;
+        for(; id <= 6; id++)
         {
-            Instantiate(skillSlot, ust_content);
+            print(id);
+            var slot = Instantiate(skillSlotPrefab, estContent);
+            slot.id = id;
+            slot.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+
+            slots.Add(id, slot);
+        }
+        foreach(var skill in unlockedSkills)
+        {
+            print(id);
+            var slot = Instantiate(skillSlotPrefab, ustContent);
+            slot.id = id;
+
+            slots.Add(id, slot);
+            id++;
         }
     }
+
     async Task OpenLoadoutMenu()
     {
-        BuildUST(5);
-        ust.transform.DOMove(ust_inner.position, 0.15f);
-        est.transform.DOMove(est_inner.position, 0.15f);
+        UST.self.transform.DOMove(UST.innerPoint.position, 0.15f);
+        EST.self.transform.DOMove(EST.innerPoint.position, 0.15f);
         await Task.Delay(150);
     }
     async Task CloseLoadoutMenu()
     {
-        ust.transform.DOMove(ust_outer.position, 0.15f);
-        est.transform.DOMove(est_outer.position, 0.15f);
+        UST.self.transform.DOMove(UST.outerPoint.position, 0.15f);
+        EST.self.transform.DOMove(EST.outerPoint.position, 0.15f);
         await Task.Delay(150);
     }
 }

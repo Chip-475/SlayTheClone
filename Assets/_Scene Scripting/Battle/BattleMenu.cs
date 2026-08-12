@@ -33,7 +33,7 @@ public class BattleMenu : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            if (equippedSkills[i] == null)
+            if (unlockedSkills[i] == null)
             {
                 Instantiate
                 (
@@ -54,7 +54,7 @@ public class BattleMenu : MonoBehaviour
             );
 
             SkillButton sb = button.GetComponent<SkillButton>();
-            sb.skill = GetSkill(equippedSkills[i]);
+            sb.skill = unlockedSkills[i];
         }
     }
     #endregion

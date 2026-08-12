@@ -22,12 +22,12 @@ public class SkillButton : MonoBehaviour
     {
         if(skill == null) { button.interactable = false; return; }
 
-        text.text = skill.skillName;
+        text.text = skill.data.skillName;
         button.onClick.AddListener(skill.Select);
 
         trigger.AddEvent(EventTriggerType.PointerEnter, action => skill.OnPointerEnter());
         trigger.AddEvent(EventTriggerType.PointerExit, action => skill.OnPointerExit());
     }
-    private void OnEnable() { Player.OnHealthChanged += () => button.interactable = player.Stamina >= skill.staminaCost; }
-    private void OnDisable() { Player.OnHealthChanged -= () => button.interactable = player.Stamina >= skill.staminaCost; }
+    private void OnEnable() { Player.OnHealthChanged += () => button.interactable = player.Stamina >= skill.data.staminaCost; }
+    private void OnDisable() { Player.OnHealthChanged -= () => button.interactable = player.Stamina >= skill.data.staminaCost; }
 }

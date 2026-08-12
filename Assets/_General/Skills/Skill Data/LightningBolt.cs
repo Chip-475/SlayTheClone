@@ -9,11 +9,11 @@ public class LightningBolt : Skill
 
     public override void Effect(Enemy target)
     {
-        int damage = PlayerManager.stats.atk * damagePercentage / 100;
+        int damage = PlayerManager.stats.atk * data.damagePercentage / 100;
 
-        Database.instance.skillAnim.Instantiate(target.transform.position, skillName);
+        Database.instance.skillAnim.Instantiate(target.transform.position, data.skillName);
         target.TakeDamage(damage);
         // Add lightning infliction
-        Manager.player.Stamina -= staminaCost;
+        Manager.player.Stamina -= data.staminaCost;
     }
 }

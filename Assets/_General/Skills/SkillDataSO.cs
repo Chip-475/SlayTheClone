@@ -29,11 +29,17 @@ public class SkillDataSO : ScriptableObject
         }
         private set { return; }
     }
-    public bool unlocked;
 
+    [Header("State")]
+    public bool unlocked;
+    public bool equipped;
+
+    [Header("Info")]
     public string skillName;
     [TextArea] public string description;
+    public Sprite icon;
 
+    [Header("Stats")]
     public SkillType skillType;
     public int staminaCost;
     public int damagePercentage;

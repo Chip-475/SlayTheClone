@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fe13cfbbb4e5f4ca8469ef5c9974cd, type: 3}
   m_Name: Light Slash
   m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
-  id: light_slash
   unlocked: 1
   skillName: Light Slash
   description: Fast physical attack.
+  icon: {fileID: -4640632633634142371, guid: 474b162b4741fbb4da3b9bef22cae92d, type: 3}
   skillType: 0
-  damagePercentage: 80
   staminaCost: 3
+  damagePercentage: 80
   damageTypes: 00000000
