@@ -1,16 +1,39 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static Database;
 
-public class SkillSlot : SlotUI, IDropHandler
+public class SkillSlot : SlotUI
 {
+    public SkillEntry currentEntry;
+    [Space]
     public int id;
-    
-    public new void OnDrop(PointerEventData eventData)
-    {
-        base.OnDrop(eventData);
+    public int loadoutID;
+    public bool IsLoadout => loadoutID != 0;
+    public bool Occupied => currentEntry != null;
 
-        var entry = eventData.pointerDrag.GetComponent<SkillEntry>();
-        entry.id = id;
+    public override void OnDrop(PointerEventData eventData)
+    {
+        if (!eventData.pointerDrag.TryGetComponent(out SkillEntry dd)) return;
+        if (Occupied) return;
+
+        dd.droppedSuccessfully = true;
+        dd.currentSlot = this;
+
+        if (IsLoadout) dd.loadoutID = loadoutID;
+        else dd.loadoutID = 0;
+    }
+
+    public void CheckState()
+    {
+        if (currentEntry == null) return;
+
+        if(currentEntry.currentSlot != this) currentEntry = null;
+    }
+    private void OnEnable()
+    {
+        LoadoutMenuManager.OnEntryMoved += CheckState;
+    }
+    private void OnDisable()
+    {
+        LoadoutMenuManager.OnEntryMoved -= CheckState;
     }
 }

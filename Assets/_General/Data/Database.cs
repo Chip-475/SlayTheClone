@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.IO;
 
 [DefaultExecutionOrder(-100)]
 public class Database : MonoBehaviour
@@ -8,12 +9,14 @@ public class Database : MonoBehaviour
     public static Database instance;
     public static bool initialized = false;
 
+    public static Loadout loadout = new();
+
     #region Skills
     public List<Skill> skills = new();
-    public SkillVisual skillAnim;
-    public static Dictionary<string, Skill> skillsDB = new();
-    public static List<Skill> unlockedSkills = new();
+    public static Dictionary<int, Skill> skillsDB = new();
     public static Dictionary<int, Skill> equippedSkills = new();
+
+    public static List<int> AllUnlockedSkills => FindSkills(s => s.data.unlocked);
     #endregion
 
     #region Unity Methods
@@ -21,21 +24,37 @@ public class Database : MonoBehaviour
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
-
         DontDestroyOnLoad(gameObject);
     }
     private void Start()
     {
-        InitSkillsDB();
-        InitUnlockedSkills();
+        InitSkills();
 
         initialized = true;
     }
     #endregion
 
     #region Methods
-    void InitSkillsDB() => skills.ForEach(s => skillsDB.Add(s.data.Id, Instantiate(s)));
-    public static void InitUnlockedSkills() { foreach (var s in skillsDB) if (s.Value.data.unlocked == true) unlockedSkills.Add(s.Value); }
+    void InitSkills()
+    {
+        // skillsDB
+        skills.ForEach(s => s.data.id = skills.IndexOf(s) + 1);
+        skills.ForEach(s => skillsDB.Add(s.data.id, Instantiate(s)));
+
+        // equippedSkills
+        for (int i = 0; i < 6; i++) equippedSkills.Add(i, null);
+    }
+    public static List<int> FindSkills(Func<Skill, bool> condition)
+    {
+        List<int> skillIndexes = new();
+
+        foreach(var pair in skillsDB)
+        {
+            if(condition(pair.Value)) skillIndexes.Add(pair.Key);
+        }
+
+        return skillIndexes;
+    }
     #endregion
 
     #region Utilities
@@ -56,6 +75,13 @@ public class Database : MonoBehaviour
     }
 
     // Skills
-    public static Skill GetSkillById(string id) { return skillsDB[id]; }
+    public static Skill GetSkillById(int id) { return skillsDB[id]; }
+    #endregion
+
+    #region Misc
+    public class Loadout
+    {
+        public Dictionary<int, int> equippedSkills = new();
+    }
     #endregion
 }

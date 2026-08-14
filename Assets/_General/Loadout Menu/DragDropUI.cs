@@ -17,7 +17,7 @@ public class DragDropUI : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEndDr
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public virtual void OnBeginDrag(PointerEventData eventData)
     {
         originalParent = rectTransform.parent;
         canvasGroup.blocksRaycasts = false;
@@ -26,11 +26,11 @@ public class DragDropUI : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEndDr
         transform.SetParent(canvas.transform);
         droppedSuccessfully = false;
     }
-    public void OnDrag(PointerEventData eventData)
+    public virtual void OnDrag(PointerEventData eventData)
     {
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
-    public void OnEndDrag(PointerEventData eventData)
+    public virtual void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = true;
         if (droppedSuccessfully) return;

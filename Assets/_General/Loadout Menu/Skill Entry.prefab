@@ -59,6 +59,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 0}
   skill: {fileID: 0}
   image: {fileID: 0}
+  id: 0
 --- !u!222 &26850242142512034
 CanvasRenderer:
   m_ObjectHideFlags: 0

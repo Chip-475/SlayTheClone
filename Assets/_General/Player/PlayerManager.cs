@@ -27,8 +27,8 @@ public class PlayerManager : MonoBehaviour
         inventoryPath = Path.Combine(Application.persistentDataPath, "inventory.json");
         statsPath = Path.Combine(Application.persistentDataPath, "playerStats.json");
 
-        SaveAndLoad.Load(ref stats, statsPath);
-        SaveAndLoad.Load(ref inventory, inventoryPath);
+        stats = SaveAndLoad.Load<PlayerStats>(statsPath);
+        inventory = SaveAndLoad.Load<Inventory>(inventoryPath);
     }
     private void Start()
     {

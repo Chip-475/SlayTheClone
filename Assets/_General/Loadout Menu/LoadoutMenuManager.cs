@@ -1,21 +1,23 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using DG.Tweening;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DG.Tweening;
 using static MapManager;
 using static Database;
-using System.Collections;
-using UnityEngine.UI;
 using System.Linq;
+using Unity.VisualScripting;
 
 /// <summary>
-/// EST => Equipped Skills Tab
-/// UST => Unlocked Skills Tab
+/// ST =>  Skills Tab
+/// SP => Skill Pool
 /// </summary>
 public class LoadoutMenuManager : MonoBehaviour
 {
+    public static LoadoutMenuManager instance;
+
     public GameObject loadoutPanel;
     public EventTrigger loadout_open;
     public EventTrigger loadout_close;
@@ -27,31 +29,34 @@ public class LoadoutMenuManager : MonoBehaviour
     }
 
     #region Loadout Panel
+    public static event Action OnEntryMoved;
+
     [Header("Resources")]
     public SkillSlot skillSlotPrefab;
     public SkillEntry skillEntryPrefab;
     [Space]
-    public MenuElement EST;
-    public Transform estContent;
+    public MenuElement ST;
+    public Transform skillTabContent;
     [Space]
-    public MenuElement UST;
-    public Transform ustContent;
+    public MenuElement SP;
+    public Transform skillPoolContent;
 
-    [Header("Data")]
     public Dictionary<int, SkillSlot> slots = new();
-    public Dictionary<int, SkillEntry> entries = new();
+    public List<SkillSlot> loadoutSlots = new();
+    Dictionary<int, SkillEntry> entries = new();
     #endregion
 
     private void Awake()
     {
         if(loadoutPanel.activeSelf) menuHistory.Push(loadoutPanel);
+        instance = this;
     }
     IEnumerator Start()
     {
         yield return new WaitUntil(() => initialized == true);
 
         loadoutPanel.SetActive(false);
-        BuildSlots();
+        BuildSkillPool();
 
         loadout_open.AddEvent
         (
@@ -74,46 +79,68 @@ public class LoadoutMenuManager : MonoBehaviour
             }
         );
     }
-
-    // instantiate 1 entry per unlocked skill
-    // have each slot have a unique id
-    // have each entry have a unique id
-    // sync entry id to slot id
-    void BuildSlots()
+    private void OnEnable()
     {
-        if (slots.Keys.Count != 0) return;
-
-        int id = 1;
-        for(; id <= 6; id++)
-        {
-            print(id);
-            var slot = Instantiate(skillSlotPrefab, estContent);
-            slot.id = id;
-            slot.GetComponent<Image>().color = new Color(0, 0, 0, 0);
-
-            slots.Add(id, slot);
-        }
-        foreach(var skill in unlockedSkills)
-        {
-            print(id);
-            var slot = Instantiate(skillSlotPrefab, ustContent);
-            slot.id = id;
-
-            slots.Add(id, slot);
-            id++;
-        }
+        OnEntryMoved += CheckEquipped;
+    }
+    private void OnDisable()
+    {
+        OnEntryMoved -= CheckEquipped;
     }
 
     async Task OpenLoadoutMenu()
     {
-        UST.self.transform.DOMove(UST.innerPoint.position, 0.15f);
-        EST.self.transform.DOMove(EST.innerPoint.position, 0.15f);
+        ValidateEntries();
+
+        SP.self.transform.DOMove(SP.innerPoint.position, 0.15f);
+        ST.self.transform.DOMove(ST.innerPoint.position, 0.15f);
         await Task.Delay(150);
     }
     async Task CloseLoadoutMenu()
     {
-        UST.self.transform.DOMove(UST.outerPoint.position, 0.15f);
-        EST.self.transform.DOMove(EST.outerPoint.position, 0.15f);
+        SP.self.transform.DOMove(SP.outerPoint.position, 0.15f);
+        ST.self.transform.DOMove(ST.outerPoint.position, 0.15f);
         await Task.Delay(150);
+    }
+
+    void BuildSkillPool()
+    {
+        foreach(var id in AllUnlockedSkills)
+        {
+            var slot = Instantiate(skillSlotPrefab, skillPoolContent);
+            slot.id = id;
+            slots.Add(slot.id, slot);
+
+            var entry = Instantiate(skillEntryPrefab, slot.transform);
+            entry.id = id;
+            entries.Add(entry.id, entry);
+        }
+    }
+    void ValidateEntries()
+    {
+        foreach(var entry in entries.Values)
+        {
+            if(entry.IsEquipped)
+            {
+                entry.transform.SetParent(loadoutSlots[entry.loadoutID - 1].transform);
+                entry.rectTransform.anchoredPosition = Vector2.zero;
+                continue;
+            }
+
+            entry.transform.SetParent(slots[entry.id].transform);
+            entry.rectTransform.anchoredPosition = Vector3.zero;
+        }
+    }
+    public void CheckEquipped()
+    {
+        foreach(var entry in entries.Values)
+        {
+            if (entry.IsEquipped) equippedSkills[entry.loadoutID] = entry.skill;
+        }
+    }
+
+    public static void EntryMoved()
+    {
+        OnEntryMoved?.Invoke();
     }
 }

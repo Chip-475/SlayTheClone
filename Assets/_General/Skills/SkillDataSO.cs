@@ -21,14 +21,7 @@ public class SkillDataSO : ScriptableObject
         Supportive
     }
 
-    public string Id
-    {
-        get
-        {
-            return Regex.Replace(skillName.Trim(), @"\s+", "_").ToLower();
-        }
-        private set { return; }
-    }
+    public int id;
 
     [Header("State")]
     public bool unlocked;

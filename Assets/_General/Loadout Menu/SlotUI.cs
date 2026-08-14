@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class SlotUI : MonoBehaviour, IDropHandler
 {
-    public void OnDrop(PointerEventData eventData)
+    public virtual void OnDrop(PointerEventData eventData)
     {
         if(!eventData.pointerDrag.TryGetComponent(out DragDropUI dd)) return;
 
