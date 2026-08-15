@@ -1,19 +1,29 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class SkillEntry : DragDropUI
 {
+    Image image;
+
     public SkillSlot currentSlot;
     public Skill skill;
     [Space]
     public int id;
     public int loadoutID;
     public bool IsEquipped => loadoutID != 0;
-    
 
+
+    private new void Awake()
+    {
+        base.Awake();
+
+        image = GetComponent<Image>();
+    }
     private void Start()
     {
         skill = Database.GetSkillById(id);
+        image.sprite = skill.data.icon;
     }
 
     public override void OnBeginDrag(PointerEventData eventData)

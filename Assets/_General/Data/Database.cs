@@ -12,6 +12,9 @@ public class Database : MonoBehaviour
     public static Loadout loadout = new();
 
     #region Skills
+    public string skillDataPath;
+    public static SkillData skillData;
+
     public List<Skill> skills = new();
     public static Dictionary<int, Skill> skillsDB = new();
     public static Dictionary<int, Skill> equippedSkills = new();
@@ -25,10 +28,16 @@ public class Database : MonoBehaviour
         if (instance == null) instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+
+        skillDataPath = Path.Combine(Application.persistentDataPath, "skillSaveData.json");
+        InitSkills();
     }
     private void Start()
     {
-        InitSkills();
+        if (!File.Exists(skillDataPath)) return;
+
+        skillData = SaveAndLoad.Load<SkillData>(skillDataPath);
+        foreach (var item in skillData.equippedSkills) equippedSkills[item.Key] = GetSkillById(item.Value);
 
         initialized = true;
     }

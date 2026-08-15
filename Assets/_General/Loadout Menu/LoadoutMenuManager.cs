@@ -43,7 +43,7 @@ public class LoadoutMenuManager : MonoBehaviour
 
     public Dictionary<int, SkillSlot> slots = new();
     public List<SkillSlot> loadoutSlots = new();
-    Dictionary<int, SkillEntry> entries = new();
+    public Dictionary<int, SkillEntry> entries = new();
     #endregion
 
     private void Awake()
@@ -62,6 +62,7 @@ public class LoadoutMenuManager : MonoBehaviour
         (
             EventTriggerType.PointerClick,
             async action => { // Function order is important.
+                LoadLoadoutMenu();
                 loadoutPanel.SetActive(true);
                 menuHistory.Push(loadoutPanel);
                 loadout_open.gameObject.SetActive(false);
@@ -72,6 +73,7 @@ public class LoadoutMenuManager : MonoBehaviour
         (
             EventTriggerType.PointerClick,
             async action => { // Function order is important.
+                SaveLoadoutMenu();
                 loadout_open.gameObject.SetActive(true);
                 await CloseLoadoutMenu();
                 loadoutPanel.SetActive(false);
@@ -88,6 +90,35 @@ public class LoadoutMenuManager : MonoBehaviour
         OnEntryMoved -= CheckEquipped;
     }
 
+    void SaveLoadoutMenu()
+    {
+        skillData.loadoutPanel_entriesState.Clear();
+
+        foreach(var entry in entries)
+        {
+            skillData.loadoutPanel_entriesState.Add
+                (
+                    entry.Key,
+                    new SkillData.LoadoutEntryData
+                    {
+                        id = entry.Value.id,
+                        loadoutID = entry.Value.loadoutID
+                    }
+                );
+        }
+
+        SaveAndLoad.Save(skillData, Database.instance.skillDataPath);
+    }
+    void LoadLoadoutMenu()
+    {
+        skillData = SaveAndLoad.Load<SkillData>(Database.instance.skillDataPath);
+
+        foreach(var entry in skillData.loadoutPanel_entriesState)
+        {
+            entries[entry.Key].id = entry.Value.id;
+            entries[entry.Key].loadoutID = entry.Value.loadoutID;
+        }
+    }
     async Task OpenLoadoutMenu()
     {
         ValidateEntries();

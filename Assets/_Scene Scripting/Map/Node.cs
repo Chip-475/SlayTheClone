@@ -87,6 +87,7 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public void OnPointerEnter(PointerEventData eventData)
     {
         List<int> nextNodes = new();
+        print(Manager.currentNodeId);
         GetNodeById(Manager.currentNodeId).forwardConnections.ForEach(id => { nextNodes.Add(id); });
         if (!nextNodes.Contains(id)) return;
 
