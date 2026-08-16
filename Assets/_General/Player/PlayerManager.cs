@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using static SaveAndLoad;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -8,13 +9,8 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance;
     public static Player player;
 
-    [Header("Meta")]
-    public string statsPath;
-    public string inventoryPath;
-
     [Header("Data Packets")]
-    public static PlayerStats stats = new();
-    public static Inventory inventory = new();
+    public static PlayerStats P_Stats = new();
     #endregion
 
     #region Unity Methods
@@ -23,50 +19,20 @@ public class PlayerManager : MonoBehaviour
         if (instance == null) instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
-
-        inventoryPath = Path.Combine(Application.persistentDataPath, "inventory.json");
-        statsPath = Path.Combine(Application.persistentDataPath, "playerStats.json");
-
-        stats = SaveAndLoad.Load<PlayerStats>(statsPath);
-        inventory = SaveAndLoad.Load<Inventory>(inventoryPath);
     }
     private void Start()
     {
-        if (player != null) player.Health = stats.maxHp; // testing
+        if(generalSaveFile.playerStats != null) P_Stats = generalSaveFile.playerStats;
+
+        if (player != null) player.Health = P_Stats.maxHp; // testing
     }
-    private void OnApplicationQuit()
+    private void OnEnable()
     {
-        SaveAndLoad.Save(stats, statsPath);
-        SaveAndLoad.Save(inventory, inventoryPath);
+        FillSaveFile += () => generalSaveFile.playerStats = P_Stats;
+    }
+    private void OnDisable()
+    {
+        FillSaveFile -= () => generalSaveFile.playerStats = P_Stats;
     }
     #endregion
-}
-
-[System.Serializable]
-public class Inventory
-{
-    public int money;
-
-    public List<Skill> ownedSkills;
-    public List<ItemSO> items;
-}
-[System.Serializable]
-public class PlayerStats
-{
-    public int hp;
-    public int maxHp;
-    public int atk;
-    public int actionPointsSpeed;
-
-    [Header("Misc")]
-    public int timesDied;
-    public int enemiesKilled;
-    public int distanceTravelled;
-    public int moneyEarned;
-    public int cardsPlayed;
-    public int totDamageDealt;
-    public int highestDamageDealt;
-
-    [Tooltip("ID of the enemy that killed the player.")]
-    public string killer;
 }

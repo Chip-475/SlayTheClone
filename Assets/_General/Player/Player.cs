@@ -21,7 +21,7 @@ public class Player : MonoBehaviour, IBattleEntity
     public static event Action OnHealthChanged;
     public static event Action OnStaminaChanged;
 
-    public PlayerStats Stats => PlayerManager.stats;
+    public PlayerStats Stats => PlayerManager.P_Stats;
     public PlayerAnimController animController;
     public Animator animator;
 

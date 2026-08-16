@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.IO;
+using static SaveAndLoad;
 
 [DefaultExecutionOrder(-100)]
 public class Database : MonoBehaviour
@@ -12,8 +13,7 @@ public class Database : MonoBehaviour
     public static Loadout loadout = new();
 
     #region Skills
-    public string skillDataPath;
-    public static SkillData skillData;
+    public static SkillData skillData = new();
 
     public List<Skill> skills = new();
     public static Dictionary<int, Skill> skillsDB = new();
@@ -29,17 +29,22 @@ public class Database : MonoBehaviour
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
 
-        skillDataPath = Path.Combine(Application.persistentDataPath, "skillSaveData.json");
         InitSkills();
     }
     private void Start()
     {
-        if (!File.Exists(skillDataPath)) return;
-
-        skillData = SaveAndLoad.Load<SkillData>(skillDataPath);
+        skillData = generalSaveFile.skillData;
         foreach (var item in skillData.equippedSkills) equippedSkills[item.Key] = GetSkillById(item.Value);
 
         initialized = true;
+    }
+    private void OnEnable()
+    {
+        FillSaveFile += () => generalSaveFile.skillData = skillData;   
+    }
+    private void OnDisable()
+    {
+        FillSaveFile -= () => generalSaveFile.skillData = skillData;
     }
     #endregion
 

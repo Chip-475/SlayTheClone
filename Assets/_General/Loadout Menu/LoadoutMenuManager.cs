@@ -9,6 +9,7 @@ using static MapManager;
 using static Database;
 using System.Linq;
 using Unity.VisualScripting;
+using static SaveAndLoad;
 
 /// <summary>
 /// ST =>  Skills Tab
@@ -57,12 +58,13 @@ public class LoadoutMenuManager : MonoBehaviour
 
         loadoutPanel.SetActive(false);
         BuildSkillPool();
+        ReconstructLoadout();
 
         loadout_open.AddEvent
         (
             EventTriggerType.PointerClick,
             async action => { // Function order is important.
-                LoadLoadoutMenu();
+                LoadAll();
                 loadoutPanel.SetActive(true);
                 menuHistory.Push(loadoutPanel);
                 loadout_open.gameObject.SetActive(false);
@@ -73,7 +75,7 @@ public class LoadoutMenuManager : MonoBehaviour
         (
             EventTriggerType.PointerClick,
             async action => { // Function order is important.
-                SaveLoadoutMenu();
+                SaveAll();
                 loadout_open.gameObject.SetActive(true);
                 await CloseLoadoutMenu();
                 loadoutPanel.SetActive(false);
@@ -84,41 +86,54 @@ public class LoadoutMenuManager : MonoBehaviour
     private void OnEnable()
     {
         OnEntryMoved += CheckEquipped;
+        FillSaveFile += () => generalSaveFile.skillData = skillData;
+        FillSaveFile += DeconstructLoadout;
     }
     private void OnDisable()
     {
         OnEntryMoved -= CheckEquipped;
+        FillSaveFile -= () => generalSaveFile.skillData = skillData;
+        FillSaveFile -= DeconstructLoadout;
     }
 
-    void SaveLoadoutMenu()
+    public void DeconstructLoadout()
     {
-        skillData.loadoutPanel_entriesState.Clear();
+        skillData.equippedSkills.Clear();
+        foreach (var item in equippedSkills)
+        {
+            if (item.Value == null || item.Value.data == null)
+                continue;
 
-        foreach(var entry in entries)
+            skillData.equippedSkills.Add(item.Key, item.Value.data.id);
+        }
+
+        skillData.loadoutPanel_entriesState.Clear();
+        foreach (var item in entries)
         {
             skillData.loadoutPanel_entriesState.Add
                 (
-                    entry.Key,
+                    item.Key,
                     new SkillData.LoadoutEntryData
                     {
-                        id = entry.Value.id,
-                        loadoutID = entry.Value.loadoutID
+                        id = item.Value.id,
+                        loadoutID = item.Value.loadoutID
                     }
                 );
         }
-
-        SaveAndLoad.Save(skillData, Database.instance.skillDataPath);
     }
-    void LoadLoadoutMenu()
+    public void ReconstructLoadout()
     {
-        skillData = SaveAndLoad.Load<SkillData>(Database.instance.skillDataPath);
-
-        foreach(var entry in skillData.loadoutPanel_entriesState)
+        foreach (var item in skillData.equippedSkills)
         {
-            entries[entry.Key].id = entry.Value.id;
-            entries[entry.Key].loadoutID = entry.Value.loadoutID;
+            equippedSkills[item.Key] = GetSkillById(item.Value);
+        }
+
+        foreach (var item in skillData.loadoutPanel_entriesState)
+        {
+            entries[item.Key].loadoutID = item.Value.loadoutID;
         }
     }
+
     async Task OpenLoadoutMenu()
     {
         ValidateEntries();

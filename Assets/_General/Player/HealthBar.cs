@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour
     private void Awake()
     {
         _bar = GetComponent<Image>();
-        curve = AnimationCurve.EaseInOut(0, 0, PlayerManager.stats.maxHp, 1);
+        curve = AnimationCurve.EaseInOut(0, 0, PlayerManager.P_Stats.maxHp, 1);
         curve.preWrapMode = WrapMode.PingPong;
         curve.postWrapMode = WrapMode.PingPong;
     }

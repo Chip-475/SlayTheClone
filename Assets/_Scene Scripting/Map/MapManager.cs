@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Linq;
 using DG.Tweening;
+using static SaveAndLoad;
 
 [RequireComponent(typeof(NodeGenerator))]
 [RequireComponent(typeof(NodeAssigner))]
@@ -54,14 +55,12 @@ public class MapManager : MonoBehaviour
 
         nodeGenerator = GetComponent<NodeGenerator>();
         nodeAssigner = GetComponent<NodeAssigner>();
-        nodeConnecter= GetComponent<NodeConnecter>();
+        nodeConnecter = GetComponent<NodeConnecter>();
     }
     private async void Start()
     {
         fadePanel.SetActive(true);
         fadePanel.GetComponent<CanvasGroup>().DOFade(0, 0.3f);
-
-        mapPath = Path.Combine(Application.persistentDataPath, "map.json");
 
         if (PlayerPrefs.GetInt("generated") == 0)  // false
         {
@@ -76,6 +75,14 @@ public class MapManager : MonoBehaviour
             startingNode.gameObject.SetActive(false);
             bossNode.gameObject.SetActive(false);
         }
+    }
+    private void OnEnable()
+    {
+        FillSaveFile += SaveMap;
+    }
+    private void OnDisable()
+    {
+        FillSaveFile -= SaveMap;
     }
     #endregion
 
@@ -96,39 +103,34 @@ public class MapManager : MonoBehaviour
         }
         PlayerPrefs.SetInt("Current Node", currentNodeId);
 
-        string json = JsonConvert.SerializeObject(data, Formatting.Indented);
-        File.WriteAllText(mapPath, json);
+        generalSaveFile.map = data;
     }
     public void LoadMap()
     {
-        if (File.Exists(mapPath))
+        var data = generalSaveFile.map;
+        map = new();
+
+        for (int i = 0; i < data.Keys.Count; i++)
         {
-            string json = File.ReadAllText(mapPath);
-            var data = JsonConvert.DeserializeObject<Dictionary<int, List<Node.SaveData>>>(json);
-            map = new();
+            List<Node> nodes = new();
 
-            for(int i = 0; i < data.Keys.Count; i++)
+            foreach (var nodeData in data[i])
             {
-                List<Node> nodes = new();
+                var node = Instantiate(nodePrefab);
 
-                foreach(var nodeData in data[i])
-                {
-                    var node = Instantiate(nodePrefab);
+                node.id = nodeData.id;
+                node.forwardConnections.AddRange(nodeData.forwardConnections);
+                node.transform.position = nodeData.position.ToVector3();
+                node.type = nodeData.type;
+                node.LoadType();
 
-                    node.id = nodeData.id;
-                    node.forwardConnections.AddRange(nodeData.forwardConnections);
-                    node.transform.position = nodeData.position.ToVector3();
-                    node.type = nodeData.type;
-                    node.LoadType();
-
-                    nodes.Add(node);
-                }
-
-                map.Add(i, nodes);
+                nodes.Add(node);
             }
 
-            currentNodeId = PlayerPrefs.GetInt("Current Node");
+            map.Add(i, nodes);
         }
+
+        currentNodeId = PlayerPrefs.GetInt("Current Node");
     }
     public void FillNodeTable()
     {
