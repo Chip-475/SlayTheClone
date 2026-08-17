@@ -79,11 +79,10 @@ public class Player : MonoBehaviour, IBattleEntity
     }
     private void Start()
     {
-        Init();
-
         state = State.Idle;
         PlayerManager.player = this;
 
+        Init();
         OnHealthChanged?.Invoke();
     }
     private void FixedUpdate()

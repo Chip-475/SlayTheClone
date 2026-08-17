@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using DG.Tweening;
 using static SaveAndLoad;
+using Newtonsoft.Json.Bson;
 
 [RequireComponent(typeof(NodeGenerator))]
 [RequireComponent(typeof(NodeAssigner))]
@@ -17,6 +18,7 @@ public class MapManager : MonoBehaviour
     public Database Database => Database.instance;
 
     public static MapManager instance;
+    public static bool newFile;
 
     public NodeGenerator nodeGenerator;
     public NodeAssigner nodeAssigner;
@@ -62,9 +64,10 @@ public class MapManager : MonoBehaviour
         fadePanel.SetActive(true);
         fadePanel.GetComponent<CanvasGroup>().DOFade(0, 0.3f);
 
-        if (PlayerPrefs.GetInt("generated") == 0)  // false
+        if (newFile)
         {
             await Generate();
+            newFile = false;
         }
         else
         {
@@ -150,13 +153,8 @@ public class MapManager : MonoBehaviour
     [ContextMenu("ReGenerate Map")]
     public async Task Generate()
     {
-        foreach (var layer in map.Keys)
-        {
-            foreach(var node in map[layer])
-            {
-                Destroy(node.gameObject);
-            }
-        }
+        if(map != null) ClearMap();
+
         map = new();
 
         nodeGenerator.InitLayerKeys();
@@ -177,6 +175,16 @@ public class MapManager : MonoBehaviour
 
         startingNode.gameObject.SetActive(false);
         bossNode.gameObject.SetActive(false);
+    }
+    void ClearMap()
+    {
+        foreach (var layer in map.Keys)
+        {
+            foreach (var node in map[layer])
+            {
+                Destroy(node.gameObject);
+            }
+        }
     }
 
     public void MenuBack() { menuHistory.Pop().SetActive(false); }

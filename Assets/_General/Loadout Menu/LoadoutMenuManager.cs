@@ -179,7 +179,10 @@ public class LoadoutMenuManager : MonoBehaviour
     }
     public void CheckEquipped()
     {
-        foreach(var entry in entries.Values)
+        foreach (var key in equippedSkills.Keys.ToList())
+            equippedSkills[key] = null;
+
+        foreach (var entry in entries.Values)
         {
             if (entry.IsEquipped) equippedSkills[entry.loadoutID] = entry.skill;
         }

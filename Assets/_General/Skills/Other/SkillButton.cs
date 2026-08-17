@@ -28,6 +28,14 @@ public class SkillButton : MonoBehaviour
         trigger.AddEvent(EventTriggerType.PointerEnter, action => skill.OnPointerEnter());
         trigger.AddEvent(EventTriggerType.PointerExit, action => skill.OnPointerExit());
     }
-    private void OnEnable() { Player.OnHealthChanged += () => button.interactable = player.Stamina >= skill.data.staminaCost; }
-    private void OnDisable() { Player.OnHealthChanged -= () => button.interactable = player.Stamina >= skill.data.staminaCost; }
+    private void OnEnable() { Player.OnHealthChanged += UpdateInteractable; }
+    private void OnDisable() { Player.OnHealthChanged -= UpdateInteractable; }
+
+    public void UpdateInteractable()
+    {
+        if (button == null || player == null || skill == null || skill.data == null)
+            return;
+
+        button.interactable = player.Stamina >= skill.data.staminaCost;
+    }
 }

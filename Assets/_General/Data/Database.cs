@@ -9,6 +9,7 @@ public class Database : MonoBehaviour
 {
     public static Database instance;
     public static bool initialized = false;
+    public static bool newFile;
 
     public static Loadout loadout = new();
 
@@ -37,6 +38,16 @@ public class Database : MonoBehaviour
         foreach (var item in skillData.equippedSkills) equippedSkills[item.Key] = GetSkillById(item.Value);
 
         initialized = true;
+    }
+    private void Update()
+    {
+        if (newFile)
+        {
+            PlayerManager.newFile = true;
+            MapManager.newFile = true;
+
+            newFile = false;
+        }
     }
     private void OnEnable()
     {

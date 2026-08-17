@@ -33,18 +33,6 @@ public class BattleMenu : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            if (GetSkillById(AllUnlockedSkills[i]) == null)
-            {
-                Instantiate
-                (
-                    skillButtonPrefab_empty,
-                    skillButtonsPositions[i].position,
-                    Quaternion.identity,
-                    baseMenu.transform
-                );
-                return;
-            }
-
             var button = Instantiate
             (
                 skillButtonPrefab,
@@ -54,7 +42,9 @@ public class BattleMenu : MonoBehaviour
             );
 
             SkillButton sb = button.GetComponent<SkillButton>();
-            sb.skill = GetSkillById(AllUnlockedSkills[i]);
+
+            if (!equippedSkills.ContainsKey(i + 1)) continue;
+            sb.skill = equippedSkills[i + 1];
         }
     }
     #endregion
