@@ -10,6 +10,8 @@ public class Database : MonoBehaviour
     public static Database instance;
     public static bool initialized = false;
     public static bool newFile;
+    public static bool bossNodeClicked;
+    public static bool runEnded;
 
     public static Loadout loadout = new();
 

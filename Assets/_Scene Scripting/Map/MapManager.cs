@@ -75,8 +75,8 @@ public class MapManager : MonoBehaviour
             FillNodeTable();
             nodeConnecter.DrawConnections();
 
-            startingNode.gameObject.SetActive(false);
-            bossNode.gameObject.SetActive(false);
+            startingNode.gameObject.SetActive(true);
+            bossNode.gameObject.SetActive(true);
         }
     }
     private void OnEnable()
@@ -173,8 +173,8 @@ public class MapManager : MonoBehaviour
         SaveMap();
         PlayerPrefs.SetInt("generated", 1); // set true
 
-        startingNode.gameObject.SetActive(false);
-        bossNode.gameObject.SetActive(false);
+        startingNode.gameObject.SetActive(true);
+        bossNode.gameObject.SetActive(true);
     }
     void ClearMap()
     {

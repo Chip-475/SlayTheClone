@@ -88,10 +88,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LightSlash
   data: {fileID: 11400000, guid: c3fc16ddeff545445bc48cdc0ea360e2, type: 2}
   skill: {fileID: -8451322054298055222}
-  id: 
-  unlocked: 0
-  skillName: 
-  skillType: 0
-  staminaCost: 0
-  damagePercentage: 0
-  damageTypes: 
+  skillAnim: {fileID: 8539600757878840824, guid: ffd47c3e198de0b41aab25cb86d31ed4, type: 3}

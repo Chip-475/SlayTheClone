@@ -10,13 +10,6 @@ public class CraftMenu : MonoBehaviour
     public GameObject menuPanel;
     #endregion
 
-    #region Unity Methods
-    private void Start()
-    {
-        foreach (var recipe in RecipeDatabase.GetUnlockedRecipes()) recipes.Add(recipe);
-    }
-    #endregion
-
     #region Methods
     public void ToggleMenu()
     {

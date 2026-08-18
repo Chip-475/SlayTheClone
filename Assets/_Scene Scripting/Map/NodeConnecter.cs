@@ -71,7 +71,9 @@ public class NodeConnecter : MonoBehaviour
 
             foreach (var node in Map[layer])
             {
-                if (node.forwardConnections.Count == 0) continue;
+                // Only repair nodes that were not given a forward connection
+                // by the distance-limited pass above.
+                if (node.forwardConnections.Count > 0) continue;
 
                 float distance = 100;
                 Node toConnect = null;

@@ -11,6 +11,7 @@ public class Battle : MonoBehaviour
     public Transform playerPosition;
     public List<Transform> spawnPoints = new();
     [SerializeField] List<EncounterConfigSO> encounterConfigs;
+    [SerializeField] List<EncounterConfigSO> bossConfigs;
     #endregion
 
     #region Methods
@@ -23,9 +24,18 @@ public class Battle : MonoBehaviour
     public void SpawnEnemies()
     {
         CombatManager.instance.player.transform.position = playerPosition.position;
-        var currentConfig = encounterConfigs[UnityEngine.Random.Range(0, encounterConfigs.Count)];
+        EncounterConfigSO currentConfig;
+        if (Database.bossNodeClicked)
+        {
+            currentConfig = bossConfigs[UnityEngine.Random.Range(0, bossConfigs.Count)];
+            Database.bossNodeClicked = false;
+        }
+        else
+        {
+            currentConfig = encounterConfigs[UnityEngine.Random.Range(0, encounterConfigs.Count)];
+        }
 
-        for(int i = 0; i < currentConfig.enemies.Count; i++)
+        for (int i = 0; i < currentConfig.enemies.Count; i++)
         {
             if(currentConfig.enemies[i] != null && spawnPoints[i] != null)
             {

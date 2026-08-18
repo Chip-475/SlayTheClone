@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Threading.Tasks;
 using DG.Tweening;
+using TMPro;
 
 public class MM_StartButton : MonoBehaviour
 {
     public GameObject panel;
     public bool ngPressed;
+    public TMP_Text text;
 
     public void OnStartClick()
     {
         panel.SetActive(true);
+        if (ngPressed) text.text = "Start a new game?";
+        else text.text = "Load last game?";
     }
     public void OnNewGameClick()
     {

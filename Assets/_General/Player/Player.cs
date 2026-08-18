@@ -109,6 +109,7 @@ public class Player : MonoBehaviour, IBattleEntity
     {
         ID = 0;
         Stamina = 3;
+        Health = PlayerManager.P_Stats.maxHp;
 
         actionPoints = 0;
         canGainActionPoints = true;
@@ -124,7 +125,7 @@ public class Player : MonoBehaviour, IBattleEntity
     public IEnumerator Action()
     {
         CombatManager.instance.battleMenu.menuGroup.interactable = true;
-        Stamina += 1;
+        Stamina += 2;
         isActing = true;
 
         yield return new WaitUntil(() => isActing == false);

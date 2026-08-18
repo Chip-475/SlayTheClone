@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SkillVisual : MonoBehaviour
+public class SkillAnim : MonoBehaviour
 {
     public Animator animator;
     public string animationName;

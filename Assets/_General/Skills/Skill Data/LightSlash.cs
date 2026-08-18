@@ -11,6 +11,7 @@ public class LightSlash : Skill
     {
         int damage = PlayerManager.P_Stats.atk * data.damagePercentage / 100;
 
+        SpawnAnim(target.transform.position, data.skillName);
         target.TakeDamage(damage);
         Manager.player.Stamina -= data.staminaCost;
     }

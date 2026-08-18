@@ -35,6 +35,8 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public int id;
     public bool connected;
     public List<int> forwardConnections = new();
+    Vector3 baseScale = new(0.5f, 0.5f, 0.5f);
+    Vector3 highlightedScale = new(0.8f, 0.8f, 0.8f);
 
     public bool isAssigned = false;
     #endregion
@@ -43,6 +45,17 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    private void Start()
+    {
+        if(PlayerPrefs.GetInt("Current Node") == id)
+        {
+            baseScale = new Vector3(0.75f, 0.75f, 0.75f);
+            transform.localScale = baseScale;
+            highlightedScale = Vector3.one;
+        }
+
+        gameObject.SetActive(true);
     }
     #endregion
 
@@ -90,7 +103,7 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         GetNodeById(Manager.currentNodeId).forwardConnections.ForEach(id => { nextNodes.Add(id); });
         if (!nextNodes.Contains(id)) return;
 
-        gameObject.transform.DOScale(0.8f, 0.15f);
+        gameObject.transform.DOScale(highlightedScale, 0.15f);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -98,7 +111,7 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         GetNodeById(Manager.currentNodeId).forwardConnections.ForEach(id => { nextNodes.Add(id); });
         if (!nextNodes.Contains(id)) return;
 
-        gameObject.transform.DOScale(0.5f, 0.15f);
+        gameObject.transform.DOScale(baseScale, 0.15f);
     }
     public async void OnPointerClick(PointerEventData eventData)
     {
@@ -107,7 +120,23 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         if (!nextNodes.Contains(id)) return;
 
         PlayerPrefs.SetInt("Current Node", id);
-        string sceneToLoad = type.ToString();
+        string sceneToLoad = "";
+        switch (type)
+        {
+            case NodeType.Battle:
+                sceneToLoad = "Battle";
+                break;
+            case NodeType.Boss:
+                sceneToLoad = "Battle";
+                Database.bossNodeClicked = true;
+                break;
+            case NodeType.Rest:
+                sceneToLoad = "Rest";
+                break;
+            case NodeType.Event:
+                sceneToLoad = "Event";
+                break;
+        }
         await MapManager.instance.fadePanel.GetComponent<CanvasGroup>().DOFade(1, 0.3f)
             .AsyncWaitForCompletion();
         await SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Single);

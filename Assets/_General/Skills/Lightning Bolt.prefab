@@ -88,10 +88,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LightningBolt
   data: {fileID: 11400000, guid: 364ba0571d15f144b9c63a60b7894068, type: 2}
   skill: {fileID: -190109208358988738}
-  id: 
-  unlocked: 0
-  skillName: 
-  skillType: 0
-  staminaCost: 0
-  damagePercentage: 0
-  damageTypes: 
+  skillAnim: {fileID: 6852935721175934069, guid: 425a8c049f7f949459fe0c7dd99e4ba2, type: 3}

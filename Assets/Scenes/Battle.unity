@@ -195,13 +195,14 @@ MonoBehaviour:
   playerPosition: {fileID: 0}
   spawnPoints: []
   encounterConfigs:
-  - {fileID: 11400000, guid: 7d506f41e1ec1fb46906b80a6fef3513, type: 2}
   - {fileID: 11400000, guid: 0605e4625fdc0b249954e63e53e59a96, type: 2}
   - {fileID: 11400000, guid: 37de91414d14aea4b8c7ce6ddab78ae3, type: 2}
   - {fileID: 11400000, guid: be8a760e271d060458451c9487dc311d, type: 2}
   - {fileID: 11400000, guid: ce24958594fb950448399291b2c3eb97, type: 2}
   - {fileID: 11400000, guid: b100b3a30935ce34d80afe7aa19b19fa, type: 2}
   - {fileID: 11400000, guid: 0523aad0647f6bd45b1b392f536fc9bd, type: 2}
+  bossConfigs:
+  - {fileID: 11400000, guid: 7d506f41e1ec1fb46906b80a6fef3513, type: 2}
 --- !u!114 &129036016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +230,7 @@ MonoBehaviour:
   menuGroup: {fileID: 924942167}
   baseMenu: {fileID: 1402684354}
   skillButtonPrefab: {fileID: 1453755917376466837, guid: 18bbec46ac9db4d40ac117e6bfef7ecd, type: 3}
+  skillButtonPrefab_empty: {fileID: 0}
   skillButtonsPositions:
   - {fileID: 3684861216124579243}
   - {fileID: 6145694331413825561}
