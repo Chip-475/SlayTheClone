@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerAnimController))]
 public class Player : MonoBehaviour, IBattleEntity
 {
     #region Declarations
@@ -22,7 +21,6 @@ public class Player : MonoBehaviour, IBattleEntity
     public static event Action OnStaminaChanged;
 
     public PlayerStats Stats => PlayerManager.P_Stats;
-    public PlayerAnimController animController;
     public Animator animator;
 
     int id;
@@ -74,7 +72,6 @@ public class Player : MonoBehaviour, IBattleEntity
     {
         CombatManager.instance.player = this;
 
-        animController = GetComponent<PlayerAnimController>();
         animator = GetComponent<Animator>();
     }
     private void Start()

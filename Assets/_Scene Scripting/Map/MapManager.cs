@@ -119,9 +119,14 @@ public class MapManager : MonoBehaviour
 
             foreach (var nodeData in data[i])
             {
-                var node = Instantiate(nodePrefab);
+                var node = i == 0
+                    ? startingNode
+                    : i == bossLayer
+                        ? bossNode
+                        : Instantiate(nodePrefab);
 
                 node.id = nodeData.id;
+                node.forwardConnections.Clear();
                 node.forwardConnections.AddRange(nodeData.forwardConnections);
                 node.transform.position = nodeData.position.ToVector3();
                 node.type = nodeData.type;

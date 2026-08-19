@@ -13,7 +13,12 @@ public class SkillExecutor : MonoBehaviour
     {
         yield return new WaitUntil(() => Manager.selectedSkill != null && Manager.selectedEnemy != null);
 
-        Manager.selectedSkill.Effect(Manager.selectedEnemy);
+        if(Manager.selectedSkill.data.skillName == "Minor Heal" || Manager.selectedSkill.data.skillName == "Major Heal")
+        {
+            Manager.selectedSkill.Effect(PlayerManager.player);
+        }
+        else Manager.selectedSkill.Effect(Manager.selectedEnemy);
+
         Manager.selectedSkill = null;
         Manager.selectedEnemy = null;
 

@@ -8,8 +8,14 @@ public class SkillAnim : MonoBehaviour
     private void Start()
     {
         animator.CrossFade(animationName, 0, 0);
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        Destroy(gameObject, stateInfo.length);
+
+        foreach (var clip in animator.runtimeAnimatorController.animationClips)
+        {
+            if (clip.name != animationName) continue;
+
+            Destroy(gameObject, clip.length);
+            return;
+        }
     }
 
     public void Instantiate(Vector3 pos, string animName)

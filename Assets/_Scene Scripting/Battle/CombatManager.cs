@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using DG.Tweening;
 using System.Linq;
 using UnityEngine.SceneManagement;
-using UnityEditor.UIElements;
 
 [DefaultExecutionOrder(-1)]
 public class CombatManager : MonoBehaviour
@@ -58,6 +57,16 @@ public class CombatManager : MonoBehaviour
     #endregion
 
     #region Methods
+    public async void To_MM()
+    {
+        await fadePanel.GetComponent<CanvasGroup>().DOFade(1, 0.3f).AsyncWaitForCompletion();
+        await SceneManager.LoadSceneAsync("Main_Menu", LoadSceneMode.Single);
+    }
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     public static IEnumerator PerformActions()
     {
         instance.entitiesAreActing = true;
