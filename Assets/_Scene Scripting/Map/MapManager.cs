@@ -8,6 +8,8 @@ using System.Linq;
 using DG.Tweening;
 using static SaveAndLoad;
 using Newtonsoft.Json.Bson;
+using Unity.VectorGraphics;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(NodeGenerator))]
 [RequireComponent(typeof(NodeAssigner))]
@@ -48,6 +50,8 @@ public class MapManager : MonoBehaviour
     public static Stack<GameObject> menuHistory = new();
     public GameObject loadoutPanel;
     public GameObject fadePanel;
+    public GameObject backMenu;
+    public GameObject locatorArrow;
     #endregion
 
     #region Unity Methods
@@ -78,6 +82,8 @@ public class MapManager : MonoBehaviour
             startingNode.gameObject.SetActive(true);
             bossNode.gameObject.SetActive(true);
         }
+
+        Instantiate(locatorArrow);
     }
     private void OnEnable()
     {
@@ -90,6 +96,21 @@ public class MapManager : MonoBehaviour
     #endregion
 
     #region Methods
+    public void BackButtonClick()
+    {
+        backMenu.SetActive(true);
+        menuHistory.Push(backMenu);
+    }
+    public async void BB_YesClick()
+    {
+        SaveAll();
+
+        MenuBack();
+        fadePanel.SetActive(true);
+        await fadePanel.GetComponent<CanvasGroup>().DOFade(1, 0.3f).AsyncWaitForCompletion();
+        await SceneManager.LoadSceneAsync("Main_Menu", LoadSceneMode.Single);
+    }
+
     public void SaveMap()
     {
         var data = new Dictionary<int, List<Node.SaveData>>();

@@ -139,8 +139,7 @@ public class CombatManager : MonoBehaviour
         panelGroup.alpha = 0f;
         panelGroup.interactable = false;
 
-        panelGroup.DOFade(1f, 0.5f)
-            .SetEase(Ease.InQuad)
+        panelGroup.DOFade(1f, 0.3f)
             .OnComplete(() => panelGroup.interactable = true);
     }
     #endregion

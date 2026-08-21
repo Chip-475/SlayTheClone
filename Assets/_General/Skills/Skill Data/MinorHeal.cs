@@ -13,7 +13,7 @@ public class MinorHeal : Skill
 
         PlayerManager.player.ChangeAnimation("Cast");
         SpawnAnim(target.transform.position, data.skillName);
-        target.TakeDamage(toHeal);
+        target.TakeDamage(-toHeal);
         Manager.player.Stamina -= data.staminaCost;
     }
 }

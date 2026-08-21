@@ -144,7 +144,6 @@ public class Player : MonoBehaviour, IBattleEntity
     {
         isDead = true;
         ChangeAnimation("Death");
-        CombatManager.instance.SlowTime();
         CombatManager.instance.OpenDeathPanel();
 
         yield break;

@@ -64,6 +64,8 @@ public class Database : MonoBehaviour
     #region Methods
     void InitSkills()
     {
+        if(initialized) return;
+
         // skillsDB
         skills.ForEach(s => s.data.id = skills.IndexOf(s) + 1);
         skills.ForEach(s => skillsDB.Add(s.data.id, Instantiate(s)));
