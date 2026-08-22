@@ -8,13 +8,13 @@ public class SkillButton : MonoBehaviour
 {
     public Skill skill;
 
-    TMP_Text text;
+    [SerializeField] TMP_Text text;
+    [SerializeField] TMP_Text costText;
     Button button;
     EventTrigger trigger;
 
     private void Awake()
     {
-        text = GetComponentInChildren<TMP_Text>();
         button = GetComponent<Button>();
         trigger = GetComponent<EventTrigger>();
     }
@@ -23,6 +23,7 @@ public class SkillButton : MonoBehaviour
         if(skill == null) { button.interactable = false; return; }
 
         text.text = skill.data.skillName;
+        costText.text = skill.data.staminaCost.ToString();
         button.onClick.AddListener(skill.Select);
 
         trigger.AddEvent(EventTriggerType.PointerEnter, action => skill.OnPointerEnter());

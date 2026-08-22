@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Early 1
   m_EditorClassIdentifier: Assembly-CSharp::EncounterConfigSO
   enemies:
-  - {fileID: 4654366484208664380, guid: b1c7d18ca3ea2b740a7556e2282e4035, type: 3}
-  - {fileID: 4654366484208664380, guid: b1c7d18ca3ea2b740a7556e2282e4035, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}

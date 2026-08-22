@@ -1,0 +1,1442 @@
+fileFormatVersion: 2
+guid: 514e65ba95d4a1447850b6d54f73cb34
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1548799036716280851
+    second: purple_slash_0
+  - first:
+      213: -6494435167776384654
+    second: purple_slash_1
+  - first:
+      213: 2238909210098310585
+    second: purple_slash_2
+  - first:
+      213: -2399695214502465884
+    second: purple_slash_3
+  - first:
+      213: -3497733426900953932
+    second: purple_slash_4
+  - first:
+      213: 6678522852304167459
+    second: purple_slash_5
+  - first:
+      213: 8043677709671414195
+    second: purple_slash_6
+  - first:
+      213: 1189869892589822830
+    second: purple_slash_7
+  - first:
+      213: -7537397640893120582
+    second: purple_slash_8
+  - first:
+      213: -8898233021136945519
+    second: purple_slash_9
+  - first:
+      213: -7308496904059672445
+    second: purple_slash_10
+  - first:
+      213: 5686308596120471269
+    second: purple_slash_11
+  - first:
+      213: -6594292651006556342
+    second: purple_slash_12
+  - first:
+      213: 1300462629175587400
+    second: purple_slash_13
+  - first:
+      213: -8449547138488626411
+    second: purple_slash_14
+  - first:
+      213: 7609467382771475984
+    second: purple_slash_15
+  - first:
+      213: 8062153778013848196
+    second: purple_slash_16
+  - first:
+      213: 4722456395186270476
+    second: purple_slash_17
+  - first:
+      213: -4510043876762592487
+    second: purple_slash_18
+  - first:
+      213: -7965904422016205679
+    second: purple_slash_19
+  - first:
+      213: 1464977187976103287
+    second: purple_slash_20
+  - first:
+      213: 646847423051652654
+    second: purple_slash_21
+  - first:
+      213: -3530267185777207585
+    second: purple_slash_22
+  - first:
+      213: -1228741882624351019
+    second: purple_slash_23
+  - first:
+      213: -5266004150885944388
+    second: purple_slash_24
+  - first:
+      213: -2857085104446809418
+    second: purple_slash_25
+  - first:
+      213: -4637441881241770008
+    second: purple_slash_26
+  - first:
+      213: 5903414661081612441
+    second: purple_slash_27
+  - first:
+      213: -3400566699061746354
+    second: purple_slash_28
+  - first:
+      213: -8375798809526776682
+    second: purple_slash_29
+  - first:
+      213: 5651453888656270152
+    second: purple_slash_30
+  - first:
+      213: 6434577214511488129
+    second: purple_slash_31
+  - first:
+      213: 2278423192713946678
+    second: purple_slash_32
+  - first:
+      213: -2669102715266516591
+    second: purple_slash_33
+  - first:
+      213: -3212602243844743838
+    second: purple_slash_34
+  - first:
+      213: 1596155983902344932
+    second: purple_slash_35
+  - first:
+      213: -8537892973183971164
+    second: purple_slash_36
+  - first:
+      213: 7542671017633229884
+    second: purple_slash_37
+  - first:
+      213: -6819992991884219803
+    second: purple_slash_38
+  - first:
+      213: -104487165634842539
+    second: purple_slash_39
+  - first:
+      213: 2481265870904281602
+    second: purple_slash_40
+  - first:
+      213: 8396209646872464766
+    second: purple_slash_41
+  - first:
+      213: 7152993728678968760
+    second: purple_slash_42
+  - first:
+      213: -6400361606020206595
+    second: purple_slash_43
+  - first:
+      213: -1406464765737325291
+    second: purple_slash_44
+  - first:
+      213: -6233958733219414177
+    second: purple_slash_45
+  - first:
+      213: 6959019384943701599
+    second: purple_slash_46
+  - first:
+      213: 2330865640241764787
+    second: purple_slash_47
+  - first:
+      213: -8444170796055594839
+    second: purple_slash_48
+  - first:
+      213: -316631310423229152
+    second: purple_slash_49
+  - first:
+      213: -6138033581292849039
+    second: purple_slash_50
+  - first:
+      213: -6147557285360908304
+    second: purple_slash_51
+  - first:
+      213: -2456802770155932691
+    second: purple_slash_52
+  - first:
+      213: 1927135206330932340
+    second: purple_slash_53
+  - first:
+      213: -3518759879814816379
+    second: purple_slash_54
+  - first:
+      213: -3865817199602547648
+    second: purple_slash_55
+  - first:
+      213: 5057645826340731083
+    second: purple_slash_56
+  - first:
+      213: 6961903553138517389
+    second: purple_slash_57
+  - first:
+      213: -7399051145996858587
+    second: purple_slash_58
+  - first:
+      213: -2991476638915380370
+    second: purple_slash_59
+  - first:
+      213: -5624400202000332832
+    second: purple_slash_60
+  - first:
+      213: 6448485773059841699
+    second: purple_slash_61
+  - first:
+      213: 5152019805401639748
+    second: purple_slash_62
+  - first:
+      213: 3880834396926161182
+    second: purple_slash_63
+  - first:
+      213: 1544375653460882124
+    second: purple_slash_64
+  - first:
+      213: 5546925611076262086
+    second: purple_slash_65
+  - first:
+      213: -4447743682878178267
+    second: purple_slash_66
+  - first:
+      213: 4223268638919065220
+    second: purple_slash_67
+  - first:
+      213: -7190144882226513932
+    second: purple_slash_68
+  - first:
+      213: 2725325872378050539
+    second: purple_slash_69
+  - first:
+      213: -7766704765512644928
+    second: purple_slash_70
+  - first:
+      213: 5486343360581792662
+    second: purple_slash_71
+  - first:
+      213: -1409217402471106154
+    second: purple_slash_72
+  - first:
+      213: 4622363413312419304
+    second: purple_slash_73
+  - first:
+      213: 7330200865659700709
+    second: purple_slash_74
+  - first:
+      213: -6422480787800645382
+    second: purple_slash_75
+  - first:
+      213: 847530180330928437
+    second: purple_slash_76
+  - first:
+      213: -4862101526759508683
+    second: purple_slash_77
+  - first:
+      213: -6151542037284426763
+    second: purple_slash_78
+  - first:
+      213: 3739417211365329217
+    second: purple_slash_79
+  - first:
+      213: 995805357586705589
+    second: purple_slash_80
+  - first:
+      213: 7479976190273512852
+    second: purple_slash_81
+  - first:
+      213: 375311591747685402
+    second: purple_slash_82
+  - first:
+      213: 3940103790512325106
+    second: purple_slash_83
+  - first:
+      213: 6387483752618385269
+    second: purple_slash_84
+  - first:
+      213: 4951180910242619607
+    second: purple_slash_85
+  - first:
+      213: 9044943799531113418
+    second: purple_slash_86
+  - first:
+      213: -3204373487862739163
+    second: purple_slash_87
+  - first:
+      213: -4297859457428425756
+    second: purple_slash_88
+  - first:
+      213: 4242542077775305608
+    second: purple_slash_89
+  - first:
+      213: -6506743540478517320
+    second: purple_slash_90
+  - first:
+      213: 547476943354273312
+    second: purple_slash_91
+  - first:
+      213: 8915156044998408808
+    second: purple_slash_92
+  - first:
+      213: -5174633893142838296
+    second: purple_slash_93
+  - first:
+      213: -5640102831982678357
+    second: purple_slash_94
+  - first:
+      213: 7094401109311765888
+    second: purple_slash_95
+  - first:
+      213: -6207977393358930821
+    second: purple_slash_96
+  - first:
+      213: 2430490091566990445
+    second: purple_slash_97
+  - first:
+      213: 8734784322278464696
+    second: purple_slash_98
+  - first:
+      213: -648062673183888167
+    second: purple_slash_99
+  - first:
+      213: 8743848090272297774
+    second: purple_slash_100
+  - first:
+      213: -2830406106009290003
+    second: purple_slash_101
+  - first:
+      213: 6276227251803928266
+    second: purple_slash_102
+  - first:
+      213: -6278553322524372271
+    second: purple_slash_103
+  - first:
+      213: -5975372978435291498
+    second: purple_slash_104
+  - first:
+      213: -7367126011231380397
+    second: purple_slash_105
+  - first:
+      213: -6776779301941675954
+    second: purple_slash_106
+  - first:
+      213: 250308250471232999
+    second: purple_slash_107
+  - first:
+      213: -5641886532450640274
+    second: purple_slash_108
+  - first:
+      213: 8732575971812245947
+    second: purple_slash_109
+  - first:
+      213: -3601331772587601652
+    second: purple_slash_110
+  - first:
+      213: -1585239662973892718
+    second: purple_slash_111
+  - first:
+      213: 337404024477350226
+    second: purple_slash_112
+  - first:
+      213: -2195784316022260679
+    second: purple_slash_113
+  - first:
+      213: 6074963933675264075
+    second: purple_slash_114
+  - first:
+      213: 810806366338136645
+    second: purple_slash_115
+  - first:
+      213: -1659510729466368067
+    second: purple_slash_116
+  - first:
+      213: 566988069933084882
+    second: purple_slash_117
+  - first:
+      213: -4468169219288468729
+    second: purple_slash_118
+  - first:
+      213: -5058289533105554763
+    second: purple_slash_119
+  - first:
+      213: 4558926571135151460
+    second: purple_slash_120
+  - first:
+      213: 7964376395873224841
+    second: purple_slash_121
+  - first:
+      213: 942620945303398158
+    second: purple_slash_122
+  - first:
+      213: -805825214529747572
+    second: purple_slash_123
+  - first:
+      213: 764395154026650546
+    second: purple_slash_124
+  - first:
+      213: 892141637063098347
+    second: purple_slash_125
+  - first:
+      213: -5045656900236740512
+    second: purple_slash_126
+  - first:
+      213: 6304071067133411455
+    second: purple_slash_127
+  - first:
+      213: -4017224985221436529
+    second: purple_slash_128
+  - first:
+      213: -6884235482726734996
+    second: purple_slash_129
+  - first:
+      213: -1916405876932878898
+    second: purple_slash_130
+  - first:
+      213: -8961135803448002603
+    second: purple_slash_131
+  - first:
+      213: 5609142894940857278
+    second: purple_slash_132
+  - first:
+      213: 5794960640061049140
+    second: purple_slash_133
+  - first:
+      213: -842595783524474283
+    second: purple_slash_134
+  - first:
+      213: 7755627304066559730
+    second: purple_slash_135
+  - first:
+      213: 2569795829593265843
+    second: purple_slash_136
+  - first:
+      213: 4670006728460964870
+    second: purple_slash_137
+  - first:
+      213: 1555590227265992033
+    second: purple_slash_138
+  - first:
+      213: -6979957108771571542
+    second: purple_slash_139
+  - first:
+      213: 2396244447024591599
+    second: purple_slash_140
+  - first:
+      213: -4778400041817905567
+    second: purple_slash_141
+  - first:
+      213: 1505238364762364034
+    second: purple_slash_142
+  - first:
+      213: 8851251785814315670
+    second: purple_slash_143
+  - first:
+      213: 6875444700498819885
+    second: purple_slash_144
+  - first:
+      213: 2602382194748790506
+    second: purple_slash_145
+  - first:
+      213: -7896552730367827464
+    second: purple_slash_146
+  - first:
+      213: 4797484906763056127
+    second: purple_slash_147
+  - first:
+      213: 3962982233672220044
+    second: purple_slash_148
+  - first:
+      213: 2579298184450071099
+    second: purple_slash_149
+  - first:
+      213: -8025769106561376225
+    second: purple_slash_150
+  - first:
+      213: 4076704167680321645
+    second: purple_slash_151
+  - first:
+      213: -6638388639104949644
+    second: purple_slash_152
+  - first:
+      213: 7910177230224332425
+    second: purple_slash_153
+  - first:
+      213: -6804494732773451135
+    second: purple_slash_154
+  - first:
+      213: -2240411506096306009
+    second: purple_slash_155
+  - first:
+      213: 7699973102933263437
+    second: purple_slash_156
+  - first:
+      213: -6173505547964664088
+    second: purple_slash_157
+  - first:
+      213: 8999486879091712697
+    second: purple_slash_158
+  - first:
+      213: -4412729352955763238
+    second: purple_slash_159
+  - first:
+      213: -3628547769484264606
+    second: purple_slash_160
+  - first:
+      213: -4492158365471816305
+    second: purple_slash_161
+  - first:
+      213: 1455617263686514905
+    second: purple_slash_162
+  - first:
+      213: 7554235819191288416
+    second: purple_slash_163
+  - first:
+      213: 5132533095148702566
+    second: purple_slash_164
+  - first:
+      213: -6072559399896708447
+    second: purple_slash_165
+  - first:
+      213: 2178173767670280244
+    second: purple_slash_166
+  - first:
+      213: -2911867736417066392
+    second: purple_slash_167
+  - first:
+      213: -6877625419147255141
+    second: purple_slash_168
+  - first:
+      213: -4105665748037318710
+    second: purple_slash_169
+  - first:
+      213: -3439134135481496879
+    second: purple_slash_170
+  - first:
+      213: -5817894324736743618
+    second: purple_slash_171
+  - first:
+      213: -6226508482420390268
+    second: purple_slash_172
+  - first:
+      213: 8761167653086934499
+    second: purple_slash_173
+  - first:
+      213: -8677813667483630990
+    second: purple_slash_174
+  - first:
+      213: 5456569599003114160
+    second: purple_slash_175
+  - first:
+      213: 6096219695312254121
+    second: purple_slash_176
+  - first:
+      213: -3336664935578540030
+    second: purple_slash_177
+  - first:
+      213: -5420520528795216132
+    second: purple_slash_178
+  - first:
+      213: -1563790803791194311
+    second: purple_slash_179
+  - first:
+      213: 7388040300451914902
+    second: purple_slash_180
+  - first:
+      213: 2443818595615049251
+    second: purple_slash_181
+  - first:
+      213: -6119877005337555081
+    second: purple_slash_182
+  - first:
+      213: 4286749692287897892
+    second: purple_slash_183
+  - first:
+      213: 2695341811802208669
+    second: purple_slash_184
+  - first:
+      213: -6869003095632392432
+    second: purple_slash_185
+  - first:
+      213: -8337146301744325346
+    second: purple_slash_186
+  - first:
+      213: 5802227074984557553
+    second: purple_slash_187
+  - first:
+      213: 8164293981900915940
+    second: purple_slash_188
+  - first:
+      213: 5308366987601432441
+    second: purple_slash_189
+  - first:
+      213: -8517862697542623573
+    second: purple_slash_190
+  - first:
+      213: 3118081409048216522
+    second: purple_slash_191
+  - first:
+      213: -4698064865616349392
+    second: purple_slash_192
+  - first:
+      213: -5787979912195555790
+    second: purple_slash_193
+  - first:
+      213: -8543129579428080323
+    second: purple_slash_194
+  - first:
+      213: 8598678213188957773
+    second: purple_slash_195
+  - first:
+      213: -7674213764178177611
+    second: purple_slash_196
+  - first:
+      213: 5362556647385084633
+    second: purple_slash_197
+  - first:
+      213: 4267877122139423508
+    second: purple_slash_198
+  - first:
+      213: -7407633915487456028
+    second: purple_slash_199
+  - first:
+      213: -4957768124573778082
+    second: purple_slash_200
+  - first:
+      213: -9206924977086089175
+    second: purple_slash_201
+  - first:
+      213: -1043268201175240824
+    second: purple_slash_202
+  - first:
+      213: -3390913641629559996
+    second: purple_slash_203
+  - first:
+      213: -1325160355670802697
+    second: purple_slash_204
+  - first:
+      213: -8651120808396400701
+    second: purple_slash_205
+  - first:
+      213: 5751505068934295820
+    second: purple_slash_206
+  - first:
+      213: 7349817250421320188
+    second: purple_slash_207
+  - first:
+      213: 1046380821528479437
+    second: purple_slash_208
+  - first:
+      213: 8518807881361666782
+    second: purple_slash_209
+  - first:
+      213: 2528163353088233234
+    second: purple_slash_210
+  - first:
+      213: -5634206863967372617
+    second: purple_slash_211
+  - first:
+      213: -6842814895227461379
+    second: purple_slash_212
+  - first:
+      213: 8046963004301460365
+    second: purple_slash_213
+  - first:
+      213: 1164494887441729006
+    second: purple_slash_214
+  - first:
+      213: 4442963899887716303
+    second: purple_slash_215
+  - first:
+      213: 6174588115440940502
+    second: purple_slash_216
+  - first:
+      213: -4550645347721291425
+    second: purple_slash_217
+  - first:
+      213: 871550376369627100
+    second: purple_slash_218
+  - first:
+      213: -5863559395055276999
+    second: purple_slash_219
+  - first:
+      213: -865358372220069848
+    second: purple_slash_220
+  - first:
+      213: -9135847568082796732
+    second: purple_slash_221
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 80
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: purple_slash_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 960
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de31f046b7f818ae0800000000000000
+      internalID: -1548799036716280851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 960
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27952e7bf912fd5a0800000000000000
+      internalID: -6494435167776384654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 960
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bd92487014321f10800000000000000
+      internalID: 2238909210098310585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 960
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ae2062aae192bed0800000000000000
+      internalID: -2399695214502465884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 960
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b41f82eafd857fc0800000000000000
+      internalID: -3497733426900953932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3222beb5621eeac50800000000000000
+      internalID: 6678522852304167459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 768
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b931bc7242e0af60800000000000000
+      internalID: 8043677709671414195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e63afb4fc54438010800000000000000
+      internalID: 1189869892589822830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_8
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 768
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abfb2bbc7c8c56790800000000000000
+      internalID: -7537397640893120582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_9
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e3b7e4630238480800000000000000
+      internalID: -8898233021136945519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3882b7fa9c0039a90800000000000000
+      internalID: -7308496904059672445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_11
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 576
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e6c2037a83d9ee40800000000000000
+      internalID: 5686308596120471269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 576
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4709cf95cd5c74a0800000000000000
+      internalID: -6594292651006556342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_13
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 576
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8427eaffedb2c0210800000000000000
+      internalID: 1300462629175587400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_14
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 576
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 513977925ad2dba80800000000000000
+      internalID: -8449547138488626411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 016e30894424a9960800000000000000
+      internalID: 7609467382771475984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 482c61f552682ef60800000000000000
+      internalID: 8062153778013848196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_17
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c01795e1219898140800000000000000
+      internalID: 4722456395186270476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_18
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91bd3244dfa1961c0800000000000000
+      internalID: -4510043876762592487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_19
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19cb203222c637190800000000000000
+      internalID: -7965904422016205679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 775cd5d9df4a45410800000000000000
+      internalID: 1464977187976103287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_21
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2ededadd401af800800000000000000
+      internalID: 646847423051652654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_22
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd6188dd2b8f10fc0800000000000000
+      internalID: -3530267185777207585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_23
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d4e78594c1a2fee0800000000000000
+      internalID: -1228741882624351019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 192
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb3f5b010256be6b0800000000000000
+      internalID: -5266004150885944388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ba53682c389958d0800000000000000
+      internalID: -2857085104446809418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_26
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e7a012ed2f74afb0800000000000000
+      internalID: -4637441881241770008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple_slash_27
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 192
+        height: 192
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9904a9b4b542de150800000000000000
+      internalID: 5903414661081612441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f9cc4b79c05d205448bdb8ed4db15b5b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":6.0},"gridSpriteSize":{"x":192.0,"y":192.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.25},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      purple_slash_0: -1548799036716280851
+      purple_slash_1: -6494435167776384654
+      purple_slash_10: -7308496904059672445
+      purple_slash_11: 5686308596120471269
+      purple_slash_12: -6594292651006556342
+      purple_slash_13: 1300462629175587400
+      purple_slash_14: -8449547138488626411
+      purple_slash_15: 7609467382771475984
+      purple_slash_16: 8062153778013848196
+      purple_slash_17: 4722456395186270476
+      purple_slash_18: -4510043876762592487
+      purple_slash_19: -7965904422016205679
+      purple_slash_2: 2238909210098310585
+      purple_slash_20: 1464977187976103287
+      purple_slash_21: 646847423051652654
+      purple_slash_22: -3530267185777207585
+      purple_slash_23: -1228741882624351019
+      purple_slash_24: -5266004150885944388
+      purple_slash_25: -2857085104446809418
+      purple_slash_26: -4637441881241770008
+      purple_slash_27: 5903414661081612441
+      purple_slash_3: -2399695214502465884
+      purple_slash_4: -3497733426900953932
+      purple_slash_5: 6678522852304167459
+      purple_slash_6: 8043677709671414195
+      purple_slash_7: 1189869892589822830
+      purple_slash_8: -7537397640893120582
+      purple_slash_9: -8898233021136945519
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

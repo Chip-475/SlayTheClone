@@ -143,6 +143,7 @@ public class Player : MonoBehaviour, IBattleEntity
     public IEnumerator DeathSequence()
     {
         isDead = true;
+        Database.newFile = true;
         ChangeAnimation("Death");
         CombatManager.instance.OpenDeathPanel();
 

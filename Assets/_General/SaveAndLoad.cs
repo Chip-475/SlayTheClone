@@ -37,7 +37,11 @@ public class SaveAndLoad : MonoBehaviour
     }
     public static void LoadAll()
     {
-        if (!File.Exists(instance.generalSaveFile_Path)) throw new FileNotFoundException("Save file not found.", instance.generalSaveFile_Path);
+        if (!File.Exists(instance.generalSaveFile_Path))
+        {
+            Database.newFile = true;
+            throw new FileNotFoundException("Save file not found.", instance.generalSaveFile_Path);
+        }
 
         string json = File.ReadAllText(instance.generalSaveFile_Path);
         generalSaveFile = JsonConvert.DeserializeObject<SaveFile>(json);

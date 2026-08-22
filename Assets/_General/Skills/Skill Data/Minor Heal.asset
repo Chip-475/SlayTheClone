@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fe13cfbbb4e5f4ca8469ef5c9974cd, type: 3}
   m_Name: Minor Heal
   m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
-  id: 0
+  id: 5
   unlocked: 1
   equipped: 0
   skillName: Minor Heal
@@ -20,5 +20,5 @@ MonoBehaviour:
   icon: {fileID: 0}
   skillType: 2
   staminaCost: 3
-  damagePercentage: 70
+  damagePercentage: 150
   damageTypes: 

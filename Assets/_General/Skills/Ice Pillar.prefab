@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7990522575543707908
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6531086114566417092, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+      propertyPath: m_Name
+      value: Ice Pillar
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213336964532072354, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213336964532072354, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213336964532072354, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213336964532072354, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213336964532072354, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213336964532072354, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213336964532072354, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213336964532072354, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213336964532072354, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213336964532072354, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6531086114566417092, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7261888500906105743}
+  m_SourcePrefab: {fileID: 100100000, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+--- !u!1 &3767012348304425920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6531086114566417092, guid: 56ecbb4f84082d144b350ea989f7d3db, type: 3}
+  m_PrefabInstance: {fileID: 7990522575543707908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-7261888500906105743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3767012348304425920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b20b18cefb7ba3449b6289c5a9a770b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IcePillar
+  data: {fileID: 11400000, guid: 6a7b96b962bc9774fb4910a120278ac3, type: 2}
+  skill: {fileID: -7261888500906105743}
+  skillAnim: {fileID: 2188052646144951783, guid: 509fbb6135a548540bda7fa11ea0403e, type: 3}
