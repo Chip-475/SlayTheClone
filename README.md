@@ -1,6 +1,6 @@
 This game was done as a project for hackclub.
 
-Turn-based dungeon crawler, originally meant as a Slay The Spire clone (thus the name) but then pivoted to what it is now. As i am NOT an artist in ANY way, a lot of the assets for this game were imported and slightly modified in some occasions.
+Turn-based dungeon crawler, originally meant as a Slay The Spire clone (thus the name) but then pivoted to what it is now. As i am NOT an artist in ANY way, a lot of the assets for this game were imported and slightly modified in some occasions. Download build and installation guide at: https://chip-475.itch.io/slay-the-clone
 
 All assets used:
 https://www.spriters-resource.com/mobile/dungeonmaker/
