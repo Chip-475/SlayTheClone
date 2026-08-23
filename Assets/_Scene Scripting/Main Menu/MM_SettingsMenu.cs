@@ -10,6 +10,54 @@ public class MM_SettingsMenu : MonoBehaviour
     public bool menuOpen;
     #endregion
 
+    private Slider masterSlider;
+    private Slider sfxSlider;
+    private Slider bgmSlider;
+
+    private void Awake()
+    {
+        if (settingsMenu == null)
+        {
+            return;
+        }
+
+        foreach (Slider slider in settingsMenu.GetComponentsInChildren<Slider>(true))
+        {
+            switch (slider.gameObject.name)
+            {
+                case "Master Slider":
+                    masterSlider = slider;
+                    break;
+                case "SFX Slider":
+                    sfxSlider = slider;
+                    break;
+                case "BGM Slider":
+                    bgmSlider = slider;
+                    break;
+            }
+        }
+    }
+
+    private void Start()
+    {
+        InitializeSlider(masterSlider, AudioManager.MasterVolumeKey);
+        InitializeSlider(sfxSlider, AudioManager.SFXVolumeKey);
+        InitializeSlider(bgmSlider, AudioManager.BGMVolumeKey);
+        AudioManager.ApplySavedVolumes();
+    }
+
+    private void InitializeSlider(Slider slider, string key)
+    {
+        if (slider == null)
+        {
+            return;
+        }
+
+        slider.minValue = 0f;
+        slider.maxValue = 1f;
+        slider.SetValueWithoutNotify(AudioManager.GetSavedVolume(key));
+    }
+
     #region Methods
     public void ToggleMenu()
     {
@@ -31,29 +79,23 @@ public class MM_SettingsMenu : MonoBehaviour
 
     public void SetMaster(float volume)
     {
-        PlayerPrefs.SetFloat("Master Volume", volume);
-        SetMixerVolume("Master", volume);
+        SetVolume(AudioManager.MasterVolumeKey, "Master", volume);
     }
     public void SetSFX(float volume)
     {
-        PlayerPrefs.SetFloat("SFX Volume", volume);
-        SetMixerVolume("SFX", volume);
+        SetVolume(AudioManager.SFXVolumeKey, "SFX", volume);
     }
     public void SetBGM(float volume)
     {
-        PlayerPrefs.SetFloat("BGM Volume", volume);
-        SetMixerVolume("BGM", volume);
+        SetVolume(AudioManager.BGMVolumeKey, "BGM", volume);
     }
 
-    private void SetMixerVolume(string parameter, float volume)
+    private void SetVolume(string key, string parameter, float volume)
     {
-        if (volume <= 0f)
-        {
-            AudioManager.instance.mixer.SetFloat(parameter, -80f);
-            return;
-        }
-
-        AudioManager.instance.mixer.SetFloat(parameter, Mathf.Log10(volume) * 20);
+        volume = Mathf.Clamp01(volume);
+        PlayerPrefs.SetFloat(key, volume);
+        PlayerPrefs.Save();
+        AudioManager.SetMixerVolume(parameter, volume);
     }
     #endregion
 }

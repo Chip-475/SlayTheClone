@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1989853090894362002}
   - component: {fileID: 5345866176343156631}
-  - component: {fileID: 2474760556881348792}
+  - component: {fileID: 9120204415039339831}
   m_Layer: 0
   m_Name: Bat Attack
   m_TagString: Untagged
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &2474760556881348792
+--- !u!114 &9120204415039339831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 717712023669167275}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f0eee7fbbcde5d40a838eb20a20cec4, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fdc430e516e9da408d7357a34df4603, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BatAttackEffect
+  m_EditorClassIdentifier: Assembly-CSharp::AttackEffect
   destroyTime: 0

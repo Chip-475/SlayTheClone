@@ -12,6 +12,7 @@ public class Database : MonoBehaviour
     public static bool newFile;
     public static bool bossNodeClicked;
     public static bool runEnded;
+    public static bool bossKilled;
 
     public static Loadout loadout = new();
 
@@ -43,11 +44,16 @@ public class Database : MonoBehaviour
     }
     private void Update()
     {
-        if (newFile)
+        if (newFile || bossKilled)
         {
             PlayerManager.newFile = true;
             MapManager.newFile = true;
 
+            if(bossKilled)
+            {
+                CombatManager.toMM = true;
+                bossKilled = false;
+            }
             newFile = false;
         }
     }

@@ -56,6 +56,6 @@ public class SwordSkeleton : Enemy
 
         var effectPosition = new Vector2(CombatManager.instance.player.transform.position.x + 0.5f, CombatManager.instance.player.transform.position.y + 1);
         var effect = Instantiate(attackEffect, effectPosition, Quaternion.identity);
-        effect.GetComponent<SwordSkeletonAttackEffect>().destroyTime = remaining;
+        effect.GetComponent<AttackEffect>().destroyTime = remaining;
     }
 }

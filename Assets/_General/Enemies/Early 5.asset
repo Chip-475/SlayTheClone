@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EncounterConfigSO
   enemies:
   - {fileID: 1105060242595783216, guid: a3181992f533d604caa5806637c04270, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3383817801271324179, guid: ed011beaaedfd2e4ea22286272db3405, type: 3}
+  - {fileID: 3383817801271324179, guid: ed011beaaedfd2e4ea22286272db3405, type: 3}
+  - {fileID: 899277742351762035, guid: 257c2753e3ff1b24b902d71cfdeae960, type: 3}

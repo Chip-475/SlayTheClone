@@ -30,6 +30,7 @@ public class CombatManager : MonoBehaviour
     public Enemy selectedEnemy;
 
     public GameObject fadePanel;
+    public static bool toMM;
     #endregion
 
     #region Unity Methods
@@ -53,6 +54,10 @@ public class CombatManager : MonoBehaviour
 
         StartCoroutine(BattleWinCR());
         StartCoroutine(skillExecutor.SkillExecutionCR(this));
+
+        AudioManager.instance.battleThemePlayer.time = 0;
+        AudioManager.instance.battleThemePlayer.Play();
+        AudioManager.FadeVolume(AudioManager.instance.battleThemePlayer, 1f);
     }
     #endregion
 
@@ -115,7 +120,17 @@ public class CombatManager : MonoBehaviour
 
         fadePanel.GetComponent<CanvasGroup>().DOFade(1, 0.3f);
         yield return new WaitForSeconds(0.3f);
-        SceneManager.LoadSceneAsync("Map", LoadSceneMode.Single);
+        if(toMM)
+        {
+            SceneManager.LoadSceneAsync("Main_Menu", LoadSceneMode.Single);
+            toMM = false;
+        }
+        else 
+        {
+            SceneManager.LoadSceneAsync("Map", LoadSceneMode.Single);
+        }
+        AudioManager.FadeVolume(AudioManager.instance.battleThemePlayer, 0f);
+        AudioManager.instance.battleThemePlayer.Pause();
     }
 
     public void SlowTime()

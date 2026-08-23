@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Early 2
   m_EditorClassIdentifier: Assembly-CSharp::EncounterConfigSO
   enemies:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 899277742351762035, guid: 257c2753e3ff1b24b902d71cfdeae960, type: 3}
+  - {fileID: 899277742351762035, guid: 257c2753e3ff1b24b902d71cfdeae960, type: 3}
   - {fileID: 4776937251297766324, guid: d5f88767b25fb164594ee7fab8497340, type: 3}
   - {fileID: 4776937251297766324, guid: d5f88767b25fb164594ee7fab8497340, type: 3}

@@ -27,7 +27,7 @@ public abstract class Enemy : MonoBehaviour, IBattleEntity, IPointerDownHandler
     protected Color baseColor;
     protected bool selected;
 
-    EnemyBars bars;
+    public EnemyBars bars;
     #endregion Declarations
 
     #region Unity Methods

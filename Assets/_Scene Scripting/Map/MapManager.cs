@@ -84,6 +84,9 @@ public class MapManager : MonoBehaviour
         }
 
         Instantiate(locatorArrow);
+
+        AudioManager.instance.mainThemePlayer.Play();
+        AudioManager.FadeVolume(AudioManager.instance.mainThemePlayer, 1f);
     }
     private void OnEnable()
     {

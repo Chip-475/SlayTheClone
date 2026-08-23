@@ -454,10 +454,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1228993305}
   m_HandleRect: {fileID: 1235806423}
   m_Direction: 0
-  m_MinValue: 0.001
+  m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.001
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1160,10 +1160,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1689420920}
   m_HandleRect: {fileID: 1817916965}
   m_Direction: 0
-  m_MinValue: 0.001
+  m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.002
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3646,10 +3646,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1437357413}
   m_HandleRect: {fileID: 653126894}
   m_Direction: 0
-  m_MinValue: 0.001
+  m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.001
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -5118,8 +5118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2447104b1051b4bb15adfd65106e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  source: {fileID: 0}
+  source: {fileID: 34789578772997128, guid: cbe6aaebfc9b33440a926b7804293dda, type: 3}
   mixer: {fileID: 24100000, guid: ad3c506c262195a45ac09ce4f6325406, type: 2}
+  sfxMixerGroup: {fileID: 1785824852234467824, guid: ad3c506c262195a45ac09ce4f6325406, type: 2}
+  mainThemePlayer: {fileID: 34789578772997128, guid: cbe6aaebfc9b33440a926b7804293dda, type: 3}
+  battleThemePlayer: {fileID: 34789578772997128, guid: 0c61f69a9baec074e9fc357a60fc94f2, type: 3}
 --- !u!4 &1992630489
 Transform:
   m_ObjectHideFlags: 0

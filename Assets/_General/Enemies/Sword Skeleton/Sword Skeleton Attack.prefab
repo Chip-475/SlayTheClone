@@ -101,7 +101,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 717712023669167275}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cd9ee7cfdeb8cf4e9d37cfb8315d216, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fdc430e516e9da408d7357a34df4603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwordSkeletonAttackEffect
   destroyTime: 0

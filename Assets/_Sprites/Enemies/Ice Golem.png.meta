@@ -1,0 +1,698 @@
+fileFormatVersion: 2
+guid: 1a00fba45a9300e4aa6752686aacb1bf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4688002754787015335
+    second: Ice Golem_0
+  - first:
+      213: -5841311894246753933
+    second: Ice Golem_1
+  - first:
+      213: -6029602924233582957
+    second: Ice Golem_2
+  - first:
+      213: 680564443611463162
+    second: Ice Golem_3
+  - first:
+      213: 7525456069552118625
+    second: Ice Golem_4
+  - first:
+      213: -6274555846886410629
+    second: Ice Golem_5
+  - first:
+      213: 4694389457399374414
+    second: Ice Golem_6
+  - first:
+      213: 8890701112972996390
+    second: Ice Golem_7
+  - first:
+      213: 3537487546633176791
+    second: Ice Golem_8
+  - first:
+      213: -1624119771640576095
+    second: Ice Golem_9
+  - first:
+      213: -8156637085876742092
+    second: Ice Golem_10
+  - first:
+      213: -4606182695300568476
+    second: Ice Golem_11
+  - first:
+      213: -4320170371184942946
+    second: Ice Golem_12
+  - first:
+      213: 1361260127897680941
+    second: Ice Golem_13
+  - first:
+      213: -982970112927881589
+    second: Ice Golem_14
+  - first:
+      213: 4893608047309175888
+    second: Ice Golem_15
+  - first:
+      213: 4005801516753732518
+    second: Ice Golem_16
+  - first:
+      213: -5064825088969726976
+    second: Ice Golem_17
+  - first:
+      213: -2248839228343834159
+    second: Ice Golem_18
+  - first:
+      213: 8688834813894050508
+    second: Ice Golem_19
+  - first:
+      213: -801920903330388763
+    second: Ice Golem_20
+  - first:
+      213: -6180729281682226106
+    second: Ice Golem_21
+  - first:
+      213: 6702596922330588558
+    second: Ice Golem_22
+  - first:
+      213: -6961245963574740209
+    second: Ice Golem_23
+  - first:
+      213: 4063009873345233753
+    second: Ice Golem_24
+  - first:
+      213: 6503811201727533908
+    second: Ice Golem_25
+  - first:
+      213: 8785614808687898087
+    second: Ice Golem_26
+  - first:
+      213: -8884233573625104362
+    second: Ice Golem_27
+  - first:
+      213: 8495656722168052367
+    second: Ice Golem_28
+  - first:
+      213: -1667407781369490022
+    second: Ice Golem_29
+  - first:
+      213: -8742084383312198994
+    second: Ice Golem_30
+  - first:
+      213: -3930776981065370346
+    second: Ice Golem_31
+  - first:
+      213: -7637587126267516434
+    second: Ice Golem_32
+  - first:
+      213: -6131794588084868115
+    second: Ice Golem_33
+  - first:
+      213: 6591376209554516448
+    second: Ice Golem_34
+  - first:
+      213: -3724070340109285057
+    second: Ice Golem_35
+  - first:
+      213: -3375174081982375812
+    second: Ice Golem_36
+  - first:
+      213: 1014922368034430044
+    second: Ice Golem_37
+  - first:
+      213: 4015114445505866689
+    second: Ice Golem_38
+  - first:
+      213: -7773856643558028346
+    second: Ice Golem_39
+  - first:
+      213: 6182471782263956347
+    second: Ice Golem_40
+  - first:
+      213: -4341006706161610671
+    second: Ice Golem_41
+  - first:
+      213: -6992284043746192511
+    second: Ice Golem_42
+  - first:
+      213: 3617846430046376747
+    second: Ice Golem_43
+  - first:
+      213: -3036791716688688624
+    second: Ice Golem_44
+  - first:
+      213: 8315002437103702808
+    second: Ice Golem_45
+  - first:
+      213: 2846890323583062056
+    second: Ice Golem_46
+  - first:
+      213: 6821105380357201485
+    second: Ice Golem_47
+  - first:
+      213: -7172912276036594021
+    second: Ice Golem_48
+  - first:
+      213: -908520411523943177
+    second: Ice Golem_49
+  - first:
+      213: -6569425097528857506
+    second: Ice Golem_50
+  - first:
+      213: 4988140960990446240
+    second: Ice Golem_51
+  - first:
+      213: -5295332913628697418
+    second: Ice Golem_52
+  - first:
+      213: 3728591116705826346
+    second: Ice Golem_53
+  - first:
+      213: 838182625287712479
+    second: Ice Golem_54
+  - first:
+      213: -8647444558806449640
+    second: Ice Golem_55
+  - first:
+      213: -4765213843276284565
+    second: Ice Golem_56
+  - first:
+      213: 520895133804518748
+    second: Ice Golem_57
+  - first:
+      213: -4568102010276444966
+    second: Ice Golem_58
+  - first:
+      213: 481644655352662257
+    second: Ice Golem_59
+  - first:
+      213: 707745137413236881
+    second: Ice Golem_60
+  - first:
+      213: 5326468667229735295
+    second: Ice Golem_61
+  - first:
+      213: 6057793083270410389
+    second: Ice Golem_62
+  - first:
+      213: -7876305688368082751
+    second: Ice Golem_63
+  - first:
+      213: -6194690953881773290
+    second: Ice Golem_64
+  - first:
+      213: -5901893436175201461
+    second: Ice Golem_65
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 70
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ice Golem_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9550ed6255ed0feb0800000000000000
+      internalID: -4688002754787015335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3797821e7cd7feea0800000000000000
+      internalID: -5841311894246753933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 396966c261c825ca0800000000000000
+      internalID: -6029602924233582957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_3
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afdf83471c9d17900800000000000000
+      internalID: 680564443611463162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_4
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 512
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16b16767c6acf6860800000000000000
+      internalID: 7525456069552118625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_5
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 512
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b763cf683bc4ce8a0800000000000000
+      internalID: -6274555846886410629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e42e0ade652d52140800000000000000
+      internalID: 4694389457399374414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_7
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62feceaae8d126b70800000000000000
+      internalID: 8890701112972996390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_8
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d640766e2ea71130800000000000000
+      internalID: 3537487546633176791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_9
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 256
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a7cca23ca7f579e0800000000000000
+      internalID: -1624119771640576095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_10
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 256
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4381a8e39cdcdce80800000000000000
+      internalID: -8156637085876742092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_11
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 256
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46aee044e3d8310c0800000000000000
+      internalID: -4606182695300568476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e90aa58cfebab04c0800000000000000
+      internalID: -4320170371184942946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_13
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2c7e32cfda24e210800000000000000
+      internalID: 1361260127897680941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_14
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 512
+        height: 256
+      alignment: 9
+      pivot: {x: 0.75, y: 0.15}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b86ab1ae3e9cb52f0800000000000000
+      internalID: -982970112927881589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Golem_15
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 512
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05c3bd1779699e340800000000000000
+      internalID: 4893608047309175888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c245a1d5e1fecb34c93b2be196a19551
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":3.0},"gridSpriteSize":{"x":512.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.75,"y":0.15000000596046449},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Ice Golem_0: -4688002754787015335
+      Ice Golem_1: -5841311894246753933
+      Ice Golem_10: -8156637085876742092
+      Ice Golem_11: -4606182695300568476
+      Ice Golem_12: -4320170371184942946
+      Ice Golem_13: 1361260127897680941
+      Ice Golem_14: -982970112927881589
+      Ice Golem_15: 4893608047309175888
+      Ice Golem_2: -6029602924233582957
+      Ice Golem_3: 680564443611463162
+      Ice Golem_4: 7525456069552118625
+      Ice Golem_5: -6274555846886410629
+      Ice Golem_6: 4694389457399374414
+      Ice Golem_7: 8890701112972996390
+      Ice Golem_8: 3537487546633176791
+      Ice Golem_9: -1624119771640576095
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

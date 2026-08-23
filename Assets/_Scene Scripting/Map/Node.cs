@@ -137,6 +137,8 @@ public class Node : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
                 sceneToLoad = "Event";
                 break;
         }
+        AudioManager.FadeVolume(AudioManager.instance.mainThemePlayer, 0f);
+        AudioManager.instance.mainThemePlayer.Pause();
         await MapManager.instance.fadePanel.GetComponent<CanvasGroup>().DOFade(1, 0.3f)
             .AsyncWaitForCompletion();
         await SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Single);
