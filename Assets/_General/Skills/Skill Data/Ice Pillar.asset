@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fe13cfbbb4e5f4ca8469ef5c9974cd, type: 3}
   m_Name: Ice Pillar
   m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
-  id: 0
+  id: 6
   unlocked: 1
   equipped: 0
   skillName: Ice Pillar
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 4301524020142111014, guid: 6fed4e69952aa994883372b0a5efa727, type: 3}
   skillType: 0
   staminaCost: 3
   damagePercentage: 130

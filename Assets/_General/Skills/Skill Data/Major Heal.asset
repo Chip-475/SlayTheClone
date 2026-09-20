@@ -17,7 +17,7 @@ MonoBehaviour:
   equipped: 0
   skillName: Major Heal
   description: Heals a lot.
-  icon: {fileID: 0}
+  icon: {fileID: -5746155488658146559, guid: 29c0e8db135e57d438030cc2ee6ae8a0, type: 3}
   skillType: 2
   staminaCost: 5
   damagePercentage: 250

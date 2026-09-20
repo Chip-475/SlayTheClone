@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fe13cfbbb4e5f4ca8469ef5c9974cd, type: 3}
   m_Name: MagicSlash
   m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
-  id: 0
+  id: 7
   unlocked: 0
   equipped: 0
   skillName: Magic Slash
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 4784573054625904888, guid: b28b6cd94208f4c4eaca641d52fb8c08, type: 3}
   skillType: 0
   staminaCost: 3
   damagePercentage: 130

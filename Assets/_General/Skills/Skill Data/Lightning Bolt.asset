@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fe13cfbbb4e5f4ca8469ef5c9974cd, type: 3}
   m_Name: Lightning Bolt
   m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
+  id: 3
   unlocked: 1
+  equipped: 0
   skillName: Lightning Bolt
   description: A mildly powerful electric bolt.
-  icon: {fileID: -4640632633634142371, guid: 474b162b4741fbb4da3b9bef22cae92d, type: 3}
+  icon: {fileID: 2246817047484990474, guid: c3164d58d469557479befdec838f4a77, type: 3}
   skillType: 0
   staminaCost: 2
   damagePercentage: 60

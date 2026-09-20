@@ -17,7 +17,7 @@ MonoBehaviour:
   equipped: 0
   skillName: Minor Heal
   description: Heals a bit.
-  icon: {fileID: 0}
+  icon: {fileID: 2561691660604688044, guid: 0139de21eb48089419225e1c685053f9, type: 3}
   skillType: 2
   staminaCost: 3
   damagePercentage: 150

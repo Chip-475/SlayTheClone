@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fe13cfbbb4e5f4ca8469ef5c9974cd, type: 3}
   m_Name: Heavy Slash
   m_EditorClassIdentifier: Assembly-CSharp::SkillDataSO
+  id: 1
   unlocked: 1
+  equipped: 0
   skillName: Heavy Slash
   description: Slow but powerful physical slash.
-  icon: {fileID: -4640632633634142371, guid: 474b162b4741fbb4da3b9bef22cae92d, type: 3}
+  icon: {fileID: -1468720512961890671, guid: 38e5c245457461d4aa8a62b7bfe10b80, type: 3}
   skillType: 0
   staminaCost: 5
   damagePercentage: 120
